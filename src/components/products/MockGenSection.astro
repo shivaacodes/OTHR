@@ -1,0 +1,328 @@
+---
+import { products } from '../../data/products';
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+const mockgen = products[0];
+---
+
+<section class="py-24 md:py-32 bg-[#080B0A] border-b border-[#1D2620] relative overflow-hidden" id="products">
+  <!-- Neon Orange Background Ambient Atmosphere -->
+  <div class="absolute right-[5%] top-[20%] w-[500px] h-[500px] bg-[#FF5500]/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#1D2620]">
+      <div>
+        <div class="flex items-center gap-2 mb-3" data-reveal>
+          <span class="font-mono text-xs text-[#FF5500] uppercase tracking-widest">// STUDIO FLAGSHIP PRODUCT</span>
+          <span class="font-mono text-xs text-[#5C635B]">•</span>
+          <span class="font-mono text-xs text-[#A5A9A3] uppercase">LIVE PRODUCTION SAAS</span>
+        </div>
+        <h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#F5F6F0]" data-reveal data-delay="0.1">
+          Our Products<span class="text-[#FF5500]">.</span>
+        </h2>
+      </div>
+      <p class="font-body text-base text-[#A5A9A3] max-w-md" data-reveal data-delay="0.2">
+        We conceive, engineer, and operate proprietary digital products. Meet <strong class="text-[#F5F6F0]">MockGen</strong>: our AI-powered 3D packaging and print asset pipeline.
+      </p>
+    </div>
+
+    <!-- MAIN NEON ORANGE FLAGSHIP CARD -->
+    <div
+      class="bg-[#0E1410] border-2 border-[#FF5500]/60 hover:border-[#FF5500] rounded-xl p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-[0_0_50px_-10px_rgba(255,85,0,0.35)] transition-all group"
+      data-reveal
+    >
+      <!-- Background Giant Monolith Watermark -->
+      <div class="absolute right-6 -bottom-6 font-display font-black text-8xl sm:text-9xl text-[#141A16] select-none pointer-events-none opacity-40">
+        MOCKGEN
+      </div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <!-- Left: Product Story, Workflow & Pipeline -->
+        <div class="lg:col-span-7 space-y-7">
+          <!-- Top Badges & Proof Pill -->
+          <div class="flex flex-wrap items-center gap-3">
+            <Badge variant="orange" dot={true}>FLAGSHIP SAAS PRODUCT</Badge>
+            <span class="px-2.5 py-1 bg-[#141A16] border border-[#2A362E] text-[10px] font-mono text-[#F5F6F0] rounded-[4px] tracking-wider uppercase">
+              NO AI BLACKBOX
+            </span>
+            <span class="font-mono text-xs text-[#FF5500] font-bold tracking-wider hidden sm:inline">
+              // 45-SEC PRINT PIPELINE
+            </span>
+          </div>
+
+          <!-- Headline -->
+          <div>
+            <h3 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#F5F6F0] tracking-tight leading-none mb-3">
+              MockGen<span class="text-[#FF5500]">.</span>
+            </h3>
+            <p class="font-display font-bold text-2xl sm:text-3xl text-[#FF5500] leading-snug">
+              {mockgen.tagline}
+            </p>
+          </div>
+
+          <!-- Subhead & Value Prop -->
+          <p class="font-body text-base sm:text-lg text-[#F5F6F0] leading-relaxed">
+            {mockgen.subtitle}
+          </p>
+
+          <p class="font-body text-sm text-[#A5A9A3] leading-relaxed">
+            {mockgen.description}
+          </p>
+
+          <!-- 4-Step Pipeline Grid -->
+          <div class="pt-2">
+            <div class="font-mono text-xs text-[#FF5500] uppercase tracking-wider mb-3">
+              // TRANSPARENT PRODUCTION PIPELINE
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {mockgen.workflow.map((w) => (
+                <div class="p-3.5 bg-[#141A16] border border-[#1D2620] hover:border-[#FF5500]/40 rounded-lg transition-colors">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="font-mono text-xs text-[#FF5500] font-bold">[{w.step}]</span>
+                    <span class="font-display font-bold text-sm text-[#F5F6F0]">{w.title}</span>
+                  </div>
+                  <p class="font-body text-xs text-[#A5A9A3] leading-relaxed">{w.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Export Formats Badges -->
+          <div class="flex flex-wrap items-center gap-2 pt-2">
+            <span class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mr-1">EXPORTS:</span>
+            {mockgen.exportFormats.map((fmt) => (
+              <span class="px-2.5 py-1 bg-[#080B0A] border border-[#FF5500]/30 text-[#F5F6F0] font-mono text-[11px] rounded-[4px] tracking-wider font-bold">
+                {fmt.name} <span class="text-[#A5A9A3] font-normal text-[10px]">({fmt.label})</span>
+              </span>
+            ))}
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-[#1D2620]">
+            <Button
+              href="https://trymockgen.vercel.app/?auth=signup"
+              variant="orange"
+              size="lg"
+              showArrow={true}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get Started Free
+            </Button>
+            <Button
+              href="https://trymockgen.vercel.app/#demo"
+              variant="orange-outline"
+              size="lg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Watch 30s Demo
+            </Button>
+            <a
+              href="/products"
+              class="font-mono text-xs text-[#A5A9A3] hover:text-[#FF5500] uppercase tracking-wider flex items-center gap-1.5 transition-colors ml-auto py-2"
+            >
+              <span>FULL SPECS & PRICING</span>
+              <Icon name="ArrowUpRight" size={14} />
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: 3D Beverage Can Mockup Canvas -->
+        <div class="lg:col-span-5 bg-[#141A16] border border-[#FF5500]/40 rounded-xl p-6 relative flex flex-col justify-between h-[420px] sm:h-[460px] shadow-[0_0_30px_-5px_rgba(255,85,0,0.25)]">
+          <!-- Viewport Header HUD -->
+          <div class="flex items-center justify-between font-mono text-[10px] text-[#A5A9A3] border-b border-[#1D2620] pb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse"></span>
+              <span class="text-[#F5F6F0] font-bold">3D STUDIO // SODA CAN WRAP</span>
+            </div>
+            <span class="text-[#FF5500] font-bold">DRAG TO ORBIT</span>
+          </div>
+
+          <!-- 3D Interactive Beverage Can Simulation Stage -->
+          <div class="flex-grow flex items-center justify-center perspective-[900px] overflow-hidden" id="can-preview-stage">
+            <div
+              id="can-3d-model"
+              class="w-32 h-60 relative transform-style-preserve-3d transition-transform duration-700 ease-out cursor-grab active:cursor-grabbing select-none"
+              style="transform: rotateX(-10deg) rotateY(25deg);"
+            >
+              <!-- Can Top Rim -->
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-gradient-to-b from-[#silver] to-[#71717a] border-2 border-[#a1a1aa] rounded-full transform rotateX(75deg) shadow-inner flex items-center justify-center">
+                <div class="w-8 h-4 bg-[#27272a] rounded-sm border border-[#a1a1aa]/60"></div>
+              </div>
+
+              <!-- Cylinder Body Faces (Approximated Curvature via Multi-Panel Facets) -->
+              <!-- Front Label Face -->
+              <div
+                class="can-face absolute inset-0 bg-[#0E1410] border-2 border-[#FF5500] rounded-lg flex flex-col justify-between p-4 backface-hidden shadow-[0_0_20px_rgba(255,85,0,0.3)]"
+                style="transform: translateZ(36px);"
+              >
+                <div class="flex justify-between items-center font-mono text-[9px] text-[#FF5500]">
+                  <span>MOCKGEN // PBR</span>
+                  <span>330 ML</span>
+                </div>
+                <div class="text-center my-auto">
+                  <div class="font-display font-black text-2xl text-[#F5F6F0] tracking-tighter leading-none">
+                    NEON<br />
+                    <span class="text-[#FF5500] glow-text-orange">CITRUS</span>
+                  </div>
+                  <div class="font-mono text-[8px] text-[#A5A9A3] mt-1 tracking-widest uppercase">
+                    METALLIC COLD CRAFT
+                  </div>
+                </div>
+                <div class="flex justify-between items-end font-mono text-[8px] text-[#5C635B] pt-2 border-t border-[#1D2620]">
+                  <span>AI DIE-CUT</span>
+                  <span class="text-[#FF5500]">4K PRINT-READY</span>
+                </div>
+              </div>
+
+              <!-- Right Face -->
+              <div
+                class="can-face absolute top-0 bottom-0 w-24 bg-[#1a0f08] border border-[#FF5500]/50 rounded-lg p-3 flex flex-col justify-between font-mono text-[8px] text-[#FF5500]"
+                style="left: 100%; transform-origin: left; transform: rotateY(70deg);"
+              >
+                <span>NUTRITION // 100% REAL</span>
+                <div class="text-[7px] text-[#A5A9A3]">
+                  • PRINT BLEED: 3MM<br />
+                  • SPOT GLOSS: 100%<br />
+                  • DIE CUT: PERFECT
+                </div>
+                <span class="text-[#5C635B]">OBJ/GLB READY</span>
+              </div>
+
+              <!-- Left Face -->
+              <div
+                class="can-face absolute top-0 bottom-0 w-24 bg-[#150a04] border border-[#FF5500]/50 rounded-lg p-3 flex flex-col justify-between font-mono text-[8px] text-[#FF5500]"
+                style="right: 100%; transform-origin: right; transform: rotateY(-70deg);"
+              >
+                <span>BARCODE / SKU</span>
+                <div class="text-[7px] text-[#A5A9A3]">
+                  PSD LAYERED<br />
+                  CMYK PRINT<br />
+                  300 DPI VECTOR
+                </div>
+                <span class="text-[#5C635B]">ZERO BLACKBOX</span>
+              </div>
+
+              <!-- Back Face -->
+              <div
+                class="can-face absolute inset-0 bg-[#080B0A] border border-[#2A362E] rounded-lg p-4 font-mono text-[8px] text-[#5C635B] flex flex-col justify-between"
+                style="transform: rotateY(180deg) translateZ(36px);"
+              >
+                <span>MANUFACTURE READY</span>
+                <div class="text-center text-[#A5A9A3]">
+                  DIRECT PRINTER EXPORT<br />
+                  NO GUESSWORK
+                </div>
+                <span>© 2026 MOCKGEN</span>
+              </div>
+
+              <!-- Can Bottom Rim -->
+              <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#3f3f46] border-2 border-[#71717a] rounded-full transform rotateX(75deg) shadow-lg"></div>
+            </div>
+          </div>
+
+          <!-- Viewport Footer Controls -->
+          <div class="pt-3 border-t border-[#1D2620] flex items-center justify-between font-mono text-[10px]">
+            <span class="text-[#5C635B]">FINISH:</span>
+            <div class="flex items-center gap-1.5">
+              <button class="can-finish-btn px-2.5 py-1 bg-[#FF5500]/20 border border-[#FF5500] text-[#FF5500] rounded-[4px] cursor-pointer" data-finish="orange">
+                NEON ORANGE
+              </button>
+              <button class="can-finish-btn px-2.5 py-1 bg-[#080B0A] border border-[#2A362E] text-[#A5A9A3] hover:text-[#F5F6F0] rounded-[4px] cursor-pointer" data-finish="metallic">
+                METALLIC
+              </button>
+              <button class="can-finish-btn px-2.5 py-1 bg-[#080B0A] border border-[#2A362E] text-[#A5A9A3] hover:text-[#F5F6F0] rounded-[4px] cursor-pointer" data-finish="matte">
+                MATTE
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { studioAudio } from '../../utils/audio';
+
+  function initCanInteractions() {
+    const can = document.getElementById('can-3d-model');
+    const stage = document.getElementById('can-preview-stage');
+    const finishBtns = document.querySelectorAll('.can-finish-btn');
+
+    // 3D drag / hover rotation
+    if (can && stage) {
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let rotX = -10;
+      let rotY = 25;
+
+      stage.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        rotY += dx * 0.5;
+        rotX -= dy * 0.5;
+        can.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        startX = e.clientX;
+        startY = e.clientY;
+      });
+
+      // Touch events for mobile responsiveness
+      stage.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      window.addEventListener('touchend', () => {
+        isDragging = false;
+      });
+
+      window.addEventListener('touchmove', (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+        rotY += dx * 0.5;
+        rotX -= dy * 0.5;
+        can.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }, { passive: true });
+    }
+
+    // Material Finish switchers
+    finishBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        finishBtns.forEach((b) => {
+          b.classList.remove('border-[#FF5500]', 'text-[#FF5500]', 'bg-[#FF5500]/20');
+          b.classList.add('border-[#2A362E]', 'text-[#A5A9A3]', 'bg-[#080B0A]');
+        });
+        (e.currentTarget as HTMLElement).classList.add('border-[#FF5500]', 'text-[#FF5500]', 'bg-[#FF5500]/20');
+        (e.currentTarget as HTMLElement).classList.remove('border-[#2A362E]', 'text-[#A5A9A3]', 'bg-[#080B0A]');
+
+        studioAudio.playClick();
+      });
+    });
+  }
+
+  initCanInteractions();
+  document.addEventListener('astro:page-load', initCanInteractions);
+</script>

@@ -2,7 +2,7 @@
 // Interactive generative canvas sandbox for The Lab
 ---
 
-<div class="relative w-full h-80 sm:h-96 bg-[#0E1410] border border-[#1D2620] overflow-hidden group select-none" id="lab-canvas-container">
+<div class="relative w-full h-80 sm:h-96 bg-[#0E1410] border border-[#1D2620] rounded-xl overflow-hidden group select-none" id="lab-canvas-container">
   <!-- HUD overlay header -->
   <div class="absolute top-0 left-0 right-0 p-4 bg-[#080B0A]/85 backdrop-blur-md border-b border-[#1D2620] flex items-center justify-between z-10 font-mono text-[11px]">
     <div class="flex items-center gap-2">
@@ -27,13 +27,13 @@
     <div class="flex items-center gap-2">
       <button
         id="clear-particles-btn"
-        class="px-2.5 py-1 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] text-[10px] text-[#F5F6F0] hover:text-[#C6FF3D] transition-colors"
+        class="px-2.5 py-1 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] rounded-[4px] text-[10px] text-[#F5F6F0] hover:text-[#C6FF3D] transition-colors"
       >
         CLEAR FIELD
       </button>
       <button
         id="burst-particles-btn"
-        class="px-2.5 py-1 bg-[#C6FF3D]/10 border border-[#C6FF3D]/40 text-[10px] text-[#C6FF3D] hover:bg-[#C6FF3D]/20 transition-colors"
+        class="px-2.5 py-1 bg-[#C6FF3D]/10 border border-[#C6FF3D]/40 rounded-[4px] text-[10px] text-[#C6FF3D] hover:bg-[#C6FF3D]/20 transition-colors"
       >
         TRIGGER BURST
       </button>

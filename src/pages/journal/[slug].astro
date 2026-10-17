@@ -94,7 +94,7 @@ const articleSchema = {
 
         <!-- Editorial Review Notice if applicable -->
         {article.data.editorialNote && (
-          <div class="mt-8 p-4 bg-[#141A16] border-l-2 border-[#C6FF3D] font-mono text-xs text-[#A5A9A3]">
+          <div class="mt-8 p-4 bg-[#141A16] border-l-2 border-[#C6FF3D] rounded-r-lg font-mono text-xs text-[#A5A9A3]">
             <span class="text-[#C6FF3D] font-bold mr-2">// EDITORIAL NOTICE:</span>
             {article.data.editorialNote}
           </div>
@@ -111,7 +111,7 @@ const articleSchema = {
           <div class="sticky top-28 space-y-8">
             <!-- Table of Contents -->
             {headings.length > 0 && (
-              <div class="bg-[#0E1410] border border-[#1D2620] p-5">
+              <div class="bg-[#0E1410] border border-[#1D2620] rounded-xl p-5">
                 <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mb-3">// TABLE OF CONTENTS</div>
                 <nav class="space-y-1.5 font-mono text-xs">
                   {headings.filter((h) => h.depth <= 3).map((h) => (
@@ -129,12 +129,12 @@ const articleSchema = {
             )}
 
             <!-- Share & Syndication Links -->
-            <div class="bg-[#0E1410] border border-[#1D2620] p-5 space-y-3 font-mono text-xs">
+            <div class="bg-[#0E1410] border border-[#1D2620] rounded-xl p-5 space-y-3 font-mono text-xs">
               <div class="text-[10px] text-[#5C635B] uppercase tracking-wider">// SHARE ARTICLE</div>
               <div class="flex flex-col gap-2">
                 <button
                   id="copy-article-link"
-                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors cursor-pointer"
+                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] rounded-md text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors cursor-pointer"
                 >
                   <span id="copy-text">COPY ARTICLE LINK</span>
                   <Icon name="Copy" size={13} />
@@ -144,7 +144,7 @@ const articleSchema = {
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.data.title)}&url=${encodeURIComponent(currentUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors"
+                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] rounded-md text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors"
                 >
                   <span>SHARE ON X</span>
                   <Icon name="ArrowUpRight" size={13} />
@@ -154,7 +154,7 @@ const articleSchema = {
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors"
+                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] rounded-md text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors"
                 >
                   <span>SHARE ON LINKEDIN</span>
                   <Icon name="ArrowUpRight" size={13} />
@@ -180,7 +180,7 @@ const articleSchema = {
           <div class="mt-16 pt-8 border-t border-[#1D2620] flex flex-wrap items-center justify-between gap-4">
             <div class="flex flex-wrap gap-2">
               {article.data.tags.map((t) => (
-                <span class="font-mono text-xs text-[#5C635B] bg-[#141A16] px-2.5 py-1 border border-[#1D2620]">
+                <span class="font-mono text-xs text-[#5C635B] bg-[#141A16] px-2.5 py-1 border border-[#1D2620] rounded-[4px]">
                   #{t}
                 </span>
               ))}
@@ -202,7 +202,7 @@ const articleSchema = {
                 {related.map((rel) => (
                   <a
                     href={`/journal/${rel.id}`}
-                    class="p-6 bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors block group"
+                    class="p-6 bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 rounded-xl transition-colors block group"
                   >
                     <div class="font-mono text-[10px] text-[#5C635B] mb-2">{rel.data.readingTime}</div>
                     <div class="font-display font-bold text-lg text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors leading-snug">
@@ -260,11 +260,12 @@ const articleSchema = {
     background-color: #141A16;
     padding: 0.2em 0.4em;
     border: 1px solid #1D2620;
-    border-radius: 0;
+    border-radius: 4px;
   }
   .article-prose pre {
     background-color: #0E1410 !important;
     border: 1px solid #1D2620;
+    border-radius: 8px;
     padding: 1.25rem;
     margin: 2rem 0;
     overflow-x: auto;

@@ -47,7 +47,7 @@ const faqs = [
           </p>
         </div>
 
-        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] rounded-xl font-mono text-xs">
           <div class="text-[#5C635B] text-[10px]">// DIRECT DISPATCH</div>
           <div class="text-[#C6FF3D]">{studioData.contactEmail}</div>
         </div>
@@ -68,7 +68,7 @@ const faqs = [
 
       <div class="space-y-6">
         {faqs.map((faq, i) => (
-          <div class="p-6 bg-[#0E1410] border border-[#1D2620]">
+          <div class="p-6 bg-[#0E1410] border border-[#1D2620] rounded-xl">
             <h3 class="font-display font-bold text-xl text-[#F5F6F0] mb-3">
               <span class="text-[#C6FF3D] font-mono text-sm mr-2">0{i + 1} //</span>
               {faq.q}

@@ -43,7 +43,7 @@ const allTags = Array.from(new Set(allArticles.flatMap((a) => a.data.tags)));
           </p>
         </div>
 
-        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] rounded-xl font-mono text-xs">
           <div class="text-[#5C635B] text-[10px]">// PUBLICATION STATUS</div>
           <div class="text-[#C6FF3D]">{sortedArticles.length} ARTICLES // CANONICAL READY</div>
         </div>
@@ -52,14 +52,14 @@ const allTags = Array.from(new Set(allArticles.flatMap((a) => a.data.tags)));
       <!-- Tag Filter Pills -->
       <div class="pt-6 border-t border-[#1D2620] flex flex-wrap items-center gap-2" id="journal-filter-bar">
         <button
-          class="journal-filter-btn px-3 py-1 font-mono text-xs uppercase tracking-wider bg-[#C6FF3D] text-[#080B0A] border border-[#C6FF3D] font-bold cursor-pointer"
+          class="journal-filter-btn px-3 py-1 font-mono text-xs uppercase tracking-wider bg-[#C6FF3D] text-[#080B0A] border border-[#C6FF3D] rounded-md font-bold cursor-pointer"
           data-tag="all"
         >
           ALL TOPICS
         </button>
         {allTags.map((tag) => (
           <button
-            class="journal-filter-btn px-3 py-1 font-mono text-xs uppercase tracking-wider bg-[#141A16] text-[#A5A9A3] border border-[#1D2620] hover:border-[#C6FF3D]/40 hover:text-[#F5F6F0] cursor-pointer transition-colors"
+            class="journal-filter-btn px-3 py-1 font-mono text-xs uppercase tracking-wider bg-[#141A16] text-[#A5A9A3] border border-[#1D2620] hover:border-[#C6FF3D]/40 hover:text-[#F5F6F0] rounded-md cursor-pointer transition-colors"
             data-tag={tag}
           >
             {tag}
@@ -74,7 +74,7 @@ const allTags = Array.from(new Set(allArticles.flatMap((a) => a.data.tags)));
 
       <!-- Featured Spotlight Article -->
       {featuredArticle && (
-        <article class="journal-card bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/50 transition-colors p-6 sm:p-10 lg:p-12" data-tags={featuredArticle.data.tags.join(',')}>
+        <article class="journal-card bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/50 rounded-xl transition-colors p-6 sm:p-10 lg:p-12" data-tags={featuredArticle.data.tags.join(',')}>
           <div class="max-w-4xl space-y-6">
             <div class="flex flex-wrap items-center gap-3">
               <Badge variant="lime" dot={true}>FEATURED ESSAY</Badge>
@@ -97,7 +97,7 @@ const allTags = Array.from(new Set(allArticles.flatMap((a) => a.data.tags)));
             <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-[#1D2620]">
               <div class="flex flex-wrap gap-1.5">
                 {featuredArticle.data.tags.map((t) => (
-                  <span class="font-mono text-[10px] text-[#5C635B] bg-[#141A16] px-2 py-0.5 border border-[#1D2620]">
+                  <span class="font-mono text-[10px] text-[#5C635B] bg-[#141A16] px-2 py-0.5 border border-[#1D2620] rounded-[4px]">
                     #{t}
                   </span>
                 ))}
@@ -119,7 +119,7 @@ const allTags = Array.from(new Set(allArticles.flatMap((a) => a.data.tags)));
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="journal-articles-grid">
         {standardArticles.map((article) => (
           <article
-            class="journal-card bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors p-6 sm:p-8 flex flex-col justify-between"
+            class="journal-card bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 rounded-xl transition-colors p-6 sm:p-8 flex flex-col justify-between"
             data-tags={article.data.tags.join(',')}
           >
             <div class="space-y-4">
@@ -144,7 +144,7 @@ const allTags = Array.from(new Set(allArticles.flatMap((a) => a.data.tags)));
             <div class="pt-6 mt-6 border-t border-[#1D2620] flex items-center justify-between">
               <div class="flex flex-wrap gap-1.5">
                 {article.data.tags.slice(0, 2).map((t) => (
-                  <span class="font-mono text-[9px] text-[#5C635B] bg-[#141A16] px-1.5 py-0.5 border border-[#1D2620]">
+                  <span class="font-mono text-[9px] text-[#5C635B] bg-[#141A16] px-1.5 py-0.5 border border-[#1D2620] rounded-[4px]">
                     #{t}
                   </span>
                 ))}

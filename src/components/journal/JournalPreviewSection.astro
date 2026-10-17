@@ -36,7 +36,7 @@ const topArticles = articles
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {topArticles.map((article, index) => (
         <article
-          class="bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors p-6 sm:p-8 flex flex-col justify-between group"
+          class="bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 rounded-xl transition-colors p-6 sm:p-8 flex flex-col justify-between group"
           data-reveal
           data-delay={0.1 * index}
         >
@@ -60,7 +60,7 @@ const topArticles = articles
           </div>
 
           <div class="pt-6 mt-6 border-t border-[#1D2620] flex items-center justify-between">
-            <span class="font-mono text-[10px] text-[#5C635B] uppercase">
+            <span class="font-mono text-[10px] text-[#5C635B] uppercase bg-[#141A16] px-2 py-0.5 border border-[#1D2620] rounded-[4px]">
               #{article.data.tags[0]}
             </span>
 

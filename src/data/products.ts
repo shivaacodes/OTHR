@@ -1,69 +1,155 @@
+export interface ProductPricingPlan {
+  name: string;
+  price: string;
+  billing: string;
+  badge?: string;
+  description: string;
+  features: string[];
+  ctaText: string;
+  ctaUrl: string;
+}
+
+export interface ProductWorkflowStep {
+  step: string;
+  title: string;
+  description: string;
+  formats?: string[];
+}
+
 export interface Product {
   id: string;
   name: string;
-  version: string;
-  status: 'IN ACTIVE DEVELOPMENT' | 'PROTOTYPE' | 'ROADMAP';
   tagline: string;
-  description: string;
+  subtitle: string;
   category: string;
-  implementedFeatures: {
-    title: string;
-    detail: string;
-  }[];
-  roadmapFeatures: {
-    title: string;
-    detail: string;
-  }[];
-  techStack: string[];
-  specs: {
-    label: string;
-    value: string;
-  }[];
-  ctaText: string;
-  isFlagship: boolean;
+  status: string;
+  url: string;
+  demoUrl: string;
+  designerUrl: string;
+  accentColor: string;
+  accentGlow: string;
+  description: string;
+  proofBadge: string;
+  workflow: ProductWorkflowStep[];
+  exportFormats: { name: string; label: string }[];
+  featuredModel: {
+    name: string;
+    description: string;
+    material: string;
+    dimensions: string;
+    interactiveUrl: string;
+  };
+  pricingPlans: ProductPricingPlan[];
+  highlights: { label: string; value: string }[];
 }
 
 export const products: Product[] = [
   {
-    id: 'wrapforge',
-    name: 'WrapForge',
-    version: '0.2.1-prototype',
-    status: 'IN ACTIVE DEVELOPMENT',
-    isFlagship: true,
-    tagline: 'WebGL 3D packaging visualization and real-time box fold simulation prototype.',
-    category: '3D Mockup & Packaging Platform',
-    description: 'WrapForge is an experimental studio tool bridging 2D flat packaging artwork and interactive 3D physical mockups. Currently in active prototype development, it allows designers to preview box fold kinematics and material finishes directly in modern desktop and mobile browsers.',
-    implementedFeatures: [
+    id: 'mockgen',
+    name: 'MockGen',
+    tagline: 'AI Generated 3D Mockups Ready for Print.',
+    subtitle: 'A professional asset pipeline for physical products. Precision outputs with zero guesswork.',
+    category: 'AI 3D Packaging Pipeline',
+    status: 'LIVE PRODUCT // PRODUCTION',
+    url: 'https://trymockgen.vercel.app/',
+    demoUrl: 'https://trymockgen.vercel.app/#demo',
+    designerUrl: 'https://trymockgen.vercel.app/dashboard?model=%2Fmodels%2Fsoda_can.glb',
+    accentColor: '#FF5500',
+    accentGlow: 'rgba(255, 85, 0, 0.45)',
+    proofBadge: 'FROM IDEA TO PRINTER FILE IN 45 SECONDS',
+    description: 'Unlike normal AI images that produce flat, distorted approximations, MockGen generates print-ready packaging files with exact dimensions, bleed margins, and isolated layers. Perfect for freelance designers, agile agencies, and D2C brands who need to send files straight to manufacturing.',
+    workflow: [
       {
-        title: 'Interactive 3D Box Kinematics',
-        detail: 'Real-time procedural folding simulation in WebGL with interactive 360-degree orbit rotation.'
+        step: '01',
+        title: 'Describe The Vibe',
+        description: 'Input your vision. The AI understands physical texture, optical lighting, and material properties.'
       },
       {
-        title: 'Physically Based Shaders (PBR)',
-        detail: 'Optical simulation of foil stamping, spot gloss UV varnish, and matte cardstock textures under dynamic lighting.'
+        step: '02',
+        title: 'Inspect & Edit Layers',
+        description: 'Generates a complete layered project file, not just a flat image. Edit logos, condensation, and base materials individually.'
       },
       {
-        title: 'Zero-Install Browser Inspection',
-        detail: 'Instant client review links that run client-side on mobile and desktop without plugins or 3D software.'
+        step: '03',
+        title: 'Real-Time Visualization',
+        description: 'Instant, photorealistic 3D feedback on complex curved cylindrical surfaces. Stop guessing with flat vector mockups.'
+      },
+      {
+        step: '04',
+        title: 'Export Production Files',
+        description: 'Download the exact assets you need for manufacturing, client presentations, or 3D web integration.',
+        formats: ['PSD Photoshop', 'OBJ 3D Object', 'GLB Web Ready', 'KITS / UV Maps']
       }
     ],
-    roadmapFeatures: [
+    exportFormats: [
+      { name: 'PSD', label: 'Photoshop Layered' },
+      { name: 'OBJ', label: '3D Geometry' },
+      { name: 'GLB', label: 'Web-Ready 3D' },
+      { name: 'UV MAPS', label: 'Print Dieline' }
+    ],
+    featuredModel: {
+      name: 'Full Wrap Beverage Can',
+      description: 'Print-ready wrap for cold drinks, energy drinks, soda, or small-batch beverage brands. Perfect for breweries and café-branded cans.',
+      material: 'Standard / Metallic Specular',
+      dimensions: 'Production Ready Exact Bleed',
+      interactiveUrl: 'https://trymockgen.vercel.app/dashboard?model=%2Fmodels%2Fsoda_can.glb'
+    },
+    pricingPlans: [
       {
-        title: 'Parametric Vector Dieline Parser',
-        detail: 'Direct parsing of AI / CAD cut & crease vectors to generate arbitrary 3D packaging topologies.'
+        name: 'Starter',
+        price: '$0',
+        billing: 'per month',
+        description: 'Ideal for testing concepts & personal packaging explorations.',
+        features: [
+          '100 FREE Credits (one-time)',
+          'About 2 full projects',
+          'Low-Res Renders (72 DPI)',
+          'Watermarked Results',
+          'Community Support'
+        ],
+        ctaText: 'START CREATING FREE',
+        ctaUrl: 'https://trymockgen.vercel.app/?auth=signup'
       },
       {
-        title: 'Vector Roundtrip Export',
-        detail: 'Export calibrated crease marks and varnish separation masks back to print-ready PDF/X.'
+        name: 'Creator',
+        price: '$16.66',
+        billing: 'per month (billed annually)',
+        badge: 'BEST VALUE',
+        description: 'For freelance designers, art directors & packaging pros.',
+        features: [
+          '1,000 Credits / Month',
+          'About 20–25 projects/mo',
+          'High-Res 4K Renders',
+          'Commercial Usage License',
+          'Access to Advanced Materials (Metallic, Foil)',
+          'Priority Generation Queue'
+        ],
+        ctaText: 'GET CREATOR',
+        ctaUrl: 'https://trymockgen.vercel.app/?auth=signup'
+      },
+      {
+        name: 'Agency',
+        price: '$41.66',
+        billing: 'per month (billed annually)',
+        badge: 'FOR TEAMS',
+        description: 'For agile design teams, brand studios & fast-growing D2C agencies.',
+        features: [
+          '3,000 Credits / Month',
+          'About 60–70 projects/mo',
+          'Team Seats (2 Included)',
+          'API Access (Beta)',
+          'Discounted Credit Top-Ups',
+          'Dedicated Account Support'
+        ],
+        ctaText: 'GO AGENCY',
+        ctaUrl: 'https://trymockgen.vercel.app/?auth=signup'
       }
     ],
-    techStack: ['Three.js', 'WebGL', 'GLSL Shaders', 'TypeScript', 'Astro'],
-    specs: [
-      { label: 'Render Pipeline', value: 'Custom Three.js PBR Shaders' },
-      { label: 'Current Phase', value: 'Internal Working Prototype' },
-      { label: 'Client Requirement', value: 'WebGL 2.0 Browser' },
-      { label: 'Alpha Target', value: 'Late 2026' }
-    ],
-    ctaText: 'REQUEST ALPHA PREVIEW'
+    highlights: [
+      { label: 'WORKFLOW VELOCITY', value: '45 SECONDS' },
+      { label: 'OUTPUT RESOLUTION', value: '4K PRINT-READY' },
+      { label: 'PRODUCTION EXPORTS', value: 'PSD + OBJ + GLB' },
+      { label: 'PRICING START', value: '$0 FREE TRIAL' }
+    ]
   }
 ];

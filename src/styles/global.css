@@ -161,6 +161,41 @@
   text-shadow: 0 0 20px var(--accent-glow);
 }
 
+/* Neon Orange Theme for Flagship Product (MockGen) */
+:root {
+  --neon-orange: #FF5500;
+  --neon-orange-glow: rgba(255, 85, 0, 0.45);
+  --neon-orange-subtle: rgba(255, 85, 0, 0.12);
+  --neon-orange-border: rgba(255, 85, 0, 0.35);
+}
+
+.text-neon-orange {
+  color: #FF5500;
+}
+
+.bg-neon-orange {
+  background-color: #FF5500;
+}
+
+.border-neon-orange {
+  border-color: rgba(255, 85, 0, 0.4);
+}
+
+.glow-orange {
+  box-shadow: 0 0 35px -8px rgba(255, 85, 0, 0.45);
+}
+
+.glow-text-orange {
+  text-shadow: 0 0 20px rgba(255, 85, 0, 0.5);
+}
+
+/* Subtle corner curves for UI boxes and inputs */
+input,
+textarea,
+select {
+  border-radius: 6px;
+}
+
 .scanline-grid {
   background-size: 32px 32px;
   background-image: 

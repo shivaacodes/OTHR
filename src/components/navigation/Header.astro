@@ -3,7 +3,7 @@ import Icon from '../ui/Icon.astro';
 import Button from '../ui/Button.astro';
 
 const navLinks = [
-  { href: '/work', label: 'Work', code: '01' },
+  { href: '/products', label: 'Products', code: '01' },
   { href: '/services', label: 'Services', code: '02' },
   { href: '/lab', label: 'Lab', code: '03' },
   { href: '/journal', label: 'Journal', code: '04' },
@@ -17,8 +17,8 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
     <!-- Left: OTHR Wordmark -->
     <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-1 focus:ring-[#C6FF3D]" aria-label="OTHR Homepage">
-      <div class="w-7 h-7 bg-[#0E1410] border border-[#2A362E] group-hover:border-[#C6FF3D] flex items-center justify-center transition-colors">
-        <span class="w-2.5 h-2.5 bg-[#C6FF3D] transform group-hover:rotate-45 transition-transform duration-300"></span>
+      <div class="w-7 h-7 bg-[#0E1410] border border-[#2A362E] rounded-[4px] group-hover:border-[#C6FF3D] flex items-center justify-center transition-colors">
+        <span class="w-2.5 h-2.5 bg-[#C6FF3D] rounded-[2px] transform group-hover:rotate-45 transition-transform duration-300"></span>
       </div>
       <div class="flex items-baseline gap-2">
         <span class="font-display font-bold text-2xl tracking-tighter text-[#F5F6F0] group-hover:text-white transition-colors">OTHR</span>
@@ -52,7 +52,7 @@ const currentPath = Astro.url.pathname;
       <!-- Theme Switcher (Lime / Deep Blue) -->
       <button
         id="theme-toggle-btn"
-        class="w-9 h-9 flex items-center justify-center text-[#A5A9A3] hover:text-[#C6FF3D] hover:bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors"
+        class="w-9 h-9 flex items-center justify-center text-[#A5A9A3] hover:text-[#C6FF3D] hover:bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/40 rounded-md transition-colors"
         title="Toggle Theme (Acid Lime / Deep Blue)"
         aria-label="Toggle visual theme palette"
       >
@@ -64,7 +64,7 @@ const currentPath = Astro.url.pathname;
       <!-- Audio Mute/Unmute Toggle -->
       <button
         id="audio-toggle-btn"
-        class="w-9 h-9 flex items-center justify-center text-[#A5A9A3] hover:text-[#C6FF3D] hover:bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors"
+        class="w-9 h-9 flex items-center justify-center text-[#A5A9A3] hover:text-[#C6FF3D] hover:bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/40 rounded-md transition-colors"
         title="Toggle Tactile Micro-Audio"
         aria-label="Toggle mechanical micro-audio"
       >
@@ -84,7 +84,7 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center gap-3 md:hidden">
       <button
         id="mobile-menu-trigger"
-        class="w-11 h-11 flex items-center justify-center bg-[#141A16] border border-[#1D2620] text-[#F5F6F0] hover:text-[#C6FF3D] focus:outline-none"
+        class="w-11 h-11 flex items-center justify-center bg-[#141A16] border border-[#1D2620] text-[#F5F6F0] hover:text-[#C6FF3D] rounded-md focus:outline-none"
         aria-label="Open Mobile Menu"
         aria-expanded="false"
       >
@@ -130,13 +130,13 @@ const currentPath = Astro.url.pathname;
   <div class="border-t border-[#1D2620] pt-6 flex flex-col gap-4">
     <div class="flex items-center justify-between font-mono text-xs text-[#A5A9A3]">
       <span>PALETTE MODE</span>
-      <button id="mobile-theme-toggle" class="text-[#C6FF3D] uppercase border border-[#2A362E] px-3 py-1">
+      <button id="mobile-theme-toggle" class="text-[#C6FF3D] uppercase border border-[#2A362E] rounded-md px-3 py-1">
         SWITCH THEME
       </button>
     </div>
     <div class="flex items-center justify-between font-mono text-xs text-[#5C635B]">
       <span>STATUS: OPERATIONAL</span>
-      <span>60 FPS</span>
+      <span>ACTIVE</span>
     </div>
   </div>
 </div>

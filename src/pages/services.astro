@@ -129,7 +129,7 @@ const studioDisciplines = [
           </p>
         </div>
 
-        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] rounded-md font-mono text-xs">
           <div class="text-[#5C635B] text-[10px]">// COMMERCIAL ARCHITECTURE</div>
           <div class="text-[#C6FF3D]">3 PACKAGED OFFERINGS // 5 DISCIPLINES</div>
         </div>
@@ -156,7 +156,7 @@ const studioDisciplines = [
 
         <div class="space-y-16">
           {commercialOfferings.map((offering) => (
-            <article class="bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors p-6 sm:p-10 lg:p-12 relative">
+            <article class="bg-[#0E1410] border border-[#1D2620] rounded-xl hover:border-[#C6FF3D]/40 transition-colors p-6 sm:p-10 lg:p-12 relative">
               <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                 <!-- Left: Story & Problems -->
                 <div class="lg:col-span-7 space-y-6">
@@ -209,12 +209,12 @@ const studioDisciplines = [
                 </div>
 
                 <!-- Right: Scope, Indicative Pricing & CTA Card -->
-                <div class="lg:col-span-5 bg-[#141A16] border border-[#1D2620] p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                <div class="lg:col-span-5 bg-[#141A16] border border-[#1D2620] rounded-xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
                   <div>
                     <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mb-3">// SCOPE & PRICING GUIDE</div>
 
                     {offering.pricingInfo && (
-                      <div class="mb-6 p-4 bg-[#080B0A] border border-[#1D2620]">
+                      <div class="mb-6 p-4 bg-[#080B0A] border border-[#1D2620] rounded-lg">
                         <div class="font-mono text-[10px] text-[#A5A9A3] uppercase">INDICATIVE ENGAGEMENT RANGE</div>
                         <div class="font-display font-extrabold text-2xl sm:text-3xl text-[#C6FF3D] mt-1">
                           {offering.pricingInfo.startingRange}
@@ -269,7 +269,7 @@ const studioDisciplines = [
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {studioDisciplines.map((disc) => (
-            <div class="bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors p-8 flex flex-col justify-between">
+            <div class="bg-[#0E1410] border border-[#1D2620] rounded-xl hover:border-[#C6FF3D]/40 transition-colors p-8 flex flex-col justify-between">
               <div>
                 <span class="font-mono text-xs text-[#C6FF3D] font-bold">[{disc.num}]</span>
                 <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mt-3 mb-3">{disc.title}</h3>
@@ -286,7 +286,7 @@ const studioDisciplines = [
           ))}
 
           <!-- 6th Box: Start Custom Project -->
-          <div class="bg-[#141A16] border border-[#C6FF3D]/40 p-8 flex flex-col justify-between">
+          <div class="bg-[#141A16] border border-[#C6FF3D]/40 rounded-xl p-8 flex flex-col justify-between">
             <div>
               <span class="font-mono text-xs text-[#C6FF3D] font-bold">[06]</span>
               <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mt-3 mb-3">Something Unclassified?</h3>

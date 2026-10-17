@@ -1,69 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/hero/Hero.astro';
-import ProjectCard from '../components/work/ProjectCard.astro';
+import MockGenSection from '../components/products/MockGenSection.astro';
 import CapabilitiesSection from '../components/studio/CapabilitiesSection.astro';
 import LabSection from '../components/lab/LabSection.astro';
-import WrapForgeSection from '../components/products/WrapForgeSection.astro';
 import JournalPreviewSection from '../components/journal/JournalPreviewSection.astro';
 import ContactSection from '../components/contact/ContactSection.astro';
-import Button from '../components/ui/Button.astro';
-import { projects } from '../data/projects';
-
-const featuredProjects = projects.filter((p) => p.featured);
 ---
 
 <BaseLayout
   title="OTHR // We don't do ordinary. Independent Creative Engineering Studio"
-  description="OTHR is an independent creative engineering studio building digital flagships, resilient distributed software, and proprietary SaaS products."
+  description="OTHR is an independent creative engineering studio building digital flagships, resilient distributed software, and proprietary SaaS products like MockGen."
 >
   <!-- Hero Section with Signature 3D Centerpiece -->
   <Hero />
 
-  <!-- Section 01: Selected Work -->
-  <section class="py-24 md:py-32 bg-[#080B0A] border-b border-[#1D2620]" id="selected-work">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#1D2620]">
-        <div>
-          <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3" data-reveal>
-            // 01 ARCHITECTURE & SYSTEMS
-          </div>
-          <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#F5F6F0]" data-reveal data-delay="0.1">
-            Selected Work<span class="text-[#C6FF3D]">.</span>
-          </h2>
-        </div>
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4" data-reveal data-delay="0.2">
-          <p class="font-body text-base text-[#A5A9A3] max-w-sm">
-            Real software systems, automated workflows, and digital flagships engineered for reliability and speed.
-          </p>
-          <Button href="/work" variant="outline" size="sm" showArrow={true}>
-            All Projects
-          </Button>
-        </div>
-      </div>
+  <!-- Section 01: Flagship Product Spotlight (MockGen in Neon Orange Theme Card) -->
+  <MockGenSection />
 
-      <!-- Project Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        {featuredProjects.map((project, index) => (
-          <ProjectCard project={project} index={index} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 02: What We Do (Capabilities) -->
+  <!-- Section 02: What We Do (Capabilities & Services) -->
   <CapabilitiesSection />
 
   <!-- Section 03: The Lab (Experimental Technology) -->
   <LabSection />
 
-  <!-- Section 04: Our Products (Featuring WrapForge Prototype) -->
-  <WrapForgeSection />
-
-  <!-- Section 05: The Journal (Engineering Field Notes) -->
+  <!-- Section 04: The Journal (Engineering Field Notes) -->
   <JournalPreviewSection />
 
-  <!-- Section 06: Contact Inquiries -->
+  <!-- Section 05: Contact Inquiries -->
   <ContactSection />
 </BaseLayout>

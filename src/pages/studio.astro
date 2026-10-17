@@ -29,7 +29,7 @@ import { studioData } from '../data/studio';
           </p>
         </div>
 
-        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] rounded-md font-mono text-xs">
           <div class="text-[#5C635B] text-[10px]">// STUDIO STRUCTURE</div>
           <div class="text-[#C6FF3D]">INDEPENDENT // BENGALURU & REMOTE</div>
         </div>
@@ -75,7 +75,7 @@ import { studioData } from '../data/studio';
         <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-10">// FOUNDATIONAL PRINCIPLES</div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {studioData.principles.map((p) => (
-            <div class="p-8 bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors flex flex-col justify-between">
+            <div class="p-8 bg-[#0E1410] border border-[#1D2620] rounded-xl hover:border-[#C6FF3D]/40 transition-colors flex flex-col justify-between">
               <div>
                 <div class="font-mono text-xs text-[#C6FF3D] mb-4">[{p.number}]</div>
                 <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mb-3">{p.headline}</h3>
@@ -91,7 +91,7 @@ import { studioData } from '../data/studio';
         <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-10">// ENGINEERING STACK & TOOLS</div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           {studioData.stack.map((item) => (
-            <div class="p-6 bg-[#0E1410] border border-[#1D2620]">
+            <div class="p-6 bg-[#0E1410] border border-[#1D2620] rounded-xl">
               <h3 class="font-display font-bold text-xl text-[#F5F6F0] mb-4">{item.category}</h3>
               <div class="flex flex-wrap gap-2">
                 {item.technologies.map((tech) => (
@@ -108,7 +108,7 @@ import { studioData } from '../data/studio';
         <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-10">// STUDIO LOCATION & GLOBAL COLLABORATION</div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {studioData.coordinates.map((coord) => (
-            <div class="p-6 bg-[#141A16] border border-[#1D2620] space-y-2">
+            <div class="p-6 bg-[#141A16] border border-[#1D2620] rounded-xl space-y-2">
               <div class="font-mono text-xs text-[#C6FF3D] font-bold">{coord.label}</div>
               <div class="font-display font-bold text-lg text-[#F5F6F0]">{coord.location}</div>
               <div class="font-mono text-xs text-[#A5A9A3]">{coord.timezone} ({coord.offset})</div>

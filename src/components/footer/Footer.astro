@@ -31,7 +31,7 @@ const activeSocials = siteConfig.socials.filter((s) => Boolean(s.url));
                   href={s.url!}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="px-2.5 py-1 bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/50 text-[#A5A9A3] hover:text-[#C6FF3D] font-mono text-[11px] tracking-wider uppercase transition-colors flex items-center gap-1.5"
+                  class="px-2.5 py-1 bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/50 text-[#A5A9A3] hover:text-[#C6FF3D] font-mono text-[11px] tracking-wider uppercase rounded-[4px] transition-colors flex items-center gap-1.5"
                   aria-label={`Visit OTHR on ${s.label}`}
                 >
                   <span>{s.label}</span>
@@ -55,13 +55,12 @@ const activeSocials = siteConfig.socials.filter((s) => Boolean(s.url));
       <div>
         <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-widest mb-3">// DIRECTORY</div>
         <ul class="space-y-1.5 font-mono text-xs uppercase tracking-wider text-[#A5A9A3]">
-          <li><a href="/work" class="hover:text-[#C6FF3D] transition-colors">// 01 Work</a></li>
+          <li><a href="/products" class="hover:text-[#FF5500] transition-colors">// 01 Products (MockGen)</a></li>
           <li><a href="/services" class="hover:text-[#C6FF3D] transition-colors">// 02 Services</a></li>
           <li><a href="/lab" class="hover:text-[#C6FF3D] transition-colors">// 03 The Lab</a></li>
-          <li><a href="/products" class="hover:text-[#C6FF3D] transition-colors">// 04 Products</a></li>
-          <li><a href="/journal" class="hover:text-[#C6FF3D] transition-colors">// 05 Journal</a></li>
-          <li><a href="/studio" class="hover:text-[#C6FF3D] transition-colors">// 06 Studio</a></li>
-          <li><a href="/contact" class="hover:text-[#C6FF3D] transition-colors">// 07 Contact</a></li>
+          <li><a href="/journal" class="hover:text-[#C6FF3D] transition-colors">// 04 Journal</a></li>
+          <li><a href="/studio" class="hover:text-[#C6FF3D] transition-colors">// 05 Studio</a></li>
+          <li><a href="/contact" class="hover:text-[#C6FF3D] transition-colors">// 06 Contact</a></li>
         </ul>
       </div>
 
@@ -83,7 +82,7 @@ const activeSocials = siteConfig.socials.filter((s) => Boolean(s.url));
           <div class="pt-2">
             <button
               id="ping-studio-btn"
-              class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] text-[10px] tracking-widest text-[#C6FF3D] hover:bg-[#1B241E] transition-colors flex items-center justify-between cursor-pointer"
+              class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] rounded-[4px] text-[10px] tracking-widest text-[#C6FF3D] hover:bg-[#1B241E] transition-colors flex items-center justify-between cursor-pointer"
             >
               <span>EXEC PING()</span>
               <span id="ping-response" class="text-[#A5A9A3]">IDLE</span>
@@ -111,7 +110,7 @@ const activeSocials = siteConfig.socials.filter((s) => Boolean(s.url));
           aria-label="Scroll back to top"
         >
           <span>RETURN TO TOP</span>
-          <span class="w-7 h-7 border border-[#2A362E] group-hover:border-[#C6FF3D] flex items-center justify-center transition-colors">
+          <span class="w-7 h-7 border border-[#2A362E] group-hover:border-[#C6FF3D] rounded-[4px] flex items-center justify-center transition-colors">
             <Icon name="ArrowUp" size={14} />
           </span>
         </button>

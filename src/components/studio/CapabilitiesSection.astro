@@ -52,7 +52,7 @@ import Icon from '../ui/Icon.astro';
               <span class="font-body text-sm text-[#A5A9A3] max-w-xs hidden lg:inline line-clamp-1">
                 {cap.shortDesc}
               </span>
-              <div class="w-8 h-8 rounded-none border border-[#2A362E] group-hover:border-[#C6FF3D] flex items-center justify-center text-[#A5A9A3] group-hover:text-[#C6FF3D] transition-all">
+              <div class="w-8 h-8 rounded-md border border-[#2A362E] group-hover:border-[#C6FF3D] flex items-center justify-center text-[#A5A9A3] group-hover:text-[#C6FF3D] transition-all">
                 <span class="accordion-arrow transform transition-transform duration-300">
                   <Icon name="ChevronDown" size={16} />
                 </span>
@@ -73,7 +73,7 @@ import Icon from '../ui/Icon.astro';
                   {cap.deepDive}
                 </p>
 
-                <div class="p-5 bg-[#141A16] border-l-2 border-[#C6FF3D]">
+                <div class="p-5 bg-[#141A16] border-l-2 border-[#C6FF3D] rounded-r-md">
                   <div class="font-mono text-[10px] text-[#C6FF3D] uppercase tracking-wider mb-1">// CORE PHILOSOPHY</div>
                   <p class="font-body text-sm text-[#A5A9A3] italic">
                     "{cap.philosophy}"
@@ -94,7 +94,7 @@ import Icon from '../ui/Icon.astro';
               </div>
 
               <!-- Right: Tech Stack Matrix -->
-              <div class="bg-[#141A16] p-6 border border-[#1D2620] h-fit">
+              <div class="bg-[#141A16] p-6 border border-[#1D2620] rounded-lg h-fit">
                 <div class="font-mono text-xs text-[#5C635B] uppercase tracking-wider mb-4">// PRIMARY TECH FOCUS</div>
                 <div class="flex flex-wrap gap-2">
                   {cap.techFocus.map((tech) => (
