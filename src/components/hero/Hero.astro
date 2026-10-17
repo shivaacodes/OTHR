@@ -4,10 +4,7 @@ import Badge from '../ui/Badge.astro';
 import Icon from '../ui/Icon.astro';
 ---
 
-<section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden border-b border-[#1D2620]">
-  <!-- Scanline background grid pattern -->
-  <div class="absolute inset-0 scanline-grid opacity-25 pointer-events-none"></div>
-
+<section class="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-black border-b border-neutral-900">
   <!-- Background Ambient Glow behind 3D Object -->
   <div class="absolute right-[5%] top-[15%] w-[450px] h-[450px] bg-[#C6FF3D]/5 rounded-full blur-[140px] pointer-events-none"></div>
 
@@ -20,80 +17,75 @@ import Icon from '../ui/Icon.astro';
     <!-- Three.js WebGL canvas will be injected here dynamically -->
   </div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 md:py-24 relative z-10 pointer-events-none">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-28 relative z-10 pointer-events-none">
     <div class="max-w-4xl">
-      <!-- Top Monospace Subheading & Status Pill -->
+      <!-- Top Subheading & Studio Status -->
       <div class="flex flex-wrap items-center gap-3 mb-8 pointer-events-auto" data-reveal data-delay="0.1">
         <div class="inline-flex items-center gap-2">
           <img
             src="/logo-mark.png"
             alt="OTHR Signature Mark"
-            class="h-6 sm:h-7 w-auto object-contain drop-shadow-[0_0_12px_rgba(221,236,67,0.4)]"
+            class="h-6 sm:h-7 w-auto object-contain"
             width="44"
             height="26"
           />
         </div>
-        <Badge variant="lime" dot={true}>
-          STUDIO ACTIVE
-        </Badge>
-        <span class="font-mono text-xs text-[#5C635B] hidden sm:inline">//</span>
-        <span class="font-mono text-xs text-[#A5A9A3] tracking-widest uppercase">
+        <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 bg-white/10 text-white rounded-full border border-white/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C6FF3D]"></span>
+          Studio Active
+        </span>
+        <span class="text-xs text-neutral-400 font-medium tracking-wide">
           Independent Creative Engineering
         </span>
       </div>
 
-      <!-- Main Editorial Headline -->
-      <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.92] text-[#F5F6F0] mb-8 pointer-events-auto select-none" data-reveal data-delay="0.2">
+      <!-- Main Editorial Headline (HEX Style) -->
+      <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.94] text-white mb-6 pointer-events-auto select-none" data-reveal data-delay="0.2">
         We don't do<br />
-        <span class="relative inline-block text-[#C6FF3D] glow-text underline decoration-2 underline-offset-8 decoration-[#C6FF3D]/40">
-          ordinary.
-        </span>
+        <span class="text-[#C6FF3D]">ordinary.</span>
       </h1>
 
       <!-- Supporting Statement -->
-      <p class="font-body text-lg sm:text-xl md:text-2xl text-[#F5F6F0] max-w-2xl leading-relaxed mb-4 pointer-events-auto" data-reveal data-delay="0.3">
+      <p class="font-body text-lg sm:text-xl md:text-2xl text-neutral-300 max-w-2xl leading-relaxed mb-4 pointer-events-auto" data-reveal data-delay="0.3">
         We design and engineer websites, software, and automations that make businesses work better.
       </p>
-      <p class="font-mono text-sm sm:text-base text-[#C6FF3D] max-w-2xl mb-10 pointer-events-auto" data-reveal data-delay="0.35">
+      <p class="font-body text-base text-neutral-400 max-w-2xl mb-10 pointer-events-auto" data-reveal data-delay="0.35">
         Independent by design. Experimental by nature.
       </p>
 
-      <!-- Action Buttons -->
+      <!-- Action Buttons (Clean rounded pill style) -->
       <div class="flex flex-wrap items-center gap-4 pointer-events-auto" data-reveal data-delay="0.4">
-        <Button href="/products" variant="primary" size="lg" showArrow={true}>
-          Explore MockGen
-        </Button>
-        <Button href="/contact" variant="secondary" size="lg">
+        <a
+          href="/products"
+          class="bg-[#C6FF3D] hover:bg-[#d4ff66] text-black font-semibold text-sm px-7 py-3.5 rounded-full transition-all flex items-center gap-2 active:scale-95 shadow-[0_0_24px_-4px_rgba(198,255,61,0.35)]"
+        >
+          <span>Explore MockGen</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+        </a>
+        <a
+          href="/contact"
+          class="bg-white/10 hover:bg-white/15 text-white border border-white/20 font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95"
+        >
           Let's Talk
-        </Button>
+        </a>
       </div>
 
-      <!-- Micro Specs / Bottom Telemetry Badges -->
-      <div class="mt-16 pt-8 border-t border-[#1D2620]/60 grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-xl pointer-events-auto" data-reveal data-delay="0.5">
+      <!-- Clean Capabilities Line -->
+      <div class="mt-16 pt-8 border-t border-neutral-900 flex flex-wrap items-center gap-8 text-xs text-neutral-400 pointer-events-auto" data-reveal data-delay="0.5">
         <div>
-          <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider">PHILOSOPHY</div>
-          <div class="font-mono text-xs text-[#F5F6F0] mt-1">BRUTALLY FAST UNDERNEATH</div>
+          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Focus</span>
+          <span class="text-white font-medium">Digital Flagships & Systems</span>
         </div>
         <div>
-          <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider">EXECUTION</div>
-          <div class="font-mono text-xs text-[#C6FF3D] mt-1">UNREASONABLY POLISHED</div>
+          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Products</span>
+          <span class="text-[#C6FF3D] font-medium">MockGen 3D Pipeline</span>
         </div>
-        <div class="col-span-2 sm:col-span-1">
-          <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider">CORE FOCUS</div>
-          <div class="font-mono text-xs text-[#F5F6F0] mt-1">WEB, SYSTEMS & AUTOMATION</div>
+        <div>
+          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Model</span>
+          <span class="text-white font-medium">Direct Senior Engineers</span>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Subtle Scroll Indicator -->
-  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-auto">
-    <a href="#products" class="text-[#5C635B] hover:text-[#C6FF3D] transition-colors p-2" aria-label="Scroll to products">
-      <span class="font-mono text-[10px] uppercase tracking-widest block mb-1">SCROLL</span>
-      <span class="w-4 h-7 border border-[#2A362E] rounded-full mx-auto flex items-start justify-center p-1">
-        <span class="w-1 h-1.5 bg-[#C6FF3D] rounded-full animate-bounce"></span>
-      </span>
-    </a>
   </div>
 </section>
 

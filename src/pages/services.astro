@@ -9,10 +9,10 @@ const commercialOfferings = [
   {
     id: 'digital-upgrade',
     number: '01',
-    badge: 'COMMERCIAL OFFERING // WEB & EXPERIENCE',
+    badge: 'Web & Experience',
     title: 'Digital Upgrade',
     tagline: 'Premium websites, interactive landing pages, and digital flagships for ambitious brands.',
-    summary: 'For businesses whose online presence does not match the actual caliber of their work. We replace bloated WordPress templates and generic SaaS themes with bespoke, Awwwards-caliber digital flagships engineered for brutal speed, kinetic typography, and unmistakable creative authority.',
+    summary: 'For businesses whose online presence does not match the actual caliber of their work. We replace bloated templates and generic themes with bespoke, flagship web experiences engineered for speed, kinetic typography, and unmistakable creative authority.',
     problemsSolved: [
       'Your existing website looks indistinguishable from every competitor in your category.',
       'Mobile loading speeds are sluggish (>3.5s LCP), costing you direct conversion and search visibility.',
@@ -32,7 +32,7 @@ const commercialOfferings = [
   {
     id: 'workflow-fix',
     number: '02',
-    badge: 'COMMERCIAL OFFERING // AUTOMATION & OPS',
+    badge: 'Automation & Ops',
     title: 'Workflow Fix',
     tagline: 'Custom internal software that permanently eliminates repetitive administrative friction.',
     summary: 'For companies running critical operations on fragile spreadsheets and manual email forwards. We engineer bespoke, role-secured operational web applications and background jobs that automate calculations, document generation, and cross-platform synchronization.',
@@ -55,7 +55,7 @@ const commercialOfferings = [
   {
     id: 'custom-software',
     number: '03',
-    badge: 'COMMERCIAL OFFERING // SOFTWARE & SYSTEMS',
+    badge: 'Software & Systems',
     title: 'Custom Software & Systems',
     tagline: 'Reliable backend services, full-stack web applications, and production MVP engineering.',
     summary: 'For founders and businesses that need specialized web software built right the first time. We design normalized relational databases, high-throughput APIs, role-based authorization systems, and clean frontends built for durability.',
@@ -111,61 +111,61 @@ const studioDisciplines = [
   description="Explore OTHR's commercial offerings: Digital Upgrade (flagship web experiences), Workflow Fix (internal automation tools), and Custom Software & Systems."
 >
   <!-- Page Header -->
-  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+  <div class="py-16 md:py-24 border-b border-neutral-900 bg-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
-        <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+      <div class="flex items-center gap-2 font-body text-xs text-neutral-500 mb-6">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <span class="text-[#C6FF3D]">SERVICES</span>
+        <span class="text-[#C6FF3D]">Services</span>
       </div>
 
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
-          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#F5F6F0] mb-4">
+          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-white mb-4">
             Services<span class="text-[#C6FF3D]">.</span>
           </h1>
-          <p class="font-body text-xl text-[#A5A9A3] max-w-2xl leading-relaxed">
+          <p class="font-body text-xl text-neutral-400 max-w-2xl leading-relaxed">
             We don't offer generic 50-page agency menus. We deliver focused engineering interventions that solve concrete business bottlenecks.
           </p>
         </div>
 
-        <div class="p-4 bg-[#141A16] border border-[#1D2620] rounded-md font-mono text-xs">
-          <div class="text-[#5C635B] text-[10px]">// COMMERCIAL ARCHITECTURE</div>
-          <div class="text-[#C6FF3D]">3 PACKAGED OFFERINGS // 5 DISCIPLINES</div>
+        <div class="p-4 bg-neutral-950 border border-neutral-900 rounded-2xl text-xs font-semibold">
+          <div class="text-neutral-500 text-[11px] mb-1">Commercial Engagements</div>
+          <div class="text-[#C6FF3D]">3 Packaged Offerings • 5 Disciplines</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="py-16 md:py-24 bg-[#080B0A]">
+  <div class="py-16 md:py-24 bg-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
 
       <!-- Section: Featured Commercial Offerings -->
       <section>
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#1D2620]">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-neutral-900">
           <div>
-            <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-2">// COMMERCIAL OFFERINGS</div>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0]">
+            <div class="text-xs font-semibold text-[#C6FF3D] uppercase tracking-wider mb-2">Packaged Services</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
               Packaged Engineering Engagements
             </h2>
           </div>
-          <p class="font-body text-sm text-[#A5A9A3] max-w-md">
+          <p class="font-body text-sm text-neutral-400 max-w-md">
             Structured scopes designed for rapid execution and measurable business impact without endless agency meetings.
           </p>
         </div>
 
-        <div class="space-y-16">
+        <div class="space-y-12">
           {commercialOfferings.map((offering) => (
-            <article class="bg-[#0E1410] border border-[#1D2620] rounded-xl hover:border-[#C6FF3D]/40 transition-colors p-6 sm:p-10 lg:p-12 relative">
+            <article class="bg-neutral-950 border border-neutral-900 rounded-3xl hover:border-neutral-700 transition-colors p-6 sm:p-10 lg:p-12 relative">
               <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                 <!-- Left: Story & Problems -->
                 <div class="lg:col-span-7 space-y-6">
                   <div class="flex flex-wrap items-center gap-3">
-                    <span class="font-mono text-xs text-[#C6FF3D] font-bold">[{offering.number}]</span>
+                    <span class="text-xs font-bold text-black bg-[#C6FF3D] px-2.5 py-1 rounded-full">{offering.number}</span>
                     <Badge variant="lime">{offering.badge}</Badge>
                   </div>
 
-                  <h3 class="font-display font-black text-3xl sm:text-5xl text-[#F5F6F0] tracking-tight">
+                  <h3 class="font-display font-black text-3xl sm:text-5xl text-white tracking-tight">
                     {offering.title}
                   </h3>
 
@@ -173,19 +173,19 @@ const studioDisciplines = [
                     {offering.tagline}
                   </p>
 
-                  <p class="font-body text-base text-[#A5A9A3] leading-relaxed">
+                  <p class="font-body text-base text-neutral-400 leading-relaxed">
                     {offering.summary}
                   </p>
 
                   <!-- Common Problems Solved -->
-                  <div class="pt-4 border-t border-[#1D2620]">
-                    <div class="font-mono text-xs text-[#5C635B] uppercase tracking-wider mb-3">
-                      // PROBLEMS THIS ELIMINATES
+                  <div class="pt-6 border-t border-neutral-900">
+                    <div class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
+                      Problems this eliminates
                     </div>
                     <ul class="space-y-2.5">
                       {offering.problemsSolved.map((prob) => (
-                        <li class="flex items-start gap-2.5 font-body text-sm text-[#F5F6F0]">
-                          <span class="text-red-400 font-mono font-bold mt-0.5">✕</span>
+                        <li class="flex items-start gap-2.5 font-body text-sm text-neutral-300">
+                          <span class="text-red-400 font-bold mt-0.5">✕</span>
                           <span>{prob}</span>
                         </li>
                       ))}
@@ -193,14 +193,14 @@ const studioDisciplines = [
                   </div>
 
                   <!-- Typical Deliverables -->
-                  <div class="pt-4 border-t border-[#1D2620]">
-                    <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-wider mb-3">
-                      // TYPICAL DELIVERABLES
+                  <div class="pt-6 border-t border-neutral-900">
+                    <div class="text-xs font-semibold text-[#C6FF3D] uppercase tracking-wider mb-3">
+                      Typical Deliverables
                     </div>
                     <ul class="space-y-2">
                       {offering.deliverables.map((del) => (
-                        <li class="flex items-start gap-2.5 font-mono text-xs text-[#A5A9A3]">
-                          <span class="text-[#C6FF3D] mt-0.5">›</span>
+                        <li class="flex items-start gap-2.5 text-sm text-neutral-400">
+                          <span class="text-[#C6FF3D] font-bold mt-0.5">›</span>
                           <span>{del}</span>
                         </li>
                       ))}
@@ -209,27 +209,27 @@ const studioDisciplines = [
                 </div>
 
                 <!-- Right: Scope, Indicative Pricing & CTA Card -->
-                <div class="lg:col-span-5 bg-[#141A16] border border-[#1D2620] rounded-xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                <div class="lg:col-span-5 bg-neutral-900 border border-neutral-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
                   <div>
-                    <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mb-3">// SCOPE & PRICING GUIDE</div>
+                    <div class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">Scope & Pricing Guide</div>
 
                     {offering.pricingInfo && (
-                      <div class="mb-6 p-4 bg-[#080B0A] border border-[#1D2620] rounded-lg">
-                        <div class="font-mono text-[10px] text-[#A5A9A3] uppercase">INDICATIVE ENGAGEMENT RANGE</div>
+                      <div class="mb-6 p-5 bg-black border border-neutral-800 rounded-2xl">
+                        <div class="text-xs font-medium text-neutral-400 uppercase">Indicative Engagement Range</div>
                         <div class="font-display font-extrabold text-2xl sm:text-3xl text-[#C6FF3D] mt-1">
                           {offering.pricingInfo.startingRange}
                         </div>
-                        <div class="font-mono text-[11px] text-[#5C635B] mt-0.5">
-                          {offering.pricingInfo.unit} // Typical timeline: {offering.pricingInfo.typicalTimeline}
+                        <div class="text-xs text-neutral-500 mt-1">
+                          {offering.pricingInfo.unit} • Typical timeline: {offering.pricingInfo.typicalTimeline}
                         </div>
-                        <div class="font-body text-[11px] text-[#A5A9A3] mt-2 pt-2 border-t border-[#1D2620]">
+                        <div class="font-body text-xs text-neutral-400 mt-3 pt-3 border-t border-neutral-800">
                           {offering.pricingInfo.note}
                         </div>
                       </div>
                     )}
 
-                    <div class="space-y-3 font-mono text-xs text-[#A5A9A3]">
-                      <div class="text-[#5C635B]">// PRIMARY TECHNOLOGIES</div>
+                    <div class="space-y-3 text-xs">
+                      <div class="text-neutral-400 font-medium">Primary Technologies</div>
                       <div class="flex flex-wrap gap-1.5">
                         {offering.techStack.map((tech) => (
                           <Badge variant="muted" size="sm">{tech}</Badge>
@@ -238,11 +238,11 @@ const studioDisciplines = [
                     </div>
                   </div>
 
-                  <div class="pt-4 border-t border-[#1D2620]">
+                  <div class="pt-4 border-t border-neutral-800">
                     <Button href={`/contact?service=${offering.id}`} variant="primary" size="md" showArrow={true} class="w-full">
                       Start a {offering.title} Project
                     </Button>
-                    <p class="font-mono text-[10px] text-[#5C635B] text-center mt-2.5">
+                    <p class="text-xs text-neutral-500 text-center mt-2.5">
                       Direct consultation with a lead engineer. No sales reps.
                     </p>
                   </div>
@@ -254,31 +254,31 @@ const studioDisciplines = [
       </section>
 
       <!-- Section: 5 Core Engineering Disciplines -->
-      <section class="pt-12 border-t border-[#1D2620]">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#1D2620]">
+      <section class="pt-12 border-t border-neutral-900">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-neutral-900">
           <div>
-            <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-2">// TECHNICAL CAPABILITIES</div>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0]">
+            <div class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2">Technical Capabilities</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
               Core Engineering Disciplines
             </h2>
           </div>
-          <p class="font-body text-sm text-[#A5A9A3] max-w-md">
+          <p class="font-body text-sm text-neutral-400 max-w-md">
             For bespoke projects requiring specialized architectural consulting or long-term engineering partnerships.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {studioDisciplines.map((disc) => (
-            <div class="bg-[#0E1410] border border-[#1D2620] rounded-xl hover:border-[#C6FF3D]/40 transition-colors p-8 flex flex-col justify-between">
+            <div class="bg-neutral-950 border border-neutral-900 rounded-3xl hover:border-neutral-700 transition-colors p-8 flex flex-col justify-between">
               <div>
-                <span class="font-mono text-xs text-[#C6FF3D] font-bold">[{disc.num}]</span>
-                <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mt-3 mb-3">{disc.title}</h3>
-                <p class="font-body text-sm text-[#A5A9A3] leading-relaxed mb-6">{disc.desc}</p>
+                <span class="text-xs font-bold text-[#C6FF3D] bg-[#C6FF3D]/10 px-2.5 py-1 rounded-full">{disc.num}</span>
+                <h3 class="font-display font-bold text-2xl text-white mt-4 mb-3">{disc.title}</h3>
+                <p class="font-body text-sm text-neutral-400 leading-relaxed mb-6">{disc.desc}</p>
               </div>
 
-              <div class="pt-4 border-t border-[#1D2620]">
-                <a href="/contact" class="font-mono text-xs text-[#A5A9A3] hover:text-[#C6FF3D] uppercase flex items-center gap-1.5 transition-colors">
-                  <span>DISCUSS REQUIREMENTS</span>
+              <div class="pt-4 border-t border-neutral-900">
+                <a href="/contact" class="text-xs font-semibold text-neutral-300 hover:text-[#C6FF3D] flex items-center gap-1.5 transition-colors">
+                  <span>Discuss Requirements</span>
                   <Icon name="ArrowUpRight" size={13} />
                 </a>
               </div>
@@ -286,16 +286,16 @@ const studioDisciplines = [
           ))}
 
           <!-- 6th Box: Start Custom Project -->
-          <div class="bg-[#141A16] border border-[#C6FF3D]/40 rounded-xl p-8 flex flex-col justify-between">
+          <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 flex flex-col justify-between">
             <div>
-              <span class="font-mono text-xs text-[#C6FF3D] font-bold">[06]</span>
-              <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mt-3 mb-3">Something Unclassified?</h3>
-              <p class="font-body text-sm text-[#A5A9A3] leading-relaxed mb-6">
+              <span class="text-xs font-bold text-black bg-[#C6FF3D] px-2.5 py-1 rounded-full">06</span>
+              <h3 class="font-display font-bold text-2xl text-white mt-4 mb-3">Something Unclassified?</h3>
+              <p class="font-body text-sm text-neutral-400 leading-relaxed mb-6">
                 Have an unusual architectural problem, a hardware-software bridge, or an experimental prototype? We specialize in what shouldn't exist.
               </p>
             </div>
 
-            <div class="pt-4 border-t border-[#1D2620]">
+            <div class="pt-4 border-t border-neutral-800">
               <Button href="/contact" variant="primary" size="sm" showArrow={true} class="w-full">
                 Initiate Project Inquiry
               </Button>

@@ -1,149 +1,45 @@
 ---
 import { products } from '../../data/products';
-import Badge from '../ui/Badge.astro';
-import Button from '../ui/Button.astro';
-import Icon from '../ui/Icon.astro';
 
 const mockgen = products[0];
 ---
 
-<section class="py-24 md:py-32 bg-[#080B0A] border-b border-[#1D2620] relative overflow-hidden" id="products">
-  <!-- Neon Orange Background Ambient Atmosphere -->
-  <div class="absolute right-[5%] top-[20%] w-[500px] h-[500px] bg-[#FF5500]/10 rounded-full blur-[150px] pointer-events-none"></div>
-
+<section class="py-20 md:py-32 bg-black border-b border-neutral-900 relative" id="products">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#1D2620]">
+    <!-- Clean Section Header (HEX Style) -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
       <div>
-        <div class="flex items-center gap-2 mb-3" data-reveal>
-          <span class="font-mono text-xs text-[#FF5500] uppercase tracking-widest">// STUDIO FLAGSHIP PRODUCT</span>
-          <span class="font-mono text-xs text-[#5C635B]">•</span>
-          <span class="font-mono text-xs text-[#A5A9A3] uppercase">LIVE PRODUCTION SAAS</span>
+        <div class="text-xs font-bold text-[#FF5500] uppercase tracking-wider mb-2">
+          Featured Product
         </div>
-        <h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#F5F6F0]" data-reveal data-delay="0.1">
-          Our Products<span class="text-[#FF5500]">.</span>
+        <h2 class="font-display font-extrabold text-4xl sm:text-6xl text-white tracking-tight">
+          Crafted by OTHR<span class="text-[#FF5500]">.</span>
         </h2>
       </div>
-      <p class="font-body text-base text-[#A5A9A3] max-w-md" data-reveal data-delay="0.2">
-        We conceive, engineer, and operate proprietary digital products. Meet <strong class="text-[#F5F6F0]">MockGen</strong>: our AI-powered 3D packaging and print asset pipeline.
+      <p class="font-body text-base text-neutral-400 max-w-md">
+        Proprietary commercial software built, operated, and scaled by our studio.
       </p>
     </div>
 
-    <!-- MAIN NEON ORANGE FLAGSHIP CARD -->
-    <div
-      class="bg-[#0E1410] border-2 border-[#FF5500]/60 hover:border-[#FF5500] rounded-xl p-6 sm:p-10 lg:p-12 relative overflow-hidden shadow-[0_0_50px_-10px_rgba(255,85,0,0.35)] transition-all group"
-      data-reveal
-    >
-      <!-- Background Giant Monolith Watermark -->
-      <div class="absolute right-6 -bottom-6 font-display font-black text-8xl sm:text-9xl text-[#141A16] select-none pointer-events-none opacity-40">
-        MOCKGEN
-      </div>
-
-      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        <!-- Left: Product Story, Workflow & Pipeline -->
-        <div class="lg:col-span-7 space-y-7">
-          <!-- Top Badges & Proof Pill -->
-          <div class="flex flex-wrap items-center gap-3">
-            <Badge variant="orange" dot={true}>FLAGSHIP SAAS PRODUCT</Badge>
-            <span class="px-2.5 py-1 bg-[#141A16] border border-[#2A362E] text-[10px] font-mono text-[#F5F6F0] rounded-[4px] tracking-wider uppercase">
-              NO AI BLACKBOX
-            </span>
-            <span class="font-mono text-xs text-[#FF5500] font-bold tracking-wider hidden sm:inline">
-              // 45-SEC PRINT PIPELINE
-            </span>
-          </div>
-
-          <!-- Headline -->
-          <div>
-            <h3 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-[#F5F6F0] tracking-tight leading-none mb-3">
-              MockGen<span class="text-[#FF5500]">.</span>
-            </h3>
-            <p class="font-display font-bold text-2xl sm:text-3xl text-[#FF5500] leading-snug">
-              {mockgen.tagline}
-            </p>
-          </div>
-
-          <!-- Subhead & Value Prop -->
-          <p class="font-body text-base sm:text-lg text-[#F5F6F0] leading-relaxed">
-            {mockgen.subtitle}
-          </p>
-
-          <p class="font-body text-sm text-[#A5A9A3] leading-relaxed">
-            {mockgen.description}
-          </p>
-
-          <!-- 4-Step Pipeline Grid -->
-          <div class="pt-2">
-            <div class="font-mono text-xs text-[#FF5500] uppercase tracking-wider mb-3">
-              // TRANSPARENT PRODUCTION PIPELINE
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {mockgen.workflow.map((w) => (
-                <div class="p-3.5 bg-[#141A16] border border-[#1D2620] hover:border-[#FF5500]/40 rounded-lg transition-colors">
-                  <div class="flex items-center gap-2 mb-1">
-                    <span class="font-mono text-xs text-[#FF5500] font-bold">[{w.step}]</span>
-                    <span class="font-display font-bold text-sm text-[#F5F6F0]">{w.title}</span>
-                  </div>
-                  <p class="font-body text-xs text-[#A5A9A3] leading-relaxed">{w.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <!-- Export Formats Badges -->
-          <div class="flex flex-wrap items-center gap-2 pt-2">
-            <span class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mr-1">EXPORTS:</span>
-            {mockgen.exportFormats.map((fmt) => (
-              <span class="px-2.5 py-1 bg-[#080B0A] border border-[#FF5500]/30 text-[#F5F6F0] font-mono text-[11px] rounded-[4px] tracking-wider font-bold">
-                {fmt.name} <span class="text-[#A5A9A3] font-normal text-[10px]">({fmt.label})</span>
-              </span>
-            ))}
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-[#1D2620]">
-            <Button
-              href="https://trymockgen.vercel.app/?auth=signup"
-              variant="orange"
-              size="lg"
-              showArrow={true}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Get Started Free
-            </Button>
-            <Button
-              href="https://trymockgen.vercel.app/#demo"
-              variant="orange-outline"
-              size="lg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Watch 30s Demo
-            </Button>
-            <a
-              href="/products"
-              class="font-mono text-xs text-[#A5A9A3] hover:text-[#FF5500] uppercase tracking-wider flex items-center gap-1.5 transition-colors ml-auto py-2"
-            >
-              <span>FULL SPECS & PRICING</span>
-              <Icon name="ArrowUpRight" size={14} />
-            </a>
-          </div>
-        </div>
-
-        <!-- Right: 3D Beverage Can Mockup Canvas -->
-        <div class="lg:col-span-5 bg-[#141A16] border border-[#FF5500]/40 rounded-xl p-6 relative flex flex-col justify-between h-[420px] sm:h-[460px] shadow-[0_0_30px_-5px_rgba(255,85,0,0.25)]">
-          <!-- Viewport Header HUD -->
-          <div class="flex items-center justify-between font-mono text-[10px] text-[#A5A9A3] border-b border-[#1D2620] pb-3">
+    <!-- HEX-STYLE VIBRANT STACK -->
+    <div class="space-y-10 sm:space-y-12">
+      
+      <!-- 01: MOCKGEN FLAGSHIP ORANGE CARD (HEX VIBE) -->
+      <div class="hex-card bg-[#FF5500] text-black shadow-2xl">
+        <!-- Inner Media Window -->
+        <div class="hex-media bg-black border border-black/20 p-6 sm:p-8 flex flex-col justify-between min-h-[420px] sm:min-h-[480px]">
+          <!-- Top Media HUD -->
+          <div class="flex items-center justify-between text-xs font-semibold text-neutral-400">
             <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse"></span>
-              <span class="text-[#F5F6F0] font-bold">3D STUDIO // SODA CAN WRAP</span>
+              <span class="w-2 h-2 rounded-full bg-[#FF5500]"></span>
+              <span class="text-white">MockGen 3D Studio</span>
+              <span class="text-neutral-500 hidden sm:inline">• Beverage Can Asset Pipeline</span>
             </div>
-            <span class="text-[#FF5500] font-bold">DRAG TO ORBIT</span>
+            <span class="text-[#FF5500] text-xs tracking-wide">Live 3D Viewport</span>
           </div>
 
           <!-- 3D Interactive Beverage Can Simulation Stage -->
-          <div class="flex-grow flex items-center justify-center perspective-[900px] overflow-hidden" id="can-preview-stage">
+          <div class="flex-grow flex items-center justify-center perspective-[900px] overflow-hidden my-4 relative" id="can-preview-stage">
             <div
               id="can-3d-model"
               class="w-32 h-60 relative transform-style-preserve-3d transition-transform duration-700 ease-out cursor-grab active:cursor-grabbing select-none"
@@ -154,70 +50,70 @@ const mockgen = products[0];
                 <div class="w-8 h-4 bg-[#27272a] rounded-sm border border-[#a1a1aa]/60"></div>
               </div>
 
-              <!-- Cylinder Body Faces (Approximated Curvature via Multi-Panel Facets) -->
+              <!-- Cylinder Body Faces -->
               <!-- Front Label Face -->
               <div
-                class="can-face absolute inset-0 bg-[#0E1410] border-2 border-[#FF5500] rounded-lg flex flex-col justify-between p-4 backface-hidden shadow-[0_0_20px_rgba(255,85,0,0.3)]"
+                class="can-face absolute inset-0 bg-neutral-950 border-2 border-[#FF5500] rounded-xl flex flex-col justify-between p-4 backface-hidden shadow-[0_0_30px_rgba(255,85,0,0.4)]"
                 style="transform: translateZ(36px);"
               >
-                <div class="flex justify-between items-center font-mono text-[9px] text-[#FF5500]">
-                  <span>MOCKGEN // PBR</span>
+                <div class="flex justify-between items-center text-[10px] text-[#FF5500] font-bold">
+                  <span>MOCKGEN</span>
                   <span>330 ML</span>
                 </div>
                 <div class="text-center my-auto">
-                  <div class="font-display font-black text-2xl text-[#F5F6F0] tracking-tighter leading-none">
+                  <div class="font-display font-black text-2xl text-white tracking-tight leading-none">
                     NEON<br />
-                    <span class="text-[#FF5500] glow-text-orange">CITRUS</span>
+                    <span class="text-[#FF5500]">CITRUS</span>
                   </div>
-                  <div class="font-mono text-[8px] text-[#A5A9A3] mt-1 tracking-widest uppercase">
-                    METALLIC COLD CRAFT
+                  <div class="text-[9px] text-neutral-400 mt-1 uppercase tracking-wider font-semibold">
+                    Metallic Cold Craft
                   </div>
                 </div>
-                <div class="flex justify-between items-end font-mono text-[8px] text-[#5C635B] pt-2 border-t border-[#1D2620]">
-                  <span>AI DIE-CUT</span>
-                  <span class="text-[#FF5500]">4K PRINT-READY</span>
+                <div class="flex justify-between items-end text-[9px] text-neutral-500 pt-2 border-t border-neutral-800">
+                  <span>AI Die-Cut</span>
+                  <span class="text-[#FF5500] font-bold">4K Print-Ready</span>
                 </div>
               </div>
 
               <!-- Right Face -->
               <div
-                class="can-face absolute top-0 bottom-0 w-24 bg-[#1a0f08] border border-[#FF5500]/50 rounded-lg p-3 flex flex-col justify-between font-mono text-[8px] text-[#FF5500]"
+                class="can-face absolute top-0 bottom-0 w-24 bg-[#1a0f08] border border-[#FF5500]/50 rounded-xl p-3 flex flex-col justify-between text-[8px] text-[#FF5500] font-medium"
                 style="left: 100%; transform-origin: left; transform: rotateY(70deg);"
               >
-                <span>NUTRITION // 100% REAL</span>
-                <div class="text-[7px] text-[#A5A9A3]">
-                  • PRINT BLEED: 3MM<br />
-                  • SPOT GLOSS: 100%<br />
-                  • DIE CUT: PERFECT
+                <span>Production Spec</span>
+                <div class="text-[8px] text-neutral-300 space-y-0.5">
+                  <div>• Bleed: 3mm</div>
+                  <div>• Spot Gloss: 100%</div>
+                  <div>• Die-Cut: Exact</div>
                 </div>
-                <span class="text-[#5C635B]">OBJ/GLB READY</span>
+                <span class="text-neutral-500">OBJ / GLB Ready</span>
               </div>
 
               <!-- Left Face -->
               <div
-                class="can-face absolute top-0 bottom-0 w-24 bg-[#150a04] border border-[#FF5500]/50 rounded-lg p-3 flex flex-col justify-between font-mono text-[8px] text-[#FF5500]"
+                class="can-face absolute top-0 bottom-0 w-24 bg-[#150a04] border border-[#FF5500]/50 rounded-xl p-3 flex flex-col justify-between text-[8px] text-[#FF5500] font-medium"
                 style="right: 100%; transform-origin: right; transform: rotateY(-70deg);"
               >
-                <span>BARCODE / SKU</span>
-                <div class="text-[7px] text-[#A5A9A3]">
-                  PSD LAYERED<br />
-                  CMYK PRINT<br />
-                  300 DPI VECTOR
+                <span>Format Export</span>
+                <div class="text-[8px] text-neutral-300 space-y-0.5">
+                  <div>PSD Layered</div>
+                  <div>CMYK Print</div>
+                  <div>300 DPI Vector</div>
                 </div>
-                <span class="text-[#5C635B]">ZERO BLACKBOX</span>
+                <span class="text-neutral-500">No AI Blackbox</span>
               </div>
 
               <!-- Back Face -->
               <div
-                class="can-face absolute inset-0 bg-[#080B0A] border border-[#2A362E] rounded-lg p-4 font-mono text-[8px] text-[#5C635B] flex flex-col justify-between"
+                class="can-face absolute inset-0 bg-neutral-950 border border-neutral-800 rounded-xl p-4 text-[9px] text-neutral-500 flex flex-col justify-between"
                 style="transform: rotateY(180deg) translateZ(36px);"
               >
-                <span>MANUFACTURE READY</span>
-                <div class="text-center text-[#A5A9A3]">
-                  DIRECT PRINTER EXPORT<br />
-                  NO GUESSWORK
+                <span>Ready to Print</span>
+                <div class="text-center text-neutral-300 font-semibold">
+                  Direct Printer Export<br />
+                  Zero Guesswork
                 </div>
-                <span>© 2026 MOCKGEN</span>
+                <span>© MockGen</span>
               </div>
 
               <!-- Can Bottom Rim -->
@@ -225,36 +121,185 @@ const mockgen = products[0];
             </div>
           </div>
 
-          <!-- Viewport Footer Controls -->
-          <div class="pt-3 border-t border-[#1D2620] flex items-center justify-between font-mono text-[10px]">
-            <span class="text-[#5C635B]">FINISH:</span>
-            <div class="flex items-center gap-1.5">
-              <button class="can-finish-btn px-2.5 py-1 bg-[#FF5500]/20 border border-[#FF5500] text-[#FF5500] rounded-[4px] cursor-pointer" data-finish="orange">
-                NEON ORANGE
+          <!-- Media Footer Controls & Finish Switcher -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-neutral-800/80 text-xs">
+            <span class="text-neutral-400 font-medium">Click and drag to orbit 3D model</span>
+            <div class="flex items-center gap-2">
+              <button class="can-finish-btn px-3 py-1 bg-[#FF5500] text-black font-semibold rounded-full cursor-pointer text-xs" data-finish="orange">
+                Neon Orange
               </button>
-              <button class="can-finish-btn px-2.5 py-1 bg-[#080B0A] border border-[#2A362E] text-[#A5A9A3] hover:text-[#F5F6F0] rounded-[4px] cursor-pointer" data-finish="metallic">
-                METALLIC
+              <button class="can-finish-btn px-3 py-1 bg-white/10 text-white hover:bg-white/20 font-medium rounded-full cursor-pointer text-xs" data-finish="metallic">
+                Metallic
               </button>
-              <button class="can-finish-btn px-2.5 py-1 bg-[#080B0A] border border-[#2A362E] text-[#A5A9A3] hover:text-[#F5F6F0] rounded-[4px] cursor-pointer" data-finish="matte">
-                MATTE
+              <button class="can-finish-btn px-3 py-1 bg-white/10 text-white hover:bg-white/20 font-medium rounded-full cursor-pointer text-xs" data-finish="matte">
+                Matte
               </button>
             </div>
           </div>
         </div>
+
+        <!-- Typography & CTAs Below Media (Matching HEX Vibe) -->
+        <div class="pt-6 sm:pt-8">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-black text-white rounded-full">
+              Physical Product Pipeline
+            </span>
+            <span class="text-xs font-medium text-black/75">
+              Exact Dimensions • Bleed & Die-Lines • Print Ready
+            </span>
+          </div>
+
+          <h3 class="font-display font-black text-3xl sm:text-5xl text-black tracking-tight leading-tight mb-3">
+            MockGen: AI Generated 3D Mockups Ready for Print.
+          </h3>
+
+          <p class="font-body text-black/90 text-base sm:text-xl max-w-3xl leading-relaxed mb-6 font-medium">
+            Unlike normal AI image generators that produce flat, unusable graphics with distorted text, MockGen generates print-ready packaging files with exact dimensions, bleed margins, and isolated layers. Export in PSD, OBJ, GLB, and UV Maps.
+          </p>
+
+          <!-- Action CTAs -->
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href="https://trymockgen.vercel.app/?auth=signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-black hover:bg-neutral-900 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95 flex items-center gap-2 shadow-lg"
+            >
+              <span>Draft Your Design Free</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+            </a>
+            <a
+              href="https://trymockgen.vercel.app/#demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="border-2 border-black/40 hover:border-black text-black font-semibold text-sm px-6 py-3.5 rounded-full transition-all active:scale-95"
+            >
+              Watch 30s Demo
+            </a>
+            <a
+              href="/products"
+              class="font-semibold text-sm text-black underline underline-offset-4 hover:opacity-75 transition-opacity ml-auto py-2"
+            >
+              Explore Full Specs & Pricing →
+            </a>
+          </div>
+        </div>
       </div>
+
+      <!-- 02: DIGITAL FLAGSHIPS LIME CARD (HEX VIBE) -->
+      <div class="hex-card bg-[#C6FF3D] text-black shadow-2xl">
+        <!-- Inner Media Window -->
+        <div class="hex-media bg-black border border-black/20 p-6 sm:p-8 flex flex-col justify-between min-h-[340px] sm:min-h-[400px]">
+          <div class="flex items-center justify-between text-xs font-semibold text-neutral-400">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#C6FF3D]"></span>
+              <span class="text-white">WebGL & Three.js Flagships</span>
+            </div>
+            <span class="text-[#C6FF3D]">60 FPS Experience</span>
+          </div>
+
+          <!-- Visual Shader Demonstration -->
+          <div class="flex-grow flex items-center justify-center relative">
+            <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-neutral-400 pt-3 border-t border-neutral-800">
+            <span>Spatial Audio & Kinetic Typography</span>
+            <span class="text-white">Zero Templates</span>
+          </div>
+        </div>
+
+        <div class="pt-6 sm:pt-8">
+          <div class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-black text-white rounded-full inline-block mb-3">
+            Creative Web Engineering
+          </div>
+          <h3 class="font-display font-black text-3xl sm:text-5xl text-black tracking-tight leading-tight mb-3">
+            Digital Flagships: Unreasonably Polished Web.
+          </h3>
+          <p class="font-body text-black/90 text-base sm:text-xl max-w-3xl leading-relaxed mb-6 font-medium">
+            We build memorable digital flagships for visionary brands. Creative code, WebGL shaders, kinetic interactions, and spatial design engineered for brutal performance underneath.
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href="/lab"
+              class="bg-black hover:bg-neutral-900 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95 shadow-lg"
+            >
+              Explore The Lab
+            </a>
+            <a
+              href="/contact"
+              class="border-2 border-black/40 hover:border-black text-black font-semibold text-sm px-6 py-3.5 rounded-full transition-all active:scale-95"
+            >
+              Start a Project
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03: WORKFLOW AUTOMATION CYAN CARD (HEX VIBE) -->
+      <div class="hex-card bg-[#00E5FF] text-black shadow-2xl">
+        <!-- Inner Media Window -->
+        <div class="hex-media bg-black border border-black/20 p-6 sm:p-8 flex flex-col justify-between min-h-[340px] sm:min-h-[400px]">
+          <div class="flex items-center justify-between text-xs font-semibold text-neutral-400">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#00E5FF]"></span>
+              <span class="text-white">Automation Engine</span>
+            </div>
+            <span class="text-[#00E5FF]">Deterministic Queues</span>
+          </div>
+
+          <!-- Waveform / Data Flow Graphic -->
+          <div class="flex-grow flex items-center justify-center relative">
+            <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-neutral-400 pt-3 border-t border-neutral-800">
+            <span>Spreadsheet Toil → Production Software</span>
+            <span class="text-white">Reliable Execution</span>
+          </div>
+        </div>
+
+        <div class="pt-6 sm:pt-8">
+          <div class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-black text-white rounded-full inline-block mb-3">
+            Workflow & Systems Automation
+          </div>
+          <h3 class="font-display font-black text-3xl sm:text-5xl text-black tracking-tight leading-tight mb-3">
+            Workflow Engines: Killing Manual Spreadsheet Chaos.
+          </h3>
+          <p class="font-body text-black/90 text-base sm:text-xl max-w-3xl leading-relaxed mb-6 font-medium">
+            Turn fragile copy-paste spreadsheet routines into robust, deterministic software pipelines with relational databases, automated reconciliation, and automated dispatch.
+          </p>
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href="/services"
+              class="bg-black hover:bg-neutral-900 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95 shadow-lg"
+            >
+              Inspect Services
+            </a>
+            <a
+              href="/contact"
+              class="border-2 border-black/40 hover:border-black text-black font-semibold text-sm px-6 py-3.5 rounded-full transition-all active:scale-95"
+            >
+              Discuss a Workflow Fix
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <script>
-  import { studioAudio } from '../../utils/audio';
-
   function initCanInteractions() {
     const can = document.getElementById('can-3d-model');
     const stage = document.getElementById('can-preview-stage');
     const finishBtns = document.querySelectorAll('.can-finish-btn');
 
-    // 3D drag / hover rotation
     if (can && stage) {
       let isDragging = false;
       let startX = 0;
@@ -283,7 +328,6 @@ const mockgen = products[0];
         startY = e.clientY;
       });
 
-      // Touch events for mobile responsiveness
       stage.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
           isDragging = true;
@@ -308,17 +352,14 @@ const mockgen = products[0];
       }, { passive: true });
     }
 
-    // Material Finish switchers
     finishBtns.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         finishBtns.forEach((b) => {
-          b.classList.remove('border-[#FF5500]', 'text-[#FF5500]', 'bg-[#FF5500]/20');
-          b.classList.add('border-[#2A362E]', 'text-[#A5A9A3]', 'bg-[#080B0A]');
+          b.classList.remove('bg-[#FF5500]', 'text-black', 'font-semibold');
+          b.classList.add('bg-white/10', 'text-white', 'font-medium');
         });
-        (e.currentTarget as HTMLElement).classList.add('border-[#FF5500]', 'text-[#FF5500]', 'bg-[#FF5500]/20');
-        (e.currentTarget as HTMLElement).classList.remove('border-[#2A362E]', 'text-[#A5A9A3]', 'bg-[#080B0A]');
-
-        studioAudio.playClick();
+        (e.currentTarget as HTMLElement).classList.add('bg-[#FF5500]', 'text-black', 'font-semibold');
+        (e.currentTarget as HTMLElement).classList.remove('bg-white/10', 'text-white', 'font-medium');
       });
     });
   }

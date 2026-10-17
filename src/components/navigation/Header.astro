@@ -13,23 +13,20 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-[#080B0A]/85 backdrop-blur-xl border-b border-[#1D2620]/80 transition-all duration-300" id="site-header">
+<header class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-neutral-900 transition-all duration-300" id="site-header">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
     <!-- Left: OTHR Wordmark with Official Logo -->
-    <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-1 focus:ring-[#C6FF3D]" aria-label="OTHR Homepage">
-      <div class="h-8 flex items-center justify-center">
-        <img
-          src="/logo-mark.png"
-          alt="OTHR Logo"
-          class="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_0_12px_rgba(221,236,67,0.35)]"
-          width="48"
-          height="28"
-        />
-      </div>
-      <div class="flex items-baseline gap-2">
-        <span class="font-display font-bold text-2xl tracking-tighter text-[#F5F6F0] group-hover:text-white transition-colors">OTHR</span>
-        <span class="font-mono text-[10px] text-[#C6FF3D] tracking-widest hidden sm:inline uppercase">// STUDIO</span>
-      </div>
+    <a href="/" class="flex items-center gap-3 group focus:outline-none" aria-label="OTHR Homepage">
+      <img
+        src="/logo-mark.png"
+        alt="OTHR Logo"
+        class="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+        width="46"
+        height="26"
+      />
+      <span class="font-display font-extrabold text-2xl tracking-tight text-white group-hover:text-[#C6FF3D] transition-colors">
+        OTHR<span class="text-[#C6FF3D]">.</span>
+      </span>
     </a>
 
     <!-- Desktop Navigation Links -->
@@ -39,65 +36,43 @@ const currentPath = Astro.url.pathname;
         return (
           <a
             href={link.href}
-            class={`group flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider py-1 relative transition-colors ${
-              isActive ? 'text-[#C6FF3D]' : 'text-[#A5A9A3] hover:text-[#F5F6F0]'
+            class={`font-body text-sm font-medium transition-colors ${
+              isActive ? 'text-[#C6FF3D]' : 'text-neutral-400 hover:text-white'
             }`}
           >
-            <span class="text-[9px] text-[#5C635B] group-hover:text-[#C6FF3D] transition-colors">{link.code}</span>
-            <span>{link.label}</span>
-            {isActive && (
-              <span class="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#C6FF3D] shadow-[0_0_8px_#C6FF3D]"></span>
-            )}
+            {link.label}
           </a>
         );
       })}
     </nav>
 
-    <!-- Right: Utility Controls & Let's Talk CTA -->
+    <!-- Right: Get in touch CTA (HEX Style) -->
     <div class="hidden md:flex items-center gap-4">
-      <!-- Theme Switcher (Lime / Deep Blue) -->
-      <button
-        id="theme-toggle-btn"
-        class="w-9 h-9 flex items-center justify-center text-[#A5A9A3] hover:text-[#C6FF3D] hover:bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/40 rounded-md transition-colors"
-        title="Toggle Theme (Acid Lime / Deep Blue)"
-        aria-label="Toggle visual theme palette"
+      <a
+        href="/contact"
+        class="bg-white hover:bg-[#C6FF3D] text-black font-semibold text-xs px-5 py-2.5 rounded-full transition-all shadow-[0_2px_10px_rgba(255,255,255,0.1)] active:scale-95"
       >
-        <span class="w-3.5 h-3.5 rounded-full border border-current flex items-center justify-center">
-          <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-        </span>
-      </button>
-
-      <!-- Audio Mute/Unmute Toggle -->
-      <button
-        id="audio-toggle-btn"
-        class="w-9 h-9 flex items-center justify-center text-[#A5A9A3] hover:text-[#C6FF3D] hover:bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/40 rounded-md transition-colors"
-        title="Toggle Tactile Micro-Audio"
-        aria-label="Toggle mechanical micro-audio"
-      >
-        <Icon name="VolumeX" size={16} id="audio-icon-off" />
-        <span id="audio-icon-on" class="hidden">
-          <Icon name="Volume2" size={16} />
-        </span>
-      </button>
-
-      <!-- Let's Talk Action Button -->
-      <Button href="/contact" variant="primary" size="sm" showArrow={true}>
-        Let's Talk
-      </Button>
+        Get in touch
+      </a>
     </div>
 
-    <!-- Mobile Navigation Toggle Button -->
+    <!-- Mobile Navigation Toggle Button (Clean 3-line hamburger like HEX) -->
     <div class="flex items-center gap-3 md:hidden">
+      <a
+        href="/contact"
+        class="bg-white hover:bg-[#C6FF3D] text-black font-semibold text-xs px-3.5 py-1.5 rounded-full transition-all"
+      >
+        Get in touch
+      </a>
       <button
         id="mobile-menu-trigger"
-        class="w-11 h-11 flex items-center justify-center bg-[#141A16] border border-[#1D2620] text-[#F5F6F0] hover:text-[#C6FF3D] rounded-md focus:outline-none"
+        class="w-10 h-10 flex flex-col items-center justify-center gap-1.5 p-2 focus:outline-none"
         aria-label="Open Mobile Menu"
         aria-expanded="false"
       >
-        <Icon name="Menu" size={22} id="menu-icon-open" />
-        <span id="menu-icon-close" class="hidden">
-          <Icon name="X" size={22} />
-        </span>
+        <span class="w-6 h-0.5 bg-[#C6FF3D] rounded-full transition-all"></span>
+        <span class="w-6 h-0.5 bg-[#C6FF3D] rounded-full transition-all"></span>
+        <span class="w-6 h-0.5 bg-[#C6FF3D] rounded-full transition-all"></span>
       </button>
     </div>
   </div>
@@ -106,53 +81,43 @@ const currentPath = Astro.url.pathname;
 <!-- Mobile Navigation Drawer -->
 <div
   id="mobile-menu-drawer"
-  class="fixed inset-0 z-40 bg-[#080B0A] bg-opacity-98 backdrop-blur-2xl transform -translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden pt-24 px-6 pb-12 flex flex-col justify-between"
+  class="fixed inset-0 z-40 bg-black/98 backdrop-blur-2xl transform -translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden pt-24 px-6 pb-12 flex flex-col justify-between"
   aria-hidden="true"
 >
   <div class="flex flex-col gap-6 mt-4">
-    <div class="flex items-center gap-3 pb-2">
+    <div class="flex items-center gap-3 pb-4 border-b border-neutral-900">
       <img
         src="/logo-mark.png"
         alt="OTHR Logo"
-        class="h-7 w-auto object-contain drop-shadow-[0_0_12px_rgba(221,236,67,0.35)]"
-        width="48"
-        height="28"
+        class="h-7 w-auto object-contain"
+        width="46"
+        height="26"
       />
-      <span class="font-display font-bold text-2xl tracking-tighter text-[#F5F6F0]">OTHR</span>
+      <span class="font-display font-extrabold text-2xl tracking-tight text-white">
+        OTHR<span class="text-[#C6FF3D]">.</span>
+      </span>
     </div>
-    <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-widest border-b border-[#1D2620] pb-2">
-      // INDEX NAVIGATION
-    </div>
-    <nav class="flex flex-col gap-4">
+    <nav class="flex flex-col gap-2">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="mobile-nav-link flex items-center justify-between py-3 border-b border-[#1D2620]/60 font-display text-2xl font-bold tracking-tight text-[#F5F6F0] hover:text-[#C6FF3D]"
+          class="mobile-nav-link flex items-center justify-between py-3 border-b border-neutral-900 font-display text-2xl font-bold tracking-tight text-neutral-300 hover:text-[#C6FF3D] transition-colors"
         >
           <span>{link.label}</span>
-          <span class="font-mono text-xs text-[#5C635B]">{link.code}</span>
         </a>
       ))}
       <a
         href="/contact"
-        class="mobile-nav-link flex items-center justify-between py-3 border-b border-[#1D2620]/60 font-display text-2xl font-bold tracking-tight text-[#C6FF3D]"
+        class="mobile-nav-link flex items-center justify-between py-3 border-b border-neutral-900 font-display text-2xl font-bold tracking-tight text-[#C6FF3D]"
       >
-        <span>Let's Talk</span>
-        <span class="font-mono text-xs text-[#C6FF3D]">06</span>
+        <span>Get in touch</span>
       </a>
     </nav>
   </div>
 
-  <div class="border-t border-[#1D2620] pt-6 flex flex-col gap-4">
-    <div class="flex items-center justify-between font-mono text-xs text-[#A5A9A3]">
-      <span>PALETTE MODE</span>
-      <button id="mobile-theme-toggle" class="text-[#C6FF3D] uppercase border border-[#2A362E] rounded-md px-3 py-1">
-        SWITCH THEME
-      </button>
-    </div>
-    <div class="flex items-center justify-between font-mono text-xs text-[#5C635B]">
-      <span>STATUS: OPERATIONAL</span>
-      <span>ACTIVE</span>
+  <div class="border-t border-neutral-900 pt-6">
+    <div class="font-body text-xs text-neutral-500">
+      Independent Creative Engineering Studio
     </div>
   </div>
 </div>

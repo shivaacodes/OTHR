@@ -29,72 +29,65 @@ const timelineOptions = [
 ];
 ---
 
-<section class="py-24 md:py-36 bg-[#080B0A] relative overflow-hidden" id="contact">
-  <!-- Subtle background ambient grid -->
-  <div class="absolute inset-0 scanline-grid opacity-20 pointer-events-none"></div>
-
+<section class="py-20 md:py-32 bg-black border-t border-neutral-900 relative overflow-hidden" id="contact">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
       <!-- Left Editorial Column -->
       <div class="lg:col-span-5 space-y-8" data-reveal>
         <div>
-          <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-4">
-            // INITIATE ENGAGEMENT
+          <div class="text-xs font-bold text-[#C6FF3D] uppercase tracking-wider mb-3">
+            Start a Project
           </div>
-          <h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[0.95] text-[#F5F6F0]">
-            Have something strange in mind?
+          <h2 class="font-display font-extrabold text-4xl sm:text-6xl tracking-tight leading-[0.98] text-white">
+            Have something ambitious in mind?
           </h2>
-          <div class="mt-4 font-display font-bold text-2xl sm:text-3xl text-[#C6FF3D]">
-            Good. We like strange.
+          <div class="mt-3 font-display font-bold text-2xl sm:text-3xl text-[#C6FF3D]">
+            Let's build it.
           </div>
         </div>
 
-        <p class="font-body text-base sm:text-lg text-[#A5A9A3] leading-relaxed">
-          Whether you need a <strong class="text-[#F5F6F0]">Digital Upgrade</strong> for your brand flagship, a <strong class="text-[#F5F6F0]">Workflow Fix</strong> to kill manual spreadsheet toil, or custom systems engineering—tell us what you’re building.
+        <p class="font-body text-base sm:text-lg text-neutral-300 leading-relaxed">
+          Whether you need an award-winning flagship website, a custom software system to eradicate manual spreadsheet toil, or proprietary SaaS engineering—tell us what you’re building.
         </p>
 
         <!-- Direct Coordinates -->
-        <div class="p-6 bg-[#0E1410] border border-[#1D2620] rounded-xl space-y-4 font-mono text-xs">
+        <div class="p-6 bg-neutral-950 border border-neutral-800 rounded-2xl space-y-4 text-xs font-body">
           <div>
-            <div class="text-[10px] text-[#5C635B] uppercase tracking-wider">// DIRECT DISPATCH</div>
-            <a href={`mailto:${siteConfig.contactEmail}`} class="text-[#F5F6F0] hover:text-[#C6FF3D] transition-colors font-bold text-sm">
+            <div class="text-[11px] text-neutral-500 uppercase tracking-wider mb-1 font-semibold">Direct Email</div>
+            <a href={`mailto:${siteConfig.contactEmail}`} class="text-white hover:text-[#C6FF3D] transition-colors font-bold text-sm">
               {siteConfig.contactEmail}
             </a>
           </div>
 
-          <div class="pt-3 border-t border-[#1D2620]">
-            <div class="text-[10px] text-[#5C635B] uppercase tracking-wider">// RESPONSE WINDOW</div>
-            <div class="text-[#A5A9A3]">1–2 BUSINESS DAYS BY A LEAD ENGINEER</div>
+          <div class="pt-3 border-t border-neutral-800">
+            <div class="text-[11px] text-neutral-500 uppercase tracking-wider mb-1 font-semibold">Response Window</div>
+            <div class="text-neutral-300 font-medium">1–2 business days directly from a lead engineer</div>
           </div>
 
-          <div class="pt-3 border-t border-[#1D2620] flex items-center justify-between text-[#5C635B]">
-            <span>ENGINEER-LED // NO SALES TEAMS</span>
-            <span class="text-[#C6FF3D]">DIRECT</span>
-          </div>
-        </div>
-      </div>
-
+          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-neutral-400">
+            <span>Engineer-led studio • No sales layers</span>
+            <span class="text-[#C6FF3D] font-bold">Direct</span>
       <!-- Right Interactive Inquiry Form -->
-      <div class="lg:col-span-7 bg-[#0E1410] border border-[#1D2620] rounded-xl p-6 sm:p-10" data-reveal data-delay="0.2">
+      <div class="lg:col-span-7 bg-neutral-950 border border-neutral-800 rounded-2xl p-6 sm:p-10" data-reveal data-delay="0.2">
         <form id="studio-inquiry-form" class="space-y-6">
 
           <!-- Step 1: Project Type Selection -->
           <div>
-            <label class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-3">
-              01 // PROJECT TYPE *
+            <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
+              01 // Project Type *
             </label>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="project-type-selector">
               {projectTypes.map((type) => (
-                <label class="project-type-label flex items-center gap-3 p-3 bg-[#141A16] border border-[#1D2620] rounded-md hover:border-[#C6FF3D]/40 cursor-pointer select-none transition-colors">
+                <label class="project-type-label flex items-center gap-3 p-3.5 bg-neutral-900 border border-neutral-800 rounded-xl hover:border-[#C6FF3D]/50 cursor-pointer select-none transition-colors">
                   <input
                     type="radio"
                     name="projectType"
                     value={type.label}
                     data-id={type.id}
                     required
-                    class="form-radio text-[#C6FF3D] bg-[#080B0A] border-[#2A362E] focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 cursor-pointer rounded-full"
+                    class="form-radio text-[#C6FF3D] bg-black border-neutral-700 focus:ring-0 focus:ring-offset-0 w-4 h-4 cursor-pointer rounded-full"
                   />
-                  <span class="font-mono text-xs text-[#F5F6F0]">{type.label}</span>
+                  <span class="text-xs text-neutral-200 font-medium">{type.label}</span>
                 </label>
               ))}
             </div>
@@ -103,35 +96,35 @@ const timelineOptions = [
           <!-- Step 2: Budget & Timeline Selectors -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label for="inquiry-budget" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
-                02 // ESTIMATED BUDGET *
+              <label for="inquiry-budget" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+                02 // Estimated Budget *
               </label>
               <select
                 id="inquiry-budget"
                 name="budget"
                 required
-                class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-xs text-[#F5F6F0] rounded-md transition-colors cursor-pointer"
+                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-xs text-white rounded-xl transition-colors cursor-pointer"
               >
                 <option value="" disabled selected>Select budget range...</option>
                 {budgetRanges.map((b) => (
-                  <option value={b} class="bg-[#0E1410] text-[#F5F6F0]">{b}</option>
+                  <option value={b} class="bg-neutral-950 text-white">{b}</option>
                 ))}
               </select>
             </div>
 
             <div>
-              <label for="inquiry-timeline" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
-                03 // DESIRED TIMELINE *
+              <label for="inquiry-timeline" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+                03 // Desired Timeline *
               </label>
               <select
                 id="inquiry-timeline"
                 name="timeline"
                 required
-                class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-xs text-[#F5F6F0] rounded-md transition-colors cursor-pointer"
+                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-xs text-white rounded-xl transition-colors cursor-pointer"
               >
                 <option value="" disabled selected>Select timeline target...</option>
                 {timelineOptions.map((t) => (
-                  <option value={t} class="bg-[#0E1410] text-[#F5F6F0]">{t}</option>
+                  <option value={t} class="bg-neutral-950 text-white">{t}</option>
                 ))}
               </select>
             </div>
@@ -140,8 +133,8 @@ const timelineOptions = [
           <!-- Step 3: Contact Details -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label for="contact-name" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
-                04 // YOUR NAME *
+              <label for="contact-name" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+                04 // Your Name *
               </label>
               <input
                 type="text"
@@ -150,13 +143,13 @@ const timelineOptions = [
                 required
                 maxlength="100"
                 placeholder="Alex Morgan"
-                class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] rounded-md transition-colors"
+                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-sm text-white placeholder-neutral-500 rounded-xl transition-colors"
               />
             </div>
 
             <div>
-              <label for="contact-email" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
-                05 // WORK EMAIL *
+              <label for="contact-email" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+                05 // Work Email *
               </label>
               <input
                 type="email"
@@ -165,14 +158,14 @@ const timelineOptions = [
                 required
                 maxlength="150"
                 placeholder="alex@company.com"
-                class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] rounded-md transition-colors"
+                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-sm text-white placeholder-neutral-500 rounded-xl transition-colors"
               />
             </div>
           </div>
 
           <div>
-            <label for="contact-company" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
-              06 // COMPANY OR ORGANIZATION (OPTIONAL)
+            <label for="contact-company" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+              06 // Company or Organization (Optional)
             </label>
             <input
               type="text"
@@ -180,14 +173,14 @@ const timelineOptions = [
               name="company"
               maxlength="100"
               placeholder="Acme Studio Inc."
-              class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] rounded-md transition-colors"
+              class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-sm text-white placeholder-neutral-500 rounded-xl transition-colors"
             />
           </div>
 
           <!-- Step 4: Description -->
           <div>
-            <label for="contact-details" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
-              07 // PROJECT DESCRIPTION *
+            <label for="contact-details" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+              07 // Project Description *
             </label>
             <textarea
               id="contact-details"
@@ -197,7 +190,7 @@ const timelineOptions = [
               minlength="10"
               maxlength="3000"
               placeholder="What are you trying to build? What makes it difficult? What does a successful outcome look like?"
-              class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-body text-sm text-[#F5F6F0] placeholder-[#5C635B] rounded-md transition-colors resize-none"
+              class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-sm text-white placeholder-neutral-500 rounded-xl transition-colors resize-none"
             ></textarea>
           </div>
 
@@ -209,9 +202,9 @@ const timelineOptions = [
                 id="contact-consent"
                 name="consent"
                 required
-                class="form-checkbox text-[#C6FF3D] bg-[#080B0A] border-[#2A362E] focus:ring-0 focus:ring-offset-0 w-4 h-4 mt-0.5 cursor-pointer"
+                class="form-checkbox text-[#C6FF3D] bg-black border-neutral-700 focus:ring-0 focus:ring-offset-0 w-4 h-4 mt-0.5 cursor-pointer rounded"
               />
-              <span class="font-mono text-xs text-[#A5A9A3] leading-relaxed">
+              <span class="text-xs text-neutral-400 leading-relaxed font-body">
                 I agree to the processing of my contact information in accordance with OTHR’s <a href="/privacy" class="text-[#C6FF3D] underline" target="_blank">Privacy Policy</a>. No third-party data sharing or marketing cookies.
               </span>
             </label>
@@ -222,16 +215,16 @@ const timelineOptions = [
             <button
               type="submit"
               id="submit-inquiry-btn"
-              class="w-full py-4 bg-[#C6FF3D] hover:bg-[#d4ff66] text-[#080B0A] font-mono text-xs uppercase tracking-wider font-bold rounded-md transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_24px_-6px_rgba(198,255,61,0.4)] disabled:opacity-50"
+              class="w-full py-4 bg-white hover:bg-[#C6FF3D] text-black text-sm font-semibold tracking-wide rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-98 disabled:opacity-50"
             >
-              <span id="btn-label">TRANSMIT PROJECT INQUIRY</span>
+              <span id="btn-label">Transmit Project Inquiry</span>
               <Icon name="ArrowUpRight" size={16} />
             </button>
           </div>
         </form>
 
         <!-- Submission Feedback State -->
-        <div id="form-success-message" class="hidden p-6 sm:p-8 bg-[#141A16] border border-[#C6FF3D] rounded-xl space-y-4 font-mono text-xs">
+        <div id="form-success-message" class="hidden p-6 sm:p-8 bg-neutral-900 border border-[#C6FF3D] rounded-2xl space-y-4 text-xs">
           <div class="flex items-center gap-2 text-[#C6FF3D] font-bold text-sm">
             <span>✓</span>
             <span>INQUIRY PREPARED & COPIED</span>
@@ -249,20 +242,20 @@ const timelineOptions = [
             <a
               id="direct-mailto-link"
               href={`mailto:${siteConfig.contactEmail}`}
-              class="px-4 py-2.5 bg-[#C6FF3D] text-[#080B0A] font-bold text-center tracking-wider uppercase rounded-md transition-colors"
+              class="px-5 py-2.5 bg-[#C6FF3D] hover:bg-[#d4ff66] text-black font-semibold text-center text-xs uppercase tracking-wider rounded-full transition-all"
             >
-              OPEN EMAIL CLIENT
+              Open Email Client
             </a>
             <button
               type="button"
               id="copy-brief-btn"
-              class="px-4 py-2.5 bg-[#080B0A] border border-[#2A362E] hover:border-[#C6FF3D] text-[#F5F6F0] text-center tracking-wider uppercase rounded-md transition-colors cursor-pointer"
+              class="px-5 py-2.5 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 text-white text-center text-xs uppercase tracking-wider rounded-full transition-all cursor-pointer font-medium"
             >
-              COPY BRIEF AGAIN
+              Copy Brief Again
             </button>
           </div>
 
-          <div class="pt-2 border-t border-[#1D2620] text-[11px] text-[#5C635B]">
+          <div class="pt-3 border-t border-neutral-900 text-xs text-neutral-500">
             Response promise: We review every brief and respond within 1–2 business days.
           </div>
         </div>

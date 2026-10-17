@@ -32,32 +32,32 @@ const faqs = [
   description="MockGen is a professional 3D packaging and print asset pipeline. Generate production-ready packaging files with exact dimensions, bleed, and layers in 45 seconds."
 >
   <!-- Page Header -->
-  <div class="py-16 md:py-24 border-b border-[#1D2620] relative overflow-hidden">
+  <div class="py-16 md:py-24 border-b border-neutral-900 relative overflow-hidden bg-black">
     <!-- Neon Orange Background Glow -->
     <div class="absolute right-[10%] top-[10%] w-[450px] h-[450px] bg-[#FF5500]/10 rounded-full blur-[140px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
-        <a href="/" class="hover:text-[#FF5500] transition-colors">INDEX</a>
+      <div class="flex items-center gap-2 font-body text-xs text-neutral-500 mb-6">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <span class="text-[#FF5500]">PRODUCTS</span>
+        <span class="text-[#FF5500]">Products</span>
         <span>/</span>
-        <span class="text-[#F5F6F0]">MOCKGEN</span>
+        <span class="text-neutral-300">MockGen</span>
       </div>
 
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
           <div class="flex items-center gap-3 mb-4">
-            <Badge variant="orange" dot={true}>LIVE COMMERCIAL SAAS</Badge>
-            <span class="font-mono text-xs text-[#A5A9A3]">// WEB & PRINT PIPELINE</span>
+            <Badge variant="orange" dot={true}>Live Commercial SaaS</Badge>
+            <span class="font-body text-xs text-neutral-400">Web & Print Pipeline</span>
           </div>
-          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#F5F6F0] mb-4">
+          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-white mb-4">
             MockGen<span class="text-[#FF5500]">.</span>
           </h1>
           <p class="font-display font-bold text-2xl sm:text-3xl text-[#FF5500] max-w-2xl leading-snug mb-3">
             {mockgen.tagline}
           </p>
-          <p class="font-body text-lg text-[#A5A9A3] max-w-2xl leading-relaxed">
+          <p class="font-body text-lg text-neutral-400 max-w-2xl leading-relaxed">
             {mockgen.subtitle}
           </p>
         </div>
@@ -87,65 +87,89 @@ const faqs = [
     </div>
   </div>
 
-  <div class="py-16 md:py-24 bg-[#080B0A]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+  <div class="py-16 md:py-24 bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
 
-      <!-- Section: Value Proposition & Transparent Workflow -->
-      <section class="bg-[#0E1410] border-2 border-[#FF5500]/50 rounded-xl p-8 sm:p-12 relative overflow-hidden shadow-[0_0_40px_-10px_rgba(255,85,0,0.3)]">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div class="lg:col-span-7 space-y-6">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#FF5500] animate-ping"></span>
-              <span class="font-mono text-xs text-[#FF5500] font-bold uppercase tracking-wider">
-                TRANSPARENT WORKFLOW // NO AI BLACKBOX
-              </span>
-            </div>
+      <!-- Flagship Tactile Showcase Card (HEX Style in Neon Orange) -->
+      <section class="bg-[#FF5500] text-black rounded-3xl p-6 sm:p-10 lg:p-12 shadow-[0_20px_60px_-15px_rgba(255,85,0,0.35)] transition-transform duration-300">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Inset Media Window -->
+          <div class="lg:col-span-7">
+            <div class="bg-black rounded-2xl overflow-hidden border border-black/10 shadow-2xl relative aspect-[16/10] flex items-center justify-center group">
+              <!-- Interactive 3D Canvas / Demo Window -->
+              <canvas id="products-can-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
+              
+              <!-- Floating Top Badge -->
+              <div class="absolute top-4 left-4 z-20 flex items-center gap-2 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-800">
+                <span class="w-2 h-2 rounded-full bg-[#FF5500] animate-pulse"></span>
+                <span class="text-xs font-semibold text-neutral-200">Interactive 3D Can (Drag to Rotate)</span>
+              </div>
 
-            <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-[#F5F6F0] tracking-tight leading-tight">
-              Visualize Production-Ready Packaging Instantly<span class="text-[#FF5500]">.</span>
-            </h2>
-
-            <p class="font-body text-lg text-[#F5F6F0] leading-relaxed">
-              Unlike normal AI image generators that produce flat, unusable graphics with distorted text, MockGen generates print-ready packaging files with exact dimensions, bleed margins, and isolated layers.
-            </p>
-
-            <p class="font-body text-base text-[#A5A9A3] leading-relaxed">
-              Export high-resolution assets and send them straight to your printer or client. Perfect for freelance designers, agile design agencies, and high-growth physical D2C brands.
-            </p>
-
-            <div class="p-4 bg-[#141A16] border border-[#FF5500]/30 rounded-lg flex items-center justify-between font-mono text-xs">
-              <span class="text-[#FF5500] font-bold">⚡ PROOF POINT:</span>
-              <span class="text-[#F5F6F0]">FROM IDEA TO PRINTER FILE IN 45 SECONDS</span>
+              <!-- Floating Bottom Material Pill Switcher -->
+              <div class="absolute bottom-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+                <div class="flex items-center gap-2 pointer-events-auto bg-black/85 backdrop-blur-md p-1.5 rounded-full border border-neutral-800">
+                  <button class="products-finish-pill px-3 py-1 rounded-full text-xs font-semibold bg-[#FF5500] text-black transition-all" data-finish="orange">
+                    Neon Orange
+                  </button>
+                  <button class="products-finish-pill px-3 py-1 rounded-full text-xs font-semibold bg-neutral-900 text-neutral-300 hover:text-white transition-all" data-finish="lime">
+                    Lime UV
+                  </button>
+                  <button class="products-finish-pill px-3 py-1 rounded-full text-xs font-semibold bg-neutral-900 text-neutral-300 hover:text-white transition-all" data-finish="metallic">
+                    Raw Aluminum
+                  </button>
+                </div>
+                <div class="hidden sm:block text-[11px] font-medium text-neutral-400 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-neutral-800">
+                  100% Client-Side WebGL
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="lg:col-span-5 bg-[#141A16] border border-[#1D2620] rounded-xl p-6 sm:p-8 space-y-6">
-            <div class="font-mono text-xs text-[#5C635B] uppercase tracking-wider border-b border-[#1D2620] pb-3">
-              // PRODUCTION CAPABILITIES
+          <!-- Card Content -->
+          <div class="lg:col-span-5 flex flex-col justify-between">
+            <div>
+              <div class="inline-flex items-center gap-2 bg-black/10 px-3.5 py-1.5 rounded-full text-black font-semibold text-xs mb-4">
+                <span>⚡ Transparent Workflow</span>
+                <span>•</span>
+                <span>No AI Blackbox</span>
+              </div>
+
+              <h2 class="font-display font-black text-3xl sm:text-5xl text-black tracking-tight leading-[1.05] mb-4">
+                Visualize Production-Ready Packaging Instantly.
+              </h2>
+
+              <p class="font-body text-base sm:text-lg text-black/85 font-medium leading-relaxed mb-6">
+                Unlike normal AI image generators that produce flat, unusable graphics with distorted text, MockGen generates print-ready packaging files with exact dimensions, bleed margins, and isolated layers.
+              </p>
+
+              <div class="space-y-3 mb-8 bg-black/5 p-5 rounded-2xl border border-black/10">
+                {mockgen.highlights.map((h) => (
+                  <div class="flex items-center justify-between text-xs sm:text-sm font-semibold">
+                    <span class="text-black/75">{h.label}</span>
+                    <span class="text-black font-bold">{h.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div class="space-y-4">
-              {mockgen.highlights.map((h) => (
-                <div class="flex items-center justify-between font-mono text-xs pb-3 border-b border-[#1D2620]/60">
-                  <span class="text-[#A5A9A3]">{h.label}:</span>
-                  <span class="text-[#FF5500] font-bold">{h.value}</span>
-                </div>
-              ))}
-            </div>
-
-            <div class="pt-2">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <a
+                href="https://trymockgen.vercel.app/?auth=signup"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-black hover:bg-neutral-900 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all text-center shadow-lg active:scale-95 inline-flex items-center justify-center gap-2"
+              >
+                <span>Draft Your Design Free</span>
+                <Icon name="ArrowUpRight" size={16} />
+              </a>
               <a
                 href="https://trymockgen.vercel.app/dashboard?model=%2Fmodels%2Fsoda_can.glb"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full py-3 px-4 bg-[#FF5500] hover:bg-[#ff6e26] text-[#080B0A] font-mono text-xs font-bold uppercase tracking-wider rounded-md transition-colors flex items-center justify-center gap-2"
+                class="bg-white/80 hover:bg-white text-black font-semibold text-sm px-6 py-3.5 rounded-full transition-all text-center active:scale-95"
               >
-                <span>OPEN 3D SODA CAN STUDIO</span>
-                <Icon name="ArrowUpRight" size={14} />
+                Launch Studio
               </a>
-              <div class="text-[10px] font-mono text-[#5C635B] text-center mt-2">
-                Join Free • No Credit Card Required
-              </div>
             </div>
           </div>
         </div>
@@ -153,37 +177,39 @@ const faqs = [
 
       <!-- Section: 4-Step Production Pipeline -->
       <section>
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#1D2620]">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 pb-6 border-b border-neutral-900">
           <div>
-            <div class="font-mono text-xs text-[#FF5500] uppercase tracking-widest mb-2">// THE 4-STEP PIPELINE</div>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0]">
+            <div class="text-xs font-semibold text-[#FF5500] uppercase tracking-wider mb-2">The 4-Step Pipeline</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
               How MockGen Works
             </h2>
           </div>
-          <p class="font-body text-sm text-[#A5A9A3] max-w-md">
+          <p class="font-body text-sm text-neutral-400 max-w-md">
             A deterministic engineering workflow from prompt conception to production-grade physical manufacturing files.
           </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {mockgen.workflow.map((item) => (
-            <div class="bg-[#0E1410] border border-[#1D2620] hover:border-[#FF5500]/50 rounded-xl p-6 sm:p-8 flex flex-col justify-between transition-all group">
+            <div class="bg-neutral-950 border border-neutral-900 hover:border-neutral-700 rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all group">
               <div>
-                <span class="font-mono text-xs text-[#FF5500] font-bold">[{item.step}]</span>
-                <h3 class="font-display font-bold text-xl text-[#F5F6F0] group-hover:text-[#FF5500] transition-colors mt-3 mb-3">
+                <span class="text-xs font-bold text-[#FF5500] bg-[#FF5500]/10 px-2.5 py-1 rounded-full">
+                  Step {item.step}
+                </span>
+                <h3 class="font-display font-bold text-xl text-white group-hover:text-[#FF5500] transition-colors mt-4 mb-3">
                   {item.title}
                 </h3>
-                <p class="font-body text-sm text-[#A5A9A3] leading-relaxed mb-6">
+                <p class="font-body text-sm text-neutral-400 leading-relaxed mb-6">
                   {item.description}
                 </p>
               </div>
 
               {item.formats && (
-                <div class="pt-4 border-t border-[#1D2620] space-y-1.5">
-                  <div class="font-mono text-[10px] text-[#5C635B] uppercase">// EXPORTABLE ASSETS</div>
+                <div class="pt-4 border-t border-neutral-900 space-y-2">
+                  <div class="text-[11px] font-medium text-neutral-500 uppercase">Exportable Assets</div>
                   <div class="flex flex-wrap gap-1.5">
                     {item.formats.map((fmt) => (
-                      <span class="px-2 py-0.5 bg-[#141A16] border border-[#2A362E] text-[10px] font-mono text-[#FF5500] rounded-[3px]">
+                      <span class="px-2.5 py-1 bg-neutral-900 border border-neutral-800 text-xs font-medium text-[#FF5500] rounded-full">
                         {fmt}
                       </span>
                     ))}
@@ -196,23 +222,23 @@ const faqs = [
       </section>
 
       <!-- Section: Base Canvas / 3D Can -->
-      <section class="bg-[#0E1410] border border-[#1D2620] rounded-xl p-8 sm:p-12">
+      <section class="bg-neutral-950 border border-neutral-900 rounded-3xl p-8 sm:p-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-8 space-y-4">
-            <div class="font-mono text-xs text-[#FF5500] uppercase tracking-widest">// YOUR CANVAS // CHOOSE YOUR BASE</div>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0]">
+            <div class="text-xs font-semibold text-[#FF5500] uppercase tracking-wider">Your Canvas • Choose Your Base</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
               {mockgen.featuredModel.name}
             </h2>
-            <p class="font-body text-base text-[#A5A9A3] leading-relaxed max-w-2xl">
+            <p class="font-body text-base text-neutral-400 leading-relaxed max-w-2xl">
               {mockgen.featuredModel.description}
             </p>
-            <div class="flex flex-wrap gap-6 pt-2 font-mono text-xs">
+            <div class="flex flex-wrap gap-6 pt-2 text-sm font-medium">
               <div>
-                <span class="text-[#5C635B]">MATERIAL: </span>
-                <span class="text-[#F5F6F0]">{mockgen.featuredModel.material}</span>
+                <span class="text-neutral-500">Material: </span>
+                <span class="text-white">{mockgen.featuredModel.material}</span>
               </div>
               <div>
-                <span class="text-[#5C635B]">DIMENSIONS: </span>
+                <span class="text-neutral-500">Dimensions: </span>
                 <span class="text-[#FF5500]">{mockgen.featuredModel.dimensions}</span>
               </div>
             </div>
@@ -236,28 +262,28 @@ const faqs = [
 
       <!-- Section: Transparent Pricing -->
       <section>
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#1D2620]">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 pb-6 border-b border-neutral-900">
           <div>
-            <div class="font-mono text-xs text-[#FF5500] uppercase tracking-widest mb-2">// TRANSPARENT PRICING</div>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0]">
+            <div class="text-xs font-semibold text-[#FF5500] uppercase tracking-wider mb-2">Transparent Pricing</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
               Choose the Plan that Powers Your Workflow
             </h2>
           </div>
-          <div class="font-mono text-xs text-[#A5A9A3]">
+          <div class="text-xs font-medium text-neutral-400">
             1 design generation = 20 credits • 4K export = 10 credits
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {mockgen.pricingPlans.map((plan) => (
-            <div class={`rounded-xl p-8 flex flex-col justify-between transition-all ${
+            <div class={`rounded-3xl p-8 flex flex-col justify-between transition-all ${
               plan.badge
-                ? 'bg-[#141A16] border-2 border-[#FF5500] shadow-[0_0_30px_-5px_rgba(255,85,0,0.3)]'
-                : 'bg-[#0E1410] border border-[#1D2620]'
+                ? 'bg-neutral-900 border-2 border-[#FF5500] shadow-[0_10px_40px_-10px_rgba(255,85,0,0.25)]'
+                : 'bg-neutral-950 border border-neutral-900'
             }`}>
               <div>
                 <div class="flex items-center justify-between mb-4">
-                  <span class="font-display font-black text-2xl text-[#F5F6F0]">{plan.name}</span>
+                  <span class="font-display font-black text-2xl text-white">{plan.name}</span>
                   {plan.badge && (
                     <Badge variant="orange">{plan.badge}</Badge>
                   )}
@@ -265,16 +291,16 @@ const faqs = [
 
                 <div class="mb-4">
                   <span class="font-display font-black text-4xl sm:text-5xl text-[#FF5500]">{plan.price}</span>
-                  <span class="font-mono text-xs text-[#5C635B] ml-1">{plan.billing}</span>
+                  <span class="text-xs text-neutral-400 ml-1">{plan.billing}</span>
                 </div>
 
-                <p class="font-body text-sm text-[#A5A9A3] leading-relaxed mb-6 pb-6 border-b border-[#1D2620]">
+                <p class="font-body text-sm text-neutral-400 leading-relaxed mb-6 pb-6 border-b border-neutral-800">
                   {plan.description}
                 </p>
 
-                <ul class="space-y-3 font-mono text-xs text-[#F5F6F0] mb-8">
+                <ul class="space-y-3 text-xs sm:text-sm text-neutral-300 mb-8">
                   {plan.features.map((feat) => (
-                    <li class="flex items-start gap-2">
+                    <li class="flex items-start gap-2.5">
                       <span class="text-[#FF5500] font-bold">✓</span>
                       <span>{feat}</span>
                     </li>
@@ -301,20 +327,20 @@ const faqs = [
       </section>
 
       <!-- Section: FAQs -->
-      <section class="max-w-4xl mx-auto pt-12 border-t border-[#1D2620]">
-        <div class="font-mono text-xs text-[#FF5500] uppercase tracking-widest mb-3">// COMMON QUESTIONS</div>
-        <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0] mb-10">
+      <section class="max-w-4xl mx-auto pt-10 border-t border-neutral-900">
+        <div class="text-xs font-semibold text-[#FF5500] uppercase tracking-wider mb-3">Common Questions</div>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-white mb-10">
           Frequently Asked Questions
         </h2>
 
-        <div class="space-y-6">
+        <div class="space-y-4">
           {faqs.map((faq, i) => (
-            <div class="bg-[#0E1410] border border-[#1D2620] rounded-xl p-6 sm:p-8">
-              <h3 class="font-display font-bold text-xl text-[#F5F6F0] mb-3">
-                <span class="text-[#FF5500] font-mono text-sm mr-2">0{i + 1} //</span>
+            <div class="bg-neutral-950 border border-neutral-900 rounded-2xl p-6 sm:p-8">
+              <h3 class="font-display font-bold text-xl text-white mb-3">
+                <span class="text-[#FF5500] text-sm mr-2 font-semibold">0{i + 1} •</span>
                 {faq.q}
               </h3>
-              <p class="font-body text-sm text-[#A5A9A3] leading-relaxed pl-6 border-l-2 border-[#FF5500]/40">
+              <p class="font-body text-sm text-neutral-400 leading-relaxed pl-6 border-l-2 border-[#FF5500]/40">
                 {faq.a}
               </p>
             </div>
@@ -323,13 +349,13 @@ const faqs = [
       </section>
 
       <!-- Final Launch Banner -->
-      <section class="bg-gradient-to-r from-[#141A16] to-[#1c0f08] border border-[#FF5500]/50 rounded-xl p-8 sm:p-14 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_40px_-10px_rgba(255,85,0,0.3)]">
+      <section class="bg-gradient-to-br from-neutral-950 via-neutral-900 to-black border border-neutral-800 rounded-3xl p-8 sm:p-14 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
         <div>
-          <div class="font-mono text-xs text-[#FF5500] uppercase tracking-widest mb-2">// SEE YOUR PACKAGING BEFORE YOU PRINT</div>
-          <h2 class="font-display font-black text-3xl sm:text-5xl text-[#F5F6F0] mb-3">
+          <div class="text-xs font-semibold text-[#FF5500] uppercase tracking-wider mb-2">See Your Packaging Before You Print</div>
+          <h2 class="font-display font-black text-3xl sm:text-5xl text-white mb-3">
             Draft Your Design on MockGen.
           </h2>
-          <p class="font-body text-base text-[#A5A9A3] max-w-xl">
+          <p class="font-body text-base text-neutral-400 max-w-xl">
             Join freelance packaging designers and global D2C brand teams moving from idea to printer-ready files in 45 seconds.
           </p>
         </div>
@@ -352,3 +378,178 @@ const faqs = [
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  import * as THREE from 'three';
+
+  function initProductsCanCanvas() {
+    const canvas = document.getElementById('products-can-canvas') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const parent = canvas.parentElement;
+    if (!parent) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, parent.clientWidth / parent.clientHeight, 0.1, 100);
+    camera.position.set(0, 0, 4.2);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(parent.clientWidth, parent.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Can Geometry
+    const canGroup = new THREE.Group();
+    scene.add(canGroup);
+
+    const bodyGeometry = new THREE.CylinderGeometry(0.85, 0.85, 2.3, 48, 1, false);
+    
+    // Procedural Mockup Texture
+    function createMockupTexture(accentHex: string) {
+      const texCanvas = document.createElement('canvas');
+      texCanvas.width = 1024;
+      texCanvas.height = 1024;
+      const ctx = texCanvas.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = '#080808';
+        ctx.fillRect(0, 0, 1024, 1024);
+
+        ctx.fillStyle = accentHex;
+        ctx.fillRect(0, 320, 1024, 380);
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 96px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('MOCKGEN', 80, 520);
+
+        ctx.fillStyle = '#000000';
+        ctx.font = 'bold 36px "Plus Jakarta Sans", sans-serif';
+        ctx.fillText('COLD BREW // 330ML', 80, 590);
+
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(60, 360, 904, 300);
+      }
+      const texture = new THREE.CanvasTexture(texCanvas);
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.repeat.set(1, 1);
+      return texture;
+    }
+
+    const bodyMaterial = new THREE.MeshStandardMaterial({
+      map: createMockupTexture('#FF5500'),
+      metalness: 0.65,
+      roughness: 0.28
+    });
+    const bodyMesh = new THREE.Mesh(bodyGeometry, bodyMaterial);
+    canGroup.add(bodyMesh);
+
+    // Rim & Cap
+    const rimMaterial = new THREE.MeshStandardMaterial({ color: 0xd0d0d0, metalness: 0.9, roughness: 0.15 });
+    const topRim = new THREE.Mesh(new THREE.TorusGeometry(0.85, 0.04, 16, 48), rimMaterial);
+    topRim.rotation.x = Math.PI / 2;
+    topRim.position.y = 1.15;
+    canGroup.add(topRim);
+
+    const bottomRim = new THREE.Mesh(new THREE.TorusGeometry(0.83, 0.04, 16, 48), rimMaterial);
+    bottomRim.rotation.x = Math.PI / 2;
+    bottomRim.position.y = -1.15;
+    canGroup.add(bottomRim);
+
+    // Studio Lighting
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
+    keyLight.position.set(4, 5, 4);
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0xff5500, 1.8);
+    fillLight.position.set(-4, -2, -3);
+    scene.add(fillLight);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    // Animation & Drag Rotation
+    let isDragging = false;
+    let previousMousePosition = { x: 0, y: 0 };
+
+    canvas.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      previousMousePosition = { x: e.clientX, y: e.clientY };
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const deltaX = e.clientX - previousMousePosition.x;
+      canGroup.rotation.y += deltaX * 0.01;
+      previousMousePosition = { x: e.clientX, y: e.clientY };
+    });
+
+    // Touch support
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+    });
+
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const deltaX = e.touches[0].clientX - previousMousePosition.x;
+      canGroup.rotation.y += deltaX * 0.01;
+      previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    });
+
+    // Finish Switcher Pills
+    const finishPills = document.querySelectorAll('.products-finish-pill');
+    finishPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        finishPills.forEach((p) => {
+          p.classList.remove('bg-[#FF5500]', 'text-black');
+          p.classList.add('bg-neutral-900', 'text-neutral-300');
+        });
+        pill.classList.remove('bg-neutral-900', 'text-neutral-300');
+        pill.classList.add('bg-[#FF5500]', 'text-black');
+
+        const finish = pill.getAttribute('data-finish');
+        if (finish === 'orange') {
+          bodyMaterial.map = createMockupTexture('#FF5500');
+          bodyMaterial.metalness = 0.65;
+          bodyMaterial.roughness = 0.28;
+        } else if (finish === 'lime') {
+          bodyMaterial.map = createMockupTexture('#C6FF3D');
+          bodyMaterial.metalness = 0.55;
+          bodyMaterial.roughness = 0.35;
+        } else if (finish === 'metallic') {
+          bodyMaterial.map = null;
+          bodyMaterial.color.setHex(0xe0e0e0);
+          bodyMaterial.metalness = 0.95;
+          bodyMaterial.roughness = 0.12;
+        }
+        bodyMaterial.needsUpdate = true;
+      });
+    });
+
+    let animationFrameId: number;
+    function animate() {
+      animationFrameId = requestAnimationFrame(animate);
+      if (!isDragging) {
+        canGroup.rotation.y += 0.005;
+      }
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    function onResize() {
+      if (!parent) return;
+      camera.aspect = parent.clientWidth / parent.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(parent.clientWidth, parent.clientHeight);
+    }
+    window.addEventListener('resize', onResize);
+  }
+
+  initProductsCanCanvas();
+  document.addEventListener('astro:page-load', initProductsCanCanvas);
+</script>

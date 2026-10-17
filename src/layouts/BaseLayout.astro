@@ -60,11 +60,11 @@ const organizationSchema = {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
 
-    <!-- Google Fonts Preconnect: Space Grotesk (600-700), Inter (400-600), Space Mono -->
+    <!-- Google Fonts: Plus Jakarta Sans (Display) & Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -83,14 +83,7 @@ const organizationSchema = {
       />
     )}
   </head>
-  <body class="bg-[#080B0A] text-[#F5F6F0] antialiased selection:bg-[#C6FF3D] selection:text-[#080B0A]">
-    <!-- Custom Minimalist Coordinate Follower (Desktop only) -->
-    <div
-      id="cursor-tracker"
-      class="fixed pointer-events-none z-[100] w-3 h-3 border border-[#C6FF3D] rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 opacity-0 hidden md:block"
-      style="will-change: transform;"
-    ></div>
-
+  <body class="bg-black text-[#F5F6F0] antialiased selection:bg-[#C6FF3D] selection:text-black">
     <Header />
 
     <main id="main-content" class="min-h-screen pt-20">
@@ -104,35 +97,6 @@ const organizationSchema = {
 
       function initApp() {
         initScrollAnimations();
-
-        // Custom subtle cursor tracker on non-touch devices
-        const cursor = document.getElementById('cursor-tracker');
-        if (cursor && window.matchMedia('(pointer: fine)').matches) {
-          let mouseX = -100;
-          let mouseY = -100;
-          let posX = -100;
-          let posY = -100;
-
-          window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursor.style.opacity = '0.7';
-          }, { passive: true });
-
-          document.addEventListener('mouseleave', () => {
-            cursor.style.opacity = '0';
-          });
-
-          function animateCursor() {
-            posX += (mouseX - posX) * 0.15;
-            posY += (mouseY - posY) * 0.15;
-            if (cursor) {
-              cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
-            }
-            requestAnimationFrame(animateCursor);
-          }
-          animateCursor();
-        }
       }
 
       initApp();

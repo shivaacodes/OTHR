@@ -10,37 +10,37 @@ const lastUpdated = 'March 15, 2026';
   title="Privacy Policy // OTHR Creative Engineering"
   description="Transparent, privacy-first data handling principles of OTHR Engineering Studio. No third-party trackers or marketing cookies."
 >
-  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+  <div class="py-16 md:py-24 border-b border-neutral-900 bg-black">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
-        <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+      <div class="flex items-center gap-2 font-body text-xs text-neutral-500 mb-6">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <span class="text-[#C6FF3D]">PRIVACY</span>
+        <span class="text-[#C6FF3D]">Privacy</span>
       </div>
 
       <div class="flex flex-wrap items-center gap-3 mb-4">
-        <Badge variant="lime" dot={true}>ZERO TRACKERS</Badge>
-        <span class="font-mono text-xs text-[#5C635B]">EFFECTIVE: {lastUpdated}</span>
+        <Badge variant="lime" dot={true}>Zero Trackers</Badge>
+        <span class="text-xs text-neutral-500 font-medium">Effective: {lastUpdated}</span>
       </div>
 
-      <h1 class="font-display font-extrabold text-4xl sm:text-6xl text-[#F5F6F0] mb-6">
+      <h1 class="font-display font-extrabold text-4xl sm:text-6xl text-white mb-6">
         Privacy Policy<span class="text-[#C6FF3D]">.</span>
       </h1>
-      <p class="font-body text-lg text-[#A5A9A3] leading-relaxed">
+      <p class="font-body text-lg text-neutral-400 leading-relaxed">
         OTHR operates on a simple conviction: your data belongs to you. We do not sell data, load third-party ad pixels, or deploy invasive user tracking.
       </p>
     </div>
   </div>
 
-  <div class="py-16 bg-[#080B0A]">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 font-body text-base text-[#A5A9A3] leading-relaxed">
+  <div class="py-16 bg-black">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 font-body text-base text-neutral-400 leading-relaxed">
 
       <section class="space-y-4">
-        <h2 class="font-display font-bold text-2xl text-[#F5F6F0]">// 01 INFORMATION WE COLLECT</h2>
+        <h2 class="font-display font-bold text-2xl text-white">01. Information We Collect</h2>
         <p>
           We only collect information that you explicitly and knowingly provide to us via our project inquiry system or email correspondence:
         </p>
-        <ul class="list-disc pl-6 space-y-1 font-mono text-xs text-[#F5F6F0]">
+        <ul class="list-disc pl-6 space-y-1.5 text-sm text-neutral-300">
           <li>Name and business email address</li>
           <li>Company or organizational affiliation</li>
           <li>Project scope, budget range, and timeline parameters</li>
@@ -49,21 +49,21 @@ const lastUpdated = 'March 15, 2026';
       </section>
 
       <section class="space-y-4">
-        <h2 class="font-display font-bold text-2xl text-[#F5F6F0]">// 02 ZERO THIRD-PARTY MARKETING COOKIES</h2>
+        <h2 class="font-display font-bold text-2xl text-white">02. Zero Third-Party Marketing Cookies</h2>
         <p>
           This website does not set third-party tracking cookies, advertising beacons, Meta pixels, or surveillance scripts.
         </p>
         <p>
-          We utilize **Cloudflare Web Analytics**, an edge-level privacy-first measurement tool that does not store client IP addresses, fingerprint devices, or write persistent cookies to your browser.
+          We utilize <strong>Cloudflare Web Analytics</strong>, an edge-level privacy-first measurement tool that does not store client IP addresses, fingerprint devices, or write persistent cookies to your browser.
         </p>
       </section>
 
       <section class="space-y-4">
-        <h2 class="font-display font-bold text-2xl text-[#F5F6F0]">// 03 PURPOSE OF PROCESSING</h2>
+        <h2 class="font-display font-bold text-2xl text-white">03. Purpose of Processing</h2>
         <p>
           Contact information transmitted via our inquiry form is used exclusively for:
         </p>
-        <ul class="list-disc pl-6 space-y-1 font-mono text-xs text-[#F5F6F0]">
+        <ul class="list-disc pl-6 space-y-1.5 text-sm text-neutral-300">
           <li>Reviewing engineering feasibility and project scope</li>
           <li>Responding directly with preliminary proposals or meeting links</li>
           <li>Fulfilling legal and contractual obligations for engaged clients</li>
@@ -71,12 +71,12 @@ const lastUpdated = 'March 15, 2026';
       </section>
 
       <section class="space-y-4">
-        <h2 class="font-display font-bold text-2xl text-[#F5F6F0]">// 04 RETENTION & RIGHT TO ERASURE</h2>
+        <h2 class="font-display font-bold text-2xl text-white">04. Retention & Right to Erasure</h2>
         <p>
           Inquiry submissions that do not result in a commercial engagement are purged after 90 days. You have the absolute right to request immediate deletion of your contact records at any time by contacting:
         </p>
-        <div class="p-4 bg-[#141A16] border border-[#1D2620] rounded-xl font-mono text-xs text-[#C6FF3D]">
-          DISPATCH ERASURE REQUEST: <a href={`mailto:${siteConfig.contactEmail}`} class="underline">{siteConfig.contactEmail}</a>
+        <div class="p-6 bg-neutral-950 border border-neutral-900 rounded-2xl text-xs text-[#C6FF3D] font-semibold">
+          Dispatch Erasure Request: <a href={`mailto:${siteConfig.contactEmail}`} class="underline hover:text-white transition-colors">{siteConfig.contactEmail}</a>
         </div>
       </section>
 

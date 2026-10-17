@@ -4,55 +4,55 @@ import Badge from '../ui/Badge.astro';
 import Icon from '../ui/Icon.astro';
 ---
 
-<section class="py-24 md:py-32 bg-[#080B0A] border-b border-[#1D2620] relative" id="capabilities">
+<section class="py-24 md:py-32 bg-black border-b border-neutral-900 relative" id="capabilities">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#1D2620]">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-neutral-900">
       <div>
-        <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3" data-reveal>
-          // 02 CAPABILITIES
+        <div class="text-xs font-semibold text-[#C6FF3D] uppercase tracking-wider mb-3" data-reveal>
+          Capabilities
         </div>
-        <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#F5F6F0]" data-reveal data-delay="0.1">
+        <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white" data-reveal data-delay="0.1">
           What We Do<span class="text-[#C6FF3D]">.</span>
         </h2>
       </div>
       <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4" data-reveal data-delay="0.2">
-        <p class="font-body text-base text-[#A5A9A3] max-w-sm">
+        <p class="font-body text-base text-neutral-400 max-w-sm">
           Five integrated engineering disciplines. We eliminate spreadsheet toil and engineer flagship digital software.
         </p>
         <a
           href="/services"
-          class="font-mono text-xs text-[#C6FF3D] hover:underline uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap"
+          class="font-body text-xs font-semibold text-[#C6FF3D] hover:underline uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap"
         >
-          <span>ALL SERVICES & PRICING</span>
+          <span>All Services & Pricing</span>
           <Icon name="ArrowUpRight" size={13} />
         </a>
       </div>
     </div>
 
     <!-- Stacked Architectural Accordion List -->
-    <div class="divide-y divide-[#1D2620] border-t border-b border-[#1D2620]" id="capabilities-accordion">
+    <div class="divide-y divide-neutral-900 border-t border-b border-neutral-900" id="capabilities-accordion">
       {capabilities.map((cap, i) => (
-        <div class="capability-item group transition-colors hover:bg-[#0E1410]" data-reveal data-delay={0.08 * i}>
+        <div class="capability-item group transition-colors hover:bg-neutral-950/60 rounded-2xl px-4 sm:px-6" data-reveal data-delay={0.08 * i}>
           <button
             class="capability-toggle w-full py-8 text-left flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer focus:outline-none"
             aria-expanded={i === 0 ? 'true' : 'false'}
             data-index={i}
           >
             <div class="flex items-start md:items-center gap-6 md:gap-12">
-              <span class="font-mono text-sm sm:text-base text-[#5C635B] group-hover:text-[#C6FF3D] transition-colors tabular-nums">
-                [{cap.number}]
+              <span class="text-xs font-bold text-neutral-500 group-hover:text-[#C6FF3D] transition-colors tabular-nums">
+                {cap.number}
               </span>
-              <h3 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors">
+              <h3 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white group-hover:text-[#C6FF3D] transition-colors">
                 {cap.title}
               </h3>
             </div>
 
             <div class="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto">
-              <span class="font-body text-sm text-[#A5A9A3] max-w-xs hidden lg:inline line-clamp-1">
+              <span class="font-body text-sm text-neutral-400 max-w-xs hidden lg:inline line-clamp-1">
                 {cap.shortDesc}
               </span>
-              <div class="w-8 h-8 rounded-md border border-[#2A362E] group-hover:border-[#C6FF3D] flex items-center justify-center text-[#A5A9A3] group-hover:text-[#C6FF3D] transition-all">
+              <div class="w-8 h-8 rounded-full border border-neutral-800 group-hover:border-[#C6FF3D] flex items-center justify-center text-neutral-400 group-hover:text-[#C6FF3D] transition-all">
                 <span class="accordion-arrow transform transition-transform duration-300">
                   <Icon name="ChevronDown" size={16} />
                 </span>
@@ -66,26 +66,26 @@ import Icon from '../ui/Icon.astro';
               i === 0 ? 'max-h-[800px] opacity-100 pb-8' : 'max-h-0 opacity-0'
             }`}
           >
-            <div class="pt-4 pl-0 md:pl-20 pr-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="pt-2 pl-0 md:pl-16 pr-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
               <!-- Left: Deep Dive & Philosophy -->
               <div class="lg:col-span-2 space-y-6">
-                <p class="font-body text-base sm:text-lg text-[#F5F6F0] leading-relaxed">
+                <p class="font-body text-base sm:text-lg text-neutral-200 leading-relaxed">
                   {cap.deepDive}
                 </p>
 
-                <div class="p-5 bg-[#141A16] border-l-2 border-[#C6FF3D] rounded-r-md">
-                  <div class="font-mono text-[10px] text-[#C6FF3D] uppercase tracking-wider mb-1">// CORE PHILOSOPHY</div>
-                  <p class="font-body text-sm text-[#A5A9A3] italic">
+                <div class="p-5 bg-neutral-900 border-l-2 border-[#C6FF3D] rounded-r-2xl">
+                  <div class="text-[11px] font-semibold text-[#C6FF3D] uppercase tracking-wider mb-1">Core Philosophy</div>
+                  <p class="font-body text-sm text-neutral-300 italic">
                     "{cap.philosophy}"
                   </p>
                 </div>
 
                 <div>
-                  <div class="font-mono text-xs text-[#5C635B] uppercase tracking-wider mb-3">// PRIMARY DELIVERABLES</div>
+                  <div class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">Primary Deliverables</div>
                   <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {cap.deliverables.map((item) => (
-                      <li class="flex items-start gap-2 font-mono text-xs text-[#A5A9A3]">
-                        <span class="text-[#C6FF3D] mt-0.5">›</span>
+                      <li class="flex items-start gap-2 text-sm text-neutral-300">
+                        <span class="text-[#C6FF3D] mt-0.5 font-bold">›</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -94,8 +94,8 @@ import Icon from '../ui/Icon.astro';
               </div>
 
               <!-- Right: Tech Stack Matrix -->
-              <div class="bg-[#141A16] p-6 border border-[#1D2620] rounded-lg h-fit">
-                <div class="font-mono text-xs text-[#5C635B] uppercase tracking-wider mb-4">// PRIMARY TECH FOCUS</div>
+              <div class="bg-neutral-900 p-6 border border-neutral-800 rounded-2xl h-fit">
+                <div class="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-4">Primary Tech Focus</div>
                 <div class="flex flex-wrap gap-2">
                   {cap.techFocus.map((tech) => (
                     <Badge variant="lime" size="sm">{tech}</Badge>

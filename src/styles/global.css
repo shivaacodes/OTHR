@@ -2,45 +2,45 @@
 
 @layer base {
   :root {
-    --bg-primary: #080B0A;
-    --bg-surface: #141A16;
-    --bg-surface-elevated: #1B241E;
-    --bg-card: #0E1410;
-    --border-subtle: #1D2620;
-    --border-medium: #2A362E;
-    --border-accent: rgba(198, 255, 61, 0.25);
+    --bg-primary: #000000;
+    --bg-surface: #0A0A0A;
+    --bg-surface-elevated: #121212;
+    --bg-card: #0E0E0E;
+    --border-subtle: #1A1A1A;
+    --border-medium: #262626;
+    --border-accent: rgba(198, 255, 61, 0.3);
 
-    --text-primary: #F5F6F0;
-    --text-secondary: #A5A9A3;
-    --text-muted: #5C635B;
+    --text-primary: #FFFFFF;
+    --text-secondary: #9E9E9E;
+    --text-muted: #555555;
 
     --accent: #C6FF3D;
     --accent-muted: rgba(198, 255, 61, 0.12);
     --accent-glow: rgba(198, 255, 61, 0.35);
-    --accent-contrast: #080B0A;
+    --accent-contrast: #000000;
 
-    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-mono: 'Space Mono', monospace;
+    --font-mono: 'Inter', monospace;
   }
 
   [data-theme="deep-blue"] {
-    --bg-primary: #060913;
-    --bg-surface: #0E1626;
-    --bg-surface-elevated: #152238;
-    --bg-card: #0B111E;
-    --border-subtle: #19273F;
-    --border-medium: #243859;
+    --bg-primary: #02040A;
+    --bg-surface: #070B14;
+    --bg-surface-elevated: #0E1524;
+    --bg-card: #090E1A;
+    --border-subtle: #151F33;
+    --border-medium: #1F2D4A;
     --border-accent: rgba(56, 189, 248, 0.3);
 
-    --text-primary: #F0F4FC;
-    --text-secondary: #96A7C2;
-    --text-muted: #4B5E7D;
+    --text-primary: #FFFFFF;
+    --text-secondary: #94A3B8;
+    --text-muted: #475569;
 
     --accent: #38BDF8;
     --accent-muted: rgba(56, 189, 248, 0.14);
     --accent-glow: rgba(56, 189, 248, 0.4);
-    --accent-contrast: #060913;
+    --accent-contrast: #02040A;
   }
 
   * {
@@ -78,11 +78,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--bg-primary);
+    background: #000000;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1D2620;
+    background: #222222;
     border-radius: 3px;
   }
 
@@ -189,35 +189,41 @@
   text-shadow: 0 0 20px rgba(255, 85, 0, 0.5);
 }
 
-/* Subtle corner curves for UI boxes and inputs */
+/* Refined input and surface controls */
 input,
 textarea,
 select {
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
-.scanline-grid {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+/* HEX-style Tactile Showcase Cards */
+.hex-card {
+  border-radius: 24px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.crosshair-corner {
+@media (min-width: 640px) {
+  .hex-card {
+    border-radius: 28px;
+    padding: 28px;
+  }
+}
+
+.hex-card:hover {
+  transform: translateY(-4px);
+}
+
+.hex-media {
+  border-radius: 18px;
+  overflow: hidden;
+  background-color: #000000;
   position: relative;
 }
-.crosshair-corner::before {
-  content: '+';
-  position: absolute;
-  top: -8px;
-  left: -6px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-muted);
-  pointer-events: none;
-}
 
-/* Magnetic Button / Link Base */
+/* Clean Button Arrow Transition */
 .hover-reveal-arrow svg {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -239,15 +245,4 @@ select {
 
 .animate-marquee:hover {
   animation-play-state: paused;
-}
-
-/* Pulse radar indicator */
-@keyframes pulse-radar {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 var(--accent-glow); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px transparent; }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 transparent; }
-}
-
-.radar-dot {
-  animation: pulse-radar 2.4s infinite;
 }

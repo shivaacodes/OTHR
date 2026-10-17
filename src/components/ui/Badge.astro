@@ -9,20 +9,20 @@ export interface Props {
 const { variant = 'muted', size = 'sm', class: className = '', dot = false } = Astro.props;
 
 const variantStyles = {
-  lime: 'bg-[#C6FF3D]/10 text-[#C6FF3D] border-[#C6FF3D]/30',
-  muted: 'bg-[#141A16] text-[#A5A9A3] border-[#1D2620]',
-  outline: 'bg-transparent text-[#A5A9A3] border-[#2A362E]',
-  alert: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
+  lime: 'bg-[#C6FF3D]/15 text-[#C6FF3D] border-[#C6FF3D]/30',
+  muted: 'bg-neutral-900 text-neutral-300 border-neutral-800',
+  outline: 'bg-transparent text-neutral-400 border-neutral-800',
+  alert: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
   orange: 'bg-[#FF5500]/15 text-[#FF5500] border-[#FF5500]/40'
 };
 
 const sizeStyles = {
-  sm: 'text-[10px] tracking-widest px-2.5 py-1',
-  md: 'text-xs tracking-wider px-3 py-1.5'
+  sm: 'text-xs px-3 py-1',
+  md: 'text-xs px-3.5 py-1.5'
 };
 ---
 
-<span class={`inline-flex items-center gap-1.5 font-mono uppercase border rounded-[4px] ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}>
+<span class={`inline-flex items-center gap-1.5 font-body font-semibold rounded-full border ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}>
   {dot && (
     <span class={`w-1.5 h-1.5 rounded-full ${variant === 'lime' ? 'bg-[#C6FF3D] shadow-[0_0_8px_#C6FF3D]' : variant === 'orange' ? 'bg-[#FF5500] shadow-[0_0_8px_#FF5500]' : 'bg-current'}`} />
   )}

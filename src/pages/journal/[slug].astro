@@ -65,37 +65,37 @@ const articleSchema = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 
-  <article class="py-16 md:py-24">
+  <article class="py-16 md:py-24 bg-black">
     <!-- Article Header & Metadata -->
-    <header class="border-b border-[#1D2620] pb-12 mb-16">
+    <header class="border-b border-neutral-900 pb-12 mb-16">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-6">
-          <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+        <div class="flex items-center gap-2 font-body text-xs text-neutral-500 mb-6">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
           <span>/</span>
-          <a href="/journal" class="hover:text-[#C6FF3D] transition-colors">JOURNAL</a>
+          <a href="/journal" class="hover:text-white transition-colors">Journal</a>
           <span>/</span>
-          <span class="text-[#C6FF3D] uppercase">{article.id}</span>
+          <span class="text-[#C6FF3D]">{article.id}</span>
         </div>
 
         <div class="flex flex-wrap items-center gap-3 mb-6">
           <Badge variant="lime">{article.data.tags[0]}</Badge>
-          <span class="font-mono text-xs text-[#5C635B]">{formattedDate}</span>
-          <span class="font-mono text-xs text-[#5C635B]">// {article.data.readingTime}</span>
-          <span class="font-mono text-xs text-[#A5A9A3]">// By {article.data.author}</span>
+          <span class="text-xs text-neutral-500 font-medium">{formattedDate}</span>
+          <span class="text-xs text-neutral-500 font-medium">• {article.data.readingTime}</span>
+          <span class="text-xs text-neutral-400 font-medium">• By {article.data.author}</span>
         </div>
 
-        <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#F5F6F0] mb-6 leading-[1.05]">
+        <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white mb-6 leading-[1.05]">
           {article.data.title}
         </h1>
 
-        <p class="font-body text-xl sm:text-2xl text-[#A5A9A3] leading-relaxed">
+        <p class="font-body text-xl sm:text-2xl text-neutral-400 leading-relaxed">
           {article.data.description}
         </p>
 
         <!-- Editorial Review Notice if applicable -->
         {article.data.editorialNote && (
-          <div class="mt-8 p-4 bg-[#141A16] border-l-2 border-[#C6FF3D] rounded-r-lg font-mono text-xs text-[#A5A9A3]">
-            <span class="text-[#C6FF3D] font-bold mr-2">// EDITORIAL NOTICE:</span>
+          <div class="mt-8 p-5 bg-neutral-900 border-l-2 border-[#C6FF3D] rounded-r-2xl text-xs text-neutral-300">
+            <span class="text-[#C6FF3D] font-bold mr-2">Editorial Notice:</span>
             {article.data.editorialNote}
           </div>
         )}
@@ -108,17 +108,17 @@ const articleSchema = {
 
         <!-- Left Sticky Sidebar: Table of Contents & Social Share -->
         <aside class="hidden lg:block lg:col-span-3">
-          <div class="sticky top-28 space-y-8">
+          <div class="sticky top-28 space-y-6">
             <!-- Table of Contents -->
             {headings.length > 0 && (
-              <div class="bg-[#0E1410] border border-[#1D2620] rounded-xl p-5">
-                <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mb-3">// TABLE OF CONTENTS</div>
-                <nav class="space-y-1.5 font-mono text-xs">
+              <div class="bg-neutral-950 border border-neutral-900 rounded-2xl p-6">
+                <div class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">Table of Contents</div>
+                <nav class="space-y-2 text-xs">
                   {headings.filter((h) => h.depth <= 3).map((h) => (
                     <a
                       href={`#${h.slug}`}
-                      class={`block text-[#A5A9A3] hover:text-[#C6FF3D] transition-colors leading-relaxed line-clamp-1 ${
-                        h.depth === 3 ? 'pl-3 text-[11px] text-[#5C635B]' : ''
+                      class={`block text-neutral-400 hover:text-[#C6FF3D] transition-colors leading-relaxed line-clamp-1 ${
+                        h.depth === 3 ? 'pl-3 text-[11px] text-neutral-500' : ''
                       }`}
                     >
                       {h.text}
@@ -129,14 +129,14 @@ const articleSchema = {
             )}
 
             <!-- Share & Syndication Links -->
-            <div class="bg-[#0E1410] border border-[#1D2620] rounded-xl p-5 space-y-3 font-mono text-xs">
-              <div class="text-[10px] text-[#5C635B] uppercase tracking-wider">// SHARE ARTICLE</div>
+            <div class="bg-neutral-950 border border-neutral-900 rounded-2xl p-6 space-y-3 text-xs">
+              <div class="text-xs font-semibold text-neutral-500 uppercase tracking-wider">Share Article</div>
               <div class="flex flex-col gap-2">
                 <button
                   id="copy-article-link"
-                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] rounded-md text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors cursor-pointer"
+                  class="w-full py-2 px-3.5 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 rounded-full text-neutral-300 hover:text-white text-xs flex items-center justify-between transition-colors cursor-pointer font-medium"
                 >
-                  <span id="copy-text">COPY ARTICLE LINK</span>
+                  <span id="copy-text">Copy Article Link</span>
                   <Icon name="Copy" size={13} />
                 </button>
 
@@ -144,9 +144,9 @@ const articleSchema = {
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.data.title)}&url=${encodeURIComponent(currentUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] rounded-md text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors"
+                  class="w-full py-2 px-3.5 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 rounded-full text-neutral-300 hover:text-white text-xs flex items-center justify-between transition-colors font-medium"
                 >
-                  <span>SHARE ON X</span>
+                  <span>Share on X</span>
                   <Icon name="ArrowUpRight" size={13} />
                 </a>
 
@@ -154,18 +154,12 @@ const articleSchema = {
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] rounded-md text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors"
+                  class="w-full py-2 px-3.5 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 rounded-full text-neutral-300 hover:text-white text-xs flex items-center justify-between transition-colors font-medium"
                 >
-                  <span>SHARE ON LINKEDIN</span>
+                  <span>Share on LinkedIn</span>
                   <Icon name="ArrowUpRight" size={13} />
                 </a>
               </div>
-
-              {article.data.canonicalUrl && (
-                <div class="pt-3 border-t border-[#1D2620] text-[10px] text-[#5C635B]">
-                  CANONICAL SYNDICATION: <span class="text-[#A5A9A3]">MEDIUM READY</span>
-                </div>
-              )}
             </div>
           </div>
         </aside>
@@ -177,10 +171,10 @@ const articleSchema = {
           </div>
 
           <!-- Bottom Article Footer -->
-          <div class="mt-16 pt-8 border-t border-[#1D2620] flex flex-wrap items-center justify-between gap-4">
+          <div class="mt-16 pt-8 border-t border-neutral-900 flex flex-wrap items-center justify-between gap-4">
             <div class="flex flex-wrap gap-2">
               {article.data.tags.map((t) => (
-                <span class="font-mono text-xs text-[#5C635B] bg-[#141A16] px-2.5 py-1 border border-[#1D2620] rounded-[4px]">
+                <span class="text-xs text-neutral-400 bg-neutral-900 px-3 py-1 border border-neutral-800 rounded-full font-medium">
                   #{t}
                 </span>
               ))}
@@ -188,24 +182,24 @@ const articleSchema = {
 
             <a
               href="/journal"
-              class="font-mono text-xs text-[#C6FF3D] hover:underline uppercase flex items-center gap-1.5"
+              class="text-xs font-semibold text-[#C6FF3D] hover:underline uppercase tracking-wider flex items-center gap-1.5"
             >
-              <span>← RETURN TO ALL ARTICLES</span>
+              <span>← Return to All Articles</span>
             </a>
           </div>
 
           <!-- Related Articles -->
           {related && related.length > 0 && (
-            <div class="mt-16 pt-12 border-t border-[#1D2620]">
-              <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-6">// RELATED ESSAYS</div>
+            <div class="mt-16 pt-12 border-t border-neutral-900">
+              <div class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-6">Related Essays</div>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {related.map((rel) => (
                   <a
                     href={`/journal/${rel.id}`}
-                    class="p-6 bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 rounded-xl transition-colors block group"
+                    class="p-8 bg-neutral-950 border border-neutral-900 hover:border-neutral-700 rounded-3xl transition-colors block group"
                   >
-                    <div class="font-mono text-[10px] text-[#5C635B] mb-2">{rel.data.readingTime}</div>
-                    <div class="font-display font-bold text-lg text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors leading-snug">
+                    <div class="text-xs text-neutral-500 mb-2 font-medium">{rel.data.readingTime}</div>
+                    <div class="font-display font-bold text-lg text-white group-hover:text-[#C6FF3D] transition-colors leading-snug">
                       {rel.data.title}
                     </div>
                   </a>
@@ -228,7 +222,7 @@ const articleSchema = {
     line-height: 1.8;
   }
   .article-prose h2 {
-    color: #F5F6F0;
+    color: #FFFFFF;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 2rem;
@@ -238,7 +232,7 @@ const articleSchema = {
     scroll-margin-top: 6rem;
   }
   .article-prose h3 {
-    color: #F5F6F0;
+    color: #FFFFFF;
     font-family: var(--font-display);
     font-weight: 600;
     font-size: 1.5rem;
@@ -250,22 +244,22 @@ const articleSchema = {
     margin-bottom: 1.5rem;
   }
   .article-prose strong {
-    color: #F5F6F0;
+    color: #FFFFFF;
     font-weight: 600;
   }
   .article-prose code {
     color: #C6FF3D;
     font-family: var(--font-mono);
     font-size: 0.875em;
-    background-color: #141A16;
+    background-color: #171717;
     padding: 0.2em 0.4em;
-    border: 1px solid #1D2620;
-    border-radius: 4px;
+    border: 1px solid #262626;
+    border-radius: 6px;
   }
   .article-prose pre {
-    background-color: #0E1410 !important;
-    border: 1px solid #1D2620;
-    border-radius: 8px;
+    background-color: #0A0A0A !important;
+    border: 1px solid #262626;
+    border-radius: 16px;
     padding: 1.25rem;
     margin: 2rem 0;
     overflow-x: auto;
@@ -295,11 +289,11 @@ const articleSchema = {
     border-left: 3px solid #C6FF3D;
     padding-left: 1.25rem;
     margin: 2rem 0;
-    color: #F5F6F0;
+    color: #FFFFFF;
     font-style: italic;
   }
   .article-prose hr {
-    border-color: #1D2620;
+    border-color: #262626;
     margin: 3rem 0;
   }
   .article-prose table {
@@ -311,13 +305,13 @@ const articleSchema = {
   .article-prose th,
   .article-prose td {
     padding: 0.75rem 1rem;
-    border: 1px solid #1D2620;
+    border: 1px solid #262626;
     text-align: left;
   }
   .article-prose th {
-    background-color: #141A16;
-    color: #F5F6F0;
-    font-family: var(--font-mono);
+    background-color: #171717;
+    color: #FFFFFF;
+    font-family: var(--font-body);
     font-size: 0.75rem;
     text-transform: uppercase;
   }
@@ -336,7 +330,7 @@ const articleSchema = {
       if (copyText) {
         copyText.textContent = 'COPIED TO CLIPBOARD!';
         setTimeout(() => {
-          copyText.textContent = 'COPY ARTICLE LINK';
+          copyText.textContent = 'Copy Article Link';
         }, 2000);
       }
     });
