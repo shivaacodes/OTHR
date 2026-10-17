@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="12" fill="#080B0A"/>
-  <rect x="1" y="1" width="62" height="62" rx="11" stroke="#1D2620" stroke-width="2"/>
-  <!-- Geometric stylized OTHR monogram: square aperture with lime slash -->
-  <path d="M18 18H46V46H18V18Z" stroke="#F5F6F0" stroke-width="4" stroke-linejoin="round"/>
-  <line x1="26" y1="38" x2="38" y2="26" stroke="#C6FF3D" stroke-width="4" stroke-linecap="square"/>
-  <circle cx="44" cy="20" r="3" fill="#C6FF3D" />
+  <rect width="64" height="64" rx="14" fill="#080B0A"/>
+  <g transform="translate(5, 17.5) scale(0.097)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M156 0 H316 C402.156 0 472 69.8435 472 156 C472 242.156 402.156 312 316 312 H156 C69.8435 312 0 242.156 0 156 C0 69.8435 69.8435 0 156 0 Z M178.5 96.5 H293.5 C326.361 96.5 353 123.139 353 156 C353 188.861 326.361 215.5 293.5 215.5 H178.5 C145.639 215.5 119 188.861 119 156 C119 123.139 145.639 96.5 178.5 96.5 Z" fill="#DDEC43"/>
+    <circle cx="507.5" cy="263.5" r="48.5" fill="#DDEC43"/>
+  </g>
 </svg>
