@@ -1,7 +1,11 @@
 export interface ProductPricingPlan {
   name: string;
   price: string;
+  priceUsd: string;
+  priceInr: string;
   billing: string;
+  billingUsd: string;
+  billingInr: string;
   badge?: string;
   description: string;
   features: string[];
@@ -98,8 +102,12 @@ export const products: Product[] = [
       {
         name: 'Starter',
         price: '$0',
-        billing: 'per month',
-        description: 'Ideal for testing concepts & personal packaging explorations.',
+        priceUsd: '$0',
+        priceInr: '₹0',
+        billing: 'free trial',
+        billingUsd: 'free trial',
+        billingInr: 'free trial',
+        description: 'Ideal for testing concepts and personal packaging explorations.',
         features: [
           '100 FREE Credits (one-time)',
           'About 2 full projects',
@@ -112,10 +120,14 @@ export const products: Product[] = [
       },
       {
         name: 'Creator',
-        price: '$16.66',
-        billing: 'per month (billed annually)',
+        price: '$9',
+        priceUsd: '$9',
+        priceInr: '₹499',
+        billing: 'per month',
+        billingUsd: 'per month',
+        billingInr: 'per month',
         badge: 'BEST VALUE',
-        description: 'For freelance designers, art directors & packaging pros.',
+        description: 'For freelance designers, art directors, and packaging pros.',
         features: [
           '1,000 Credits / Month',
           'About 20–25 projects/mo',
@@ -129,10 +141,14 @@ export const products: Product[] = [
       },
       {
         name: 'Agency',
-        price: '$41.66',
-        billing: 'per month (billed annually)',
+        price: '$24',
+        priceUsd: '$24',
+        priceInr: '₹1,499',
+        billing: 'per month',
+        billingUsd: 'per month',
+        billingInr: 'per month',
         badge: 'FOR TEAMS',
-        description: 'For agile design teams, brand studios & fast-growing D2C agencies.',
+        description: 'For agile design teams, brand studios, and fast-growing D2C agencies.',
         features: [
           '3,000 Credits / Month',
           'About 60–70 projects/mo',

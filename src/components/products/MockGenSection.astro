@@ -88,20 +88,20 @@ const mockgen = products[0];
             </p>
           </div>
 
-          <!-- CTAs -->
-          <div class="flex flex-wrap items-center gap-3">
+          <!-- CTAs (Guaranteed same row across all screen sizes) -->
+          <div class="flex flex-row items-center gap-2.5 sm:gap-3 w-full">
             <a
               href="https://trymockgen.vercel.app/?auth=signup"
               target="_blank"
               rel="noopener noreferrer"
-              class="bg-black hover:bg-neutral-900 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full transition-all active:scale-95 flex items-center gap-1.5 shadow-md"
+              class="bg-black hover:bg-neutral-900 text-white font-semibold text-xs sm:text-sm px-4 sm:px-6 py-3 sm:py-3.5 rounded-full transition-all active:scale-95 flex items-center justify-center gap-1.5 shadow-md whitespace-nowrap flex-1 sm:flex-initial"
             >
               <span>Draft Your Design Free</span>
-              <Icon name="ArrowUpRight" size={15} />
+              <Icon name="ArrowUpRight" size={14} />
             </a>
             <a
               href="/products"
-              class="bg-black/10 hover:bg-black/20 text-black font-semibold text-xs sm:text-sm px-5 py-3.5 rounded-full transition-all active:scale-95"
+              class="bg-black/10 hover:bg-black/20 text-black font-semibold text-xs sm:text-sm px-3.5 sm:px-5 py-3 sm:py-3.5 rounded-full transition-all active:scale-95 text-center whitespace-nowrap flex-shrink-0"
             >
               Explore Specs
             </a>

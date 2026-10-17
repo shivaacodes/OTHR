@@ -142,16 +142,26 @@ const studioDisciplines = [
 
       <!-- Section: Featured Commercial Offerings -->
       <section>
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-neutral-900">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-neutral-900">
           <div>
             <div class="text-xs font-semibold text-[#C6FF3D] uppercase tracking-wider mb-2">Packaged Services</div>
             <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
               Packaged Engineering Engagements
             </h2>
           </div>
-          <p class="font-body text-sm text-neutral-400 max-w-md">
-            Structured scopes designed for rapid execution and measurable business impact without endless agency meetings.
-          </p>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+            <p class="font-body text-sm text-neutral-400 max-w-xs">
+              Structured scopes designed for rapid execution and direct engineering delivery.
+            </p>
+            <div class="inline-flex items-center p-1 bg-neutral-900 border border-neutral-800 rounded-full text-xs font-semibold self-start sm:self-auto">
+              <button class="service-currency-btn px-3 py-1 rounded-full transition-all bg-[#C6FF3D] text-black font-bold cursor-pointer" data-currency="usd">
+                USD ($)
+              </button>
+              <button class="service-currency-btn px-3 py-1 rounded-full transition-all text-neutral-400 hover:text-white cursor-pointer" data-currency="inr">
+                INR (₹)
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="space-y-12">
@@ -216,8 +226,12 @@ const studioDisciplines = [
                     {offering.pricingInfo && (
                       <div class="mb-6 p-5 bg-black border border-neutral-800 rounded-2xl">
                         <div class="text-xs font-medium text-neutral-400 uppercase">Indicative Engagement Range</div>
-                        <div class="font-display font-extrabold text-2xl sm:text-3xl text-[#C6FF3D] mt-1">
-                          {offering.pricingInfo.startingRange}
+                        <div
+                          class="font-display font-extrabold text-2xl sm:text-3xl text-[#C6FF3D] mt-1 service-price-range transition-opacity duration-200"
+                          data-usd={offering.pricingInfo.usdRange}
+                          data-inr={offering.pricingInfo.inrRange}
+                        >
+                          {offering.pricingInfo.usdRange}
                         </div>
                         <div class="text-xs text-neutral-500 mt-1">
                           {offering.pricingInfo.unit} • Typical timeline: {offering.pricingInfo.typicalTimeline}
@@ -307,3 +321,44 @@ const studioDisciplines = [
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  function initServiceCurrency() {
+    const buttons = document.querySelectorAll('.service-currency-btn');
+    const prices = document.querySelectorAll<HTMLElement>('.service-price-range');
+
+    function updateCurrency(curr: 'usd' | 'inr') {
+      buttons.forEach((btn) => {
+        if (btn.getAttribute('data-currency') === curr) {
+          btn.className = 'service-currency-btn px-3 py-1 rounded-full transition-all bg-[#C6FF3D] text-black font-bold cursor-pointer';
+        } else {
+          btn.className = 'service-currency-btn px-3 py-1 rounded-full transition-all text-neutral-400 hover:text-white cursor-pointer';
+        }
+      });
+
+      prices.forEach((el) => {
+        const val = curr === 'inr' ? el.getAttribute('data-inr') : el.getAttribute('data-usd');
+        if (val) el.textContent = val;
+      });
+
+      try {
+        localStorage.setItem('othr_currency', curr);
+      } catch (e) {}
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const c = (btn.getAttribute('data-currency') || 'usd') as 'usd' | 'inr';
+        updateCurrency(c);
+      });
+    });
+
+    try {
+      const saved = (localStorage.getItem('othr_currency') || 'usd') as 'usd' | 'inr';
+      updateCurrency(saved);
+    } catch (e) {}
+  }
+
+  initServiceCurrency();
+  document.addEventListener('astro:page-load', initServiceCurrency);
+</script>

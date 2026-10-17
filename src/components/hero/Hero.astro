@@ -20,29 +20,12 @@ import Icon from '../ui/Icon.astro';
       </h1>
 
       <!-- Supporting Statement -->
-      <p class="font-body text-base sm:text-lg lg:text-xl text-neutral-400 max-w-2xl leading-relaxed mb-8">
+      <p class="font-body text-base sm:text-lg lg:text-xl text-neutral-400 max-w-2xl leading-relaxed mb-10">
         We design and engineer bespoke web flagships, internal automation systems, and original software products. Built with engineering precision.
       </p>
 
-      <!-- Action Buttons -->
-      <div class="flex flex-wrap items-center gap-4">
-        <a
-          href="/products"
-          class="bg-[#FFE500] hover:bg-[#ffea33] text-black font-bold text-sm px-7 py-3.5 rounded-full transition-all flex items-center gap-2 shadow-[0_4px_20px_rgba(255,229,0,0.3)] hover:shadow-[0_6px_28px_rgba(255,229,0,0.5)] active:scale-95"
-        >
-          <span>Explore MockGen</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-        </a>
-        <a
-          href="/contact"
-          class="bg-neutral-900 hover:bg-neutral-800 text-white border border-neutral-800 font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95"
-        >
-          Get in touch
-        </a>
-      </div>
-
       <!-- Capability Highlights -->
-      <div class="mt-14 pt-8 border-t border-neutral-900 flex flex-wrap items-center gap-8 text-xs text-neutral-400">
+      <div class="pt-8 border-t border-neutral-900 flex flex-wrap items-center gap-8 text-xs text-neutral-400">
         <div>
           <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Flagship Web</span>
           <span class="text-white font-medium">High-Speed Edge Architecture</span>
@@ -53,7 +36,7 @@ import Icon from '../ui/Icon.astro';
         </div>
         <div>
           <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Products</span>
-          <span class="text-[#FFE500] font-medium">MockGen 3D Pipeline</span>
+          <a href="/products" class="text-[#FFE500] hover:underline font-medium">MockGen 3D Pipeline →</a>
         </div>
       </div>
     </div>

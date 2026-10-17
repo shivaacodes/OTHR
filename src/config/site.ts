@@ -14,6 +14,8 @@ export interface IndicativePricing {
   serviceId: string;
   title: string;
   startingRange: string;
+  usdRange: string;
+  inrRange: string;
   unit: string;
   typicalTimeline: string;
   note: string;
@@ -53,30 +55,36 @@ export const siteConfig = {
     siteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || null
   },
 
-  // Indicative Commercial Pricing Guides
+  // Indicative Commercial Pricing Guides (Accessible early-stage studio pricing)
   pricing: [
     {
       serviceId: 'digital-upgrade',
       title: 'Digital Flagships & Web',
-      startingRange: '$4,500 – $12,000',
-      unit: 'per engagement',
-      typicalTimeline: '3–6 weeks',
-      note: 'Scope-dependent. High-performance Astro/Next.js flagships with 3D WebGL and sub-second edge speeds.'
+      startingRange: '$950 – $2,500',
+      usdRange: '$950 – $2,500',
+      inrRange: '₹45,000 – ₹1,20,000',
+      unit: 'per project',
+      typicalTimeline: '2–4 weeks',
+      note: 'Scope-dependent. High-performance Astro/TypeScript flagships with sub-second edge speeds and kinetic typography.'
     },
     {
       serviceId: 'workflow-fix',
       title: 'Workflow Automation & Ops',
-      startingRange: '$3,500 – $9,500',
+      startingRange: '$750 – $1,800',
+      usdRange: '$750 – $1,800',
+      inrRange: '₹35,000 – ₹90,000',
       unit: 'per system',
-      typicalTimeline: '2–4 weeks',
-      note: 'Custom operational portals replacing fragile spreadsheets and manual workflows.'
+      typicalTimeline: '1–3 weeks',
+      note: 'Custom operational portals and automated pipelines replacing fragile spreadsheets and manual data entry.'
     },
     {
       serviceId: 'custom-software',
       title: 'Custom Software & SaaS MVP',
-      startingRange: '$8,000 – $25,000',
+      startingRange: '$1,800 – $4,500',
+      usdRange: '$1,800 – $4,500',
+      inrRange: '₹90,000 – ₹2,50,000',
       unit: 'per milestone',
-      typicalTimeline: '6–12 weeks',
+      typicalTimeline: '4–8 weeks',
       note: 'Full-stack software architecture, PostgreSQL schemas, clean APIs, and production deployment.'
     }
   ] as IndicativePricing[]
