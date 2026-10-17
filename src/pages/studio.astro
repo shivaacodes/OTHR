@@ -25,13 +25,13 @@ import { studioData } from '../data/studio';
             The Studio<span class="text-[#C6FF3D]">.</span>
           </h1>
           <p class="font-body text-xl text-[#A5A9A3] max-w-2xl leading-relaxed">
-            Independent creative engineering. We build digital experiences, useful software, and things that probably shouldn't exist. But do.
+            Independent creative engineering. We design and engineer websites, software, and automations that make businesses work better.
           </p>
         </div>
 
         <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
-          <div class="text-[#5C635B] text-[10px]">// OPERATIONAL ARCHITECTURE</div>
-          <div class="text-[#C6FF3D]">FOUNDED 2024 // GLOBAL NODES</div>
+          <div class="text-[#5C635B] text-[10px]">// STUDIO STRUCTURE</div>
+          <div class="text-[#C6FF3D]">INDEPENDENT // BENGALURU & REMOTE</div>
         </div>
       </div>
     </div>
@@ -39,8 +39,27 @@ import { studioData } from '../data/studio';
 
   <div class="py-16 md:py-24 bg-[#080B0A]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+      <!-- Founder Story & Why OTHR Exists -->
+      <section class="max-w-4xl space-y-6">
+        <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest">// THE ORIGIN & FOUNDER NOTE</div>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0]">
+          Built to kill corporate bloat and generic templates.
+        </h2>
+        <div class="space-y-4 font-body text-lg text-[#A5A9A3] leading-relaxed">
+          <p>
+            OTHR was founded by <strong class="text-[#F5F6F0]">Shiva Sajay</strong>, a creative developer and software engineer.
+          </p>
+          <p>
+            The studio started from an obvious frustration: most modern web software is interchangeable. Agencies charge six figures to paste generic corporate templates together, while engineering agencies dismiss visual craftsmanship as unnecessary decoration.
+          </p>
+          <p>
+            We operate differently. OTHR combines technical discipline (compiled languages, relational schemas, deterministic queues) with experimental creative coding (WebGL, Three.js, kinetic typography). When you partner with us, you work directly with engineers who build your systems—with zero sales reps, zero bureaucratic layers, and complete technical transparency.
+          </p>
+        </div>
+      </section>
+
       <!-- Manifesto -->
-      <section class="max-w-4xl space-y-8">
+      <section class="max-w-4xl space-y-8 pt-12 border-t border-[#1D2620]">
         <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest">// THE MANIFESTO</div>
         <div class="space-y-6">
           {studioData.manifesto.map((paragraph, i) => (
@@ -84,10 +103,10 @@ import { studioData } from '../data/studio';
         </div>
       </section>
 
-      <!-- Global Studio Coordinates -->
+      <!-- Location & Collaboration Coordinates -->
       <section class="pt-12 border-t border-[#1D2620]">
-        <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-10">// ACTIVE STUDIO NODES</div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-10">// STUDIO LOCATION & GLOBAL COLLABORATION</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {studioData.coordinates.map((coord) => (
             <div class="p-6 bg-[#141A16] border border-[#1D2620] space-y-2">
               <div class="font-mono text-xs text-[#C6FF3D] font-bold">{coord.label}</div>

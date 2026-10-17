@@ -18,11 +18,11 @@ export const experiments: Experiment[] = [
     title: 'CHROMA-FIELD // Kinetic Vector Dye',
     category: 'Shader / GLSL',
     status: 'LIVE PROTOTYPE',
-    description: 'Real-time 2D Navier-Stokes velocity advection on the GPU. Cursor velocity generates localized turbulence while acid lime dye dissipates according to viscous diffusion.',
-    tags: ['WebGL', 'GLSL', 'Fluid Dynamics', 'Eulerian Simulation'],
-    date: '2025.02',
+    description: 'Real-time 2D kinetic vector particle field. Cursor velocity injects localized turbulence and kinetic energy, tracing acid lime velocity vectors with fluid dissipation trails.',
+    tags: ['Canvas 2D', 'Kinetic Particles', 'Vector Field', 'Interactive Physics'],
+    date: '2026.02',
     interactiveType: 'fluid',
-    instructions: 'Move cursor across canvas to inject kinetic energy and trace fluid vectors.'
+    instructions: 'Move or drag cursor across canvas to inject kinetic energy and trace fluid vectors.'
   },
   {
     id: 'exp-02',
@@ -30,11 +30,11 @@ export const experiments: Experiment[] = [
     title: 'ASCII-NORMALS // Surface Luminance Raster',
     category: 'Typography',
     status: 'LIVE PROTOTYPE',
-    description: 'Real-time raymarched 3D geometric solid rendered purely through high-contrast UTF-8 monospace glyphs, mapped to surface normals and specular angle calculations.',
-    tags: ['Monospace Glyphs', 'Raymarching', 'Shading', 'Canvas 2D'],
-    date: '2025.01',
+    description: 'Real-time 3D geometric solid rendered purely through high-contrast UTF-8 monospace glyphs, mapped to surface normals and luminance calculations.',
+    tags: ['Monospace Glyphs', 'Geometry', 'Shading', 'Canvas 2D'],
+    date: '2026.01',
     interactiveType: 'ascii',
-    instructions: 'Drag to rotate the 3D glyph volume. Observe glyph density adapt to lighting angle.'
+    instructions: 'Drag or adjust slider to control the 3D glyph volume. Observe glyph density adapt to lighting angle.'
   },
   {
     id: 'exp-03',

@@ -35,22 +35,45 @@ const commercialOfferings = [
     badge: 'COMMERCIAL OFFERING // AUTOMATION & OPS',
     title: 'Workflow Fix',
     tagline: 'Custom internal software that permanently eliminates repetitive administrative friction.',
-    summary: 'For mid-sized companies accidentally running critical operations on fragile, 48-tab Excel sheets and manual email forwards. We engineer bespoke, role-secured operational web applications that automate multi-step calculations, data ingestion, and cross-platform synchronization.',
+    summary: 'For companies running critical operations on fragile spreadsheets and manual email forwards. We engineer bespoke, role-secured operational web applications and background jobs that automate calculations, document generation, and cross-platform synchronization.',
     problemsSolved: [
-      'Senior operations managers spend 10+ hours a week copying data between spreadsheets and accounting software.',
+      'Operations teams spend hours each week manually copying data between spreadsheets and systems.',
       'Accidental formula corruption or concurrent spreadsheet overwrites create costly data errors.',
-      'Zero role-based permissions expose sensitive payroll, customer, or inventory figures to entire teams.',
-      'Brittle no-code zaps silently break on schema changes, causing data drop-offs.'
+      'Zero role-based permissions expose sensitive payroll, customer, or candidate records to unauthorized staff.',
+      'Brittle no-code zaps silently fail without logging or retry logic.'
     ],
     deliverables: [
-      'Custom internal operational portal (tailored precisely to your morning workflow)',
-      'Secure PostgreSQL relational database with immutable audit ledgers and row-level security',
-      'Automated background sync jobs linking legacy ERPs, payment processors, and messaging APIs',
-      'Granular role-based access control (RBAC) preventing unauthorized data visibility',
-      'Automated batch report generation (encrypted PDFs, CSV exports, WhatsApp/Slack delivery)'
+      'Custom internal operational portal (tailored precisely to your team’s workflow)',
+      'Secure PostgreSQL relational database with structured audit ledgers',
+      'Automated batch report generation (encrypted PDFs, CSV exports, WhatsApp/Slack dispatch)',
+      'Deterministic retry queues and token-bucket API pacing (preventing rate limit lockouts)',
+      'Granular role-based access control (RBAC) preventing unauthorized data visibility'
     ],
-    techStack: ['Go', 'PostgreSQL', 'Redis', 'TypeScript / Node', 'Docker', 'WebSockets'],
+    techStack: ['Go', 'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'WhatsApp Cloud API'],
     pricingInfo: siteConfig.pricing.find((p) => p.serviceId === 'workflow-fix')
+  },
+  {
+    id: 'custom-software',
+    number: '03',
+    badge: 'COMMERCIAL OFFERING // SOFTWARE & SYSTEMS',
+    title: 'Custom Software & Systems',
+    tagline: 'Reliable backend services, full-stack web applications, and production MVP engineering.',
+    summary: 'For founders and businesses that need specialized web software built right the first time. We design normalized relational databases, high-throughput APIs, role-based authorization systems, and clean frontends built for durability.',
+    problemsSolved: [
+      'Off-the-shelf SaaS products fail to fit your business logic and charge thousands in user seat tax.',
+      'Previous prototype breaks under concurrent users or database locks.',
+      'Critical backend logic is untyped, untested, and lacks structured audit trails.',
+      'Need an MVP ready for commercial pilots without hiring a bloated full-time engineering department.'
+    ],
+    deliverables: [
+      'Full-stack application architecture (FastAPI / Go backend + modern frontend)',
+      'Relational PostgreSQL database schema design, indexing, and migration pipelines',
+      'Secure authentication, session management, and granular role-based access control (RBAC)',
+      'Integration with payment processors (Stripe), email/messaging, and external webhooks',
+      'Containerized deployment with Docker and automated CI/CD staging environments'
+    ],
+    techStack: ['Go', 'FastAPI', 'PostgreSQL', 'TypeScript', 'Docker', 'Redis'],
+    pricingInfo: siteConfig.pricing.find((p) => p.serviceId === 'custom-software')
   }
 ];
 
@@ -58,7 +81,7 @@ const studioDisciplines = [
   {
     num: '01',
     title: 'Custom Software Engineering',
-    desc: 'Distributed microservices, event-driven architectures, and resilient backends in Go and Rust built for zero-downtime reliability.'
+    desc: 'Reliable backend services, transactional APIs, and robust relational database architectures in Go and Python.'
   },
   {
     num: '02',
@@ -68,7 +91,7 @@ const studioDisciplines = [
   {
     num: '03',
     title: 'Creative Web Development',
-    desc: 'Digital flagships, custom WebGL/Three.js 3D centerpieces, and kinetic editorial experiences with 95+ Lighthouse scores.'
+    desc: 'Digital flagships, custom WebGL/Three.js centerpieces, and kinetic editorial experiences with 95+ Lighthouse scores.'
   },
   {
     num: '04',
@@ -78,14 +101,14 @@ const studioDisciplines = [
   {
     num: '05',
     title: 'API and Systems Integration',
-    desc: 'Bespoke connectors between legacy databases, modern REST/gRPC endpoints, and third-party platforms with token-bucket rate limiting.'
+    desc: 'Bespoke connectors between legacy databases, modern REST endpoints, and third-party APIs with deterministic rate limiting.'
   }
 ];
 ---
 
 <BaseLayout
   title="Services & Capabilities // OTHR Creative Engineering"
-  description="Explore OTHR's commercial offerings: Digital Upgrade (flagship web experiences) and Workflow Fix (custom internal automation tools), plus our 5 core engineering disciplines."
+  description="Explore OTHR's commercial offerings: Digital Upgrade (flagship web experiences), Workflow Fix (internal automation tools), and Custom Software & Systems."
 >
   <!-- Page Header -->
   <div class="py-16 md:py-24 border-b border-[#1D2620]">
@@ -108,7 +131,7 @@ const studioDisciplines = [
 
         <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
           <div class="text-[#5C635B] text-[10px]">// COMMERCIAL ARCHITECTURE</div>
-          <div class="text-[#C6FF3D]">2 PACKAGED OFFERINGS // 5 DISCIPLINES</div>
+          <div class="text-[#C6FF3D]">3 PACKAGED OFFERINGS // 5 DISCIPLINES</div>
         </div>
       </div>
     </div>

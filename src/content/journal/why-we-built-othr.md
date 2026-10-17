@@ -1,14 +1,13 @@
 ---
 title: "Why We Built OTHR."
 description: "Why we founded an independent creative engineering studio to fight software conformity, corporate bloat, and the death of craftsmanship."
-publishDate: "2025-03-15"
+publishDate: "2026-03-22"
 author: "Founding Team"
 tags: ["Studio Manifesto", "OTHR", "Creative Engineering", "Craftsmanship", "Independent"]
 readingTime: "6 min read"
 draft: false
 featured: true
 editorialNote: "The founding manifesto and engineering convictions behind OTHR."
-canonicalUrl: "https://medium.com/@othr_engineering/why-we-built-othr"
 ---
 
 > [!NOTE]

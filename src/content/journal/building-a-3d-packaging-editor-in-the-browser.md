@@ -1,14 +1,13 @@
 ---
 title: "Building a 3D Packaging Editor in the Browser."
 description: "How we engineered parametric folding geometry, physically based foil shaders, and sub-50ms canvas response in WrapForge."
-publishDate: "2025-02-18"
+publishDate: "2026-02-18"
 author: "OTHR 3D & Graphics Lab"
-tags: ["Three.js", "WebGL", "GLSL", "WrapForge", "WebAssembly", "Creative Coding"]
+tags: ["Three.js", "WebGL", "GLSL", "WrapForge", "Creative Coding"]
 readingTime: "8 min read"
 draft: false
 featured: true
-editorialNote: "Technical architecture teardown for WrapForge (v0.4-alpha). All shaders and procedural algorithms run client-side."
-canonicalUrl: "https://medium.com/@othr_engineering/building-a-3d-packaging-editor-in-the-browser"
+editorialNote: "Technical architecture teardown for WrapForge WebGL prototype. Shaders and procedural fold algorithms run client-side."
 ---
 
 > [!NOTE]

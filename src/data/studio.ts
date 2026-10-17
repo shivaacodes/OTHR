@@ -79,24 +79,18 @@ export const studioData: StudioInfo = {
   ],
   coordinates: [
     {
-      label: 'STUDIO // PRIMARY',
-      location: 'Bengaluru / Remote',
+      label: 'STUDIO // BASE',
+      location: 'Bengaluru, India',
       timezone: 'IST',
       offset: 'UTC+5:30'
     },
     {
-      label: 'NODE // AMERICAS',
-      location: 'San Francisco / New York',
-      timezone: 'EST / PST',
-      offset: 'UTC-5:00 / UTC-8:00'
-    },
-    {
-      label: 'NODE // EUROPE',
-      location: 'London / Berlin',
-      timezone: 'GMT / CET',
-      offset: 'UTC+0:00 / UTC+1:00'
+      label: 'ENGAGEMENTS // GLOBAL',
+      location: 'Remote Worldwide',
+      timezone: 'ALL REGIONS',
+      offset: 'ASYNC-FIRST'
     }
   ],
-  contactEmail: 'studio@othr.engineering',
-  systemStatus: 'ALL SYSTEMS OPERATIONAL // 60 FPS'
+  contactEmail: 'shivasajay007@gmail.com',
+  systemStatus: 'STUDIO ACTIVE // ALL SYSTEMS OPERATIONAL'
 };

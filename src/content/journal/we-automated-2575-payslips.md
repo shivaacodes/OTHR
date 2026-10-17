@@ -1,14 +1,13 @@
 ---
 title: "We Automated 2,575 Payslips. Then WhatsApp's API Limits Hit Us."
 description: "A post-mortem on high-throughput PDF generation, WhatsApp Cloud API message tiering, and why batch queues need deterministic rate limits."
-publishDate: "2025-01-14"
+publishDate: "2026-01-20"
 author: "OTHR Systems Team"
 tags: ["Automation Systems", "API Engineering", "Post-Mortem", "Go", "Queues"]
 readingTime: "7 min read"
 draft: false
 featured: true
 editorialNote: "Production operational metrics reflect sanitized internal run logs. Client recipient identifiers have been anonymized."
-canonicalUrl: "https://medium.com/@othr_engineering/we-automated-2575-payslips-whatsapp-limits"
 ---
 
 > [!NOTE]

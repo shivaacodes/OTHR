@@ -1,14 +1,13 @@
 ---
 title: "Why I Chose Go for a Payroll Automation System."
 description: "Why Go beat Python and Node.js for zero-downtime batch calculation, single-binary distribution, and strict memory predictability."
-publishDate: "2025-01-28"
+publishDate: "2026-02-04"
 author: "OTHR Engineering Team"
 tags: ["Go", "Systems Architecture", "Backend", "Performance", "Concurrency"]
 readingTime: "6 min read"
 draft: false
 featured: false
 editorialNote: "Benchmark figures derived from simulated 5,000-record batch runs in controlled 2 vCPU 2GB RAM container environments."
-canonicalUrl: "https://medium.com/@othr_engineering/why-i-chose-go-for-payroll-automation"
 ---
 
 > [!NOTE]

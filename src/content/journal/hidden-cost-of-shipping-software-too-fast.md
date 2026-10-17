@@ -1,14 +1,13 @@
 ---
 title: "The Hidden Cost of Shipping Software Too Fast."
 description: "Why moving fast and breaking things usually ends with you moving slow and fixing broken things at 3:00 AM."
-publishDate: "2025-02-05"
+publishDate: "2026-03-10"
 author: "OTHR Engineering Team"
 tags: ["Engineering Philosophy", "Technical Debt", "Product Engineering", "Architecture"]
 readingTime: "5 min read"
 draft: false
 featured: false
 editorialNote: "Essay exploring technical debt interest rates in early-stage engineering projects."
-canonicalUrl: "https://medium.com/@othr_engineering/hidden-cost-of-shipping-software-too-fast"
 ---
 
 > [!NOTE]

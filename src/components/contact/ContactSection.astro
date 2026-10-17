@@ -50,10 +50,10 @@ const timelineOptions = [
         </div>
 
         <p class="font-body text-base sm:text-lg text-[#A5A9A3] leading-relaxed">
-          Whether you need a **Digital Upgrade** for your brand flagship, a **Workflow Fix** to kill manual spreadsheet toil, or custom systems engineering—tell us what you’re building.
+          Whether you need a <strong class="text-[#F5F6F0]">Digital Upgrade</strong> for your brand flagship, a <strong class="text-[#F5F6F0]">Workflow Fix</strong> to kill manual spreadsheet toil, or custom systems engineering—tell us what you’re building.
         </p>
 
-        <!-- Direct Coordinates Placeholders -->
+        <!-- Direct Coordinates -->
         <div class="p-6 bg-[#0E1410] border border-[#1D2620] space-y-4 font-mono text-xs">
           <div>
             <div class="text-[10px] text-[#5C635B] uppercase tracking-wider">// DIRECT DISPATCH</div>
@@ -64,12 +64,12 @@ const timelineOptions = [
 
           <div class="pt-3 border-t border-[#1D2620]">
             <div class="text-[10px] text-[#5C635B] uppercase tracking-wider">// RESPONSE WINDOW</div>
-            <div class="text-[#A5A9A3]">WITHIN 24 BUSINESS HOURS BY A LEAD ENGINEER</div>
+            <div class="text-[#A5A9A3]">1–2 BUSINESS DAYS BY A LEAD ENGINEER</div>
           </div>
 
           <div class="pt-3 border-t border-[#1D2620] flex items-center justify-between text-[#5C635B]">
-            <span>PGP KEY: AVAILABLE ON REQUEST</span>
-            <span class="text-[#C6FF3D]">ENCRYPTED</span>
+            <span>ENGINEER-LED // NO SALES TEAMS</span>
+            <span class="text-[#C6FF3D]">DIRECT</span>
           </div>
         </div>
       </div>
@@ -149,7 +149,7 @@ const timelineOptions = [
                 name="name"
                 required
                 maxlength="100"
-                placeholder="Ada Lovelace"
+                placeholder="Alex Morgan"
                 class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] transition-colors"
               />
             </div>
@@ -164,7 +164,7 @@ const timelineOptions = [
                 name="email"
                 required
                 maxlength="150"
-                placeholder="ada@analytical-engine.io"
+                placeholder="alex@company.com"
                 class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] transition-colors"
               />
             </div>
@@ -179,7 +179,7 @@ const timelineOptions = [
               id="contact-company"
               name="company"
               maxlength="100"
-              placeholder="Babbage Labs Inc."
+              placeholder="Acme Studio Inc."
               class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] transition-colors"
             />
           </div>
@@ -217,12 +217,6 @@ const timelineOptions = [
             </label>
           </div>
 
-          <!-- Error Alert Banner -->
-          <div id="form-error-banner" class="hidden p-4 bg-red-950/40 border border-red-500/50 text-red-300 font-mono text-xs">
-            <div class="font-bold mb-1">✕ SUBMISSION ERROR</div>
-            <div id="form-error-text">Please review form fields.</div>
-          </div>
-
           <!-- Submit Button -->
           <div class="pt-2">
             <button
@@ -234,16 +228,45 @@ const timelineOptions = [
               <Icon name="ArrowUpRight" size={16} />
             </button>
           </div>
-
-          <!-- Submission Feedback State -->
-          <div id="form-success-message" class="hidden p-6 bg-[#141A16] border border-[#C6FF3D] text-[#C6FF3D] font-mono text-xs space-y-2">
-            <div class="font-bold text-sm">✓ INQUIRY DISPATCHED SUCCESSFULLY</div>
-            <div class="text-[#F5F6F0]" id="success-ref-text">REFERENCE CODE: INQ-PENDING</div>
-            <div class="text-[#A5A9A3] leading-relaxed pt-1" id="success-subtext">
-              Telemetry received. A lead engineer will review your project parameters and respond within 24 hours.
-            </div>
-          </div>
         </form>
+
+        <!-- Submission Feedback State -->
+        <div id="form-success-message" class="hidden p-6 sm:p-8 bg-[#141A16] border border-[#C6FF3D] space-y-4 font-mono text-xs">
+          <div class="flex items-center gap-2 text-[#C6FF3D] font-bold text-sm">
+            <span>✓</span>
+            <span>INQUIRY PREPARED & COPIED</span>
+          </div>
+
+          <div class="text-[#F5F6F0] text-xs font-bold" id="success-ref-text">
+            REFERENCE CODE: INQ-PENDING
+          </div>
+
+          <p class="text-[#A5A9A3] leading-relaxed font-body text-sm">
+            Your inquiry details have been copied to your clipboard, and your email client was prompted to send directly to <strong class="text-[#F5F6F0]">shivasajay007@gmail.com</strong>.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <a
+              id="direct-mailto-link"
+              href={`mailto:${siteConfig.contactEmail}`}
+              class="px-4 py-2.5 bg-[#C6FF3D] text-[#080B0A] font-bold text-center tracking-wider uppercase transition-colors"
+            >
+              OPEN EMAIL CLIENT
+            </a>
+            <button
+              type="button"
+              id="copy-brief-btn"
+              class="px-4 py-2.5 bg-[#080B0A] border border-[#2A362E] hover:border-[#C6FF3D] text-[#F5F6F0] text-center tracking-wider uppercase transition-colors cursor-pointer"
+            >
+              COPY BRIEF AGAIN
+            </button>
+          </div>
+
+          <div class="pt-2 border-t border-[#1D2620] text-[11px] text-[#5C635B]">
+            Response promise: We review every brief and respond within 1–2 business days.
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -255,12 +278,10 @@ const timelineOptions = [
   function initContactForm() {
     const form = document.getElementById('studio-inquiry-form') as HTMLFormElement;
     const successMsg = document.getElementById('form-success-message');
-    const errorBanner = document.getElementById('form-error-banner');
-    const errorText = document.getElementById('form-error-text');
     const submitBtn = document.getElementById('submit-inquiry-btn') as HTMLButtonElement;
-    const btnLabel = document.getElementById('btn-label');
     const refText = document.getElementById('success-ref-text');
-    const subtext = document.getElementById('success-subtext');
+    const mailtoLink = document.getElementById('direct-mailto-link') as HTMLAnchorElement;
+    const copyBriefBtn = document.getElementById('copy-brief-btn');
 
     // Pre-fill from URL query param if present (?service=digital-upgrade, etc.)
     const params = new URLSearchParams(window.location.search);
@@ -273,78 +294,74 @@ const timelineOptions = [
       }
     }
 
-    form?.addEventListener('submit', async (e) => {
+    let currentBriefText = '';
+
+    form?.addEventListener('submit', (e) => {
       e.preventDefault();
       studioAudio.playClick();
 
-      if (errorBanner) errorBanner.classList.add('hidden');
-
       const formData = new FormData(form);
-      const payload = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        company: formData.get('company'),
-        projectType: formData.get('projectType'),
-        budget: formData.get('budget'),
-        timeline: formData.get('timeline'),
-        description: formData.get('description'),
-        consent: formData.get('consent') === 'on'
-      };
+      const name = String(formData.get('name') || '').trim();
+      const email = String(formData.get('email') || '').trim();
+      const company = String(formData.get('company') || 'N/A').trim();
+      const projectType = String(formData.get('projectType') || 'Unspecified');
+      const budget = String(formData.get('budget') || 'Unspecified');
+      const timeline = String(formData.get('timeline') || 'Unspecified');
+      const description = String(formData.get('description') || '').trim();
 
-      if (submitBtn && btnLabel) {
-        submitBtn.disabled = true;
-        btnLabel.textContent = 'DISPATCHING TELEMETRY...';
+      const refCode = `INQ-${Date.now().toString(36).toUpperCase()}`;
+
+      currentBriefText = `OTHR STUDIO // PROJECT INQUIRY [${refCode}]
+--------------------------------------------------
+Name: ${name}
+Work Email: ${email}
+Company: ${company}
+Project Type: ${projectType}
+Budget Target: ${budget}
+Timeline: ${timeline}
+
+Project Details:
+${description}
+--------------------------------------------------`;
+
+      // Copy to clipboard
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(currentBriefText).catch(() => {});
       }
 
-      try {
-        const response = await fetch('/api/inquiry', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
+      // Prepare mailto link
+      const recipient = 'shivasajay007@gmail.com';
+      const subject = encodeURIComponent(`OTHR Inquiry: ${projectType} - ${name}`);
+      const body = encodeURIComponent(currentBriefText);
+      const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
 
-        let data: any = {};
-        try {
-          data = await response.json();
-        } catch (e) {
-          data = {};
-        }
+      if (mailtoLink) {
+        mailtoLink.href = mailtoUrl;
+      }
 
-        if (!response.ok) {
-          if (response.status === 404 && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
-            console.log('[SAFE_DEV_MODE] Local preview detected. Inquiry payload:', payload);
-            data = {
-              success: true,
-              simulated: true,
-              referenceId: `INQ-DEV-${Date.now().toString(36).toUpperCase()}`,
-              message: 'Local Preview Mode: Inquiry recorded and logged to console.'
-            };
-          } else {
-            throw new Error(data.error || `Server responded with status ${response.status}.`);
-          }
-        }
+      studioAudio.playChirp(880, 0.1);
 
-        studioAudio.playChirp(880, 0.1);
+      if (refText) {
+        refText.textContent = `REFERENCE CODE: ${refCode}`;
+      }
 
-        if (successMsg) {
-          successMsg.classList.remove('hidden');
-          if (refText) refText.textContent = `REFERENCE CODE: ${data.referenceId || 'INQ-SUCCESS'}`;
-          if (data.simulated && subtext) {
-            subtext.textContent = 'Safe Local Dev Mode: Inquiry successfully recorded and logged to browser console.';
-          }
-        }
+      form.classList.add('hidden');
+      if (successMsg) {
+        successMsg.classList.remove('hidden');
+      }
 
-        form.classList.add('hidden');
-      } catch (err: any) {
-        if (errorBanner && errorText) {
-          errorText.textContent = err.message || 'An unexpected error occurred during dispatch.';
-          errorBanner.classList.remove('hidden');
-        }
-      } finally {
-        if (submitBtn && btnLabel) {
-          submitBtn.disabled = false;
-          btnLabel.textContent = 'TRANSMIT PROJECT INQUIRY';
-        }
+      // Trigger mail client popup
+      window.location.href = mailtoUrl;
+    });
+
+    copyBriefBtn?.addEventListener('click', () => {
+      if (navigator.clipboard && currentBriefText) {
+        navigator.clipboard.writeText(currentBriefText);
+        copyBriefBtn.textContent = 'COPIED TO CLIPBOARD ✓';
+        studioAudio.playClick();
+        setTimeout(() => {
+          copyBriefBtn.textContent = 'COPY BRIEF AGAIN';
+        }, 2000);
       }
     });
   }

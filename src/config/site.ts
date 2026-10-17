@@ -24,10 +24,10 @@ export const siteConfig = {
   name: 'OTHR',
   legalName: 'OTHR Engineering Studio',
   tagline: "We don't do ordinary.",
-  description: 'Independent creative engineering studio building digital flagships, resilient distributed software, business automations, and original SaaS products.',
+  description: 'We design and engineer websites, software, and automations that make businesses work better. Independent by design. Experimental by nature.',
   category: 'Creative Engineering Studio',
-  url: import.meta.env.PUBLIC_SITE_URL || 'https://othr.engineering',
-  contactEmail: import.meta.env.CONTACT_EMAIL_TO || 'studio@othr.engineering',
+  url: import.meta.env.PUBLIC_SITE_URL || 'https://othr.shivasajay007.workers.dev',
+  contactEmail: import.meta.env.CONTACT_EMAIL_TO || 'shivasajay007@gmail.com',
   foundingYear: 2024,
 
   // Social Presences - Only non-null / non-empty URLs will be displayed
@@ -35,26 +35,26 @@ export const siteConfig = {
     {
       platform: 'github',
       label: 'GitHub',
-      url: 'https://github.com/othr-engineering',
-      handle: 'othr-engineering'
+      url: 'https://github.com/shivaacodes/OTHR',
+      handle: 'shivaacodes/OTHR'
     },
     {
       platform: 'x',
       label: 'X (Twitter)',
-      url: 'https://x.com/othr_studio',
-      handle: '@othr_studio'
+      url: null,
+      handle: undefined
     },
     {
       platform: 'linkedin',
       label: 'LinkedIn',
-      url: 'https://linkedin.com/company/othr-engineering',
-      handle: 'othr-engineering'
+      url: null,
+      handle: undefined
     },
     {
       platform: 'medium',
       label: 'Medium',
-      url: 'https://medium.com/@othr_engineering',
-      handle: '@othr_engineering'
+      url: null,
+      handle: undefined
     }
   ] as SocialLink[],
 

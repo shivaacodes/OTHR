@@ -5,7 +5,6 @@ import ProjectCard from '../components/work/ProjectCard.astro';
 import CapabilitiesSection from '../components/studio/CapabilitiesSection.astro';
 import LabSection from '../components/lab/LabSection.astro';
 import WrapForgeSection from '../components/products/WrapForgeSection.astro';
-import PhilosophySection from '../components/studio/PhilosophySection.astro';
 import JournalPreviewSection from '../components/journal/JournalPreviewSection.astro';
 import ContactSection from '../components/contact/ContactSection.astro';
 import Button from '../components/ui/Button.astro';
@@ -36,7 +35,7 @@ const featuredProjects = projects.filter((p) => p.featured);
         </div>
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4" data-reveal data-delay="0.2">
           <p class="font-body text-base text-[#A5A9A3] max-w-sm">
-            Critical infrastructure, low-latency runtimes, spatial audio engines, and high-performance digital flagships.
+            Real software systems, automated workflows, and digital flagships engineered for reliability and speed.
           </p>
           <Button href="/work" variant="outline" size="sm" showArrow={true}>
             All Projects
@@ -59,15 +58,12 @@ const featuredProjects = projects.filter((p) => p.featured);
   <!-- Section 03: The Lab (Experimental Technology) -->
   <LabSection />
 
-  <!-- Section 04: Our Products (Featuring WrapForge) -->
+  <!-- Section 04: Our Products (Featuring WrapForge Prototype) -->
   <WrapForgeSection />
 
   <!-- Section 05: The Journal (Engineering Field Notes) -->
   <JournalPreviewSection />
 
-  <!-- Section 06: Studio Philosophy -->
-  <PhilosophySection />
-
-  <!-- Section 07: Contact Inquiries -->
+  <!-- Section 06: Contact Inquiries -->
   <ContactSection />
 </BaseLayout>

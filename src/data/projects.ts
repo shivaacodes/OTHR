@@ -2,7 +2,7 @@ export interface CaseStudy {
   slug: string;
   title: string;
   tagline: string;
-  category: 'Custom Software' | 'Workflow Automation' | 'Creative Web' | 'SaaS & Products' | 'Systems Integration';
+  category: 'Custom Software' | 'Workflow Automation' | 'Creative Web' | 'SaaS & Products';
   year: string;
   featured: boolean;
   draft?: boolean;
@@ -28,202 +28,162 @@ export interface CaseStudy {
 export const projects: CaseStudy[] = [
   {
     slug: 'payroll-automation-platform',
-    title: 'Payroll Automation Platform',
-    tagline: 'Automated end-to-end payslip calculation, AES-256 encrypted PDF generation, and rate-managed WhatsApp dispatch.',
+    title: 'Payroll Automation & WhatsApp Dispatch',
+    tagline: 'Automating monthly payslip generation, encrypted PDF delivery, and solving WhatsApp Cloud API burst limits in Go.',
     category: 'Workflow Automation',
-    year: '2025',
+    year: '2024',
     featured: true,
     draft: false,
-    scope: ['Asynchronous Batch Pipelines', 'WhatsApp Cloud API Integration', 'PDF Cryptography', 'Redis Token Bucket Queue'],
-    technologies: ['Go', 'Redis', 'WhatsApp Cloud API', 'PostgreSQL', 'Docker', 'AES-256'],
-    overview: 'An autonomous month-end payroll execution microservice designed to replace a 4-day manual spreadsheet reconciliation and email dispatch process. The platform processes thousands of employee salary files, computes deductions, generates password-protected PDFs, and distributes them via verified WhatsApp template messages.',
-    problem: 'The finance operations team spent 30+ hours each month downloading CSVs, calculating progressive tax withholdings, and individually emailing unencrypted PDFs. Email delivery had high failure rates on mobile, resulting in continuous employee friction and sensitive tax documents floating in unencrypted mailboxes.',
-    approach: 'We engineered an immutable Go batch daemon that ingests payroll records, runs concurrent mathematical validation, writes encrypted documents to secure temporary storage, and meters delivery using a distributed token-bucket rate limiter matching WhatsApp Cloud API Tier 1 constraints.',
+    scope: ['Go Batch Processing', 'WhatsApp Cloud API Integration', 'PDF Encryption', 'Queue Pacing & Retry Handling'],
+    technologies: ['Go', 'WhatsApp Cloud API', 'PostgreSQL', 'Docker'],
+    overview: 'A month-end payroll pipeline built to automate the calculation of salary deductions, generate password-protected PDF payslips, and deliver them directly to employees over WhatsApp. The project proved to be an invaluable masterclass in third-party API velocity limits and queue pacing.',
+    problem: 'The finance desk spent days manually exporting spreadsheets, computing tax withholdings, and individually emailing unencrypted PDFs. Email open rates on mobile were low, leading to constant requests for resends. The goal was to automate document generation and deliver directly to employees on WhatsApp.',
+    approach: 'We built a Go batch daemon to validate payroll records and compile encrypted PDFs concurrently, paired with an API dispatch worker to communicate with Meta’s WhatsApp Cloud API.',
     architecture: {
-      title: 'Decoupled Compute & Paced Delivery Pipeline',
-      description: 'Separation of the CPU-bound PDF rendering core from the I/O-bound WhatsApp webhook dispatch queue.',
+      title: 'Batch Generation & Paced Queue Pipeline',
+      description: 'A two-stage architecture isolating document compilation from external API delivery.',
       points: [
-        'Single-binary Go microservice with fixed-point integer arithmetic to prevent floating-point rounding anomalies.',
-        'Redis-backed distributed Token Bucket limiter clamping outbound requests to 15 msg/sec to avoid Meta account quality demotions.',
-        'Per-employee AES-256 PDF encryption seeded with dynamic cryptographic credentials.',
-        'Self-healing dead-letter queue with exponential backoff and jitter for transient 429 and network timeouts.'
+        'Go microservice using goroutines for concurrent, in-memory PDF generation and encryption.',
+        'Single-binary architecture deployed in a lightweight Docker container.',
+        'Token-bucket dispatch queue pacing outbound requests to stay below Meta API burst thresholds.',
+        'Asynchronous status webhooks tracking message delivery states (Sent, Delivered, Read, Failed).'
       ]
     },
     challenges: [
       {
-        challenge: 'WhatsApp API burst velocity limits',
-        resolution: 'Implemented atomic Redis Lua scripts to pace message dispatch under 15 requests per second, maintaining maximum sender quality status.'
+        challenge: 'WhatsApp Cloud API burst rate limit failure',
+        resolution: 'During the first large run, unthrottled concurrent goroutines flooded Meta’s Graph endpoint within seconds. The API returned HTTP 429, and Meta downgraded the sender quality rating from High to Medium. We rebuilt the dispatcher around a strict token-bucket rate limiter clamped to 12 messages/second, paired with exponential backoff for transient failures.'
       },
       {
-        challenge: 'Memory bloat during concurrent PDF rasterization',
-        resolution: 'Bounded concurrent rendering worker pools to available CPU cores and streamed outputs directly to private object storage rather than buffering in memory.'
+        challenge: 'Handling phone number formatting anomalies',
+        resolution: 'Inconsistent country codes and missing leading zeros in legacy spreadsheets caused silent delivery drops. We added a pre-validation stage using Google libphonenumber standards before generating documents.'
       }
     ],
     outcomes: [
-      'Month-end payroll execution reduced from 4 business days to under 5 minutes of automated runtime.',
-      '99.8% first-attempt document delivery rate directly to mobile devices.',
-      'Complete elimination of manual spreadsheet calculation errors and sensitive email leaks.'
+      'Automated document compilation reduced generation time from days of manual work to under 15 minutes.',
+      'Document delivery moved directly to employee mobile phones, dramatically reducing payroll support tickets.',
+      'Established a resilient rate-pacing pattern now used as a standard for all our outbound messaging integrations.'
     ],
-    relatedSlugs: ['recruitment-management-system', 'inventory-stock-workflows']
+    relatedSlugs: ['recruitment-management-system']
   },
   {
     slug: 'recruitment-management-system',
     title: 'Recruitment Management System',
-    tagline: 'High-throughput candidate parsing, pipeline stage transitions, and automated interviewer calendar synchronization.',
+    tagline: 'Custom candidate pipeline tracking, stage transitions, and interviewer scheduling built with FastAPI and PostgreSQL.',
     category: 'Custom Software',
     year: '2024',
     featured: true,
     draft: false,
-    scope: ['Relational Data Modeling', 'Résumé Parsing Engine', 'Google/Outlook Calendar Sync', 'Role-Based Access Control'],
-    technologies: ['TypeScript', 'Node.js', 'PostgreSQL', 'Prisma', 'Tailwind CSS', 'OAuth2'],
-    overview: 'A bespoke applicant tracking and interview coordination platform engineered for a fast-growing recruitment consultancy. Built to replace a sprawling collection of disjointed Airtable bases and manual email threads with a single unified operational dashboard.',
-    problem: 'Candidate data was fragmented across multiple third-party tools. Interviewers regularly double-booked interview slots, candidate feedback was lost across private Slack channels, and tracking hiring funnel conversion rates required hours of manual spreadsheet assembly.',
-    approach: 'We designed a normalized PostgreSQL database schema with role-based permissions, an intuitive Kanban hiring pipeline interface, and bidirectional calendar synchronization using webhooks to handle interview scheduling with zero human friction.',
+    scope: ['FastAPI Backend', 'PostgreSQL Data Modeling', 'Interview Scheduling', 'Kanban Pipeline UI'],
+    technologies: ['Python / FastAPI', 'PostgreSQL', 'SQLAlchemy', 'Tailwind CSS', 'Docker'],
+    overview: 'A bespoke candidate management application built to replace messy spreadsheets and fragmented email chains with a clean, centralized operational platform.',
+    problem: 'Hiring coordinators were managing candidate stages across multiple shared sheets. Interview notes were lost in email threads, coordinators accidentally double-booked interview panels, and status reporting required hours of manual spreadsheet reconciliation.',
+    approach: 'We engineered a focused web application using FastAPI and PostgreSQL, featuring an intuitive stage-pipeline interface, structured interview note logging, and relational integrity constraints.',
     architecture: {
-      title: 'Event-Driven Candidate Lifecycle Hub',
-      description: 'An architectural hub synchronizing incoming job applications, resume embeddings, and interviewer availability.',
+      title: 'Normalized Relational Workflow Engine',
+      description: 'A type-safe architecture tracking candidate progress from application to final offer.',
       points: [
-        'Strict PostgreSQL relational schema with cascade protections and optimistic concurrency locking.',
-        'Asynchronous résumé parsing daemon extracting contact details, employment history, and key skill vectors.',
-        'Bidirectional Google Calendar and Microsoft Graph calendar webhooks resolving timezone collisions automatically.',
-        'Automated candidate status notifications triggered directly by pipeline stage transitions.'
+        'Normalized PostgreSQL schema enforcing relational integrity across jobs, candidates, and interview slots.',
+        'FastAPI asynchronous REST endpoints with Pydantic schema validation for all incoming payloads.',
+        'Kanban pipeline interface providing clear visual visibility into candidate status.',
+        'Audit log table recording every stage transition with author timestamps.'
       ]
     },
     challenges: [
       {
-        challenge: 'Timezone anomalies across global candidates and hiring managers',
-        resolution: 'Normalized all timestamp storage to UTC with strict IANA timezone translation handled at the presentation layer.'
+        challenge: 'Preventing concurrent interview scheduling collisions',
+        resolution: 'Coordinators frequently opened the same candidate record simultaneously. We implemented database-level transaction locks (`SELECT FOR UPDATE`) on interview slots to ensure a slot could not be booked twice in the same window.'
       },
       {
-        challenge: 'Preventing concurrent interviewer double-booking',
-        resolution: 'Implemented PostgreSQL transactional advisory locks on candidate interview slot reservations.'
+        challenge: 'Managing flexible interview stages per job role',
+        resolution: 'Designed a configurable stage configuration table allowing technical roles and operational roles to have distinct interview tracks while sharing a unified candidate pool.'
       }
     ],
     outcomes: [
-      'Eliminated 100% of calendar scheduling conflicts across 15+ weekly interview panels.',
-      'Average time-to-first-interview decreased by 48% due to automated candidate self-scheduling links.',
-      'Single source of truth established for all candidate records with full audit trails.'
+      'Replaced 4 disconnected spreadsheets with a single, role-secured operational web app.',
+      'Eliminated interviewer double-booking errors through database-level slot validation.',
+      'Reduced weekly status reporting preparation time from 3 hours to an instant filter view.'
     ],
-    relatedSlugs: ['payroll-automation-platform', 'inventory-stock-workflows']
-  },
-  {
-    slug: 'inventory-stock-workflows',
-    title: 'Inventory & Stock Workflows',
-    tagline: 'Multi-location inventory tracking, automated supplier re-ordering triggers, and mobile barcode audit tool.',
-    category: 'Workflow Automation',
-    year: '2024',
-    featured: true,
-    draft: false,
-    scope: ['Multi-Warehouse Inventory', 'Hardware Barcode Scanning', 'Automated Re-Order Logic', 'Audit Ledger'],
-    technologies: ['PostgreSQL', 'Go', 'WebSockets', 'HTML5 Barcode API', 'Tailwind CSS'],
-    overview: 'A tailored warehouse inventory management system built for a regional distributor. It tracks real-time stock levels across three central warehouses and fifteen retail branches, replacing legacy paper manifests with handheld mobile barcode verification.',
-    problem: 'Stock discrepancies between physical shelves and accounting spreadsheets caused frequent out-of-stock cancellations and costly emergency shipments. Weekly stock takes required entire warehouse shutdowns on Sundays.',
-    approach: 'We developed a lightweight, mobile-first progressive web application capable of scanning hardware barcodes using standard smartphone cameras, paired with an append-only inventory ledger in PostgreSQL.',
-    architecture: {
-      title: 'Append-Only Ledger Architecture',
-      description: 'Every inventory adjustment is stored as an immutable debit or credit ledger entry, preventing untraceable stock alterations.',
-      points: [
-        'Double-entry inventory ledger model ensuring physical balance always reconciles with stock movements.',
-        'WebAssembly-based barcode scanner running client-side at 30 FPS on low-cost Android smartphones.',
-        'Real-time WebSocket event broadcaster updating inventory counters across all active terminal screens simultaneously.',
-        'Automated supplier purchase order generation when stock levels cross dynamic velocity thresholds.'
-      ]
-    },
-    challenges: [
-      {
-        challenge: 'Spotty cellular connectivity inside reinforced concrete warehouses',
-        resolution: 'Implemented offline-first IndexedDB local storage that queues barcode scans and synchronizes with server ledgers upon reconnection.'
-      },
-      {
-        challenge: 'Handling simultaneous barcode scans of the final stock unit',
-        resolution: 'Employed PostgreSQL row-level locks (`SELECT FOR UPDATE`) on the inventory item record during checkout validation.'
-      }
-    ],
-    outcomes: [
-      'Stock discrepancy rate decreased from 14.2% down to under 0.4% within 60 days of rollout.',
-      'Sunday warehouse shutdowns completely eliminated; cycle counting now happens continuously during operational hours.',
-      'Automated reorder triggers prevented stock-outs on primary high-velocity SKUs.'
-    ],
-    relatedSlugs: ['payroll-automation-platform', 'recruitment-management-system']
+    relatedSlugs: ['payroll-automation-platform', 'tedx-treasure-hunt']
   },
   {
     slug: 'tedx-treasure-hunt',
-    title: 'TEDx Interactive Treasure Hunt',
-    tagline: 'Real-time geofenced WebGL treasure hunt web app with live WebSocket leaderboard for 1,200+ conference attendees.',
+    title: 'TEDx Interactive Event Platform',
+    tagline: 'Real-time geofenced interactive treasure hunt web app with live leaderboard for ~180+ conference participants.',
     category: 'Creative Web',
     year: '2024',
     featured: true,
     draft: false,
-    scope: ['Real-Time Geolocation', 'Interactive WebGL Canvas', 'High-Concurrency WebSockets', 'Zero-Install Mobile PWA'],
-    technologies: ['Astro', 'TypeScript', 'Three.js', 'WebSockets', 'Tailwind CSS', 'Redis Pub/Sub'],
-    overview: 'A high-engagement digital interactive treasure hunt designed for a flagship TEDx conference. Attendees navigated campus landmarks using GPS geofencing, solved cryptographic riddles, unlocked 3D artifacts, and competed on a live main-stage projection leaderboard.',
-    problem: 'The conference needed an interactive physical-digital experience to drive attendee networking and campus exploration during intermissions. Downloading a native app from the App Store was a major barrier with high drop-off rates.',
-    approach: 'We engineered a zero-install progressive web application accessible via QR code badges, featuring an interactive 3D compass in Three.js and real-time live scoring backed by a high-concurrency WebSocket cluster.',
+    scope: ['HTML5 Geolocation', 'WebGL Compass Canvas', 'Real-time WebSocket Leaderboard', 'Mobile Web App'],
+    technologies: ['Astro', 'TypeScript', 'Three.js / Canvas', 'WebSockets', 'Tailwind CSS'],
+    overview: 'A browser-based interactive scavenger hunt built for ~180+ attendees at an annual TEDx conference. Attendees navigated campus landmarks using GPS geofencing, solved riddles, and competed on a live main-stage projection leaderboard.',
+    problem: 'The organizing team wanted an engaging activity during intermissions to encourage attendees to explore campus landmarks. Asking participants to download a native app from the App Store would result in high drop-off rates due to mobile data friction.',
+    approach: 'We engineered a zero-install mobile web application accessible instantly via QR badge scanning, using the browser Geolocation API and real-time WebSockets to broadcast scores to the main-stage projector.',
     architecture: {
-      title: 'Low-Latency Geofencing & Event Mesh',
-      description: 'An edge-optimized mobile web architecture designed to survive 1,000+ simultaneous mobile requests during coffee breaks.',
+      title: 'Lightweight Mobile Edge Architecture',
+      description: 'Engineered for rapid mobile loading and live event concurrency.',
       points: [
-        'Client-side HTML5 Geolocation API with Haversine distance calculations and spoofing detection heuristics.',
-        'Three.js procedural gyroscope compass orienting players toward physical beacon coordinates in 3D space.',
-        'Redis Pub/Sub cluster broadcasting score updates to the main-stage projector with sub-50ms latency.',
-        'Static-first asset caching allowing instantaneous loads over congested conference Wi-Fi networks.'
+        'Zero-install Astro static frontend cached aggressively on the client device.',
+        'HTML5 Geolocation API with Haversine distance calculations verifying proximity to waypoint coordinates.',
+        'Interactive Three.js 3D compass orienting players toward the next landmark in physical space.',
+        'WebSocket server broadcasting real-time score updates to the auditorium projector.'
       ]
     },
     challenges: [
       {
-        challenge: 'Severe cellular network congestion during 30-minute conference intermissions',
-        resolution: 'Pre-cached all 3D assets, audio clips, and riddle data in the Service Worker cache, communicating only tiny 80-byte WebSocket score deltas over the wire.'
+        challenge: 'Indoor GPS drift and multi-story signal occlusion',
+        resolution: 'Satellite GPS signal drifted significantly near multi-story campus buildings. We added secondary optical QR checkpoint codes at each waypoint that players could scan if GPS accuracy degraded.'
       },
       {
-        challenge: 'GPS drift between multi-story indoor campus buildings',
-        resolution: 'Paired GPS coordinates with localized optical QR micro-markers to verify precise waypoint arrivals.'
+        challenge: 'Concurrent mobile socket traffic during 20-minute intermissions',
+        resolution: 'Minimized WebSocket frame payloads to compact JSON deltas under 120 bytes, preventing bandwidth saturation over congested venue Wi-Fi.'
       }
     ],
     outcomes: [
-      'Over 920 active conference participants engaged with zero App Store friction.',
-      'Zero server downtime or socket disconnects during peak intermission surges.',
-      'Awarded Best Interactive Community Experience by the conference organizing committee.'
+      '180+ conference attendees participated seamlessly without requiring any native app store download.',
+      'Main-stage leaderboard updated live throughout intermissions with zero server crashes.',
+      'Praised by the organizing committee as the most engaging attendee activity of the conference.'
     ],
-    relatedSlugs: ['wrapforge', 'recruitment-management-system']
+    relatedSlugs: ['recruitment-management-system', 'wrapforge']
   },
   {
     slug: 'wrapforge',
     title: 'WrapForge 3D Packaging Studio',
-    tagline: 'Parametric dieline folding engine and physically based 3D packaging visualization platform running in the browser.',
+    tagline: 'In-development 3D packaging visualization prototype exploring browser-based dieline folding and realistic PBR materials.',
     category: 'SaaS & Products',
-    year: '2025',
+    year: '2026',
     featured: true,
     draft: false,
-    statusText: 'IN ACTIVE DEVELOPMENT // PRIVATE ALPHA',
-    scope: ['Parametric CAD Geometry', 'Custom GLSL PBR Shaders', 'Rust WebAssembly', 'Client-Side Vector Export'],
-    technologies: ['Three.js', 'Rust / Wasm', 'GLSL', 'Next.js', 'Tailwind CSS', 'WebGPU Ready'],
-    overview: 'WrapForge is OTHR’s proprietary flagship SaaS product currently in private alpha. It bridges the gap between flat 2D packaging dielines and photorealistic 3D physical mockups, allowing designers to map folds, foils, and varnishes in real time.',
-    problem: 'Packaging designers waste days manually cutting, folding, and photographing physical paper mockups to test vector artwork alignment. Existing desktop 3D software requires steep learning curves and heavy workstation GPUs.',
-    approach: 'We are engineering a zero-install browser studio using a compiled Rust WebAssembly dieline parsing kernel and custom Three.js physically based rendering shaders.',
+    statusText: 'IN PROTOTYPE // EXPERIMENTAL',
+    scope: ['Three.js WebGL Viewport', 'PBR Packaging Shaders', '3D Dieline Folding Kinematics', 'Product Roadmap'],
+    technologies: ['Three.js', 'WebGL', 'TypeScript', 'Tailwind CSS'],
+    overview: 'WrapForge is an internal studio prototype exploring browser-based 3D packaging visualization. It aims to make it easier for packaging designers to visualize how flat artwork looks when folded into a physical 3D box with realistic finishes.',
+    problem: 'Packaging designers typically print and hand-fold physical paper mockups to test whether panel artwork aligns correctly across seams. Standard 3D CAD tools are overly complex for quick packaging visualization.',
+    approach: 'We are prototyping a zero-install WebGL viewer using Three.js that renders parametric folding animations and physically based finishes like foil stamping and matte coating.',
     architecture: {
-      title: 'Browser-Native Parametric CAD Pipeline',
-      description: 'A multi-tier WebGL architecture running procedural folding physics directly on client GPUs.',
+      title: 'Browser 3D Viewport Prototype',
+      description: 'An interactive WebGL pipeline testing real-time box geometry folding.',
       points: [
-        'Rust Wasm geometry kernel executing constrained Delaunay triangulation and kinematic hinge transformations.',
-        'Custom GLSL fragment shaders simulating micro-roughness for hot foil stamping, spot UV gloss, and kraft cardstock.',
-        'Zero-dependency vector roundtrip export generating print-ready PDF/X files with bleed margins.',
-        'Progressive Level-of-Detail (LOD) rendering maintaining 60 FPS on mobile and tablet touchscreens.'
+        'Interactive Three.js viewport with OrbitControls and realistic studio directional lighting.',
+        'CSS 3D and WebGL prototype models demonstrating animated folding along panel crease lines.',
+        'Multi-pass PBR material shaders simulating metallic foil reflection and matte paper roughness.',
+        'Active design exploration for future vector SVG/DXF dieline import capabilities.'
       ]
     },
     challenges: [
       {
-        challenge: 'Real-time folding animation without geometric self-intersection',
-        resolution: 'Formulated a rigid-body kinematic hierarchy where child panels inherit rotational transformation matrices from parent hinge edges.'
+        challenge: 'Accurate optical simulation of foil finishes in the browser',
+        resolution: 'Standard WebGL materials lack local clearcoat roughness channels. We authored custom shader passes that modulate specular highlight and metalness based on finish selection.'
       },
       {
-        challenge: 'Accurate optical simulation of metallic foils in WebGL',
-        resolution: 'Authored multi-channel shader masks that modulate clear-coat roughness and specular intensity within Three.js physical material loops.'
+        challenge: 'Maintaining smooth performance on mobile devices',
+        resolution: 'Optimized polygon geometry and implemented progressive rendering that pauses the GPU loop when the viewport is idle.'
       }
     ],
     outcomes: [
-      'Successfully folded complex 6-panel tuck boxes and cartons in under 40 milliseconds.',
-      'Private alpha waitlist active with select packaging design studios and physical product brands.',
-      'Architected for future enterprise licensing and digital subscription tiers.'
+      'Interactive 3D folding box preview running at smooth frame rates directly in modern browsers.',
+      'Currently active as an internal studio R&D prototype informing our product development roadmap.',
+      'Future capabilities (dieline parser, vector export) planned for future testing phases.'
     ],
     relatedSlugs: ['tedx-treasure-hunt', 'payroll-automation-platform']
   }

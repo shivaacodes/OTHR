@@ -1,14 +1,13 @@
 ---
 title: "Your Business Doesn't Need Another Spreadsheet."
 description: "How companies accidentally run $10M operations on fragile Excel sheets, and the pragmatic path to custom internal software."
-publishDate: "2025-03-02"
+publishDate: "2026-03-02"
 author: "OTHR Automation Team"
 tags: ["Business Automation", "Workflow Fix", "Internal Tools", "Data Integrity", "Engineering"]
 readingTime: "5 min read"
 draft: false
 featured: false
 editorialNote: "Field observations from operational audits across manufacturing, recruitment, and logistics clients."
-canonicalUrl: "https://medium.com/@othr_engineering/your-business-doesnt-need-another-spreadsheet"
 ---
 
 > [!NOTE]
