@@ -1,0 +1,167 @@
+---
+import { capabilities } from '../../data/capabilities';
+import Badge from '../ui/Badge.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<section class="py-24 md:py-32 bg-[#080B0A] border-b border-[#1D2620] relative" id="capabilities">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#1D2620]">
+      <div>
+        <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3" data-reveal>
+          // 02 CAPABILITIES
+        </div>
+        <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#F5F6F0]" data-reveal data-delay="0.1">
+          What We Do<span class="text-[#C6FF3D]">.</span>
+        </h2>
+      </div>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4" data-reveal data-delay="0.2">
+        <p class="font-body text-base text-[#A5A9A3] max-w-sm">
+          Five integrated engineering disciplines. We eliminate spreadsheet toil and engineer flagship digital software.
+        </p>
+        <a
+          href="/services"
+          class="font-mono text-xs text-[#C6FF3D] hover:underline uppercase tracking-wider flex items-center gap-1.5 whitespace-nowrap"
+        >
+          <span>ALL SERVICES & PRICING</span>
+          <Icon name="ArrowUpRight" size={13} />
+        </a>
+      </div>
+    </div>
+
+    <!-- Stacked Architectural Accordion List -->
+    <div class="divide-y divide-[#1D2620] border-t border-b border-[#1D2620]" id="capabilities-accordion">
+      {capabilities.map((cap, i) => (
+        <div class="capability-item group transition-colors hover:bg-[#0E1410]" data-reveal data-delay={0.08 * i}>
+          <button
+            class="capability-toggle w-full py-8 text-left flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer focus:outline-none"
+            aria-expanded={i === 0 ? 'true' : 'false'}
+            data-index={i}
+          >
+            <div class="flex items-start md:items-center gap-6 md:gap-12">
+              <span class="font-mono text-sm sm:text-base text-[#5C635B] group-hover:text-[#C6FF3D] transition-colors tabular-nums">
+                [{cap.number}]
+              </span>
+              <h3 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors">
+                {cap.title}
+              </h3>
+            </div>
+
+            <div class="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto">
+              <span class="font-body text-sm text-[#A5A9A3] max-w-xs hidden lg:inline line-clamp-1">
+                {cap.shortDesc}
+              </span>
+              <div class="w-8 h-8 rounded-none border border-[#2A362E] group-hover:border-[#C6FF3D] flex items-center justify-center text-[#A5A9A3] group-hover:text-[#C6FF3D] transition-all">
+                <span class="accordion-arrow transform transition-transform duration-300">
+                  <Icon name="ChevronDown" size={16} />
+                </span>
+              </div>
+            </div>
+          </button>
+
+          <!-- Expandable Deep-Dive Panel -->
+          <div
+            class={`capability-panel overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              i === 0 ? 'max-h-[800px] opacity-100 pb-8' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <div class="pt-4 pl-0 md:pl-20 pr-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <!-- Left: Deep Dive & Philosophy -->
+              <div class="lg:col-span-2 space-y-6">
+                <p class="font-body text-base sm:text-lg text-[#F5F6F0] leading-relaxed">
+                  {cap.deepDive}
+                </p>
+
+                <div class="p-5 bg-[#141A16] border-l-2 border-[#C6FF3D]">
+                  <div class="font-mono text-[10px] text-[#C6FF3D] uppercase tracking-wider mb-1">// CORE PHILOSOPHY</div>
+                  <p class="font-body text-sm text-[#A5A9A3] italic">
+                    "{cap.philosophy}"
+                  </p>
+                </div>
+
+                <div>
+                  <div class="font-mono text-xs text-[#5C635B] uppercase tracking-wider mb-3">// PRIMARY DELIVERABLES</div>
+                  <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {cap.deliverables.map((item) => (
+                      <li class="flex items-start gap-2 font-mono text-xs text-[#A5A9A3]">
+                        <span class="text-[#C6FF3D] mt-0.5">›</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Right: Tech Stack Matrix -->
+              <div class="bg-[#141A16] p-6 border border-[#1D2620] h-fit">
+                <div class="font-mono text-xs text-[#5C635B] uppercase tracking-wider mb-4">// PRIMARY TECH FOCUS</div>
+                <div class="flex flex-wrap gap-2">
+                  {cap.techFocus.map((tech) => (
+                    <Badge variant="lime" size="sm">{tech}</Badge>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { studioAudio } from '../../utils/audio';
+
+  function initCapabilities() {
+    const items = document.querySelectorAll<HTMLElement>('.capability-item');
+
+    items.forEach((item) => {
+      const toggle = item.querySelector<HTMLButtonElement>('.capability-toggle');
+      const panel = item.querySelector<HTMLElement>('.capability-panel');
+      const arrow = item.querySelector<HTMLElement>('.accordion-arrow');
+
+      toggle?.addEventListener('click', () => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+        // Close all other panels
+        items.forEach((other) => {
+          if (other !== item) {
+            const otherToggle = other.querySelector<HTMLButtonElement>('.capability-toggle');
+            const otherPanel = other.querySelector<HTMLElement>('.capability-panel');
+            const otherArrow = other.querySelector<HTMLElement>('.accordion-arrow');
+            otherToggle?.setAttribute('aria-expanded', 'false');
+            if (otherPanel) {
+              otherPanel.style.maxHeight = '0px';
+              otherPanel.style.opacity = '0';
+              otherPanel.style.paddingBottom = '0px';
+            }
+            otherArrow?.classList.remove('rotate-180');
+          }
+        });
+
+        if (isExpanded) {
+          toggle.setAttribute('aria-expanded', 'false');
+          if (panel) {
+            panel.style.maxHeight = '0px';
+            panel.style.opacity = '0';
+            panel.style.paddingBottom = '0px';
+          }
+          arrow?.classList.remove('rotate-180');
+        } else {
+          toggle.setAttribute('aria-expanded', 'true');
+          if (panel) {
+            panel.style.maxHeight = `${panel.scrollHeight + 40}px`;
+            panel.style.opacity = '1';
+            panel.style.paddingBottom = '2rem';
+          }
+          arrow?.classList.add('rotate-180');
+        }
+        studioAudio.playClick();
+      });
+    });
+  }
+
+  initCapabilities();
+  document.addEventListener('astro:page-load', initCapabilities);
+</script>

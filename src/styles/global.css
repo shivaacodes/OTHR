@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #080B0A;
+    --bg-surface: #141A16;
+    --bg-surface-elevated: #1B241E;
+    --bg-card: #0E1410;
+    --border-subtle: #1D2620;
+    --border-medium: #2A362E;
+    --border-accent: rgba(198, 255, 61, 0.25);
+
+    --text-primary: #F5F6F0;
+    --text-secondary: #A5A9A3;
+    --text-muted: #5C635B;
+
+    --accent: #C6FF3D;
+    --accent-muted: rgba(198, 255, 61, 0.12);
+    --accent-glow: rgba(198, 255, 61, 0.35);
+    --accent-contrast: #080B0A;
+
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  [data-theme="deep-blue"] {
+    --bg-primary: #060913;
+    --bg-surface: #0E1626;
+    --bg-surface-elevated: #152238;
+    --bg-card: #0B111E;
+    --border-subtle: #19273F;
+    --border-medium: #243859;
+    --border-accent: rgba(56, 189, 248, 0.3);
+
+    --text-primary: #F0F4FC;
+    --text-secondary: #96A7C2;
+    --text-muted: #4B5E7D;
+
+    --accent: #38BDF8;
+    --accent-muted: rgba(56, 189, 248, 0.14);
+    --accent-glow: rgba(56, 189, 248, 0.4);
+    --accent-contrast: #060913;
+  }
+
+  * {
+    border-color: var(--border-subtle);
+  }
+
+  html {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    selection-background-color: var(--accent);
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1D2620;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom interactive accents and borders */
+.border-subtle {
+  border-color: var(--border-subtle);
+}
+
+.border-accent-subtle {
+  border-color: var(--border-accent);
+}
+
+.bg-surface {
+  background-color: var(--bg-surface);
+}
+
+.bg-surface-elevated {
+  background-color: var(--bg-surface-elevated);
+}
+
+.bg-card {
+  background-color: var(--bg-card);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.bg-accent-muted {
+  background-color: var(--accent-muted);
+}
+
+/* Micro-interactions & Visual Effects */
+.glass-panel {
+  background: rgba(20, 26, 22, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glow-box {
+  box-shadow: 0 0 35px -10px var(--accent-glow);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.scanline-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.crosshair-corner {
+  position: relative;
+}
+.crosshair-corner::before {
+  content: '+';
+  position: absolute;
+  top: -8px;
+  left: -6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* Magnetic Button / Link Base */
+.hover-reveal-arrow svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-reveal-arrow:hover svg {
+  transform: translate(3px, -3px);
+}
+
+/* Marquee infinite scroll */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Pulse radar indicator */
+@keyframes pulse-radar {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 var(--accent-glow); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px transparent; }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 transparent; }
+}
+
+.radar-dot {
+  animation: pulse-radar 2.4s infinite;
+}

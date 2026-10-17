@@ -1,0 +1,167 @@
+---
+import StudioClock from '../ui/StudioClock.astro';
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+import { siteConfig } from '../../config/site';
+
+const year = new Date().getFullYear();
+const activeSocials = siteConfig.socials.filter((s) => Boolean(s.url));
+---
+
+<footer class="bg-[#080B0A] border-t border-[#1D2620] pt-20 pb-12 overflow-hidden relative" id="site-footer">
+  <!-- Subtle background grid lines -->
+  <div class="absolute inset-0 scanline-grid opacity-20 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Top Row: Studio nodes & status -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-16 border-b border-[#1D2620]/80">
+      <div class="lg:col-span-2 space-y-4">
+        <div class="font-mono text-[10px] text-[#C6FF3D] uppercase tracking-widest">// STUDIO ARCHITECTURE</div>
+        <p class="font-body text-sm text-[#A5A9A3] leading-relaxed max-w-sm">
+          Independent creative engineering studio building digital flagships, resilient distributed software, business automations, and original SaaS products.
+        </p>
+
+        <!-- Social Presence Links (Only configured accounts) -->
+        {activeSocials.length > 0 && (
+          <div class="pt-2">
+            <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-widest mb-2.5">// CONNECTED NETWORKS</div>
+            <div class="flex flex-wrap items-center gap-2">
+              {activeSocials.map((s) => (
+                <a
+                  href={s.url!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-2.5 py-1 bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/50 text-[#A5A9A3] hover:text-[#C6FF3D] font-mono text-[11px] tracking-wider uppercase transition-colors flex items-center gap-1.5"
+                  aria-label={`Visit OTHR on ${s.label}`}
+                >
+                  <span>{s.label}</span>
+                  <Icon name="ArrowUpRight" size={11} />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div>
+        <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-widest mb-3">// ACTIVE NODES</div>
+        <div class="flex flex-col gap-2">
+          <StudioClock timezone="IST" label="BLR / IST" />
+          <StudioClock timezone="EST" label="NYC / EST" />
+          <StudioClock timezone="UTC" label="SYS / UTC" />
+        </div>
+      </div>
+
+      <div>
+        <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-widest mb-3">// DIRECTORY</div>
+        <ul class="space-y-1.5 font-mono text-xs uppercase tracking-wider text-[#A5A9A3]">
+          <li><a href="/work" class="hover:text-[#C6FF3D] transition-colors">// 01 Work</a></li>
+          <li><a href="/services" class="hover:text-[#C6FF3D] transition-colors">// 02 Services</a></li>
+          <li><a href="/lab" class="hover:text-[#C6FF3D] transition-colors">// 03 The Lab</a></li>
+          <li><a href="/products" class="hover:text-[#C6FF3D] transition-colors">// 04 Products</a></li>
+          <li><a href="/journal" class="hover:text-[#C6FF3D] transition-colors">// 05 Journal</a></li>
+          <li><a href="/studio" class="hover:text-[#C6FF3D] transition-colors">// 06 Studio</a></li>
+          <li><a href="/contact" class="hover:text-[#C6FF3D] transition-colors">// 07 Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-widest mb-3">// TELEMETRY & SYSTEM</div>
+        <div class="space-y-1.5 font-mono text-xs text-[#A5A9A3]">
+          <div class="flex items-center justify-between">
+            <span class="text-[#5C635B]">CORE:</span>
+            <span class="text-[#F5F6F0]">ASTRO 5 + TS</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-[#5C635B]">TRACKERS:</span>
+            <span class="text-[#C6FF3D]">0 (ZERO)</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-[#5C635B]">EDGE DEPLOY:</span>
+            <span class="text-[#F5F6F0]">CLOUDFLARE</span>
+          </div>
+          <div class="pt-2">
+            <button
+              id="ping-studio-btn"
+              class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] text-[10px] tracking-widest text-[#C6FF3D] hover:bg-[#1B241E] transition-colors flex items-center justify-between cursor-pointer"
+            >
+              <span>EXEC PING()</span>
+              <span id="ping-response" class="text-[#A5A9A3]">IDLE</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle: Giant Architectural OTHR Brand Monolith -->
+    <div class="py-12 flex flex-col md:flex-row items-baseline justify-between gap-6 border-b border-[#1D2620]/60">
+      <div class="select-none">
+        <h2 class="font-display font-extrabold text-7xl sm:text-9xl lg:text-[14rem] tracking-tighter leading-none text-[#141A16] hover:text-[#1B241E] transition-colors cursor-default">
+          OTHR<span class="text-[#C6FF3D]">.</span>
+        </h2>
+      </div>
+
+      <div class="flex flex-col items-start md:items-end gap-3">
+        <div class="font-mono text-xs text-[#A5A9A3]">
+          WE DON'T DO ORDINARY.
+        </div>
+        <button
+          id="scroll-to-top"
+          class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#A5A9A3] hover:text-[#C6FF3D] transition-colors group cursor-pointer"
+          aria-label="Scroll back to top"
+        >
+          <span>RETURN TO TOP</span>
+          <span class="w-7 h-7 border border-[#2A362E] group-hover:border-[#C6FF3D] flex items-center justify-center transition-colors">
+            <Icon name="ArrowUp" size={14} />
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Copyright, Legal & Privacy Links -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#5C635B]">
+      <div>
+        © {year} OTHR ENGINEERING STUDIO. ALL RIGHTS RESERVED.
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="/privacy" class="hover:text-[#C6FF3D] transition-colors">PRIVACY POLICY</a>
+        <span class="text-[#2A362E]">/</span>
+        <a href="/terms" class="hover:text-[#C6FF3D] transition-colors">TERMS OF USE</a>
+        <span class="text-[#2A362E]">/</span>
+        <span class="text-[#C6FF3D]">BRUTALLY FAST</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import { studioAudio } from '../../utils/audio';
+
+  function initFooter() {
+    const scrollBtn = document.getElementById('scroll-to-top');
+    scrollBtn?.addEventListener('click', () => {
+      studioAudio.playClick();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const pingBtn = document.getElementById('ping-studio-btn');
+    const pingResponse = document.getElementById('ping-response');
+
+    pingBtn?.addEventListener('click', () => {
+      studioAudio.playChirp(1200, 0.04);
+      if (pingResponse) {
+        pingResponse.textContent = 'MEASURING...';
+        pingResponse.className = 'text-amber-400';
+        setTimeout(() => {
+          const latency = Math.floor(Math.random() * 8 + 3);
+          pingResponse.textContent = `PONG ${latency}ms`;
+          pingResponse.className = 'text-[#C6FF3D] font-bold';
+        }, 180);
+      }
+    });
+  }
+
+  initFooter();
+  document.addEventListener('astro:page-load', initFooter);
+</script>

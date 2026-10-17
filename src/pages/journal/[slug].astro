@@ -1,0 +1,346 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/ui/Badge.astro';
+import Button from '../../components/ui/Button.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { siteConfig } from '../../config/site';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('journal', ({ data }) => {
+    return import.meta.env.PROD ? !data.draft : true;
+  });
+
+  return articles.map((article) => {
+    const related = articles
+      .filter((a) => a.id !== article.id && a.data.tags.some((t) => article.data.tags.includes(t)))
+      .slice(0, 2);
+
+    return {
+      params: { slug: article.id },
+      props: { article, related }
+    };
+  });
+}
+
+const { article, related } = Astro.props;
+const { Content, headings } = await render(article);
+
+const formattedDate = new Date(article.data.publishDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+const currentUrl = `${siteConfig.url}/journal/${article.id}`;
+
+// Structured Data JSON-LD
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: article.data.title,
+  description: article.data.description,
+  author: {
+    '@type': 'Organization',
+    name: article.data.author,
+    url: siteConfig.url
+  },
+  datePublished: article.data.publishDate.toISOString(),
+  dateModified: (article.data.updatedDate || article.data.publishDate).toISOString(),
+  publisher: {
+    '@type': 'Organization',
+    name: 'OTHR Engineering Studio',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteConfig.url}/favicon.svg`
+    }
+  },
+  mainEntityOfPage: currentUrl
+};
+---
+
+<BaseLayout
+  title={`${article.data.title} // OTHR Journal`}
+  description={article.data.description}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <article class="py-16 md:py-24">
+    <!-- Article Header & Metadata -->
+    <header class="border-b border-[#1D2620] pb-12 mb-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-6">
+          <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+          <span>/</span>
+          <a href="/journal" class="hover:text-[#C6FF3D] transition-colors">JOURNAL</a>
+          <span>/</span>
+          <span class="text-[#C6FF3D] uppercase">{article.id}</span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <Badge variant="lime">{article.data.tags[0]}</Badge>
+          <span class="font-mono text-xs text-[#5C635B]">{formattedDate}</span>
+          <span class="font-mono text-xs text-[#5C635B]">// {article.data.readingTime}</span>
+          <span class="font-mono text-xs text-[#A5A9A3]">// By {article.data.author}</span>
+        </div>
+
+        <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#F5F6F0] mb-6 leading-[1.05]">
+          {article.data.title}
+        </h1>
+
+        <p class="font-body text-xl sm:text-2xl text-[#A5A9A3] leading-relaxed">
+          {article.data.description}
+        </p>
+
+        <!-- Editorial Review Notice if applicable -->
+        {article.data.editorialNote && (
+          <div class="mt-8 p-4 bg-[#141A16] border-l-2 border-[#C6FF3D] font-mono text-xs text-[#A5A9A3]">
+            <span class="text-[#C6FF3D] font-bold mr-2">// EDITORIAL NOTICE:</span>
+            {article.data.editorialNote}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <!-- Article Body Layout -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
+        <!-- Left Sticky Sidebar: Table of Contents & Social Share -->
+        <aside class="hidden lg:block lg:col-span-3">
+          <div class="sticky top-28 space-y-8">
+            <!-- Table of Contents -->
+            {headings.length > 0 && (
+              <div class="bg-[#0E1410] border border-[#1D2620] p-5">
+                <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mb-3">// TABLE OF CONTENTS</div>
+                <nav class="space-y-1.5 font-mono text-xs">
+                  {headings.filter((h) => h.depth <= 3).map((h) => (
+                    <a
+                      href={`#${h.slug}`}
+                      class={`block text-[#A5A9A3] hover:text-[#C6FF3D] transition-colors leading-relaxed line-clamp-1 ${
+                        h.depth === 3 ? 'pl-3 text-[11px] text-[#5C635B]' : ''
+                      }`}
+                    >
+                      {h.text}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            )}
+
+            <!-- Share & Syndication Links -->
+            <div class="bg-[#0E1410] border border-[#1D2620] p-5 space-y-3 font-mono text-xs">
+              <div class="text-[10px] text-[#5C635B] uppercase tracking-wider">// SHARE ARTICLE</div>
+              <div class="flex flex-col gap-2">
+                <button
+                  id="copy-article-link"
+                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors cursor-pointer"
+                >
+                  <span id="copy-text">COPY ARTICLE LINK</span>
+                  <Icon name="Copy" size={13} />
+                </button>
+
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.data.title)}&url=${encodeURIComponent(currentUrl)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors"
+                >
+                  <span>SHARE ON X</span>
+                  <Icon name="ArrowUpRight" size={13} />
+                </a>
+
+                <a
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full py-1.5 px-3 bg-[#141A16] border border-[#2A362E] hover:border-[#C6FF3D] text-[#F5F6F0] hover:text-[#C6FF3D] text-[11px] flex items-center justify-between transition-colors"
+                >
+                  <span>SHARE ON LINKEDIN</span>
+                  <Icon name="ArrowUpRight" size={13} />
+                </a>
+              </div>
+
+              {article.data.canonicalUrl && (
+                <div class="pt-3 border-t border-[#1D2620] text-[10px] text-[#5C635B]">
+                  CANONICAL SYNDICATION: <span class="text-[#A5A9A3]">MEDIUM READY</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </aside>
+
+        <!-- Center: Markdown Content -->
+        <main class="lg:col-span-9 max-w-3xl">
+          <div class="article-prose prose prose-invert prose-emerald max-w-none">
+            <Content />
+          </div>
+
+          <!-- Bottom Article Footer -->
+          <div class="mt-16 pt-8 border-t border-[#1D2620] flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap gap-2">
+              {article.data.tags.map((t) => (
+                <span class="font-mono text-xs text-[#5C635B] bg-[#141A16] px-2.5 py-1 border border-[#1D2620]">
+                  #{t}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href="/journal"
+              class="font-mono text-xs text-[#C6FF3D] hover:underline uppercase flex items-center gap-1.5"
+            >
+              <span>← RETURN TO ALL ARTICLES</span>
+            </a>
+          </div>
+
+          <!-- Related Articles -->
+          {related && related.length > 0 && (
+            <div class="mt-16 pt-12 border-t border-[#1D2620]">
+              <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-6">// RELATED ESSAYS</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {related.map((rel) => (
+                  <a
+                    href={`/journal/${rel.id}`}
+                    class="p-6 bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors block group"
+                  >
+                    <div class="font-mono text-[10px] text-[#5C635B] mb-2">{rel.data.readingTime}</div>
+                    <div class="font-display font-bold text-lg text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors leading-snug">
+                      {rel.data.title}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </main>
+
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  /* Editorial Journal Prose Typography */
+  .article-prose {
+    color: #A5A9A3;
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+  .article-prose h2 {
+    color: #F5F6F0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+    scroll-margin-top: 6rem;
+  }
+  .article-prose h3 {
+    color: #F5F6F0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+    scroll-margin-top: 6rem;
+  }
+  .article-prose p {
+    margin-bottom: 1.5rem;
+  }
+  .article-prose strong {
+    color: #F5F6F0;
+    font-weight: 600;
+  }
+  .article-prose code {
+    color: #C6FF3D;
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background-color: #141A16;
+    padding: 0.2em 0.4em;
+    border: 1px solid #1D2620;
+    border-radius: 0;
+  }
+  .article-prose pre {
+    background-color: #0E1410 !important;
+    border: 1px solid #1D2620;
+    padding: 1.25rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+  .article-prose pre code {
+    background: transparent;
+    padding: 0;
+    border: none;
+    color: inherit;
+  }
+  .article-prose ul {
+    list-style-type: square;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .article-prose ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .article-prose li {
+    margin-bottom: 0.5rem;
+  }
+  .article-prose blockquote {
+    border-left: 3px solid #C6FF3D;
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+    color: #F5F6F0;
+    font-style: italic;
+  }
+  .article-prose hr {
+    border-color: #1D2620;
+    margin: 3rem 0;
+  }
+  .article-prose table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  .article-prose th,
+  .article-prose td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #1D2620;
+    text-align: left;
+  }
+  .article-prose th {
+    background-color: #141A16;
+    color: #F5F6F0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+</style>
+
+<script>
+  import { studioAudio } from '../../utils/audio';
+
+  function initArticleInteractions() {
+    const copyBtn = document.getElementById('copy-article-link');
+    const copyText = document.getElementById('copy-text');
+
+    copyBtn?.addEventListener('click', () => {
+      studioAudio.playChirp(880, 0.05);
+      navigator.clipboard.writeText(window.location.href);
+      if (copyText) {
+        copyText.textContent = 'COPIED TO CLIPBOARD!';
+        setTimeout(() => {
+          copyText.textContent = 'COPY ARTICLE LINK';
+        }, 2000);
+      }
+    });
+  }
+
+  initArticleInteractions();
+  document.addEventListener('astro:page-load', initArticleInteractions);
+</script>

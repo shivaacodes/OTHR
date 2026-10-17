@@ -1,0 +1,46 @@
+---
+export interface Props {
+  timezone?: string;
+  label?: string;
+  class?: string;
+}
+
+const { timezone = 'UTC', label = 'UTC', class: className = '' } = Astro.props;
+---
+
+<div class={`inline-flex items-center gap-2 font-mono text-xs text-[#A5A9A3] ${className}`} data-studio-clock data-tz={timezone}>
+  <span class="w-1.5 h-1.5 rounded-full bg-[#C6FF3D] animate-ping" style="animation-duration: 3s;"></span>
+  <span class="text-[#5C635B] uppercase">{label}:</span>
+  <span class="text-[#F5F6F0] tabular-nums tracking-wider clock-time">00:00:00</span>
+</div>
+
+<script>
+  function updateClocks() {
+    const clockElements = document.querySelectorAll<HTMLElement>('[data-studio-clock]');
+    const now = new Date();
+
+    clockElements.forEach((el) => {
+      const tz = el.getAttribute('data-tz') || 'UTC';
+      const timeSpan = el.querySelector<HTMLElement>('.clock-time');
+      if (!timeSpan) return;
+
+      try {
+        let timeStr = '';
+        if (tz === 'IST') {
+          timeStr = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour12: false });
+        } else if (tz === 'EST') {
+          timeStr = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false });
+        } else {
+          timeStr = now.toLocaleTimeString('en-US', { timeZone: 'UTC', hour12: false });
+        }
+        timeSpan.textContent = timeStr;
+      } catch (e) {
+        timeSpan.textContent = now.toTimeString().split(' ')[0];
+      }
+    });
+  }
+
+  updateClocks();
+  setInterval(updateClocks, 1000);
+  document.addEventListener('astro:page-load', updateClocks);
+</script>

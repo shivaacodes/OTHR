@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+const articles = await getCollection('journal', ({ data }) => !data.draft);
+const topArticles = articles
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime())
+  .slice(0, 3);
+---
+
+<section class="py-24 md:py-32 bg-[#080B0A] border-b border-[#1D2620] relative" id="journal">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#1D2620]">
+      <div>
+        <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3" data-reveal>
+          // 05 ENGINEERING JOURNAL
+        </div>
+        <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#F5F6F0]" data-reveal data-delay="0.1">
+          The Journal<span class="text-[#C6FF3D]">.</span>
+        </h2>
+      </div>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4" data-reveal data-delay="0.2">
+        <p class="font-body text-base text-[#A5A9A3] max-w-sm">
+          Technical post-mortems, architectural trade-offs, and reflections on high-performance software craft.
+        </p>
+        <Button href="/journal" variant="outline" size="sm" showArrow={true}>
+          All Articles
+        </Button>
+      </div>
+    </div>
+
+    <!-- Articles Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {topArticles.map((article, index) => (
+        <article
+          class="bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors p-6 sm:p-8 flex flex-col justify-between group"
+          data-reveal
+          data-delay={0.1 * index}
+        >
+          <div class="space-y-4">
+            <div class="flex items-center justify-between font-mono text-xs text-[#5C635B]">
+              <span>
+                {new Date(article.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </span>
+              <span>{article.data.readingTime}</span>
+            </div>
+
+            <h3 class="font-display font-bold text-xl sm:text-2xl text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors leading-snug">
+              <a href={`/journal/${article.id}`}>
+                {article.data.title}
+              </a>
+            </h3>
+
+            <p class="font-body text-sm text-[#A5A9A3] leading-relaxed line-clamp-3">
+              {article.data.description}
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-[#1D2620] flex items-center justify-between">
+            <span class="font-mono text-[10px] text-[#5C635B] uppercase">
+              #{article.data.tags[0]}
+            </span>
+
+            <a
+              href={`/journal/${article.id}`}
+              class="font-mono text-xs text-[#A5A9A3] group-hover:text-[#C6FF3D] uppercase flex items-center gap-1 transition-colors"
+            >
+              <span>READ</span>
+              <Icon name="ArrowUpRight" size={13} />
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import StudioClock from '../components/ui/StudioClock.astro';
+import { studioData } from '../data/studio';
+---
+
+<BaseLayout
+  title="Studio // Ethos & Principles // OTHR"
+  description="OTHR is an independent creative engineering studio combining radical visual identity with brutal systems performance."
+>
+  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
+        <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+        <span>/</span>
+        <span class="text-[#C6FF3D]">STUDIO</span>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#F5F6F0] mb-4">
+            The Studio<span class="text-[#C6FF3D]">.</span>
+          </h1>
+          <p class="font-body text-xl text-[#A5A9A3] max-w-2xl leading-relaxed">
+            Independent creative engineering. We build digital experiences, useful software, and things that probably shouldn't exist. But do.
+          </p>
+        </div>
+
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
+          <div class="text-[#5C635B] text-[10px]">// OPERATIONAL ARCHITECTURE</div>
+          <div class="text-[#C6FF3D]">FOUNDED 2024 // GLOBAL NODES</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-16 md:py-24 bg-[#080B0A]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+      <!-- Manifesto -->
+      <section class="max-w-4xl space-y-8">
+        <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest">// THE MANIFESTO</div>
+        <div class="space-y-6">
+          {studioData.manifesto.map((paragraph, i) => (
+            <p class={`font-body leading-relaxed ${i === studioData.manifesto.length - 1 ? 'text-2xl sm:text-3xl font-display font-bold text-[#C6FF3D]' : 'text-lg sm:text-xl text-[#F5F6F0]'}`}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      <!-- The 5 Principles -->
+      <section class="pt-12 border-t border-[#1D2620]">
+        <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-10">// FOUNDATIONAL PRINCIPLES</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {studioData.principles.map((p) => (
+            <div class="p-8 bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors flex flex-col justify-between">
+              <div>
+                <div class="font-mono text-xs text-[#C6FF3D] mb-4">[{p.number}]</div>
+                <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mb-3">{p.headline}</h3>
+                <p class="font-body text-sm text-[#A5A9A3] leading-relaxed">{p.elaboration}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Technology Stack Stackup -->
+      <section class="pt-12 border-t border-[#1D2620]">
+        <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-10">// ENGINEERING STACK & TOOLS</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {studioData.stack.map((item) => (
+            <div class="p-6 bg-[#0E1410] border border-[#1D2620]">
+              <h3 class="font-display font-bold text-xl text-[#F5F6F0] mb-4">{item.category}</h3>
+              <div class="flex flex-wrap gap-2">
+                {item.technologies.map((tech) => (
+                  <Badge variant="lime" size="sm">{tech}</Badge>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Global Studio Coordinates -->
+      <section class="pt-12 border-t border-[#1D2620]">
+        <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-10">// ACTIVE STUDIO NODES</div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {studioData.coordinates.map((coord) => (
+            <div class="p-6 bg-[#141A16] border border-[#1D2620] space-y-2">
+              <div class="font-mono text-xs text-[#C6FF3D] font-bold">{coord.label}</div>
+              <div class="font-display font-bold text-lg text-[#F5F6F0]">{coord.location}</div>
+              <div class="font-mono text-xs text-[#A5A9A3]">{coord.timezone} ({coord.offset})</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

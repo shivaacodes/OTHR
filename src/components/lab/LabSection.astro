@@ -1,0 +1,119 @@
+---
+import { experiments } from '../../data/experiments';
+import InteractiveShader from './InteractiveShader.astro';
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+const featuredExperiment = experiments[0];
+const otherExperiments = experiments.slice(1, 4);
+---
+
+<section class="py-24 md:py-32 bg-[#080B0A] border-b border-[#1D2620] relative" id="lab">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#1D2620]">
+      <div>
+        <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3" data-reveal>
+          // 03 EXPERIMENTAL CODE
+        </div>
+        <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#F5F6F0]" data-reveal data-delay="0.1">
+          The Lab<span class="text-[#C6FF3D]">.</span>
+        </h2>
+      </div>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4" data-reveal data-delay="0.2">
+        <p class="font-body text-base text-[#A5A9A3] max-w-sm">
+          Where we break things, explore GLSL shaders, synthesize algorithmic audio, and test the outer boundaries of browser tech.
+        </p>
+        <Button href="/lab" variant="outline" size="sm" showArrow={true}>
+          All Experiments
+        </Button>
+      </div>
+    </div>
+
+    <!-- Featured Experiment: Live Interactive Canvas Demo -->
+    <div class="mb-12" data-reveal>
+      <div class="flex flex-col lg:flex-row gap-8 bg-[#0E1410] border border-[#1D2620] p-6 sm:p-8">
+        <div class="lg:w-1/2 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <Badge variant="lime" dot={true}>FEATURED EXPERIMENT</Badge>
+              <span class="font-mono text-xs text-[#5C635B]">{featuredExperiment.code}</span>
+            </div>
+
+            <h3 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0] mb-4">
+              {featuredExperiment.title}
+            </h3>
+
+            <p class="font-body text-base text-[#A5A9A3] leading-relaxed mb-6">
+              {featuredExperiment.description}
+            </p>
+
+            <div class="p-4 bg-[#141A16] border border-[#1D2620] mb-6">
+              <div class="font-mono text-[10px] text-[#C6FF3D] uppercase tracking-wider mb-1">// HOW TO PLAY</div>
+              <p class="font-mono text-xs text-[#F5F6F0]">
+                {featuredExperiment.instructions}
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-[#1D2620]">
+            {featuredExperiment.tags.map((tag) => (
+              <span class="font-mono text-[10px] text-[#5C635B] bg-[#141A16] px-2 py-0.5 border border-[#1D2620]">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="lg:w-1/2">
+          <InteractiveShader />
+        </div>
+      </div>
+    </div>
+
+    <!-- Expandable Grid of Other Experiments -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {otherExperiments.map((exp, i) => (
+        <div
+          class="bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 p-6 flex flex-col justify-between group transition-all"
+          data-reveal
+          data-delay={0.1 * i}
+        >
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-xs text-[#C6FF3D]">{exp.code}</span>
+              <span class="font-mono text-[10px] text-[#5C635B]">{exp.date}</span>
+            </div>
+
+            <h4 class="font-display font-bold text-xl text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors mb-2">
+              {exp.title}
+            </h4>
+
+            <p class="font-body text-xs text-[#A5A9A3] leading-relaxed mb-6">
+              {exp.description}
+            </p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              {exp.tags.slice(0, 2).map((tag) => (
+                <span class="font-mono text-[9px] text-[#5C635B] bg-[#141A16] px-1.5 py-0.5 border border-[#1D2620]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href="/lab"
+              class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase text-[#A5A9A3] group-hover:text-[#C6FF3D] transition-colors"
+            >
+              <span>INSPECT IN LAB</span>
+              <Icon name="ArrowUpRight" size={12} />
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

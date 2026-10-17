@@ -1,0 +1,118 @@
+---
+import Button from '../ui/Button.astro';
+import Badge from '../ui/Badge.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden border-b border-[#1D2620]">
+  <!-- Scanline background grid pattern -->
+  <div class="absolute inset-0 scanline-grid opacity-25 pointer-events-none"></div>
+
+  <!-- Background Ambient Glow behind 3D Object -->
+  <div class="absolute right-[5%] top-[15%] w-[450px] h-[450px] bg-[#C6FF3D]/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+  <!-- 3D Interactive Centerpiece Container -->
+  <div
+    id="hero-3d-container"
+    class="absolute right-0 md:right-[2%] top-1/2 -translate-y-1/2 w-full md:w-[60vw] lg:w-[50vw] h-[60vh] md:h-[80vh] z-0 pointer-events-auto opacity-0 transition-opacity duration-1000"
+    aria-label="Interactive 3D topological sculpture"
+  >
+    <!-- Three.js WebGL canvas will be injected here dynamically -->
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 md:py-24 relative z-10 pointer-events-none">
+    <div class="max-w-4xl">
+      <!-- Top Monospace Subheading & Status Pill -->
+      <div class="flex flex-wrap items-center gap-3 mb-8 pointer-events-auto" data-reveal data-delay="0.1">
+        <Badge variant="lime" dot={true}>
+          STUDIO ACTIVE
+        </Badge>
+        <span class="font-mono text-xs text-[#5C635B] hidden sm:inline">//</span>
+        <span class="font-mono text-xs text-[#A5A9A3] tracking-widest uppercase">
+          Independent Creative Engineering
+        </span>
+      </div>
+
+      <!-- Main Editorial Headline -->
+      <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.92] text-[#F5F6F0] mb-8 pointer-events-auto select-none" data-reveal data-delay="0.2">
+        We don't do<br />
+        <span class="relative inline-block text-[#C6FF3D] glow-text underline decoration-2 underline-offset-8 decoration-[#C6FF3D]/40">
+          ordinary.
+        </span>
+      </h1>
+
+      <!-- Supporting Statement -->
+      <p class="font-body text-lg sm:text-xl md:text-2xl text-[#A5A9A3] max-w-2xl leading-relaxed mb-10 pointer-events-auto" data-reveal data-delay="0.3">
+        We engineer high-performance digital experiences, resilient business software, and things that probably shouldn't exist. <span class="text-[#F5F6F0]">But do.</span>
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center gap-4 pointer-events-auto" data-reveal data-delay="0.4">
+        <Button href="/work" variant="primary" size="lg" showArrow={true}>
+          Explore the Work
+        </Button>
+        <Button href="/contact" variant="secondary" size="lg">
+          Start Something
+        </Button>
+      </div>
+
+      <!-- Micro Specs / Bottom Telemetry Badges -->
+      <div class="mt-16 pt-8 border-t border-[#1D2620]/60 grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-xl pointer-events-auto" data-reveal data-delay="0.5">
+        <div>
+          <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider">PHILOSOPHY</div>
+          <div class="font-mono text-xs text-[#F5F6F0] mt-1">BRUTALLY FAST UNDERNEATH</div>
+        </div>
+        <div>
+          <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider">EXECUTION</div>
+          <div class="font-mono text-xs text-[#C6FF3D] mt-1">UNREASONABLY POLISHED</div>
+        </div>
+        <div class="col-span-2 sm:col-span-1">
+          <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider">CORE CAPABILITIES</div>
+          <div class="font-mono text-xs text-[#F5F6F0] mt-1">SYSTEMS + CREATIVE 3D</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subtle Scroll Indicator -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-auto">
+    <a href="#selected-work" class="text-[#5C635B] hover:text-[#C6FF3D] transition-colors p-2" aria-label="Scroll to selected work">
+      <span class="font-mono text-[10px] uppercase tracking-widest block mb-1">SCROLL</span>
+      <span class="w-4 h-7 border border-[#2A362E] rounded-full mx-auto flex items-start justify-center p-1">
+        <span class="w-1 h-1.5 bg-[#C6FF3D] rounded-full animate-bounce"></span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<script>
+  let heroInstance: any = null;
+
+  async function initHero3D() {
+    const container = document.getElementById('hero-3d-container');
+    if (!container) return;
+
+    if (heroInstance) {
+      heroInstance.destroy();
+      heroInstance = null;
+    }
+
+    try {
+      // Dynamic import ensures Three.js doesn't block initial page parse
+      const { HeroObject } = await import('./HeroObject');
+      heroInstance = new HeroObject({ container });
+      container.classList.remove('opacity-0');
+      container.classList.add('opacity-100');
+    } catch (err) {
+      console.warn('Failed to initialize 3D hero object:', err);
+    }
+  }
+
+  // Progressive hydration: run after initial paint
+  if (typeof window !== 'undefined') {
+    requestAnimationFrame(() => {
+      initHero3D();
+    });
+    document.addEventListener('astro:page-load', initHero3D);
+  }
+</script>

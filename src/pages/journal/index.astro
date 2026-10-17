@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/ui/Badge.astro';
+import Button from '../../components/ui/Button.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('journal', ({ data }) => {
+  return import.meta.env.PROD ? !data.draft : true;
+});
+
+const sortedArticles = allArticles.sort(
+  (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+);
+
+const featuredArticle = sortedArticles.find((a) => a.data.featured) || sortedArticles[0];
+const standardArticles = sortedArticles.filter((a) => a.id !== featuredArticle?.id);
+
+// Extract unique tags
+const allTags = Array.from(new Set(allArticles.flatMap((a) => a.data.tags)));
+---
+
+<BaseLayout
+  title="The Journal // Engineering & Architecture // OTHR"
+  description="Technical post-mortems, architectural decisions, systems engineering, and creative technology field notes from OTHR."
+>
+  <!-- Page Header -->
+  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
+        <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+        <span>/</span>
+        <span class="text-[#C6FF3D]">JOURNAL</span>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#F5F6F0] mb-4">
+            The Journal<span class="text-[#C6FF3D]">.</span>
+          </h1>
+          <p class="font-body text-xl text-[#A5A9A3] max-w-2xl leading-relaxed">
+            Engineering field notes, architecture post-mortems, and honest reflections on software craft. No generic corporate marketing.
+          </p>
+        </div>
+
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
+          <div class="text-[#5C635B] text-[10px]">// PUBLICATION STATUS</div>
+          <div class="text-[#C6FF3D]">{sortedArticles.length} ARTICLES // CANONICAL READY</div>
+        </div>
+      </div>
+
+      <!-- Tag Filter Pills -->
+      <div class="pt-6 border-t border-[#1D2620] flex flex-wrap items-center gap-2" id="journal-filter-bar">
+        <button
+          class="journal-filter-btn px-3 py-1 font-mono text-xs uppercase tracking-wider bg-[#C6FF3D] text-[#080B0A] border border-[#C6FF3D] font-bold cursor-pointer"
+          data-tag="all"
+        >
+          ALL TOPICS
+        </button>
+        {allTags.map((tag) => (
+          <button
+            class="journal-filter-btn px-3 py-1 font-mono text-xs uppercase tracking-wider bg-[#141A16] text-[#A5A9A3] border border-[#1D2620] hover:border-[#C6FF3D]/40 hover:text-[#F5F6F0] cursor-pointer transition-colors"
+            data-tag={tag}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="py-16 md:py-24 bg-[#080B0A]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+      <!-- Featured Spotlight Article -->
+      {featuredArticle && (
+        <article class="journal-card bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/50 transition-colors p-6 sm:p-10 lg:p-12" data-tags={featuredArticle.data.tags.join(',')}>
+          <div class="max-w-4xl space-y-6">
+            <div class="flex flex-wrap items-center gap-3">
+              <Badge variant="lime" dot={true}>FEATURED ESSAY</Badge>
+              <span class="font-mono text-xs text-[#5C635B]">
+                {new Date(featuredArticle.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </span>
+              <span class="font-mono text-xs text-[#5C635B]">// {featuredArticle.data.readingTime}</span>
+            </div>
+
+            <h2 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#F5F6F0] tracking-tight hover:text-[#C6FF3D] transition-colors leading-[1.05]">
+              <a href={`/journal/${featuredArticle.id}`}>
+                {featuredArticle.data.title}
+              </a>
+            </h2>
+
+            <p class="font-body text-lg sm:text-xl text-[#A5A9A3] leading-relaxed">
+              {featuredArticle.data.description}
+            </p>
+
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-[#1D2620]">
+              <div class="flex flex-wrap gap-1.5">
+                {featuredArticle.data.tags.map((t) => (
+                  <span class="font-mono text-[10px] text-[#5C635B] bg-[#141A16] px-2 py-0.5 border border-[#1D2620]">
+                    #{t}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href={`/journal/${featuredArticle.id}`}
+                class="font-mono text-xs text-[#C6FF3D] hover:text-white uppercase tracking-wider flex items-center gap-1.5 transition-colors font-bold"
+              >
+                <span>READ COMPLETE ESSAY</span>
+                <Icon name="ArrowUpRight" size={14} />
+              </a>
+            </div>
+          </div>
+        </article>
+      )}
+
+      <!-- Standard Articles Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="journal-articles-grid">
+        {standardArticles.map((article) => (
+          <article
+            class="journal-card bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors p-6 sm:p-8 flex flex-col justify-between"
+            data-tags={article.data.tags.join(',')}
+          >
+            <div class="space-y-4">
+              <div class="flex items-center justify-between font-mono text-xs text-[#5C635B]">
+                <span>
+                  {new Date(article.data.publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                </span>
+                <span>{article.data.readingTime}</span>
+              </div>
+
+              <h3 class="font-display font-bold text-2xl text-[#F5F6F0] hover:text-[#C6FF3D] transition-colors leading-snug">
+                <a href={`/journal/${article.id}`}>
+                  {article.data.title}
+                </a>
+              </h3>
+
+              <p class="font-body text-sm text-[#A5A9A3] leading-relaxed">
+                {article.data.description}
+              </p>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-[#1D2620] flex items-center justify-between">
+              <div class="flex flex-wrap gap-1.5">
+                {article.data.tags.slice(0, 2).map((t) => (
+                  <span class="font-mono text-[9px] text-[#5C635B] bg-[#141A16] px-1.5 py-0.5 border border-[#1D2620]">
+                    #{t}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href={`/journal/${article.id}`}
+                class="font-mono text-xs text-[#A5A9A3] hover:text-[#C6FF3D] uppercase flex items-center gap-1 transition-colors"
+              >
+                <span>READ</span>
+                <Icon name="ArrowUpRight" size={12} />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { studioAudio } from '../../utils/audio';
+
+  function initJournalFilter() {
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.journal-filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.journal-card');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        studioAudio.playClick();
+        const tag = btn.getAttribute('data-tag');
+
+        filterBtns.forEach((b) => {
+          b.classList.remove('bg-[#C6FF3D]', 'text-[#080B0A]', 'border-[#C6FF3D]', 'font-bold');
+          b.classList.add('bg-[#141A16]', 'text-[#A5A9A3]', 'border-[#1D2620]');
+        });
+
+        btn.classList.add('bg-[#C6FF3D]', 'text-[#080B0A]', 'border-[#C6FF3D]', 'font-bold');
+        btn.classList.remove('bg-[#141A16]', 'text-[#A5A9A3]', 'border-[#1D2620]');
+
+        cards.forEach((card) => {
+          const cardTags = card.getAttribute('data-tags') || '';
+          if (tag === 'all' || cardTags.split(',').includes(tag || '')) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  initJournalFilter();
+  document.addEventListener('astro:page-load', initJournalFilter);
+</script>

@@ -1,0 +1,141 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/navigation/Header.astro';
+import Footer from '../components/footer/Footer.astro';
+import { siteConfig } from '../config/site';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = "OTHR // Independent Creative Engineering Studio",
+  description = "We don't do ordinary. OTHR builds digital flagships, resilient distributed software, business automations, and proprietary SaaS products.",
+  ogImage = "/og-image.png",
+  canonicalPath
+} = Astro.props;
+
+const canonicalURL = new URL(canonicalPath || Astro.url.pathname, siteConfig.url);
+
+// Global Studio Structured Data Schema
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteConfig.legalName,
+  alternateName: siteConfig.name,
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/favicon.svg`,
+  description: siteConfig.description,
+  sameAs: siteConfig.socials.map((s) => s.url).filter(Boolean)
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="OTHR" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Google Fonts Preconnect: Space Grotesk (600-700), Inter (400-600), Space Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global JSON-LD Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+    <!-- Astro View Transitions -->
+    <ClientRouter />
+
+    <!-- Privacy-First Cloudflare Web Analytics (only injected when token is configured) -->
+    {siteConfig.analytics.cloudflareToken && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={`{"token": "${siteConfig.analytics.cloudflareToken}"}`}
+      />
+    )}
+  </head>
+  <body class="bg-[#080B0A] text-[#F5F6F0] antialiased selection:bg-[#C6FF3D] selection:text-[#080B0A]">
+    <!-- Custom Minimalist Coordinate Follower (Desktop only) -->
+    <div
+      id="cursor-tracker"
+      class="fixed pointer-events-none z-[100] w-3 h-3 border border-[#C6FF3D] rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 opacity-0 hidden md:block"
+      style="will-change: transform;"
+    ></div>
+
+    <Header />
+
+    <main id="main-content" class="min-h-screen pt-20">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      import { initScrollAnimations } from '../utils/motion';
+
+      function initApp() {
+        initScrollAnimations();
+
+        // Custom subtle cursor tracker on non-touch devices
+        const cursor = document.getElementById('cursor-tracker');
+        if (cursor && window.matchMedia('(pointer: fine)').matches) {
+          let mouseX = -100;
+          let mouseY = -100;
+          let posX = -100;
+          let posY = -100;
+
+          window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.opacity = '0.7';
+          }, { passive: true });
+
+          document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+          });
+
+          function animateCursor() {
+            posX += (mouseX - posX) * 0.15;
+            posY += (mouseY - posY) * 0.15;
+            if (cursor) {
+              cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+            }
+            requestAnimationFrame(animateCursor);
+          }
+          animateCursor();
+        }
+      }
+
+      initApp();
+      document.addEventListener('astro:page-load', initApp);
+    </script>
+  </body>
+</html>

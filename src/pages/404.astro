@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Badge from '../components/ui/Badge.astro';
+---
+
+<BaseLayout
+  title="404 // Coordinate Not Found // OTHR"
+  description="The requested route does not exist in this reality."
+>
+  <div class="min-h-[75vh] flex items-center justify-center py-20 relative overflow-hidden">
+    <div class="absolute inset-0 scanline-grid opacity-20 pointer-events-none"></div>
+
+    <div class="max-w-2xl mx-auto px-4 text-center relative z-10 space-y-8">
+      <Badge variant="alert" dot={true}>ERROR 404 // ANOMALY</Badge>
+
+      <h1 class="font-display font-black text-6xl sm:text-8xl lg:text-9xl tracking-tighter text-[#F5F6F0] leading-none">
+        404<span class="text-[#C6FF3D]">.</span>
+      </h1>
+
+      <div class="font-mono text-sm text-[#C6FF3D] tracking-widest uppercase">
+        REALITY NOT FOUND // ZERO BYTES AT THIS ADDRESS
+      </div>
+
+      <p class="font-body text-base sm:text-lg text-[#A5A9A3] max-w-lg mx-auto leading-relaxed">
+        The coordinate you are attempting to access has either been purged, shifted to another dimension, or never existed in the first place.
+      </p>
+
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+        <Button href="/" variant="primary" size="md" showArrow={true}>
+          Return to Studio Base
+        </Button>
+        <Button href="/work" variant="outline" size="md">
+          Inspect Selected Work
+        </Button>
+      </div>
+
+      <div class="pt-8 border-t border-[#1D2620] font-mono text-xs text-[#5C635B]">
+        TERMINAL_DISCONNECT // TRACE ID: 0x948B_NULL
+      </div>
+    </div>
+  </div>
+</BaseLayout>

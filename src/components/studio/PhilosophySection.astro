@@ -1,0 +1,76 @@
+---
+import { studioData } from '../../data/studio';
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+---
+
+<section class="py-24 md:py-32 bg-[#080B0A] border-b border-[#1D2620] relative" id="philosophy">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#1D2620]">
+      <div>
+        <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3" data-reveal>
+          // 05 PHILOSOPHY & ETHOS
+        </div>
+        <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#F5F6F0]" data-reveal data-delay="0.1">
+          How We Think<span class="text-[#C6FF3D]">.</span>
+        </h2>
+      </div>
+      <p class="font-body text-base text-[#A5A9A3] max-w-md" data-reveal data-delay="0.2">
+        We reject the corporate playbook of generic templates and bloated abstractions. Here is the operational code we work by.
+      </p>
+    </div>
+
+    <!-- 5 Editorial Principles in Alternating Matrix -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {studioData.principles.map((p, idx) => (
+        <div
+          class="bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 p-8 flex flex-col justify-between group transition-all"
+          data-reveal
+          data-delay={0.08 * idx}
+        >
+          <div>
+            <div class="font-mono text-xs text-[#C6FF3D] mb-6">
+              [{p.number}]
+            </div>
+            <h3 class="font-display font-bold text-2xl text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors mb-4">
+              {p.headline}
+            </h3>
+            <p class="font-body text-sm text-[#A5A9A3] leading-relaxed">
+              {p.elaboration}
+            </p>
+          </div>
+
+          <div class="mt-8 pt-4 border-t border-[#1D2620]/60 font-mono text-[10px] text-[#5C635B] uppercase tracking-widest">
+            OTHR // PRINCIPLE
+          </div>
+        </div>
+      ))}
+
+      <!-- 6th Special Manifesto Box -->
+      <div
+        class="bg-[#141A16] border border-[#C6FF3D]/30 p-8 flex flex-col justify-between relative overflow-hidden"
+        data-reveal
+        data-delay="0.4"
+      >
+        <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-[#C6FF3D]/10 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div>
+          <div class="font-mono text-xs text-[#C6FF3D] mb-6">// MANIFESTO</div>
+          <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mb-4">
+            Brutally fast underneath. Unreasonably polished on top.
+          </h3>
+          <p class="font-body text-sm text-[#A5A9A3] leading-relaxed">
+            If it stutters, it’s broken. If it looks like every other software studio, it’s irrelevant.
+          </p>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-[#1D2620] flex items-center justify-between">
+          <Button href="/studio" variant="outline" size="sm" showArrow={true}>
+            Studio Story
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

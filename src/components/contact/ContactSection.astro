@@ -1,0 +1,354 @@
+---
+import Button from '../ui/Button.astro';
+import Badge from '../ui/Badge.astro';
+import Icon from '../ui/Icon.astro';
+import { siteConfig } from '../../config/site';
+
+const projectTypes = [
+  { id: 'digital-upgrade', label: 'Digital Upgrade (Flagship Web)' },
+  { id: 'workflow-fix', label: 'Workflow Fix (Internal Automation)' },
+  { id: 'custom-software', label: 'Custom Software & Systems' },
+  { id: 'saas-product', label: 'SaaS / Product Engineering' },
+  { id: 'experimental-3d', label: 'Experimental 3D / WebGL' },
+  { id: 'other', label: 'Something Unclassified' }
+];
+
+const budgetRanges = [
+  '$3,500 – $7,500',
+  '$7,500 – $15,000',
+  '$15,000 – $30,000',
+  '$30,000+',
+  'Discuss Scope First'
+];
+
+const timelineOptions = [
+  'Immediate (Under 4 weeks)',
+  '1 – 2 Months',
+  '3 – 6 Months',
+  'Flexible / Research Phase'
+];
+---
+
+<section class="py-24 md:py-36 bg-[#080B0A] relative overflow-hidden" id="contact">
+  <!-- Subtle background ambient grid -->
+  <div class="absolute inset-0 scanline-grid opacity-20 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- Left Editorial Column -->
+      <div class="lg:col-span-5 space-y-8" data-reveal>
+        <div>
+          <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-4">
+            // INITIATE ENGAGEMENT
+          </div>
+          <h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[0.95] text-[#F5F6F0]">
+            Have something strange in mind?
+          </h2>
+          <div class="mt-4 font-display font-bold text-2xl sm:text-3xl text-[#C6FF3D]">
+            Good. We like strange.
+          </div>
+        </div>
+
+        <p class="font-body text-base sm:text-lg text-[#A5A9A3] leading-relaxed">
+          Whether you need a **Digital Upgrade** for your brand flagship, a **Workflow Fix** to kill manual spreadsheet toil, or custom systems engineering—tell us what you’re building.
+        </p>
+
+        <!-- Direct Coordinates Placeholders -->
+        <div class="p-6 bg-[#0E1410] border border-[#1D2620] space-y-4 font-mono text-xs">
+          <div>
+            <div class="text-[10px] text-[#5C635B] uppercase tracking-wider">// DIRECT DISPATCH</div>
+            <a href={`mailto:${siteConfig.contactEmail}`} class="text-[#F5F6F0] hover:text-[#C6FF3D] transition-colors font-bold text-sm">
+              {siteConfig.contactEmail}
+            </a>
+          </div>
+
+          <div class="pt-3 border-t border-[#1D2620]">
+            <div class="text-[10px] text-[#5C635B] uppercase tracking-wider">// RESPONSE WINDOW</div>
+            <div class="text-[#A5A9A3]">WITHIN 24 BUSINESS HOURS BY A LEAD ENGINEER</div>
+          </div>
+
+          <div class="pt-3 border-t border-[#1D2620] flex items-center justify-between text-[#5C635B]">
+            <span>PGP KEY: AVAILABLE ON REQUEST</span>
+            <span class="text-[#C6FF3D]">ENCRYPTED</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Interactive Inquiry Form -->
+      <div class="lg:col-span-7 bg-[#0E1410] border border-[#1D2620] p-6 sm:p-10" data-reveal data-delay="0.2">
+        <form id="studio-inquiry-form" class="space-y-6">
+
+          <!-- Step 1: Project Type Selection -->
+          <div>
+            <label class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-3">
+              01 // PROJECT TYPE *
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="project-type-selector">
+              {projectTypes.map((type) => (
+                <label class="project-type-label flex items-center gap-3 p-3 bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/40 cursor-pointer select-none transition-colors">
+                  <input
+                    type="radio"
+                    name="projectType"
+                    value={type.label}
+                    data-id={type.id}
+                    required
+                    class="form-radio text-[#C6FF3D] bg-[#080B0A] border-[#2A362E] focus:ring-0 focus:ring-offset-0 w-3.5 h-3.5 cursor-pointer"
+                  />
+                  <span class="font-mono text-xs text-[#F5F6F0]">{type.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Step 2: Budget & Timeline Selectors -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="inquiry-budget" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
+                02 // ESTIMATED BUDGET *
+              </label>
+              <select
+                id="inquiry-budget"
+                name="budget"
+                required
+                class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-xs text-[#F5F6F0] transition-colors cursor-pointer"
+              >
+                <option value="" disabled selected>Select budget range...</option>
+                {budgetRanges.map((b) => (
+                  <option value={b} class="bg-[#0E1410] text-[#F5F6F0]">{b}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label for="inquiry-timeline" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
+                03 // DESIRED TIMELINE *
+              </label>
+              <select
+                id="inquiry-timeline"
+                name="timeline"
+                required
+                class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-xs text-[#F5F6F0] transition-colors cursor-pointer"
+              >
+                <option value="" disabled selected>Select timeline target...</option>
+                {timelineOptions.map((t) => (
+                  <option value={t} class="bg-[#0E1410] text-[#F5F6F0]">{t}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <!-- Step 3: Contact Details -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="contact-name" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
+                04 // YOUR NAME *
+              </label>
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                required
+                maxlength="100"
+                placeholder="Ada Lovelace"
+                class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] transition-colors"
+              />
+            </div>
+
+            <div>
+              <label for="contact-email" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
+                05 // WORK EMAIL *
+              </label>
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                required
+                maxlength="150"
+                placeholder="ada@analytical-engine.io"
+                class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] transition-colors"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="contact-company" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
+              06 // COMPANY OR ORGANIZATION (OPTIONAL)
+            </label>
+            <input
+              type="text"
+              id="contact-company"
+              name="company"
+              maxlength="100"
+              placeholder="Babbage Labs Inc."
+              class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] transition-colors"
+            />
+          </div>
+
+          <!-- Step 4: Description -->
+          <div>
+            <label for="contact-details" class="block font-mono text-xs text-[#A5A9A3] uppercase tracking-wider mb-2">
+              07 // PROJECT DESCRIPTION *
+            </label>
+            <textarea
+              id="contact-details"
+              name="description"
+              rows="4"
+              required
+              minlength="10"
+              maxlength="3000"
+              placeholder="What are you trying to build? What makes it difficult? What does a successful outcome look like?"
+              class="w-full bg-[#141A16] border border-[#1D2620] focus:border-[#C6FF3D] focus:outline-none p-3 font-body text-sm text-[#F5F6F0] placeholder-[#5C635B] transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Consent Checkbox -->
+          <div class="pt-1">
+            <label class="flex items-start gap-3 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                id="contact-consent"
+                name="consent"
+                required
+                class="form-checkbox text-[#C6FF3D] bg-[#080B0A] border-[#2A362E] focus:ring-0 focus:ring-offset-0 w-4 h-4 mt-0.5 cursor-pointer"
+              />
+              <span class="font-mono text-xs text-[#A5A9A3] leading-relaxed">
+                I agree to the processing of my contact information in accordance with OTHR’s <a href="/privacy" class="text-[#C6FF3D] underline" target="_blank">Privacy Policy</a>. No third-party data sharing or marketing cookies.
+              </span>
+            </label>
+          </div>
+
+          <!-- Error Alert Banner -->
+          <div id="form-error-banner" class="hidden p-4 bg-red-950/40 border border-red-500/50 text-red-300 font-mono text-xs">
+            <div class="font-bold mb-1">✕ SUBMISSION ERROR</div>
+            <div id="form-error-text">Please review form fields.</div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button
+              type="submit"
+              id="submit-inquiry-btn"
+              class="w-full py-4 bg-[#C6FF3D] hover:bg-[#d4ff66] text-[#080B0A] font-mono text-xs uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_24px_-6px_rgba(198,255,61,0.4)] disabled:opacity-50"
+            >
+              <span id="btn-label">TRANSMIT PROJECT INQUIRY</span>
+              <Icon name="ArrowUpRight" size={16} />
+            </button>
+          </div>
+
+          <!-- Submission Feedback State -->
+          <div id="form-success-message" class="hidden p-6 bg-[#141A16] border border-[#C6FF3D] text-[#C6FF3D] font-mono text-xs space-y-2">
+            <div class="font-bold text-sm">✓ INQUIRY DISPATCHED SUCCESSFULLY</div>
+            <div class="text-[#F5F6F0]" id="success-ref-text">REFERENCE CODE: INQ-PENDING</div>
+            <div class="text-[#A5A9A3] leading-relaxed pt-1" id="success-subtext">
+              Telemetry received. A lead engineer will review your project parameters and respond within 24 hours.
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { studioAudio } from '../../utils/audio';
+
+  function initContactForm() {
+    const form = document.getElementById('studio-inquiry-form') as HTMLFormElement;
+    const successMsg = document.getElementById('form-success-message');
+    const errorBanner = document.getElementById('form-error-banner');
+    const errorText = document.getElementById('form-error-text');
+    const submitBtn = document.getElementById('submit-inquiry-btn') as HTMLButtonElement;
+    const btnLabel = document.getElementById('btn-label');
+    const refText = document.getElementById('success-ref-text');
+    const subtext = document.getElementById('success-subtext');
+
+    // Pre-fill from URL query param if present (?service=digital-upgrade, etc.)
+    const params = new URLSearchParams(window.location.search);
+    const serviceParam = params.get('service');
+    if (serviceParam) {
+      const radio = document.querySelector<HTMLInputElement>(`input[data-id="${serviceParam}"]`);
+      if (radio) {
+        radio.checked = true;
+        radio.closest('label')?.classList.add('border-[#C6FF3D]');
+      }
+    }
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      studioAudio.playClick();
+
+      if (errorBanner) errorBanner.classList.add('hidden');
+
+      const formData = new FormData(form);
+      const payload = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        company: formData.get('company'),
+        projectType: formData.get('projectType'),
+        budget: formData.get('budget'),
+        timeline: formData.get('timeline'),
+        description: formData.get('description'),
+        consent: formData.get('consent') === 'on'
+      };
+
+      if (submitBtn && btnLabel) {
+        submitBtn.disabled = true;
+        btnLabel.textContent = 'DISPATCHING TELEMETRY...';
+      }
+
+      try {
+        const response = await fetch('/api/inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        let data: any = {};
+        try {
+          data = await response.json();
+        } catch (e) {
+          data = {};
+        }
+
+        if (!response.ok) {
+          if (response.status === 404 && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+            console.log('[SAFE_DEV_MODE] Local preview detected. Inquiry payload:', payload);
+            data = {
+              success: true,
+              simulated: true,
+              referenceId: `INQ-DEV-${Date.now().toString(36).toUpperCase()}`,
+              message: 'Local Preview Mode: Inquiry recorded and logged to console.'
+            };
+          } else {
+            throw new Error(data.error || `Server responded with status ${response.status}.`);
+          }
+        }
+
+        studioAudio.playChirp(880, 0.1);
+
+        if (successMsg) {
+          successMsg.classList.remove('hidden');
+          if (refText) refText.textContent = `REFERENCE CODE: ${data.referenceId || 'INQ-SUCCESS'}`;
+          if (data.simulated && subtext) {
+            subtext.textContent = 'Safe Local Dev Mode: Inquiry successfully recorded and logged to browser console.';
+          }
+        }
+
+        form.classList.add('hidden');
+      } catch (err: any) {
+        if (errorBanner && errorText) {
+          errorText.textContent = err.message || 'An unexpected error occurred during dispatch.';
+          errorBanner.classList.remove('hidden');
+        }
+      } finally {
+        if (submitBtn && btnLabel) {
+          submitBtn.disabled = false;
+          btnLabel.textContent = 'TRANSMIT PROJECT INQUIRY';
+        }
+      }
+    });
+  }
+
+  initContactForm();
+  document.addEventListener('astro:page-load', initContactForm);
+</script>

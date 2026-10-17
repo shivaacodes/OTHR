@@ -1,0 +1,241 @@
+---
+import Icon from '../ui/Icon.astro';
+import Button from '../ui/Button.astro';
+
+const navLinks = [
+  { href: '/work', label: 'Work', code: '01' },
+  { href: '/services', label: 'Services', code: '02' },
+  { href: '/lab', label: 'Lab', code: '03' },
+  { href: '/journal', label: 'Journal', code: '04' },
+  { href: '/studio', label: 'Studio', code: '05' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#080B0A]/85 backdrop-blur-xl border-b border-[#1D2620]/80 transition-all duration-300" id="site-header">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Left: OTHR Wordmark -->
+    <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-1 focus:ring-[#C6FF3D]" aria-label="OTHR Homepage">
+      <div class="w-7 h-7 bg-[#0E1410] border border-[#2A362E] group-hover:border-[#C6FF3D] flex items-center justify-center transition-colors">
+        <span class="w-2.5 h-2.5 bg-[#C6FF3D] transform group-hover:rotate-45 transition-transform duration-300"></span>
+      </div>
+      <div class="flex items-baseline gap-2">
+        <span class="font-display font-bold text-2xl tracking-tighter text-[#F5F6F0] group-hover:text-white transition-colors">OTHR</span>
+        <span class="font-mono text-[10px] text-[#C6FF3D] tracking-widest hidden sm:inline uppercase">// STUDIO</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+        return (
+          <a
+            href={link.href}
+            class={`group flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider py-1 relative transition-colors ${
+              isActive ? 'text-[#C6FF3D]' : 'text-[#A5A9A3] hover:text-[#F5F6F0]'
+            }`}
+          >
+            <span class="text-[9px] text-[#5C635B] group-hover:text-[#C6FF3D] transition-colors">{link.code}</span>
+            <span>{link.label}</span>
+            {isActive && (
+              <span class="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#C6FF3D] shadow-[0_0_8px_#C6FF3D]"></span>
+            )}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Right: Utility Controls & Let's Talk CTA -->
+    <div class="hidden md:flex items-center gap-4">
+      <!-- Theme Switcher (Lime / Deep Blue) -->
+      <button
+        id="theme-toggle-btn"
+        class="w-9 h-9 flex items-center justify-center text-[#A5A9A3] hover:text-[#C6FF3D] hover:bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors"
+        title="Toggle Theme (Acid Lime / Deep Blue)"
+        aria-label="Toggle visual theme palette"
+      >
+        <span class="w-3.5 h-3.5 rounded-full border border-current flex items-center justify-center">
+          <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+        </span>
+      </button>
+
+      <!-- Audio Mute/Unmute Toggle -->
+      <button
+        id="audio-toggle-btn"
+        class="w-9 h-9 flex items-center justify-center text-[#A5A9A3] hover:text-[#C6FF3D] hover:bg-[#141A16] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors"
+        title="Toggle Tactile Micro-Audio"
+        aria-label="Toggle mechanical micro-audio"
+      >
+        <Icon name="VolumeX" size={16} id="audio-icon-off" />
+        <span id="audio-icon-on" class="hidden">
+          <Icon name="Volume2" size={16} />
+        </span>
+      </button>
+
+      <!-- Let's Talk Action Button -->
+      <Button href="/contact" variant="primary" size="sm" showArrow={true}>
+        Let's Talk
+      </Button>
+    </div>
+
+    <!-- Mobile Navigation Toggle Button -->
+    <div class="flex items-center gap-3 md:hidden">
+      <button
+        id="mobile-menu-trigger"
+        class="w-11 h-11 flex items-center justify-center bg-[#141A16] border border-[#1D2620] text-[#F5F6F0] hover:text-[#C6FF3D] focus:outline-none"
+        aria-label="Open Mobile Menu"
+        aria-expanded="false"
+      >
+        <Icon name="Menu" size={22} id="menu-icon-open" />
+        <span id="menu-icon-close" class="hidden">
+          <Icon name="X" size={22} />
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div
+  id="mobile-menu-drawer"
+  class="fixed inset-0 z-40 bg-[#080B0A] bg-opacity-98 backdrop-blur-2xl transform -translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden pt-24 px-6 pb-12 flex flex-col justify-between"
+  aria-hidden="true"
+>
+  <div class="flex flex-col gap-6 mt-8">
+    <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-widest border-b border-[#1D2620] pb-2">
+      // INDEX NAVIGATION
+    </div>
+    <nav class="flex flex-col gap-4">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-nav-link flex items-center justify-between py-3 border-b border-[#1D2620]/60 font-display text-2xl font-bold tracking-tight text-[#F5F6F0] hover:text-[#C6FF3D]"
+        >
+          <span>{link.label}</span>
+          <span class="font-mono text-xs text-[#5C635B]">{link.code}</span>
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="mobile-nav-link flex items-center justify-between py-3 border-b border-[#1D2620]/60 font-display text-2xl font-bold tracking-tight text-[#C6FF3D]"
+      >
+        <span>Let's Talk</span>
+        <span class="font-mono text-xs text-[#C6FF3D]">06</span>
+      </a>
+    </nav>
+  </div>
+
+  <div class="border-t border-[#1D2620] pt-6 flex flex-col gap-4">
+    <div class="flex items-center justify-between font-mono text-xs text-[#A5A9A3]">
+      <span>PALETTE MODE</span>
+      <button id="mobile-theme-toggle" class="text-[#C6FF3D] uppercase border border-[#2A362E] px-3 py-1">
+        SWITCH THEME
+      </button>
+    </div>
+    <div class="flex items-center justify-between font-mono text-xs text-[#5C635B]">
+      <span>STATUS: OPERATIONAL</span>
+      <span>60 FPS</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { studioAudio } from '../../utils/audio';
+
+  function initHeaderControls() {
+    const trigger = document.getElementById('mobile-menu-trigger');
+    const drawer = document.getElementById('mobile-menu-drawer');
+    const openIcon = document.getElementById('menu-icon-open');
+    const closeIcon = document.getElementById('menu-icon-close');
+    const links = document.querySelectorAll('.mobile-nav-link');
+
+    let isOpen = false;
+
+    function toggleMenu() {
+      isOpen = !isOpen;
+      if (isOpen) {
+        drawer?.classList.remove('-translate-y-full');
+        drawer?.classList.add('translate-y-0');
+        openIcon?.classList.add('hidden');
+        closeIcon?.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        drawer?.classList.add('-translate-y-full');
+        drawer?.classList.remove('translate-y-0');
+        openIcon?.classList.remove('hidden');
+        closeIcon?.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+      trigger?.setAttribute('aria-expanded', isOpen.toString());
+      studioAudio.playClick();
+    }
+
+    trigger?.addEventListener('click', toggleMenu);
+    links.forEach((l) => l.addEventListener('click', () => {
+      if (isOpen) toggleMenu();
+    }));
+
+    // Theme Toggle Handler
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
+
+    function toggleTheme() {
+      const isBlue = document.documentElement.getAttribute('data-theme') === 'deep-blue';
+      if (isBlue) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('othr_theme', 'lime');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'deep-blue');
+        localStorage.setItem('othr_theme', 'deep-blue');
+      }
+      studioAudio.playClick();
+    }
+
+    themeBtn?.addEventListener('click', toggleTheme);
+    mobileThemeBtn?.addEventListener('click', toggleTheme);
+
+    // Audio Toggle Handler
+    const audioBtn = document.getElementById('audio-toggle-btn');
+    const audioOffIcon = document.getElementById('audio-icon-off');
+    const audioOnIcon = document.getElementById('audio-icon-on');
+
+    function updateAudioUI() {
+      const isEnabled = studioAudio.getStatus();
+      if (isEnabled) {
+        audioOffIcon?.classList.add('hidden');
+        audioOnIcon?.classList.remove('hidden');
+      } else {
+        audioOffIcon?.classList.remove('hidden');
+        audioOnIcon?.classList.add('hidden');
+      }
+    }
+
+    updateAudioUI();
+
+    audioBtn?.addEventListener('click', () => {
+      studioAudio.toggleMute();
+      updateAudioUI();
+    });
+
+    // Attach subtle click sounds to buttons and nav links
+    document.querySelectorAll('a, button').forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        // Optional subtle hover chirp
+      });
+      el.addEventListener('click', () => {
+        studioAudio.playClick();
+      });
+    });
+  }
+
+  // Restore saved theme
+  const savedTheme = localStorage.getItem('othr_theme');
+  if (savedTheme === 'deep-blue') {
+    document.documentElement.setAttribute('data-theme', 'deep-blue');
+  }
+
+  initHeaderControls();
+  document.addEventListener('astro:page-load', initHeaderControls);
+</script>

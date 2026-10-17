@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import { siteConfig } from '../config/site';
+
+const commercialOfferings = [
+  {
+    id: 'digital-upgrade',
+    number: '01',
+    badge: 'COMMERCIAL OFFERING // WEB & EXPERIENCE',
+    title: 'Digital Upgrade',
+    tagline: 'Premium websites, interactive landing pages, and digital flagships for ambitious brands.',
+    summary: 'For businesses whose online presence does not match the actual caliber of their work. We replace bloated WordPress templates and generic SaaS themes with bespoke, Awwwards-caliber digital flagships engineered for brutal speed, kinetic typography, and unmistakable creative authority.',
+    problemsSolved: [
+      'Your existing website looks indistinguishable from every competitor in your category.',
+      'Mobile loading speeds are sluggish (>3.5s LCP), costing you direct conversion and search visibility.',
+      'Inflexible CMS architectures require weeks of developer tickets just to modify a landing page layout.',
+      'Lack of memorable brand presence fails to convert high-ticket enterprise decision-makers.'
+    ],
+    deliverables: [
+      'Bespoke digital flagship architecture (Astro / Next.js / TypeScript)',
+      'Sub-50ms static edge deployment on Cloudflare with 95+ Mobile Lighthouse scores',
+      'Signature interactive 3D WebGL / Three.js artifacts & kinetic GSAP choreography',
+      'Flexible, headless editorial CMS integration tailored to your marketing workflows',
+      'Comprehensive technical SEO, OpenGraph metadata, and structured data schemas'
+    ],
+    techStack: ['Astro', 'Three.js / WebGL', 'Tailwind CSS', 'GSAP', 'Cloudflare Workers', 'TypeScript'],
+    pricingInfo: siteConfig.pricing.find((p) => p.serviceId === 'digital-upgrade')
+  },
+  {
+    id: 'workflow-fix',
+    number: '02',
+    badge: 'COMMERCIAL OFFERING // AUTOMATION & OPS',
+    title: 'Workflow Fix',
+    tagline: 'Custom internal software that permanently eliminates repetitive administrative friction.',
+    summary: 'For mid-sized companies accidentally running critical operations on fragile, 48-tab Excel sheets and manual email forwards. We engineer bespoke, role-secured operational web applications that automate multi-step calculations, data ingestion, and cross-platform synchronization.',
+    problemsSolved: [
+      'Senior operations managers spend 10+ hours a week copying data between spreadsheets and accounting software.',
+      'Accidental formula corruption or concurrent spreadsheet overwrites create costly data errors.',
+      'Zero role-based permissions expose sensitive payroll, customer, or inventory figures to entire teams.',
+      'Brittle no-code zaps silently break on schema changes, causing data drop-offs.'
+    ],
+    deliverables: [
+      'Custom internal operational portal (tailored precisely to your morning workflow)',
+      'Secure PostgreSQL relational database with immutable audit ledgers and row-level security',
+      'Automated background sync jobs linking legacy ERPs, payment processors, and messaging APIs',
+      'Granular role-based access control (RBAC) preventing unauthorized data visibility',
+      'Automated batch report generation (encrypted PDFs, CSV exports, WhatsApp/Slack delivery)'
+    ],
+    techStack: ['Go', 'PostgreSQL', 'Redis', 'TypeScript / Node', 'Docker', 'WebSockets'],
+    pricingInfo: siteConfig.pricing.find((p) => p.serviceId === 'workflow-fix')
+  }
+];
+
+const studioDisciplines = [
+  {
+    num: '01',
+    title: 'Custom Software Engineering',
+    desc: 'Distributed microservices, event-driven architectures, and resilient backends in Go and Rust built for zero-downtime reliability.'
+  },
+  {
+    num: '02',
+    title: 'Business Workflow Automation',
+    desc: 'Custom internal tools, batch document pipelines, and autonomous data sync eliminating manual spreadsheet toil.'
+  },
+  {
+    num: '03',
+    title: 'Creative Web Development',
+    desc: 'Digital flagships, custom WebGL/Three.js 3D centerpieces, and kinetic editorial experiences with 95+ Lighthouse scores.'
+  },
+  {
+    num: '04',
+    title: 'SaaS and Product Engineering',
+    desc: 'Zero-to-one product development, database design, auth/RBAC, billing integration, and production edge deployment.'
+  },
+  {
+    num: '05',
+    title: 'API and Systems Integration',
+    desc: 'Bespoke connectors between legacy databases, modern REST/gRPC endpoints, and third-party platforms with token-bucket rate limiting.'
+  }
+];
+---
+
+<BaseLayout
+  title="Services & Capabilities // OTHR Creative Engineering"
+  description="Explore OTHR's commercial offerings: Digital Upgrade (flagship web experiences) and Workflow Fix (custom internal automation tools), plus our 5 core engineering disciplines."
+>
+  <!-- Page Header -->
+  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
+        <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+        <span>/</span>
+        <span class="text-[#C6FF3D]">SERVICES</span>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#F5F6F0] mb-4">
+            Services<span class="text-[#C6FF3D]">.</span>
+          </h1>
+          <p class="font-body text-xl text-[#A5A9A3] max-w-2xl leading-relaxed">
+            We don't offer generic 50-page agency menus. We deliver focused engineering interventions that solve concrete business bottlenecks.
+          </p>
+        </div>
+
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
+          <div class="text-[#5C635B] text-[10px]">// COMMERCIAL ARCHITECTURE</div>
+          <div class="text-[#C6FF3D]">2 PACKAGED OFFERINGS // 5 DISCIPLINES</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-16 md:py-24 bg-[#080B0A]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+      <!-- Section: Featured Commercial Offerings -->
+      <section>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#1D2620]">
+          <div>
+            <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-2">// COMMERCIAL OFFERINGS</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0]">
+              Packaged Engineering Engagements
+            </h2>
+          </div>
+          <p class="font-body text-sm text-[#A5A9A3] max-w-md">
+            Structured scopes designed for rapid execution and measurable business impact without endless agency meetings.
+          </p>
+        </div>
+
+        <div class="space-y-16">
+          {commercialOfferings.map((offering) => (
+            <article class="bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors p-6 sm:p-10 lg:p-12 relative">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                <!-- Left: Story & Problems -->
+                <div class="lg:col-span-7 space-y-6">
+                  <div class="flex flex-wrap items-center gap-3">
+                    <span class="font-mono text-xs text-[#C6FF3D] font-bold">[{offering.number}]</span>
+                    <Badge variant="lime">{offering.badge}</Badge>
+                  </div>
+
+                  <h3 class="font-display font-black text-3xl sm:text-5xl text-[#F5F6F0] tracking-tight">
+                    {offering.title}
+                  </h3>
+
+                  <p class="font-body text-xl text-[#C6FF3D] font-medium leading-relaxed">
+                    {offering.tagline}
+                  </p>
+
+                  <p class="font-body text-base text-[#A5A9A3] leading-relaxed">
+                    {offering.summary}
+                  </p>
+
+                  <!-- Common Problems Solved -->
+                  <div class="pt-4 border-t border-[#1D2620]">
+                    <div class="font-mono text-xs text-[#5C635B] uppercase tracking-wider mb-3">
+                      // PROBLEMS THIS ELIMINATES
+                    </div>
+                    <ul class="space-y-2.5">
+                      {offering.problemsSolved.map((prob) => (
+                        <li class="flex items-start gap-2.5 font-body text-sm text-[#F5F6F0]">
+                          <span class="text-red-400 font-mono font-bold mt-0.5">✕</span>
+                          <span>{prob}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <!-- Typical Deliverables -->
+                  <div class="pt-4 border-t border-[#1D2620]">
+                    <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-wider mb-3">
+                      // TYPICAL DELIVERABLES
+                    </div>
+                    <ul class="space-y-2">
+                      {offering.deliverables.map((del) => (
+                        <li class="flex items-start gap-2.5 font-mono text-xs text-[#A5A9A3]">
+                          <span class="text-[#C6FF3D] mt-0.5">›</span>
+                          <span>{del}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Right: Scope, Indicative Pricing & CTA Card -->
+                <div class="lg:col-span-5 bg-[#141A16] border border-[#1D2620] p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                  <div>
+                    <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mb-3">// SCOPE & PRICING GUIDE</div>
+
+                    {offering.pricingInfo && (
+                      <div class="mb-6 p-4 bg-[#080B0A] border border-[#1D2620]">
+                        <div class="font-mono text-[10px] text-[#A5A9A3] uppercase">INDICATIVE ENGAGEMENT RANGE</div>
+                        <div class="font-display font-extrabold text-2xl sm:text-3xl text-[#C6FF3D] mt-1">
+                          {offering.pricingInfo.startingRange}
+                        </div>
+                        <div class="font-mono text-[11px] text-[#5C635B] mt-0.5">
+                          {offering.pricingInfo.unit} // Typical timeline: {offering.pricingInfo.typicalTimeline}
+                        </div>
+                        <div class="font-body text-[11px] text-[#A5A9A3] mt-2 pt-2 border-t border-[#1D2620]">
+                          {offering.pricingInfo.note}
+                        </div>
+                      </div>
+                    )}
+
+                    <div class="space-y-3 font-mono text-xs text-[#A5A9A3]">
+                      <div class="text-[#5C635B]">// PRIMARY TECHNOLOGIES</div>
+                      <div class="flex flex-wrap gap-1.5">
+                        {offering.techStack.map((tech) => (
+                          <Badge variant="muted" size="sm">{tech}</Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-4 border-t border-[#1D2620]">
+                    <Button href={`/contact?service=${offering.id}`} variant="primary" size="md" showArrow={true} class="w-full">
+                      Start a {offering.title} Project
+                    </Button>
+                    <p class="font-mono text-[10px] text-[#5C635B] text-center mt-2.5">
+                      Direct consultation with a lead engineer. No sales reps.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Section: 5 Core Engineering Disciplines -->
+      <section class="pt-12 border-t border-[#1D2620]">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-[#1D2620]">
+          <div>
+            <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-2">// TECHNICAL CAPABILITIES</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0]">
+              Core Engineering Disciplines
+            </h2>
+          </div>
+          <p class="font-body text-sm text-[#A5A9A3] max-w-md">
+            For bespoke projects requiring specialized architectural consulting or long-term engineering partnerships.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {studioDisciplines.map((disc) => (
+            <div class="bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors p-8 flex flex-col justify-between">
+              <div>
+                <span class="font-mono text-xs text-[#C6FF3D] font-bold">[{disc.num}]</span>
+                <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mt-3 mb-3">{disc.title}</h3>
+                <p class="font-body text-sm text-[#A5A9A3] leading-relaxed mb-6">{disc.desc}</p>
+              </div>
+
+              <div class="pt-4 border-t border-[#1D2620]">
+                <a href="/contact" class="font-mono text-xs text-[#A5A9A3] hover:text-[#C6FF3D] uppercase flex items-center gap-1.5 transition-colors">
+                  <span>DISCUSS REQUIREMENTS</span>
+                  <Icon name="ArrowUpRight" size={13} />
+                </a>
+              </div>
+            </div>
+          ))}
+
+          <!-- 6th Box: Start Custom Project -->
+          <div class="bg-[#141A16] border border-[#C6FF3D]/40 p-8 flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs text-[#C6FF3D] font-bold">[06]</span>
+              <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mt-3 mb-3">Something Unclassified?</h3>
+              <p class="font-body text-sm text-[#A5A9A3] leading-relaxed mb-6">
+                Have an unusual architectural problem, a hardware-software bridge, or an experimental prototype? We specialize in what shouldn't exist.
+              </p>
+            </div>
+
+            <div class="pt-4 border-t border-[#1D2620]">
+              <Button href="/contact" variant="primary" size="sm" showArrow={true} class="w-full">
+                Initiate Project Inquiry
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

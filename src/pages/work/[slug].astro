@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Badge from '../../components/ui/Badge.astro';
+import Button from '../../components/ui/Button.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { projects, type CaseStudy } from '../../data/projects';
+
+export function getStaticPaths() {
+  const publishedProjects = projects.filter((p) => (import.meta.env.PROD ? !p.draft : true));
+
+  return publishedProjects.map((project, index) => {
+    const prevProject = index > 0 ? publishedProjects[index - 1] : publishedProjects[publishedProjects.length - 1];
+    const nextProject = index < publishedProjects.length - 1 ? publishedProjects[index + 1] : publishedProjects[0];
+
+    const relatedProjects = publishedProjects.filter((p) =>
+      project.relatedSlugs?.includes(p.slug)
+    );
+
+    return {
+      params: { slug: project.slug },
+      props: { project, prevProject, nextProject, relatedProjects }
+    };
+  });
+}
+
+interface Props {
+  project: CaseStudy;
+  prevProject: CaseStudy;
+  nextProject: CaseStudy;
+  relatedProjects: CaseStudy[];
+}
+
+const { project, prevProject, nextProject, relatedProjects } = Astro.props;
+---
+
+<BaseLayout
+  title={`${project.title} // Engineering Case Study // OTHR`}
+  description={project.tagline}
+>
+  <article class="py-16 md:py-24">
+    <!-- Top Breadcrumb & Metadata Header -->
+    <header class="border-b border-[#1D2620] pb-12 mb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-6">
+          <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+          <span>/</span>
+          <a href="/work" class="hover:text-[#C6FF3D] transition-colors">WORK</a>
+          <span>/</span>
+          <span class="text-[#C6FF3D] uppercase">{project.slug}</span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <Badge variant="lime">{project.category}</Badge>
+          <Badge variant="outline">{project.year}</Badge>
+          {project.statusText && (
+            <Badge variant="alert" dot={true}>{project.statusText}</Badge>
+          )}
+        </div>
+
+        <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#F5F6F0] mb-6 leading-[1.05]">
+          {project.title}<span class="text-[#C6FF3D]">.</span>
+        </h1>
+
+        <p class="font-body text-xl sm:text-2xl text-[#A5A9A3] max-w-3xl leading-relaxed">
+          {project.tagline}
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
+        <!-- Left: Project Scope & Specs Sidebar -->
+        <aside class="lg:col-span-4 space-y-8 order-2 lg:order-1">
+          <div class="bg-[#0E1410] border border-[#1D2620] p-6 space-y-6">
+            <div>
+              <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mb-2">// SCOPE OF WORK</div>
+              <ul class="space-y-1.5 font-mono text-xs text-[#F5F6F0]">
+                {project.scope.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#C6FF3D]">›</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="pt-4 border-t border-[#1D2620]">
+              <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mb-3">// TECH STACK</div>
+              <div class="flex flex-wrap gap-1.5">
+                {project.technologies.map((tech) => (
+                  <Badge variant="muted" size="sm">{tech}</Badge>
+                ))}
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-[#1D2620]">
+              <div class="font-mono text-[10px] text-[#5C635B] uppercase tracking-wider mb-1">// STATUS</div>
+              <div class="font-mono text-xs text-[#C6FF3D]">
+                {project.statusText || 'PRODUCTION DEPLOYED // OPERATIONAL'}
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-[#141A16] border border-[#1D2620] text-center">
+            <p class="font-mono text-xs text-[#A5A9A3] mb-4">Need similar engineering rigor?</p>
+            <Button href="/contact" variant="primary" size="sm" showArrow={true} class="w-full">
+              Initiate Project Inquiry
+            </Button>
+          </div>
+        </aside>
+
+        <!-- Right: Case Study Narrative -->
+        <main class="lg:col-span-8 space-y-16 order-1 lg:order-2">
+          <!-- Overview -->
+          <section>
+            <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3">// 01 EXECUTIVE OVERVIEW</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0] mb-6">
+              The System
+            </h2>
+            <p class="font-body text-lg text-[#A5A9A3] leading-relaxed">
+              {project.overview}
+            </p>
+          </section>
+
+          <!-- The Problem -->
+          <section class="bg-[#0E1410] border-l-2 border-[#C6FF3D] p-6 sm:p-8">
+            <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-2">// 02 THE BOTTLENECK</div>
+            <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mb-4">The Operational Problem</h3>
+            <p class="font-body text-base text-[#A5A9A3] leading-relaxed">
+              {project.problem}
+            </p>
+          </section>
+
+          <!-- Our Approach -->
+          <section>
+            <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3">// 03 ENGINEERING APPROACH</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0] mb-4">
+              How We Solved It
+            </h2>
+            <p class="font-body text-base text-[#A5A9A3] leading-relaxed">
+              {project.approach}
+            </p>
+          </section>
+
+          <!-- Architectural Blueprint -->
+          <section>
+            <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3">// 04 TECHNICAL ARCHITECTURE</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0] mb-4">
+              {project.architecture.title}
+            </h2>
+            <p class="font-body text-base text-[#A5A9A3] leading-relaxed mb-6">
+              {project.architecture.description}
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {project.architecture.points.map((pt, i) => (
+                <div class="p-4 bg-[#141A16] border border-[#1D2620]">
+                  <div class="font-mono text-xs text-[#C6FF3D] mb-1">NODE 0{i + 1}</div>
+                  <p class="font-body text-xs text-[#F5F6F0] leading-relaxed">{pt}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- Challenges & Technical Resolutions -->
+          <section>
+            <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3">// 05 ENGINEERING HURDLES</div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0] mb-6">
+              Obstacles Overcome
+            </h2>
+            <div class="space-y-4">
+              {project.challenges.map((ch) => (
+                <div class="p-6 bg-[#0E1410] border border-[#1D2620]">
+                  <div class="font-display font-bold text-lg text-[#F5F6F0] mb-2">{ch.challenge}</div>
+                  <div class="font-body text-sm text-[#A5A9A3] leading-relaxed">
+                    <span class="font-mono text-xs text-[#C6FF3D] mr-2">RESOLUTION:</span>
+                    {ch.resolution}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- Measured Outcomes -->
+          <section class="bg-[#141A16] p-6 sm:p-8 border border-[#1D2620]">
+            <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-4">// 06 VERIFIED OUTCOMES</div>
+            <ul class="space-y-3">
+              {project.outcomes.map((out) => (
+                <li class="flex items-start gap-3 font-body text-sm text-[#F5F6F0]">
+                  <span class="text-[#C6FF3D] font-mono font-bold mt-0.5">✓</span>
+                  <span>{out}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <!-- Related Projects -->
+          {relatedProjects.length > 0 && (
+            <section class="pt-8 border-t border-[#1D2620]">
+              <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-6">// RELATED CASE STUDIES</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {relatedProjects.map((rel) => (
+                  <a
+                    href={`/work/${rel.slug}`}
+                    class="p-6 bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/40 transition-colors block group"
+                  >
+                    <div class="font-mono text-[10px] text-[#5C635B] mb-2">{rel.category}</div>
+                    <div class="font-display font-bold text-xl text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors">
+                      {rel.title}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+        </main>
+      </div>
+
+      <!-- Bottom Next / Previous Case Study Navigation -->
+      <nav class="mt-24 pt-12 border-t border-[#1D2620] grid grid-cols-1 sm:grid-cols-2 gap-6" aria-label="Adjacent Case Studies">
+        <a
+          href={`/work/${prevProject.slug}`}
+          class="p-6 bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/50 transition-colors group flex flex-col justify-between"
+        >
+          <div class="font-mono text-[10px] text-[#5C635B] uppercase mb-2">‹ PREVIOUS CASE STUDY</div>
+          <div class="font-display font-bold text-2xl text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors">{prevProject.title}</div>
+          <div class="font-body text-xs text-[#A5A9A3] mt-1">{prevProject.category}</div>
+        </a>
+
+        <a
+          href={`/work/${nextProject.slug}`}
+          class="p-6 bg-[#0E1410] border border-[#1D2620] hover:border-[#C6FF3D]/50 transition-colors group flex flex-col justify-between text-left sm:text-right"
+        >
+          <div class="font-mono text-[10px] text-[#5C635B] uppercase mb-2">NEXT CASE STUDY ›</div>
+          <div class="font-display font-bold text-2xl text-[#F5F6F0] group-hover:text-[#C6FF3D] transition-colors">{nextProject.title}</div>
+          <div class="font-body text-xs text-[#A5A9A3] mt-1">{nextProject.category}</div>
+        </a>
+      </nav>
+    </div>
+  </article>
+</BaseLayout>

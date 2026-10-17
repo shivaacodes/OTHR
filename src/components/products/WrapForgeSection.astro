@@ -1,0 +1,233 @@
+---
+import { products } from '../../data/products';
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+const wrapforge = products[0];
+const otherProducts = products.slice(1);
+---
+
+<section class="py-24 md:py-32 bg-[#080B0A] border-b border-[#1D2620] relative" id="products">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-[#1D2620]">
+      <div>
+        <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-3" data-reveal>
+          // 04 STUDIO PRODUCTS
+        </div>
+        <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#F5F6F0]" data-reveal data-delay="0.1">
+          Our Products<span class="text-[#C6FF3D]">.</span>
+        </h2>
+      </div>
+      <p class="font-body text-base text-[#A5A9A3] max-w-md" data-reveal data-delay="0.2">
+        We don't just build software for clients. We conceive, architect, and operate our own commercial SaaS platforms and developer tooling.
+      </p>
+    </div>
+
+    <!-- WrapForge Flagship Spotlight -->
+    <div class="bg-[#0E1410] border border-[#1D2620] p-6 sm:p-10 mb-12 relative overflow-hidden" data-reveal>
+      <!-- Background subtle technical watermark -->
+      <div class="absolute right-4 bottom-4 font-mono text-8xl font-black text-[#141A16] pointer-events-none select-none">
+        WF-3D
+      </div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Left: Product Story & Specifications -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="flex flex-wrap items-center gap-3">
+            <Badge variant="lime" dot={true}>IN ACTIVE DEVELOPMENT</Badge>
+            <Badge variant="outline">{wrapforge.version}</Badge>
+            <span class="font-mono text-xs text-[#5C635B] hidden sm:inline">// COMING 2025</span>
+          </div>
+
+          <h3 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-[#F5F6F0]">
+            {wrapforge.name}
+          </h3>
+
+          <p class="font-body text-lg text-[#F5F6F0] leading-relaxed">
+            {wrapforge.tagline}
+          </p>
+
+          <p class="font-body text-sm text-[#A5A9A3] leading-relaxed">
+            {wrapforge.description}
+          </p>
+
+          <!-- Core Feature Bullets -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            {wrapforge.features.map((feat) => (
+              <div class="p-3 bg-[#141A16] border border-[#1D2620]">
+                <div class="font-mono text-xs text-[#C6FF3D] font-bold mb-1">{feat.title}</div>
+                <div class="font-body text-xs text-[#A5A9A3] leading-relaxed">{feat.detail}</div>
+              </div>
+            ))}
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-4 pt-4">
+            <button
+              id="wrapforge-waitlist-btn"
+              class="px-6 py-3 bg-[#C6FF3D] hover:bg-[#d4ff66] text-[#080B0A] font-mono text-xs uppercase tracking-wider font-bold transition-all shadow-[0_0_24px_-6px_rgba(198,255,61,0.4)] cursor-pointer"
+            >
+              REQUEST ALPHA ACCESS
+            </button>
+            <a
+              href="/products"
+              class="font-mono text-xs text-[#A5A9A3] hover:text-[#C6FF3D] uppercase tracking-wider flex items-center gap-1.5 transition-colors"
+            >
+              <span>READ ARCHITECTURE SPEC</span>
+              <Icon name="ArrowUpRight" size={14} />
+            </a>
+          </div>
+
+          <!-- Feedback Status banner -->
+          <div id="waitlist-response" class="hidden p-3 bg-[#141A16] border border-[#C6FF3D]/40 font-mono text-xs text-[#C6FF3D]">
+            ✓ NOTED. ALPHA ACCESS QUEUE OPENED FOR WRAPFORGE.
+          </div>
+        </div>
+
+        <!-- Right: Interactive 3D Package Mockup Preview Box -->
+        <div class="lg:col-span-5 bg-[#141A16] border border-[#1D2620] p-6 relative flex flex-col justify-between h-80 sm:h-96">
+          <div class="flex items-center justify-between font-mono text-[10px] text-[#5C635B] border-b border-[#1D2620] pb-2">
+            <span>VIEWPORT // 3D DIELINE PREVIEW</span>
+            <span class="text-[#C6FF3D]">INTERACTIVE</span>
+          </div>
+
+          <!-- Interactive 3D Packaging Cube with CSS 3D transform -->
+          <div class="flex-grow flex items-center justify-center perspective-[800px]" id="package-preview-stage">
+            <div
+              id="box-3d-model"
+              class="w-32 h-44 relative transform-style-preserve-3d transition-transform duration-700 ease-out cursor-grab active:cursor-grabbing"
+              style="transform: rotateX(-15deg) rotateY(35deg);"
+            >
+              <!-- Front Face -->
+              <div class="absolute inset-0 bg-[#0E1410] border-2 border-[#C6FF3D] flex flex-col justify-between p-3 backface-hidden" style="transform: translateZ(32px);">
+                <div class="font-mono text-[9px] text-[#C6FF3D]">OTHR // LABS</div>
+                <div class="text-center font-display font-black text-sm text-[#F5F6F0]">MATCHA<br/>EXTRACT</div>
+                <div class="font-mono text-[8px] text-[#5C635B] text-right">NET 100G</div>
+              </div>
+              <!-- Back Face -->
+              <div class="absolute inset-0 bg-[#0E1410] border border-[#2A362E] p-3 text-[7px] font-mono text-[#5C635B]" style="transform: rotateY(180deg) translateZ(32px);">
+                LOT 0948-25<br/>SPEC 100% PBR<br/>GOLD FOIL UV
+              </div>
+              <!-- Right Face -->
+              <div class="absolute top-0 bottom-0 w-16 bg-[#18221b] border border-[#2A362E] p-2 flex flex-col justify-center text-[7px] font-mono text-[#A5A9A3]" style="left: 100%; transform-origin: left; transform: rotateY(90deg);">
+                FOIL STAMP
+              </div>
+              <!-- Left Face -->
+              <div class="absolute top-0 bottom-0 w-16 bg-[#141A16] border border-[#2A362E] p-2 flex flex-col justify-center text-[7px] font-mono text-[#5C635B]" style="right: 100%; transform-origin: right; transform: rotateY(-90deg);">
+                SPOT GLOSS
+              </div>
+              <!-- Top Lid -->
+              <div class="absolute left-0 right-0 h-16 bg-[#1a2e05] border border-[#C6FF3D]/60 flex items-center justify-center font-mono text-[8px] text-[#C6FF3D]" style="bottom: 100%; transform-origin: bottom; transform: rotateX(90deg);">
+                SEALED
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Finish Switchers -->
+          <div class="pt-3 border-t border-[#1D2620] flex items-center justify-between font-mono text-[10px]">
+            <span class="text-[#5C635B]">FINISH:</span>
+            <div class="flex items-center gap-2">
+              <button class="finish-btn px-2 py-0.5 bg-[#080B0A] border border-[#C6FF3D] text-[#C6FF3D]" data-finish="lime">LIME UV</button>
+              <button class="finish-btn px-2 py-0.5 bg-[#080B0A] border border-[#2A362E] text-[#A5A9A3]" data-finish="gold">GOLD FOIL</button>
+              <button class="finish-btn px-2 py-0.5 bg-[#080B0A] border border-[#2A362E] text-[#A5A9A3]" data-finish="matte">MATTE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Tools: GlyphGrid & PulseLog -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {otherProducts.map((prod) => (
+        <div class="bg-[#0E1410] border border-[#1D2620] p-6 sm:p-8 flex flex-col justify-between" data-reveal>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-xs text-[#C6FF3D]">{prod.name}</span>
+              <Badge variant="outline">{prod.status}</Badge>
+            </div>
+            <h4 class="font-display font-bold text-2xl text-[#F5F6F0] mb-2">{prod.tagline}</h4>
+            <p class="font-body text-sm text-[#A5A9A3] leading-relaxed mb-6">{prod.description}</p>
+          </div>
+
+          <div class="pt-4 border-t border-[#1D2620] flex items-center justify-between font-mono text-xs">
+            <span class="text-[#5C635B]">{prod.category}</span>
+            <a href="/products" class="text-[#A5A9A3] hover:text-[#C6FF3D] flex items-center gap-1 transition-colors">
+              <span>EXPLORE</span>
+              <Icon name="ArrowUpRight" size={12} />
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { studioAudio } from '../../utils/audio';
+
+  function initWrapforgeInteractions() {
+    const box = document.getElementById('box-3d-model');
+    const stage = document.getElementById('package-preview-stage');
+    const waitlistBtn = document.getElementById('wrapforge-waitlist-btn');
+    const waitlistResponse = document.getElementById('waitlist-response');
+    const finishBtns = document.querySelectorAll('.finish-btn');
+
+    // 3D drag / hover rotation
+    if (box && stage) {
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let rotX = -15;
+      let rotY = 35;
+
+      stage.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        rotY += dx * 0.5;
+        rotX -= dy * 0.5;
+        box.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        startX = e.clientX;
+        startY = e.clientY;
+      });
+    }
+
+    // Finish switchers
+    finishBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const finish = (e.currentTarget as HTMLElement).getAttribute('data-finish');
+        finishBtns.forEach((b) => {
+          b.classList.remove('border-[#C6FF3D]', 'text-[#C6FF3D]');
+          b.classList.add('border-[#2A362E]', 'text-[#A5A9A3]');
+        });
+        (e.currentTarget as HTMLElement).classList.add('border-[#C6FF3D]', 'text-[#C6FF3D]');
+        (e.currentTarget as HTMLElement).classList.remove('border-[#2A362E]', 'text-[#A5A9A3]');
+
+        studioAudio.playClick();
+      });
+    });
+
+    // Waitlist Request
+    waitlistBtn?.addEventListener('click', () => {
+      studioAudio.playChirp(900, 0.08);
+      if (waitlistResponse) {
+        waitlistResponse.classList.remove('hidden');
+      }
+    });
+  }
+
+  initWrapforgeInteractions();
+  document.addEventListener('astro:page-load', initWrapforgeInteractions);
+</script>

@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import { products } from '../data/products';
+
+const wrapforge = products[0];
+const otherProducts = products.slice(1);
+---
+
+<BaseLayout
+  title="Our Products // WrapForge & Studio Tools // OTHR"
+  description="OTHR conceives, engineers, and operates proprietary software products. Discover WrapForge, our packaging visualization and 3D dieline platform."
+>
+  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
+        <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+        <span>/</span>
+        <span class="text-[#C6FF3D]">PRODUCTS</span>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#F5F6F0] mb-4">
+            Our Products<span class="text-[#C6FF3D]">.</span>
+          </h1>
+          <p class="font-body text-xl text-[#A5A9A3] max-w-2xl leading-relaxed">
+            We are not a hired gun agency that walks away after deploy. We build, ship, and operate our own proprietary commercial software.
+          </p>
+        </div>
+
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
+          <div class="text-[#5C635B] text-[10px]">// PRODUCT STATUS</div>
+          <div class="text-[#C6FF3D]">1 FLAGSHIP IN ALPHA // 2 INTERNAL TOOLS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-16 md:py-24 bg-[#080B0A]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+      <!-- WrapForge Flagship Showcase -->
+      <section class="bg-[#0E1410] border border-[#1D2620] p-6 sm:p-12 relative overflow-hidden">
+        <div class="max-w-4xl space-y-8">
+          <div class="flex flex-wrap items-center gap-3">
+            <Badge variant="lime" dot={true}>IN ACTIVE DEVELOPMENT</Badge>
+            <Badge variant="outline">{wrapforge.version}</Badge>
+            <span class="font-mono text-xs text-[#5C635B]">// TARGET RELEASE: Q3 2025</span>
+          </div>
+
+          <h2 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl text-[#F5F6F0] leading-none">
+            {wrapforge.name}
+          </h2>
+
+          <p class="font-body text-xl sm:text-2xl text-[#C6FF3D] leading-relaxed">
+            {wrapforge.tagline}
+          </p>
+
+          <p class="font-body text-base sm:text-lg text-[#A5A9A3] leading-relaxed">
+            {wrapforge.description}
+          </p>
+
+          <!-- Specifications Table -->
+          <div class="pt-6 border-t border-[#1D2620]">
+            <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-4">// TECHNICAL SPECIFICATIONS</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {wrapforge.specs.map((spec) => (
+                <div class="p-4 bg-[#141A16] border border-[#1D2620]">
+                  <div class="font-mono text-[10px] text-[#5C635B] uppercase mb-1">{spec.label}</div>
+                  <div class="font-mono text-xs text-[#F5F6F0] font-bold">{spec.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Feature Breakdown Grid -->
+          <div class="pt-6 border-t border-[#1D2620]">
+            <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-4">// CORE CAPABILITIES</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {wrapforge.features.map((feat) => (
+                <div class="p-5 bg-[#141A16] border border-[#1D2620]">
+                  <h3 class="font-display font-bold text-lg text-[#F5F6F0] mb-2">{feat.title}</h3>
+                  <p class="font-body text-sm text-[#A5A9A3] leading-relaxed">{feat.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Alpha Access Form -->
+          <div class="pt-8 border-t border-[#1D2620] bg-[#141A16] p-6 sm:p-8 border">
+            <h3 class="font-display font-bold text-2xl text-[#F5F6F0] mb-2">Request Private Alpha Access</h3>
+            <p class="font-body text-sm text-[#A5A9A3] mb-6">
+              We are onboarding packaging design studios and physical product brands in weekly batches. Leave your work email to join the queue.
+            </p>
+
+            <form id="wrapforge-alpha-form" class="flex flex-col sm:flex-row gap-4">
+              <input
+                type="email"
+                required
+                placeholder="designer@studio.com"
+                class="bg-[#080B0A] border border-[#2A362E] focus:border-[#C6FF3D] focus:outline-none p-3.5 font-mono text-sm text-[#F5F6F0] placeholder-[#5C635B] flex-grow"
+              />
+              <button
+                type="submit"
+                class="px-8 py-3.5 bg-[#C6FF3D] hover:bg-[#d4ff66] text-[#080B0A] font-mono text-xs uppercase tracking-wider font-bold transition-all cursor-pointer whitespace-nowrap"
+              >
+                JOIN WAITLIST
+              </button>
+            </form>
+
+            <div id="alpha-confirm-msg" class="hidden mt-4 font-mono text-xs text-[#C6FF3D]">
+              ✓ EMAIL QUEUED. WE WILL CONTACT YOU UPON BATCH ALLOCATION.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Other Studio Tools -->
+      <section>
+        <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-8">// INTERNAL STUDIO UTILITIES</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {otherProducts.map((prod) => (
+            <div class="bg-[#0E1410] border border-[#1D2620] p-8 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-display font-bold text-2xl text-[#F5F6F0]">{prod.name}</span>
+                  <Badge variant="outline">{prod.status}</Badge>
+                </div>
+                <div class="font-mono text-xs text-[#C6FF3D] mb-4">{prod.category}</div>
+                <p class="font-body text-base text-[#A5A9A3] leading-relaxed mb-6">{prod.description}</p>
+
+                <div class="space-y-3 pt-4 border-t border-[#1D2620]">
+                  {prod.features.map((f) => (
+                    <div class="text-xs">
+                      <span class="font-mono text-[#F5F6F0] font-bold mr-2">{f.title}:</span>
+                      <span class="font-body text-[#A5A9A3]">{f.detail}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div class="pt-6 mt-6 border-t border-[#1D2620] flex items-center justify-between font-mono text-xs text-[#5C635B]">
+                <span>FOOTPRINT: {prod.specs[0]?.value}</span>
+                <span class="text-[#A5A9A3]">{prod.ctaText}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { studioAudio } from '../utils/audio';
+
+  function initProductsPage() {
+    const form = document.getElementById('wrapforge-alpha-form');
+    const confirmMsg = document.getElementById('alpha-confirm-msg');
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      studioAudio.playChirp(880, 0.08);
+      if (confirmMsg) confirmMsg.classList.remove('hidden');
+      (form as HTMLFormElement).reset();
+    });
+  }
+
+  initProductsPage();
+  document.addEventListener('astro:page-load', initProductsPage);
+</script>

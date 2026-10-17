@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/work/ProjectCard.astro';
+import Badge from '../../components/ui/Badge.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { projects } from '../../data/projects';
+
+const categories = [
+  'All',
+  'Workflow Automation',
+  'Custom Software',
+  'Creative Web',
+  'SaaS & Products'
+];
+---
+
+<BaseLayout
+  title="Selected Work // OTHR Engineering Studio"
+  description="Explore production systems, distributed infrastructure, algorithmic routing engines, and spatial digital experiences engineered by OTHR."
+>
+  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb & Header -->
+      <div class="mb-12">
+        <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
+          <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+          <span>/</span>
+          <span class="text-[#C6FF3D]">WORK</span>
+        </div>
+        <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#F5F6F0] mb-6">
+          Selected Work<span class="text-[#C6FF3D]">.</span>
+        </h1>
+        <p class="font-body text-xl text-[#A5A9A3] max-w-2xl leading-relaxed">
+          Bespoke digital flagships, high-throughput micro-architectures, and proprietary software engines built for speed and endurance.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills & View Mode -->
+      <div class="pt-8 border-t border-[#1D2620] flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap items-center gap-2" id="category-filter-bar">
+          {categories.map((cat, i) => (
+            <button
+              class={`filter-btn px-3 py-1.5 font-mono text-xs tracking-wider uppercase border transition-all cursor-pointer ${
+                i === 0
+                  ? 'bg-[#C6FF3D] text-[#080B0A] border-[#C6FF3D] font-bold'
+                  : 'bg-[#141A16] text-[#A5A9A3] border-[#1D2620] hover:border-[#C6FF3D]/40 hover:text-[#F5F6F0]'
+              }`}
+              data-category={cat}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div class="font-mono text-xs text-[#5C635B] hidden sm:block">
+          TOTAL: <span class="text-[#C6FF3D] tabular-nums" id="project-count">{projects.length}</span> PROJECTS
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Grid -->
+  <section class="py-16 md:py-24 bg-[#080B0A]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        {projects.map((project, index) => (
+          <div class="project-item" data-category={project.category}>
+            <ProjectCard project={project} index={index} />
+          </div>
+        ))}
+      </div>
+
+      <!-- No match fallback -->
+      <div id="no-projects-msg" class="hidden py-16 text-center font-mono text-sm text-[#5C635B] border border-dashed border-[#1D2620]">
+        NO PROJECTS FOUND IN THIS SPECIFIED CATEGORY.
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { studioAudio } from '../../utils/audio';
+
+  function initWorkFilter() {
+    const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const projectItems = document.querySelectorAll<HTMLElement>('.project-item');
+    const noMsg = document.getElementById('no-projects-msg');
+    const countSpan = document.getElementById('project-count');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        studioAudio.playClick();
+        const selected = btn.getAttribute('data-category');
+
+        filterBtns.forEach((b) => {
+          b.classList.remove('bg-[#C6FF3D]', 'text-[#080B0A]', 'border-[#C6FF3D]', 'font-bold');
+          b.classList.add('bg-[#141A16]', 'text-[#A5A9A3]', 'border-[#1D2620]');
+        });
+
+        btn.classList.add('bg-[#C6FF3D]', 'text-[#080B0A]', 'border-[#C6FF3D]', 'font-bold');
+        btn.classList.remove('bg-[#141A16]', 'text-[#A5A9A3]', 'border-[#1D2620]');
+
+        let visibleCount = 0;
+        projectItems.forEach((item) => {
+          const itemCat = item.getAttribute('data-category');
+          if (selected === 'All' || itemCat === selected) {
+            item.style.display = 'block';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (countSpan) countSpan.textContent = visibleCount.toString();
+        if (noMsg) {
+          if (visibleCount === 0) noMsg.classList.remove('hidden');
+          else noMsg.classList.add('hidden');
+        }
+      });
+    });
+  }
+
+  initWorkFilter();
+  document.addEventListener('astro:page-load', initWorkFilter);
+</script>

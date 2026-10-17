@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/ui/Badge.astro';
+import { siteConfig } from '../config/site';
+
+const lastUpdated = 'March 15, 2025';
+---
+
+<BaseLayout
+  title="Terms of Use // OTHR Creative Engineering"
+  description="Commercial engagement terms, intellectual property rights, and terms of service for OTHR Engineering Studio."
+>
+  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
+        <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+        <span>/</span>
+        <span class="text-[#C6FF3D]">TERMS</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <Badge variant="outline">STUDIO TERMS</Badge>
+        <span class="font-mono text-xs text-[#5C635B]">EFFECTIVE: {lastUpdated}</span>
+      </div>
+
+      <h1 class="font-display font-extrabold text-4xl sm:text-6xl text-[#F5F6F0] mb-6">
+        Terms of Use<span class="text-[#C6FF3D]">.</span>
+      </h1>
+      <p class="font-body text-lg text-[#A5A9A3] leading-relaxed">
+        The guidelines governing your use of this digital platform, open-source code demonstrations, and engagement with OTHR Engineering Studio.
+      </p>
+    </div>
+  </div>
+
+  <div class="py-16 bg-[#080B0A]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 font-body text-base text-[#A5A9A3] leading-relaxed">
+
+      <section class="space-y-4">
+        <h2 class="font-display font-bold text-2xl text-[#F5F6F0]">// 01 ACCEPTANCE OF TERMS</h2>
+        <p>
+          By accessing this website, reading our engineering journal, or submitting a project inquiry, you agree to comply with these terms of use. If you do not agree, please discontinue access.
+        </p>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="font-display font-bold text-2xl text-[#F5F6F0]">// 02 INTELLECTUAL PROPERTY & CODE RIGHTS</h2>
+        <p>
+          Unless otherwise explicitly noted:
+        </p>
+        <ul class="list-disc pl-6 space-y-1 font-mono text-xs text-[#F5F6F0]">
+          <li>All custom visual assets, brand identity elements, and 3D procedural geometries are the proprietary intellectual property of OTHR Engineering Studio.</li>
+          <li>Educational code snippets and shader examples provided in The Journal may be referenced under standard permissive fair-use principles with proper attribution.</li>
+          <li>Client work showcased in Selected Work remains the copyrighted property of the respective commissioning organizations.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="font-display font-bold text-2xl text-[#F5F6F0]">// 03 COMMERCIAL ENGAGEMENTS</h2>
+        <p>
+          Indicative pricing ranges displayed on the Services page are non-binding estimates intended to assist with budget scoping.
+        </p>
+        <p>
+          A binding commercial commitment is only established upon mutual execution of a formal Statement of Work (SOW) or Master Services Agreement (MSA) signed by both parties.
+        </p>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="font-display font-bold text-2xl text-[#F5F6F0]">// 04 LIMITATION OF LIABILITY</h2>
+        <p>
+          The website and its interactive code experiments are provided on an "as-is" and "as-available" basis without warranties of any kind. OTHR is not liable for indirect, incidental, or consequential damages resulting from website access or downtime.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</BaseLayout>

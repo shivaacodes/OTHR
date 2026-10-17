@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InteractiveShader from '../components/lab/InteractiveShader.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import { experiments } from '../data/experiments';
+---
+
+<BaseLayout
+  title="The Lab // Creative Coding & Prototypes // OTHR"
+  description="An experimental sandbox for creative coding, GLSL shaders, procedural audio DSP, and exploratory browser technology."
+>
+  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
+        <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+        <span>/</span>
+        <span class="text-[#C6FF3D]">LAB</span>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#F5F6F0] mb-4">
+            The Lab<span class="text-[#C6FF3D]">.</span>
+          </h1>
+          <p class="font-body text-xl text-[#A5A9A3] max-w-2xl leading-relaxed">
+            Where we break conventional rules. Algorithmic physics simulations, WebGL shaders, Web Audio synthesizers, and speculative prototypes.
+          </p>
+        </div>
+
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs text-[#A5A9A3]">
+          <div class="text-[#5C635B] text-[10px]">// SANDBOX STATUS</div>
+          <div class="text-[#C6FF3D]">LIVE INTERACTIVE EXPERIMENTS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-16 md:py-24 bg-[#080B0A]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      <!-- 01: Fluid Field Sandbox -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-sm text-[#C6FF3D] font-bold">01 //</span>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#F5F6F0]">Chroma-Vector Fluid Field</h2>
+          </div>
+          <Badge variant="lime">INTERACTIVE CANVAS</Badge>
+        </div>
+        <InteractiveShader />
+      </div>
+
+      <!-- 02: Real-time ASCII Normal Raymarcher Sandbox -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-sm text-[#C6FF3D] font-bold">02 //</span>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#F5F6F0]">ASCII Surface Normal Rasterizer</h2>
+          </div>
+          <Badge variant="outline">CANVAS 2D / MATH</Badge>
+        </div>
+
+        <div class="bg-[#0E1410] border border-[#1D2620] p-6 sm:p-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-5 space-y-4">
+              <p class="font-body text-base text-[#A5A9A3] leading-relaxed">
+                A 3D geometric solid rendered in pure monospace text characters. The surface luminance and specular highlight determine glyph density:
+                <code class="font-mono text-xs text-[#C6FF3D] bg-[#141A16] px-2 py-0.5 border border-[#1D2620]">. : - = + * # % @</code>
+              </p>
+              <div class="p-4 bg-[#141A16] border border-[#1D2620] space-y-2 font-mono text-xs">
+                <div class="text-[#5C635B]">// INTERACTIVE CONTROLS</div>
+                <div class="flex items-center gap-2">
+                  <label for="ascii-speed" class="text-[#A5A9A3] text-[10px]">ROTATION SPEED:</label>
+                  <input type="range" id="ascii-speed" min="1" max="10" value="4" class="accent-[#C6FF3D] cursor-pointer" />
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7 bg-[#080B0A] border border-[#1D2620] p-4 flex items-center justify-center min-h-[300px] overflow-hidden">
+              <pre id="ascii-output" class="font-mono text-[9px] sm:text-[11px] leading-tight text-[#C6FF3D] select-none text-center"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03: Algorithmic Synthesizer Sandbox -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-sm text-[#C6FF3D] font-bold">03 //</span>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl text-[#F5F6F0]">Drone-Synth // FM Harmonic Modulator</h2>
+          </div>
+          <Badge variant="outline">WEB AUDIO API</Badge>
+        </div>
+
+        <div class="bg-[#0E1410] border border-[#1D2620] p-6 sm:p-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-6 space-y-4">
+              <p class="font-body text-base text-[#A5A9A3] leading-relaxed">
+                Direct algorithmic frequency synthesis using zero external audio files. Generates 5 micro-tuned sinusoidal oscillators connected to a resonant biquad filter.
+              </p>
+              <div class="flex items-center gap-4">
+                <button
+                  id="synth-play-btn"
+                  class="px-6 py-3 bg-[#C6FF3D] hover:bg-[#d4ff66] text-[#080B0A] font-mono text-xs uppercase font-bold tracking-wider transition-colors cursor-pointer"
+                >
+                  START DRONE SYNTH
+                </button>
+                <span id="synth-status" class="font-mono text-xs text-[#5C635B]">STOPPED</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-6 bg-[#141A16] border border-[#1D2620] p-6 font-mono text-xs space-y-3">
+              <div class="text-[#5C635B]">// LIVE OSCILLATOR CHANNELS</div>
+              <div class="flex items-center justify-between">
+                <span>OSC 1 (FUNDAMENTAL):</span>
+                <span class="text-[#C6FF3D]">110.00 Hz (A2)</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>OSC 2 (HARMONIC 5TH):</span>
+                <span class="text-[#C6FF3D]">164.81 Hz (E3)</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>OSC 3 (OCTAVE DETUNE):</span>
+                <span class="text-[#C6FF3D]">220.40 Hz (A3 +40c)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rest of Experiments Index -->
+      <div class="pt-8 border-t border-[#1D2620]">
+        <div class="font-mono text-xs text-[#5C635B] uppercase tracking-widest mb-6">// EXPERIMENT ARCHIVE</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {experiments.map((exp) => (
+            <div class="p-6 bg-[#0E1410] border border-[#1D2620] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="font-mono text-xs text-[#C6FF3D]">{exp.code}</span>
+                  <Badge variant="muted">{exp.category}</Badge>
+                </div>
+                <h3 class="font-display font-bold text-xl text-[#F5F6F0] mb-2">{exp.title}</h3>
+                <p class="font-body text-xs text-[#A5A9A3] leading-relaxed mb-4">{exp.description}</p>
+              </div>
+              <div class="flex flex-wrap gap-1.5 pt-3 border-t border-[#1D2620]">
+                {exp.tags.map((t) => (
+                  <span class="font-mono text-[9px] text-[#5C635B] bg-[#141A16] px-2 py-0.5 border border-[#1D2620]">{t}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { studioAudio } from '../utils/audio';
+
+  // 1. ASCII 3D Donut / Sphere Renderer
+  function initAscii() {
+    const pre = document.getElementById('ascii-output');
+    const speedSlider = document.getElementById('ascii-speed') as HTMLInputElement;
+    if (!pre) return;
+
+    let A = 0;
+    let B = 0;
+    let speed = 0.04;
+
+    if (speedSlider) {
+      speedSlider.addEventListener('input', () => {
+        speed = (parseFloat(speedSlider.value) / 10) * 0.08;
+      });
+    }
+
+    function renderAscii() {
+      const b: string[] = [];
+      const z: number[] = [];
+      A += speed;
+      B += speed * 0.6;
+
+      const cA = Math.cos(A), sA = Math.sin(A);
+      const cB = Math.cos(B), sB = Math.sin(B);
+
+      for (let k = 0; k < 1760; k++) {
+        b[k] = k % 80 === 79 ? '\n' : ' ';
+        z[k] = 0;
+      }
+
+      for (let j = 0; j < 6.28; j += 0.08) {
+        const ct = Math.cos(j), st = Math.sin(j);
+        for (let i = 0; i < 6.28; i += 0.03) {
+          const sp = Math.sin(i), cp = Math.cos(i);
+          const h = ct + 2;
+          const D = 1 / (sp * h * sA + st * cA + 5);
+          const t = sp * h * cA - st * sA;
+
+          const x = 0 | (40 + 30 * D * (cp * h * cB - t * sB));
+          const y = 0 | (12 + 15 * D * (cp * h * sB + t * cB));
+          const o = x + 80 * y;
+          const N = 0 | (8 * ((st * sA - sp * ct * cA) * cB - sp * ct * sA - st * cA - cp * ct * sB));
+
+          if (y < 22 && y >= 0 && x >= 0 && x < 79 && D > z[o]) {
+            z[o] = D;
+            b[o] = '.,-~:;=!*#$@'[N > 0 ? N : 0];
+          }
+        }
+      }
+
+      pre.textContent = b.join('');
+      requestAnimationFrame(renderAscii);
+    }
+
+    renderAscii();
+  }
+
+  // 2. Drone Synth Controller
+  function initDroneSynth() {
+    const playBtn = document.getElementById('synth-play-btn');
+    const statusLabel = document.getElementById('synth-status');
+    if (!playBtn) return;
+
+    let isPlaying = false;
+    let audioCtx: AudioContext | null = null;
+    let oscillators: OscillatorNode[] = [];
+    let masterGain: GainNode | null = null;
+
+    playBtn.addEventListener('click', () => {
+      studioAudio.playClick();
+
+      if (!isPlaying) {
+        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+        audioCtx = new AudioContextClass();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        masterGain.connect(audioCtx.destination);
+
+        const freqs = [110, 164.81, 220.4, 329.63];
+        oscillators = freqs.map((f, i) => {
+          const osc = audioCtx!.createOscillator();
+          const oscGain = audioCtx!.createGain();
+          osc.type = i % 2 === 0 ? 'sine' : 'triangle';
+          osc.frequency.setValueAtTime(f, audioCtx!.currentTime);
+
+          oscGain.gain.setValueAtTime(0.25, audioCtx!.currentTime);
+          osc.connect(oscGain);
+          oscGain.connect(masterGain!);
+          osc.start();
+          return osc;
+        });
+
+        isPlaying = true;
+        playBtn.textContent = 'STOP DRONE SYNTH';
+        playBtn.classList.remove('bg-[#C6FF3D]', 'text-[#080B0A]');
+        playBtn.classList.add('bg-red-500/20', 'text-red-400', 'border', 'border-red-500/40');
+        if (statusLabel) {
+          statusLabel.textContent = 'RUNNING (HARMONIC FM)';
+          statusLabel.className = 'font-mono text-xs text-[#C6FF3D]';
+        }
+      } else {
+        oscillators.forEach((o) => {
+          try { o.stop(); } catch (e) {}
+        });
+        audioCtx?.close();
+        isPlaying = false;
+        playBtn.textContent = 'START DRONE SYNTH';
+        playBtn.classList.add('bg-[#C6FF3D]', 'text-[#080B0A]');
+        playBtn.classList.remove('bg-red-500/20', 'text-red-400', 'border', 'border-red-500/40');
+        if (statusLabel) {
+          statusLabel.textContent = 'STOPPED';
+          statusLabel.className = 'font-mono text-xs text-[#5C635B]';
+        }
+      }
+    });
+  }
+
+  initAscii();
+  initDroneSynth();
+  document.addEventListener('astro:page-load', () => {
+    initAscii();
+    initDroneSynth();
+  });
+</script>

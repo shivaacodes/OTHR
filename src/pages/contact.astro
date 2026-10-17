@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactSection from '../components/contact/ContactSection.astro';
+import Badge from '../components/ui/Badge.astro';
+import Icon from '../components/ui/Icon.astro';
+import { studioData } from '../data/studio';
+
+const faqs = [
+  {
+    q: 'What type of projects does OTHR take on?',
+    a: 'We specialize in two primary domains: high-performance distributed systems/software backends, and award-winning interactive digital flagships requiring custom WebGL/Three.js or kinetic typography.'
+  },
+  {
+    q: 'How does OTHR price engagements?',
+    a: 'We engage on a dedicated sprint or milestone basis with transparent weekly sprints. We don’t bury clients under opaque change-orders or bloated corporate overhead.'
+  },
+  {
+    q: 'What is the typical project timeline?',
+    a: 'Prototypes and technical proof-of-concepts typically ship in 2–4 weeks. Comprehensive production platforms or digital flagships typically run 6–12 weeks from architecture to final release.'
+  },
+  {
+    q: 'Do you work with venture-backed startups as well as enterprise?',
+    a: 'Yes. We partner with visionary founders building zero-to-one SaaS products as well as enterprise engineering teams modernizing latency-sensitive architecture.'
+  }
+];
+---
+
+<BaseLayout
+  title="Initiate Contact // Project Inquiries // OTHR"
+  description="Connect with OTHR. We partner with ambitious teams to engineer bespoke software, digital flagships, and impossible prototypes."
+>
+  <div class="py-16 md:py-24 border-b border-[#1D2620]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 font-mono text-xs text-[#5C635B] mb-4">
+        <a href="/" class="hover:text-[#C6FF3D] transition-colors">INDEX</a>
+        <span>/</span>
+        <span class="text-[#C6FF3D]">CONTACT</span>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#F5F6F0] mb-4">
+            Let's Talk<span class="text-[#C6FF3D]">.</span>
+          </h1>
+          <p class="font-body text-xl text-[#A5A9A3] max-w-2xl leading-relaxed">
+            Have a technical challenge, a radical product idea, or need an engineering team that doesn't do ordinary? We're listening.
+          </p>
+        </div>
+
+        <div class="p-4 bg-[#141A16] border border-[#1D2620] font-mono text-xs">
+          <div class="text-[#5C635B] text-[10px]">// DIRECT DISPATCH</div>
+          <div class="text-[#C6FF3D]">{studioData.contactEmail}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Form & Coordinates -->
+  <ContactSection />
+
+  <!-- FAQs -->
+  <section class="py-16 md:py-24 bg-[#080B0A] border-t border-[#1D2620]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="font-mono text-xs text-[#C6FF3D] uppercase tracking-widest mb-4">// FREQUENTLY ASKED QUESTIONS</div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-[#F5F6F0] mb-12">
+        How We Work With Partners
+      </h2>
+
+      <div class="space-y-6">
+        {faqs.map((faq, i) => (
+          <div class="p-6 bg-[#0E1410] border border-[#1D2620]">
+            <h3 class="font-display font-bold text-xl text-[#F5F6F0] mb-3">
+              <span class="text-[#C6FF3D] font-mono text-sm mr-2">0{i + 1} //</span>
+              {faq.q}
+            </h3>
+            <p class="font-body text-sm text-[#A5A9A3] leading-relaxed pl-6 border-l border-[#1D2620]">
+              {faq.a}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
