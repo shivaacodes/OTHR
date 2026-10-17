@@ -7,108 +7,57 @@ import { siteConfig } from '../config/site';
 
 const commercialOfferings = [
   {
-    id: 'digital-upgrade',
+    id: 'flagship-web',
     number: '01',
-    badge: 'Web & Experience',
-    title: 'Digital Upgrade',
-    tagline: 'Premium websites, interactive landing pages, and digital flagships for ambitious brands.',
-    summary: 'For businesses whose online presence does not match the actual caliber of their work. We replace bloated templates and generic themes with bespoke, flagship web experiences engineered for speed, kinetic typography, and unmistakable creative authority.',
+    badge: 'Web & Flagships',
+    title: 'Flagship Web Development',
+    tagline: 'High-performance websites, interactive landing pages, and digital flagships for ambitious teams.',
+    summary: 'For businesses whose online presence does not match the actual caliber of their work. We replace bloated templates and generic themes with bespoke, flagship web experiences engineered for sub-second edge speeds, kinetic typography, and high conversion.',
     problemsSolved: [
       'Your existing website looks indistinguishable from every competitor in your category.',
       'Mobile loading speeds are sluggish (>3.5s LCP), costing you direct conversion and search visibility.',
       'Inflexible CMS architectures require weeks of developer tickets just to modify a landing page layout.',
-      'Lack of memorable brand presence fails to convert high-ticket enterprise decision-makers.'
+      'Lack of memorable creative brand presence fails to convert high-value decision-makers.'
     ],
     deliverables: [
-      'Bespoke digital flagship architecture (Astro / Next.js / TypeScript)',
+      'Bespoke digital flagship architecture (Astro / TypeScript / Tailwind CSS)',
       'Sub-50ms static edge deployment on Cloudflare with 95+ Mobile Lighthouse scores',
-      'Signature interactive 3D WebGL / Three.js artifacts & kinetic GSAP choreography',
+      'Smooth kinetic GSAP choreography and fluid interactive touchpoints',
       'Flexible, headless editorial CMS integration tailored to your marketing workflows',
       'Comprehensive technical SEO, OpenGraph metadata, and structured data schemas'
     ],
-    techStack: ['Astro', 'Three.js / WebGL', 'Tailwind CSS', 'GSAP', 'Cloudflare Workers', 'TypeScript'],
-    pricingInfo: siteConfig.pricing.find((p) => p.serviceId === 'digital-upgrade')
+    techStack: ['Astro', 'TypeScript', 'Tailwind CSS', 'GSAP', 'Cloudflare Workers'],
+    pricingInfo: siteConfig.pricing.find((p) => p.serviceId === 'flagship-web')
   },
   {
-    id: 'workflow-fix',
+    id: 'software-automation',
     number: '02',
-    badge: 'Automation & Ops',
-    title: 'Workflow Fix',
-    tagline: 'Custom internal software that permanently eliminates repetitive administrative friction.',
-    summary: 'For companies running critical operations on fragile spreadsheets and manual email forwards. We engineer bespoke, role-secured operational web applications and background jobs that automate calculations, document generation, and cross-platform synchronization.',
+    badge: 'Software & Automation',
+    title: 'Software & Automation',
+    tagline: 'Custom internal software, robust backend APIs, and workflow engines that eliminate spreadsheet toil.',
+    summary: 'For companies running critical operations on fragile spreadsheets, manual emails, and brittle no-code zaps. We engineer bespoke, role-secured operational web applications and backend automation pipelines that run reliably without manual intervention.',
     problemsSolved: [
       'Operations teams spend hours each week manually copying data between spreadsheets and systems.',
       'Accidental formula corruption or concurrent spreadsheet overwrites create costly data errors.',
-      'Zero role-based permissions expose sensitive payroll, customer, or candidate records to unauthorized staff.',
-      'Brittle no-code zaps silently fail without logging or retry logic.'
+      'Zero role-based permissions expose sensitive operational or customer records to unauthorized staff.',
+      'Brittle no-code zaps silently fail without logging, alerting, or deterministic retry logic.'
     ],
     deliverables: [
-      'Custom internal operational portal (tailored precisely to your team’s workflow)',
+      'Custom internal operational portal tailored precisely to your team workflow',
       'Secure PostgreSQL relational database with structured audit ledgers',
       'Automated batch report generation (encrypted PDFs, CSV exports, WhatsApp/Slack dispatch)',
-      'Deterministic retry queues and token-bucket API pacing (preventing rate limit lockouts)',
+      'Deterministic retry queues and token-bucket API pacing to prevent rate limit lockouts',
       'Granular role-based access control (RBAC) preventing unauthorized data visibility'
     ],
-    techStack: ['Go', 'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'WhatsApp Cloud API'],
-    pricingInfo: siteConfig.pricing.find((p) => p.serviceId === 'workflow-fix')
-  },
-  {
-    id: 'custom-software',
-    number: '03',
-    badge: 'Software & Systems',
-    title: 'Custom Software & Systems',
-    tagline: 'Reliable backend services, full-stack web applications, and production MVP engineering.',
-    summary: 'For founders and businesses that need specialized web software built right the first time. We design normalized relational databases, high-throughput APIs, role-based authorization systems, and clean frontends built for durability.',
-    problemsSolved: [
-      'Off-the-shelf SaaS products fail to fit your business logic and charge thousands in user seat tax.',
-      'Previous prototype breaks under concurrent users or database locks.',
-      'Critical backend logic is untyped, untested, and lacks structured audit trails.',
-      'Need an MVP ready for commercial pilots without hiring a bloated full-time engineering department.'
-    ],
-    deliverables: [
-      'Full-stack application architecture (FastAPI / Go backend + modern frontend)',
-      'Relational PostgreSQL database schema design, indexing, and migration pipelines',
-      'Secure authentication, session management, and granular role-based access control (RBAC)',
-      'Integration with payment processors (Stripe), email/messaging, and external webhooks',
-      'Containerized deployment with Docker and automated CI/CD staging environments'
-    ],
-    techStack: ['Go', 'FastAPI', 'PostgreSQL', 'TypeScript', 'Docker', 'Redis'],
-    pricingInfo: siteConfig.pricing.find((p) => p.serviceId === 'custom-software')
-  }
-];
-
-const studioDisciplines = [
-  {
-    num: '01',
-    title: 'Custom Software Engineering',
-    desc: 'Reliable backend services, transactional APIs, and robust relational database architectures in Go and Python.'
-  },
-  {
-    num: '02',
-    title: 'Business Workflow Automation',
-    desc: 'Custom internal tools, batch document pipelines, and autonomous data sync eliminating manual spreadsheet toil.'
-  },
-  {
-    num: '03',
-    title: 'Creative Web Development',
-    desc: 'Digital flagships, custom WebGL/Three.js centerpieces, and kinetic editorial experiences with 95+ Lighthouse scores.'
-  },
-  {
-    num: '04',
-    title: 'SaaS and Product Engineering',
-    desc: 'Zero-to-one product development, database design, auth/RBAC, billing integration, and production edge deployment.'
-  },
-  {
-    num: '05',
-    title: 'API and Systems Integration',
-    desc: 'Bespoke connectors between legacy databases, modern REST endpoints, and third-party APIs with deterministic rate limiting.'
+    techStack: ['Go', 'Python / FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'REST APIs'],
+    pricingInfo: siteConfig.pricing.find((p) => p.serviceId === 'software-automation')
   }
 ];
 ---
 
 <BaseLayout
   title="Services & Capabilities // OTHR Creative Engineering"
-  description="Explore OTHR's commercial offerings: Digital Upgrade (flagship web experiences), Workflow Fix (internal automation tools), and Custom Software & Systems."
+  description="Explore OTHR's engineering services: Flagship Web Development (high-performance web flagships) and Software & Automation (custom internal tools and workflow engines)."
 >
   <!-- Page Header -->
   <div class="py-16 md:py-24 border-b border-neutral-900 bg-black">
@@ -131,7 +80,7 @@ const studioDisciplines = [
 
         <div class="p-4 bg-neutral-950 border border-neutral-900 rounded-2xl text-xs font-semibold">
           <div class="text-neutral-500 text-[11px] mb-1">Commercial Engagements</div>
-          <div class="text-[#C6FF3D]">3 Packaged Offerings • 5 Disciplines</div>
+          <div class="text-[#C6FF3D]">2 Core Services • Direct Engineering</div>
         </div>
       </div>
     </div>
@@ -144,14 +93,14 @@ const studioDisciplines = [
       <section>
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-neutral-900">
           <div>
-            <div class="text-xs font-semibold text-[#C6FF3D] uppercase tracking-wider mb-2">Packaged Services</div>
+            <div class="text-xs font-semibold text-[#C6FF3D] uppercase tracking-wider mb-2">What We Build</div>
             <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
-              Packaged Engineering Engagements
+              Core Engineering Services
             </h2>
           </div>
           <div class="flex flex-col sm:flex-row sm:items-center gap-4">
             <p class="font-body text-sm text-neutral-400 max-w-xs">
-              Structured scopes designed for rapid execution and direct engineering delivery.
+              Focused scopes designed for rapid execution and direct engineering delivery.
             </p>
             <div class="inline-flex items-center p-1 bg-neutral-900 border border-neutral-800 rounded-full text-xs font-semibold self-start sm:self-auto">
               <button class="service-currency-btn px-3 py-1 rounded-full transition-all bg-[#C6FF3D] text-black font-bold cursor-pointer" data-currency="usd">
@@ -267,54 +216,21 @@ const studioDisciplines = [
         </div>
       </section>
 
-      <!-- Section: 5 Core Engineering Disciplines -->
+      <!-- Section: Custom Inquiries Banner -->
       <section class="pt-12 border-t border-neutral-900">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-neutral-900">
-          <div>
-            <div class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2">Technical Capabilities</div>
-            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
-              Core Engineering Disciplines
+        <div class="bg-neutral-950 border border-neutral-900 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <div class="max-w-xl">
+            <span class="text-xs font-bold text-[#C6FF3D] uppercase tracking-wider">Custom Scope</span>
+            <h2 class="font-display font-bold text-2xl sm:text-3xl text-white mt-2 mb-2">
+              Have a specialized engineering inquiry?
             </h2>
+            <p class="font-body text-sm text-neutral-400 leading-relaxed">
+              Whether you need specialized API integrations, custom technical architecture, or a dedicated engineering sprint, we're ready to discuss.
+            </p>
           </div>
-          <p class="font-body text-sm text-neutral-400 max-w-md">
-            For bespoke projects requiring specialized architectural consulting or long-term engineering partnerships.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {studioDisciplines.map((disc) => (
-            <div class="bg-neutral-950 border border-neutral-900 rounded-3xl hover:border-neutral-700 transition-colors p-8 flex flex-col justify-between">
-              <div>
-                <span class="text-xs font-bold text-[#C6FF3D] bg-[#C6FF3D]/10 px-2.5 py-1 rounded-full">{disc.num}</span>
-                <h3 class="font-display font-bold text-2xl text-white mt-4 mb-3">{disc.title}</h3>
-                <p class="font-body text-sm text-neutral-400 leading-relaxed mb-6">{disc.desc}</p>
-              </div>
-
-              <div class="pt-4 border-t border-neutral-900">
-                <a href="/contact" class="text-xs font-semibold text-neutral-300 hover:text-[#C6FF3D] flex items-center gap-1.5 transition-colors">
-                  <span>Discuss Requirements</span>
-                  <Icon name="ArrowUpRight" size={13} />
-                </a>
-              </div>
-            </div>
-          ))}
-
-          <!-- 6th Box: Start Custom Project -->
-          <div class="bg-neutral-900 border border-neutral-800 rounded-3xl p-8 flex flex-col justify-between">
-            <div>
-              <span class="text-xs font-bold text-black bg-[#C6FF3D] px-2.5 py-1 rounded-full">06</span>
-              <h3 class="font-display font-bold text-2xl text-white mt-4 mb-3">Something Unclassified?</h3>
-              <p class="font-body text-sm text-neutral-400 leading-relaxed mb-6">
-                Have an unusual architectural problem, a hardware-software bridge, or an experimental prototype? We specialize in what shouldn't exist.
-              </p>
-            </div>
-
-            <div class="pt-4 border-t border-neutral-800">
-              <Button href="/contact" variant="primary" size="sm" showArrow={true} class="w-full">
-                Initiate Project Inquiry
-              </Button>
-            </div>
-          </div>
+          <Button href="/contact" variant="primary" size="md" showArrow={true} class="whitespace-nowrap">
+            Initiate Project Inquiry
+          </Button>
         </div>
       </section>
 
@@ -354,9 +270,12 @@ const studioDisciplines = [
     });
 
     try {
-      const saved = (localStorage.getItem('othr_currency') || 'usd') as 'usd' | 'inr';
-      updateCurrency(saved);
-    } catch (e) {}
+      const saved = localStorage.getItem('othr_currency');
+      const active = saved === 'inr' ? 'inr' : 'usd';
+      updateCurrency(active);
+    } catch (e) {
+      updateCurrency('usd');
+    }
   }
 
   initServiceCurrency();

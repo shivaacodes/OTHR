@@ -3,10 +3,9 @@ import Icon from '../ui/Icon.astro';
 import { siteConfig } from '../../config/site';
 
 const projectTypes = [
-  'Web Flagship & 3D',
-  'Workflow Automation',
-  'Custom Software & SaaS',
-  'Other / Unclassified'
+  'Flagship Web',
+  'Software & Automation',
+  'Other Inquiries'
 ];
 ---
 
@@ -217,6 +216,31 @@ const projectTypes = [
         if (selectedInput) selectedInput.value = val;
       });
     });
+
+    // Auto-select pill based on URL search query (?service=...)
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const serviceParam = urlParams.get('service');
+      if (serviceParam) {
+        let targetValue = '';
+        if (serviceParam.includes('web') || serviceParam.includes('flagship')) targetValue = 'Flagship Web';
+        else if (serviceParam.includes('software') || serviceParam.includes('automation')) targetValue = 'Software & Automation';
+
+        if (targetValue) {
+          pills.forEach((p) => {
+            if (p.getAttribute('data-value') === targetValue) {
+              pills.forEach((item) => {
+                item.classList.remove('bg-[#C6FF3D]', 'text-black', 'shadow-sm');
+                item.classList.add('bg-neutral-900', 'text-neutral-300', 'border', 'border-neutral-800');
+              });
+              p.classList.remove('bg-neutral-900', 'text-neutral-300', 'border', 'border-neutral-800');
+              p.classList.add('bg-[#C6FF3D]', 'text-black', 'shadow-sm');
+              if (selectedInput) selectedInput.value = targetValue;
+            }
+          });
+        }
+      }
+    } catch (e) {}
 
     // Form Submission
     form?.addEventListener('submit', (e) => {

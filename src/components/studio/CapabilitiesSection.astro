@@ -4,21 +4,15 @@ import Icon from '../ui/Icon.astro';
 const services = [
   {
     number: '01',
-    title: 'Digital Flagships',
-    desc: 'High-performance brand websites and 3D WebGL experiences engineered to convert.',
-    tech: 'Astro · Three.js · GSAP'
+    title: 'Flagship Web Development',
+    desc: 'High-performance brand flagships, marketing websites, and kinetic web experiences engineered for speed and conversion.',
+    tech: 'Astro · TypeScript · Tailwind CSS'
   },
   {
     number: '02',
-    title: 'Workflow Automation',
-    desc: 'Bespoke internal systems and automated pipelines that permanently kill spreadsheet toil.',
-    tech: 'Go · Python · PostgreSQL'
-  },
-  {
-    number: '03',
-    title: 'Custom Software',
-    desc: 'Production-grade web apps, APIs, and proprietary SaaS platforms built to scale.',
-    tech: 'TypeScript · Edge · Docker'
+    title: 'Software & Automation',
+    desc: 'Custom internal software, robust backend APIs, and automated pipelines that permanently kill spreadsheet toil.',
+    tech: 'Go · Python · PostgreSQL · APIs'
   }
 ];
 ---
@@ -42,8 +36,8 @@ const services = [
       </a>
     </div>
 
-    <!-- Crisp 3-Card Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <!-- Crisp 2-Card Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {services.map((svc) => (
         <a
           href="/services"

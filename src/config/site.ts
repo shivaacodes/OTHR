@@ -58,34 +58,24 @@ export const siteConfig = {
   // Indicative Commercial Pricing Guides (Accessible early-stage studio pricing)
   pricing: [
     {
-      serviceId: 'digital-upgrade',
-      title: 'Digital Flagships & Web',
-      startingRange: '$950 – $2,500',
-      usdRange: '$950 – $2,500',
-      inrRange: '₹45,000 – ₹1,20,000',
+      serviceId: 'flagship-web',
+      title: 'Flagship Web Development',
+      startingRange: '$450 – $950',
+      usdRange: '$450 – $950',
+      inrRange: '₹25,000 – ₹55,000',
       unit: 'per project',
-      typicalTimeline: '2–4 weeks',
+      typicalTimeline: '1–3 weeks',
       note: 'Scope-dependent. High-performance Astro/TypeScript flagships with sub-second edge speeds and kinetic typography.'
     },
     {
-      serviceId: 'workflow-fix',
-      title: 'Workflow Automation & Ops',
-      startingRange: '$750 – $1,800',
-      usdRange: '$750 – $1,800',
-      inrRange: '₹35,000 – ₹90,000',
+      serviceId: 'software-automation',
+      title: 'Software & Automation',
+      startingRange: '$650 – $1,400',
+      usdRange: '$650 – $1,400',
+      inrRange: '₹35,000 – ₹85,000',
       unit: 'per system',
-      typicalTimeline: '1–3 weeks',
-      note: 'Custom operational portals and automated pipelines replacing fragile spreadsheets and manual data entry.'
-    },
-    {
-      serviceId: 'custom-software',
-      title: 'Custom Software & SaaS MVP',
-      startingRange: '$1,800 – $4,500',
-      usdRange: '$1,800 – $4,500',
-      inrRange: '₹90,000 – ₹2,50,000',
-      unit: 'per milestone',
-      typicalTimeline: '4–8 weeks',
-      note: 'Full-stack software architecture, PostgreSQL schemas, clean APIs, and production deployment.'
+      typicalTimeline: '2–4 weeks',
+      note: 'Scope-dependent. Custom operational tools, robust backend APIs, and automated pipelines eliminating spreadsheet toil.'
     }
   ] as IndicativePricing[]
 };

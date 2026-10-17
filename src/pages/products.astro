@@ -462,9 +462,12 @@ const faqs = [
     });
 
     try {
-      const saved = (localStorage.getItem('othr_currency') || 'usd') as 'usd' | 'inr';
-      updateCurrency(saved);
-    } catch (e) {}
+      const saved = localStorage.getItem('othr_currency');
+      const active = saved === 'inr' ? 'inr' : 'usd';
+      updateCurrency(active);
+    } catch (e) {
+      updateCurrency('usd');
+    }
   }
 
   initMockgenCurrency();
