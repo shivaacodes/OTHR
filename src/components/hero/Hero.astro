@@ -2,38 +2,29 @@
 import Icon from '../ui/Icon.astro';
 ---
 
-<section class="relative min-h-[85vh] flex items-center overflow-hidden bg-black border-b border-neutral-900 pt-20 pb-16">
+<section class="relative min-h-[80vh] flex items-center overflow-hidden bg-black border-b border-neutral-900 pt-24 pb-20">
   <!-- Subtle Ambient Glow -->
-  <div class="absolute right-[10%] top-[20%] w-[400px] h-[400px] bg-[#C6FF3D]/5 rounded-full blur-[140px] pointer-events-none"></div>
-
-  <!-- 3D Interactive Centerpiece: Positioned to the right on desktop, non-intrusive on mobile -->
-  <div
-    id="hero-3d-container"
-    class="absolute right-0 top-1/2 -translate-y-1/2 w-full md:w-[50vw] lg:w-[45vw] h-[45vh] md:h-[75vh] z-0 pointer-events-none md:pointer-events-auto opacity-0 transition-opacity duration-1000"
-    aria-label="Interactive 3D sculpture"
-  >
-    <!-- Three.js canvas rendered dynamically -->
-  </div>
+  <div class="absolute right-[15%] top-[25%] w-[500px] h-[500px] bg-[#C6FF3D]/5 rounded-full blur-[160px] pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-    <div class="max-w-2xl lg:max-w-3xl">
+    <div class="max-w-3xl">
       <!-- Status Badge -->
       <div class="inline-flex items-center gap-2 mb-6 px-3.5 py-1.5 bg-neutral-900 border border-neutral-800 rounded-full">
         <span class="w-2 h-2 rounded-full bg-[#C6FF3D] animate-pulse"></span>
         <span class="text-xs font-semibold text-neutral-300">Independent Creative Engineering</span>
       </div>
 
-      <!-- Main Headline (No full stops, punchy & direct) -->
+      <!-- Main Headline (Punchy, confident) -->
       <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.04] text-white mb-6 select-none">
         High-performance software and <span class="text-[#C6FF3D]">digital flagships</span>
       </h1>
 
-      <!-- Supporting Statement (Direct, no fluff) -->
-      <p class="font-body text-base sm:text-lg lg:text-xl text-neutral-400 max-w-xl leading-relaxed mb-8">
+      <!-- Supporting Statement -->
+      <p class="font-body text-base sm:text-lg lg:text-xl text-neutral-400 max-w-2xl leading-relaxed mb-8">
         We design and engineer bespoke web flagships, internal automation systems, and original software products. Built with engineering precision.
       </p>
 
-      <!-- Action Buttons (Clean rounded pill style) -->
+      <!-- Action Buttons -->
       <div class="flex flex-wrap items-center gap-4">
         <a
           href="/products"
@@ -54,7 +45,7 @@ import Icon from '../ui/Icon.astro';
       <div class="mt-14 pt-8 border-t border-neutral-900 flex flex-wrap items-center gap-8 text-xs text-neutral-400">
         <div>
           <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Flagship Web</span>
-          <span class="text-white font-medium">WebGL & High-Speed Edge</span>
+          <span class="text-white font-medium">High-Speed Edge Architecture</span>
         </div>
         <div>
           <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Automation</span>
@@ -68,33 +59,3 @@ import Icon from '../ui/Icon.astro';
     </div>
   </div>
 </section>
-
-<script>
-  let heroInstance: any = null;
-
-  async function initHero3D() {
-    const container = document.getElementById('hero-3d-container');
-    if (!container) return;
-
-    if (heroInstance) {
-      heroInstance.destroy();
-      heroInstance = null;
-    }
-
-    try {
-      const { HeroObject } = await import('./HeroObject');
-      heroInstance = new HeroObject({ container });
-      container.classList.remove('opacity-0');
-      container.classList.add('opacity-100');
-    } catch (err) {
-      console.warn('Failed to initialize 3D hero object:', err);
-    }
-  }
-
-  if (typeof window !== 'undefined') {
-    requestAnimationFrame(() => {
-      initHero3D();
-    });
-    document.addEventListener('astro:page-load', initHero3D);
-  }
-</script>

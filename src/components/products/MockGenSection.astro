@@ -7,7 +7,7 @@ const mockgen = products[0];
 
 <section class="py-12 sm:py-16 md:py-20 bg-black border-b border-neutral-900" id="products">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Header (Clean & Minimal) -->
+    <!-- Header -->
     <div class="flex items-end justify-between mb-8 pb-4 border-b border-neutral-900">
       <div>
         <span class="text-[11px] font-semibold text-[#FFE500] uppercase tracking-wider block mb-1">Product</span>
@@ -24,125 +24,84 @@ const mockgen = products[0];
       </a>
     </div>
 
-    <!-- MOCKGEN YELLOW CARD (Crisp & Tight) -->
-    <div class="bg-[#FFE500] text-black rounded-3xl p-5 sm:p-8 lg:p-10 shadow-[0_20px_50px_-15px_rgba(255,229,0,0.3)]">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-        <!-- Visual 3D Preview (Left on desktop, compact on mobile) -->
-        <div class="lg:col-span-7">
-          <div class="bg-black border border-black/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between h-64 sm:h-80 relative overflow-hidden group">
-            <!-- Top HUD -->
-            <div class="flex items-center justify-between text-xs font-semibold text-neutral-400 z-10">
+    <!-- MOCKGEN YELLOW CARD (Clean, Fast, Crisp) -->
+    <div class="bg-[#FFE500] text-black rounded-3xl p-6 sm:p-8 lg:p-10 shadow-[0_20px_50px_-15px_rgba(255,229,0,0.3)]">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Visual Asset Pipeline Card (Left on desktop, top on mobile) -->
+        <div class="lg:col-span-6">
+          <div class="bg-neutral-950 border border-neutral-800 rounded-2xl p-5 sm:p-6 shadow-2xl">
+            <!-- HUD Header -->
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-neutral-800 text-xs">
               <div class="flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-[#FFE500] animate-pulse"></span>
-                <span class="text-white text-xs">MockGen 3D</span>
+                <span class="text-white font-mono font-semibold">MockGen Engine</span>
               </div>
-              <span class="text-[11px] font-mono text-neutral-500">Drag to rotate</span>
+              <span class="text-[11px] font-mono text-[#FFE500]">45s Generation</span>
             </div>
 
-            <!-- 3D Can Stage (Compact) -->
-            <div class="flex-grow flex items-center justify-center perspective-[800px] overflow-hidden relative my-2" id="can-preview-stage">
-              <div
-                id="can-3d-model"
-                class="w-24 h-40 sm:w-28 sm:h-48 relative transform-style-preserve-3d transition-transform duration-700 ease-out cursor-grab active:cursor-grabbing select-none"
-                style="transform: rotateX(-10deg) rotateY(25deg);"
-              >
-                <!-- Can Top Rim -->
-                <div class="absolute -top-2.5 left-1/2 -translate-x-1/2 w-20 sm:w-24 h-5 bg-gradient-to-b from-[#silver] to-[#71717a] border-2 border-[#a1a1aa] rounded-full transform rotateX(75deg) shadow-inner flex items-center justify-center">
-                  <div class="w-6 h-3 bg-[#27272a] rounded-sm border border-[#a1a1aa]/60"></div>
-                </div>
-
-                <!-- Front Label Face -->
-                <div
-                  class="can-face absolute inset-0 bg-neutral-950 border-2 border-[#FFE500] rounded-xl flex flex-col justify-between p-3 backface-hidden shadow-[0_0_20px_rgba(255,229,0,0.35)]"
-                  style="transform: translateZ(28px);"
-                >
-                  <div class="flex justify-between items-center text-[9px] text-[#FFE500] font-bold">
-                    <span>MOCKGEN</span>
-                    <span>330 ML</span>
-                  </div>
-                  <div class="text-center my-auto">
-                    <div class="font-display font-black text-lg sm:text-xl text-white tracking-tight leading-none">
-                      COLD<br />
-                      <span class="text-[#FFE500]">CRAFT</span>
-                    </div>
-                  </div>
-                  <div class="flex justify-between items-end text-[8px] text-neutral-400 pt-1 border-t border-neutral-800 font-mono">
-                    <span>3D Wrap</span>
-                    <span class="text-[#FFE500]">4K Print</span>
-                  </div>
-                </div>
-
-                <!-- Right Face -->
-                <div
-                  class="can-face absolute top-0 bottom-0 w-20 bg-[#141203] border border-[#FFE500]/50 rounded-xl p-2 flex flex-col justify-between text-[8px] text-[#FFE500] font-medium"
-                  style="left: 100%; transform-origin: left; transform: rotateY(70deg);"
-                >
-                  <span>Bleed 3mm</span>
-                  <span class="text-neutral-400">OBJ / GLB</span>
-                </div>
-
-                <!-- Left Face -->
-                <div
-                  class="can-face absolute top-0 bottom-0 w-20 bg-[#110f03] border border-[#FFE500]/50 rounded-xl p-2 flex flex-col justify-between text-[8px] text-[#FFE500] font-medium"
-                  style="right: 100%; transform-origin: right; transform: rotateY(-70deg);"
-                >
-                  <span>PSD Layered</span>
-                  <span class="text-neutral-400">300 DPI</span>
-                </div>
-
-                <!-- Can Bottom Rim -->
-                <div class="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-20 sm:w-24 h-5 bg-[#3f3f46] border-2 border-[#71717a] rounded-full transform rotateX(75deg) shadow-lg"></div>
+            <!-- Layered Pipeline Preview -->
+            <div class="space-y-2.5 mb-5 font-mono text-xs">
+              <div class="flex items-center justify-between p-2.5 bg-neutral-900/90 border border-neutral-800 rounded-lg text-neutral-300">
+                <span class="text-neutral-400">01 // Surface Geometry</span>
+                <span class="text-[#FFE500] text-[11px]">3D Cylindrical Mesh</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-neutral-900/90 border border-neutral-800 rounded-lg text-neutral-300">
+                <span class="text-neutral-400">02 // Vector Artwork</span>
+                <span class="text-[#FFE500] text-[11px]">Full Wrap Dieline</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-neutral-900/90 border border-neutral-800 rounded-lg text-neutral-300">
+                <span class="text-neutral-400">03 // Material Shaders</span>
+                <span class="text-[#FFE500] text-[11px]">Metallic & Spot UV</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-neutral-900/90 border border-neutral-800 rounded-lg text-neutral-300">
+                <span class="text-neutral-400">04 // Print Tolerances</span>
+                <span class="text-[#FFE500] text-[11px]">3mm Bleed & Margins</span>
               </div>
             </div>
 
-            <!-- Material Switcher -->
-            <div class="flex items-center justify-between pt-2 border-t border-neutral-900 text-xs z-10">
-              <span class="text-[11px] text-neutral-500 hidden sm:inline">Finish:</span>
-              <div class="flex items-center gap-1.5 w-full sm:w-auto justify-between sm:justify-end">
-                <button class="can-finish-btn px-2.5 py-1 bg-[#FFE500] text-black font-semibold rounded-full text-xs" data-finish="yellow">
-                  Yellow
-                </button>
-                <button class="can-finish-btn px-2.5 py-1 bg-white/10 text-white hover:bg-white/20 font-medium rounded-full text-xs" data-finish="metallic">
-                  Aluminum
-                </button>
-                <button class="can-finish-btn px-2.5 py-1 bg-white/10 text-white hover:bg-white/20 font-medium rounded-full text-xs" data-finish="lime">
-                  Lime
-                </button>
+            <!-- Export Formats -->
+            <div class="pt-3 border-t border-neutral-800/80 flex flex-wrap items-center justify-between gap-2">
+              <span class="text-[11px] font-mono text-neutral-400">Exports:</span>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[10px] font-mono px-2 py-0.5 bg-neutral-900 text-neutral-300 border border-neutral-800 rounded">PSD</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 bg-neutral-900 text-neutral-300 border border-neutral-800 rounded">OBJ</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 bg-neutral-900 text-neutral-300 border border-neutral-800 rounded">GLB</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 bg-neutral-900 text-neutral-300 border border-neutral-800 rounded">UV MAPS</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Copy & Actions (Right on desktop, below on mobile) -->
-        <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+        <!-- Copy & CTAs (Right on desktop, below on mobile) -->
+        <div class="lg:col-span-6 flex flex-col justify-between space-y-4">
           <div>
             <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-black text-white text-[11px] font-bold rounded-full uppercase tracking-wider mb-3">
               <span>Packaging Asset Pipeline</span>
             </div>
 
-            <h3 class="font-display font-black text-2xl sm:text-3xl text-black tracking-tight leading-snug mb-2.5">
+            <h3 class="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-black tracking-tight leading-tight mb-3">
               AI Generated 3D Mockups Ready for Print
             </h3>
 
-            <p class="font-body text-black/85 text-sm sm:text-base leading-relaxed font-medium mb-5">
-              Production-ready packaging files with exact dimensions, bleed margins, and isolated layers in 45 seconds. Export in PSD, OBJ, GLB, and print dielines.
+            <p class="font-body text-black/90 text-sm sm:text-base leading-relaxed font-medium mb-6">
+              Generate production-ready packaging files with exact dimensions, bleed margins, and isolated layers in 45 seconds. Export directly for manufacturing and client presentations.
             </p>
           </div>
 
-          <!-- Crisp CTAs -->
-          <div class="flex flex-wrap items-center gap-3 pt-1">
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-3">
             <a
               href="https://trymockgen.vercel.app/?auth=signup"
               target="_blank"
               rel="noopener noreferrer"
-              class="bg-black hover:bg-neutral-900 text-white font-semibold text-xs sm:text-sm px-6 py-3 rounded-full transition-all active:scale-95 flex items-center gap-1.5 shadow-md"
+              class="bg-black hover:bg-neutral-900 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full transition-all active:scale-95 flex items-center gap-1.5 shadow-md"
             >
               <span>Draft Your Design Free</span>
               <Icon name="ArrowUpRight" size={15} />
             </a>
             <a
               href="/products"
-              class="bg-black/10 hover:bg-black/20 text-black font-semibold text-xs sm:text-sm px-5 py-3 rounded-full transition-all active:scale-95"
+              class="bg-black/10 hover:bg-black/20 text-black font-semibold text-xs sm:text-sm px-5 py-3.5 rounded-full transition-all active:scale-95"
             >
               Explore Specs
             </a>
@@ -152,113 +111,3 @@ const mockgen = products[0];
     </div>
   </div>
 </section>
-
-<script>
-  function initCanInteraction() {
-    const model = document.getElementById('can-3d-model');
-    const stage = document.getElementById('can-preview-stage');
-    if (!model || !stage) return;
-
-    let isMouseDown = false;
-    let startX = 0;
-    let startY = 0;
-    let rotX = -10;
-    let rotY = 25;
-
-    stage.addEventListener('mousedown', (e) => {
-      isMouseDown = true;
-      startX = e.clientX;
-      startY = e.clientY;
-      model.style.transition = 'none';
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (!isMouseDown) return;
-      isMouseDown = false;
-      model.style.transition = 'transform 0.6s ease-out';
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isMouseDown) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-
-      rotY += dx * 0.4;
-      rotX -= dy * 0.2;
-      rotX = Math.max(-40, Math.min(30, rotX));
-
-      model.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-      startX = e.clientX;
-      startY = e.clientY;
-    });
-
-    // Touch support for mobile
-    stage.addEventListener('touchstart', (e) => {
-      if (e.touches.length === 1) {
-        isMouseDown = true;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        model.style.transition = 'none';
-      }
-    }, { passive: true });
-
-    window.addEventListener('touchend', () => {
-      isMouseDown = false;
-      model.style.transition = 'transform 0.6s ease-out';
-    });
-
-    window.addEventListener('touchmove', (e) => {
-      if (!isMouseDown || e.touches.length !== 1) return;
-      const dx = e.touches[0].clientX - startX;
-      const dy = e.touches[0].clientY - startY;
-
-      rotY += dx * 0.4;
-      rotX -= dy * 0.2;
-      rotX = Math.max(-40, Math.min(30, rotX));
-
-      model.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-    }, { passive: true });
-
-    // Finish Switcher
-    const finishBtns = document.querySelectorAll('.can-finish-btn');
-    const frontFace = model.querySelector('.can-face:first-child') as HTMLElement;
-
-    finishBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        finishBtns.forEach((b) => {
-          b.classList.remove('bg-[#FFE500]', 'text-black', 'bg-white', 'bg-[#C6FF3D]');
-          b.classList.add('bg-white/10', 'text-white');
-        });
-
-        const finish = btn.getAttribute('data-finish');
-        if (finish === 'yellow') {
-          btn.classList.remove('bg-white/10', 'text-white');
-          btn.classList.add('bg-[#FFE500]', 'text-black');
-          if (frontFace) {
-            frontFace.style.borderColor = '#FFE500';
-            frontFace.style.boxShadow = '0 0 20px rgba(255,229,0,0.35)';
-          }
-        } else if (finish === 'metallic') {
-          btn.classList.remove('bg-white/10', 'text-white');
-          btn.classList.add('bg-white', 'text-black');
-          if (frontFace) {
-            frontFace.style.borderColor = '#e4e4e7';
-            frontFace.style.boxShadow = '0 0 20px rgba(255,255,255,0.25)';
-          }
-        } else if (finish === 'lime') {
-          btn.classList.remove('bg-white/10', 'text-white');
-          btn.classList.add('bg-[#C6FF3D]', 'text-black');
-          if (frontFace) {
-            frontFace.style.borderColor = '#C6FF3D';
-            frontFace.style.boxShadow = '0 0 20px rgba(198,255,61,0.35)';
-          }
-        }
-      });
-    });
-  }
-
-  initCanInteraction();
-  document.addEventListener('astro:page-load', initCanInteraction);
-</script>
