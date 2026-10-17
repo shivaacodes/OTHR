@@ -17,7 +17,7 @@ When non-technical stakeholders ask about payroll software, they think of arithm
 
 Engineers who have built payroll systems know the truth: **payroll is a distributed consistency problem wrapped in legal compliance**.
 
-You have tax brackets that change mid-year, retroactive bonus adjustments, prorated leaves across varying shift calendars, and immutable audit ledgers. When you calculate payroll for thousands of employees at 11:59 PM on the 28th of the month, a memory leak or unhandled promise rejection is not an inconvenience—it stops paychecks from clearing.
+You have tax brackets that change mid-year, retroactive bonus adjustments, prorated leaves across varying shift calendars, and immutable audit ledgers. When you calculate payroll for thousands of employees at 11:59 PM on the 28th of the month, a memory leak or unhandled promise rejection is not an inconvenience: it stops paychecks from clearing.
 
 Here is why we built our core payroll computation engine in **Go**, bypassing Python and TypeScript.
 

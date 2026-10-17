@@ -63,8 +63,8 @@ Most agencies only build for clients. When the invoice is paid, they hand over t
 
 At OTHR, we believe true engineering credibility comes from having **skin in the game**.
 
-That is why we conceived, built, and operate our own proprietary software products—beginning with **WrapForge**, our browser-based 3D packaging visualization engine.
+That is why we conceived, built, and operate our own proprietary software products, beginning with **MockGen**, our browser-based 3D packaging visualization pipeline.
 
 When we build for our clients, they don't get theoretical consulting from people who only make pitch decks. They get battle-tested software engineers who build, launch, and operate real production systems every single day.
 
-We don't do ordinary. We like strange. We build things that work.
+We build things that work.

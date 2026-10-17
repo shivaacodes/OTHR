@@ -60,7 +60,7 @@ export const studioData: StudioInfo = {
     {
       number: '05',
       headline: 'Good engineering feels effortless',
-      elaboration: 'Underneath an elegant interface lie robust relational schemas, deterministic queues, and WebGL choreography. The user should never feel that complexity—to them, it just works.'
+      elaboration: 'Underneath an elegant interface lie robust relational schemas, deterministic queues, and WebGL choreography. The user should never feel that complexity: to them, it just works.'
     }
   ],
   stack: [

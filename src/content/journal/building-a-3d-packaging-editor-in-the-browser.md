@@ -20,7 +20,7 @@ In commercial packaging design, the feedback loop is excruciating:
 3. They realize the closure flap is 2mm too narrow or the spot UV gloss bleeds over the crease.
 4. Repeat.
 
-When we began designing **WrapForge**, our goal was ambitious: let designers upload flat vector artwork and see it fold into an optically realistic 3D box in the browser within milliseconds—complete with foil stamping, spot UV varnish, and anisotropic paper textures.
+When we began designing our 3D packaging engine for **MockGen**, our goal was ambitious: let designers upload artwork and see it wrap onto an optically realistic 3D model in the browser within milliseconds, complete with foil stamping, spot UV varnish, and anisotropic surface textures.
 
 Here is how we solved the three hardest engineering challenges.
 

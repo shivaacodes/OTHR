@@ -1,369 +1,296 @@
 ---
 import { products } from '../../data/products';
+import Icon from '../ui/Icon.astro';
 
 const mockgen = products[0];
 ---
 
-<section class="py-20 md:py-32 bg-black border-b border-neutral-900 relative" id="products">
+<section class="py-20 md:py-28 bg-black border-b border-neutral-900 relative" id="products">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Clean Section Header (HEX Style) -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-neutral-900">
       <div>
-        <div class="text-xs font-bold text-[#FF5500] uppercase tracking-wider mb-2">
-          Featured Product
+        <div class="inline-flex items-center gap-2 mb-3 px-3.5 py-1 bg-neutral-900 border border-neutral-800 rounded-full text-xs font-semibold text-[#FFE500]">
+          <span>Featured Product</span>
         </div>
-        <h2 class="font-display font-extrabold text-4xl sm:text-6xl text-white tracking-tight">
+        <h2 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white">
           Crafted by OTHR
         </h2>
       </div>
-      <p class="font-body text-base text-neutral-400 max-w-md">
+      <p class="font-body text-sm sm:text-base text-neutral-400 max-w-md">
         Proprietary commercial software built, operated, and scaled by our studio.
       </p>
     </div>
 
-    <!-- HEX-STYLE VIBRANT STACK -->
-    <div class="space-y-10 sm:space-y-12">
-      
-      <!-- 01: MOCKGEN FLAGSHIP ORANGE CARD (HEX VIBE) -->
-      <div class="hex-card bg-[#FF5500] text-black shadow-2xl">
-        <!-- Inner Media Window -->
-        <div class="hex-media bg-black border border-black/20 p-6 sm:p-8 flex flex-col justify-between min-h-[420px] sm:min-h-[480px]">
-          <!-- Top Media HUD -->
-          <div class="flex items-center justify-between text-xs font-semibold text-neutral-400">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#FF5500]"></span>
-              <span class="text-white">MockGen 3D Studio</span>
-              <span class="text-neutral-500 hidden sm:inline">• Beverage Can Asset Pipeline</span>
-            </div>
-            <span class="text-[#FF5500] text-xs tracking-wide">Live 3D Viewport</span>
+    <!-- MOCKGEN FLAGSHIP YELLOW CARD (HEX VIBE) -->
+    <div class="hex-card bg-[#FFE500] text-black shadow-2xl rounded-3xl p-6 sm:p-10 lg:p-12">
+      <!-- Inset Media Window -->
+      <div class="hex-media bg-black border border-black/20 rounded-2xl p-6 sm:p-8 flex flex-col justify-between min-h-[420px] sm:min-h-[480px]">
+        <!-- Top Media HUD -->
+        <div class="flex items-center justify-between text-xs font-semibold text-neutral-400">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#FFE500]"></span>
+            <span class="text-white">MockGen 3D Studio</span>
+            <span class="text-neutral-500 hidden sm:inline">• Beverage Can Asset Pipeline</span>
           </div>
+          <span class="text-[#FFE500] text-xs font-bold tracking-wide">Live 3D Viewport</span>
+        </div>
 
-          <!-- 3D Interactive Beverage Can Simulation Stage -->
-          <div class="flex-grow flex items-center justify-center perspective-[900px] overflow-hidden my-4 relative" id="can-preview-stage">
+        <!-- 3D Interactive Beverage Can Simulation Stage -->
+        <div class="flex-grow flex items-center justify-center perspective-[900px] overflow-hidden my-4 relative" id="can-preview-stage">
+          <div
+            id="can-3d-model"
+            class="w-32 h-60 relative transform-style-preserve-3d transition-transform duration-700 ease-out cursor-grab active:cursor-grabbing select-none"
+            style="transform: rotateX(-10deg) rotateY(25deg);"
+          >
+            <!-- Can Top Rim -->
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-gradient-to-b from-[#silver] to-[#71717a] border-2 border-[#a1a1aa] rounded-full transform rotateX(75deg) shadow-inner flex items-center justify-center">
+              <div class="w-8 h-4 bg-[#27272a] rounded-sm border border-[#a1a1aa]/60"></div>
+            </div>
+
+            <!-- Front Label Face -->
             <div
-              id="can-3d-model"
-              class="w-32 h-60 relative transform-style-preserve-3d transition-transform duration-700 ease-out cursor-grab active:cursor-grabbing select-none"
-              style="transform: rotateX(-10deg) rotateY(25deg);"
+              class="can-face absolute inset-0 bg-neutral-950 border-2 border-[#FFE500] rounded-xl flex flex-col justify-between p-4 backface-hidden shadow-[0_0_30px_rgba(255,229,0,0.4)]"
+              style="transform: translateZ(36px);"
             >
-              <!-- Can Top Rim -->
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-gradient-to-b from-[#silver] to-[#71717a] border-2 border-[#a1a1aa] rounded-full transform rotateX(75deg) shadow-inner flex items-center justify-center">
-                <div class="w-8 h-4 bg-[#27272a] rounded-sm border border-[#a1a1aa]/60"></div>
+              <div class="flex justify-between items-center text-[10px] text-[#FFE500] font-bold">
+                <span>MOCKGEN</span>
+                <span>330 ML</span>
               </div>
-
-              <!-- Cylinder Body Faces -->
-              <!-- Front Label Face -->
-              <div
-                class="can-face absolute inset-0 bg-neutral-950 border-2 border-[#FF5500] rounded-xl flex flex-col justify-between p-4 backface-hidden shadow-[0_0_30px_rgba(255,85,0,0.4)]"
-                style="transform: translateZ(36px);"
-              >
-                <div class="flex justify-between items-center text-[10px] text-[#FF5500] font-bold">
-                  <span>MOCKGEN</span>
-                  <span>330 ML</span>
+              <div class="text-center my-auto">
+                <div class="font-display font-black text-2xl text-white tracking-tight leading-none">
+                  COLD<br />
+                  <span class="text-[#FFE500]">CRAFT</span>
                 </div>
-                <div class="text-center my-auto">
-                  <div class="font-display font-black text-2xl text-white tracking-tight leading-none">
-                    NEON<br />
-                    <span class="text-[#FF5500]">CITRUS</span>
-                  </div>
-                  <div class="text-[9px] text-neutral-400 mt-1 uppercase tracking-wider font-semibold">
-                    Metallic Cold Craft
-                  </div>
-                </div>
-                <div class="flex justify-between items-end text-[9px] text-neutral-500 pt-2 border-t border-neutral-800">
-                  <span>AI Die-Cut</span>
-                  <span class="text-[#FF5500] font-bold">4K Print-Ready</span>
+                <div class="text-[9px] text-neutral-400 mt-1 uppercase tracking-wider font-semibold">
+                  Metallic Yellow UV
                 </div>
               </div>
-
-              <!-- Right Face -->
-              <div
-                class="can-face absolute top-0 bottom-0 w-24 bg-[#1a0f08] border border-[#FF5500]/50 rounded-xl p-3 flex flex-col justify-between text-[8px] text-[#FF5500] font-medium"
-                style="left: 100%; transform-origin: left; transform: rotateY(70deg);"
-              >
-                <span>Production Spec</span>
-                <div class="text-[8px] text-neutral-300 space-y-0.5">
-                  <div>• Bleed: 3mm</div>
-                  <div>• Spot Gloss: 100%</div>
-                  <div>• Die-Cut: Exact</div>
-                </div>
-                <span class="text-neutral-500">OBJ / GLB Ready</span>
+              <div class="flex justify-between items-end text-[9px] text-neutral-500 pt-2 border-t border-neutral-800">
+                <span>AI Die-Cut</span>
+                <span class="text-[#FFE500] font-bold">4K Print-Ready</span>
               </div>
-
-              <!-- Left Face -->
-              <div
-                class="can-face absolute top-0 bottom-0 w-24 bg-[#150a04] border border-[#FF5500]/50 rounded-xl p-3 flex flex-col justify-between text-[8px] text-[#FF5500] font-medium"
-                style="right: 100%; transform-origin: right; transform: rotateY(-70deg);"
-              >
-                <span>Format Export</span>
-                <div class="text-[8px] text-neutral-300 space-y-0.5">
-                  <div>PSD Layered</div>
-                  <div>CMYK Print</div>
-                  <div>300 DPI Vector</div>
-                </div>
-                <span class="text-neutral-500">No AI Blackbox</span>
-              </div>
-
-              <!-- Back Face -->
-              <div
-                class="can-face absolute inset-0 bg-neutral-950 border border-neutral-800 rounded-xl p-4 text-[9px] text-neutral-500 flex flex-col justify-between"
-                style="transform: rotateY(180deg) translateZ(36px);"
-              >
-                <span>Ready to Print</span>
-                <div class="text-center text-neutral-300 font-semibold">
-                  Direct Printer Export<br />
-                  Zero Guesswork
-                </div>
-                <span>© MockGen</span>
-              </div>
-
-              <!-- Can Bottom Rim -->
-              <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#3f3f46] border-2 border-[#71717a] rounded-full transform rotateX(75deg) shadow-lg"></div>
             </div>
-          </div>
 
-          <!-- Media Footer Controls & Finish Switcher -->
-          <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-neutral-800/80 text-xs">
-            <span class="text-neutral-400 font-medium">Click and drag to orbit 3D model</span>
-            <div class="flex items-center gap-2">
-              <button class="can-finish-btn px-3 py-1 bg-[#FF5500] text-black font-semibold rounded-full cursor-pointer text-xs" data-finish="orange">
-                Neon Orange
-              </button>
-              <button class="can-finish-btn px-3 py-1 bg-white/10 text-white hover:bg-white/20 font-medium rounded-full cursor-pointer text-xs" data-finish="metallic">
-                Metallic
-              </button>
-              <button class="can-finish-btn px-3 py-1 bg-white/10 text-white hover:bg-white/20 font-medium rounded-full cursor-pointer text-xs" data-finish="matte">
-                Matte
-              </button>
+            <!-- Right Face -->
+            <div
+              class="can-face absolute top-0 bottom-0 w-24 bg-[#141203] border border-[#FFE500]/50 rounded-xl p-3 flex flex-col justify-between text-[8px] text-[#FFE500] font-medium"
+              style="left: 100%; transform-origin: left; transform: rotateY(70deg);"
+            >
+              <span>Production Spec</span>
+              <div class="text-[8px] text-neutral-300 space-y-0.5">
+                <div>• Bleed: 3mm</div>
+                <div>• Spot Gloss: 100%</div>
+                <div>• Die-Cut: Exact</div>
+              </div>
+              <span class="text-neutral-500">OBJ / GLB Ready</span>
             </div>
+
+            <!-- Left Face -->
+            <div
+              class="can-face absolute top-0 bottom-0 w-24 bg-[#110f03] border border-[#FFE500]/50 rounded-xl p-3 flex flex-col justify-between text-[8px] text-[#FFE500] font-medium"
+              style="right: 100%; transform-origin: right; transform: rotateY(-70deg);"
+            >
+              <span>Format Export</span>
+              <div class="text-[8px] text-neutral-300 space-y-0.5">
+                <div>PSD Layered</div>
+                <div>CMYK Print</div>
+                <div>300 DPI Vector</div>
+              </div>
+              <span class="text-neutral-500">No AI Blackbox</span>
+            </div>
+
+            <!-- Back Face -->
+            <div
+              class="can-face absolute inset-0 bg-neutral-950 border border-neutral-800 rounded-xl p-4 text-[9px] text-neutral-500 flex flex-col justify-between"
+              style="transform: rotateY(180deg) translateZ(36px);"
+            >
+              <span>Ready to Print</span>
+              <div class="text-center text-neutral-300 font-semibold">
+                Direct Printer Export<br />
+                Zero Guesswork
+              </div>
+              <span>© MockGen</span>
+            </div>
+
+            <!-- Can Bottom Rim -->
+            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#3f3f46] border-2 border-[#71717a] rounded-full transform rotateX(75deg) shadow-lg"></div>
           </div>
         </div>
 
-        <!-- Typography & CTAs Below Media (Matching HEX Vibe) -->
-        <div class="pt-6 sm:pt-8">
-          <div class="flex flex-wrap items-center gap-2 mb-3">
-            <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-black text-white rounded-full">
-              Physical Product Pipeline
-            </span>
-            <span class="text-xs font-medium text-black/75">
-              Exact Dimensions • Bleed & Die-Lines • Print Ready
-            </span>
-          </div>
-
-          <h3 class="font-display font-black text-3xl sm:text-5xl text-black tracking-tight leading-tight mb-3">
-            MockGen: AI Generated 3D Mockups Ready for Print
-          </h3>
-
-          <p class="font-body text-black/90 text-base sm:text-xl max-w-3xl leading-relaxed mb-6 font-medium">
-            Unlike normal AI image generators that produce flat, unusable graphics with distorted text, MockGen generates print-ready packaging files with exact dimensions, bleed margins, and isolated layers. Export in PSD, OBJ, GLB, and UV Maps.
-          </p>
-
-          <!-- Action CTAs -->
-          <div class="flex flex-wrap items-center gap-3">
-            <a
-              href="https://trymockgen.vercel.app/?auth=signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-black hover:bg-neutral-900 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95 flex items-center gap-2 shadow-lg"
-            >
-              <span>Draft Your Design Free</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-            </a>
-            <a
-              href="https://trymockgen.vercel.app/#demo"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="border-2 border-black/40 hover:border-black text-black font-semibold text-sm px-6 py-3.5 rounded-full transition-all active:scale-95"
-            >
-              Watch 30s Demo
-            </a>
-            <a
-              href="/products"
-              class="font-semibold text-sm text-black underline underline-offset-4 hover:opacity-75 transition-opacity ml-auto py-2"
-            >
-              Explore Full Specs & Pricing →
-            </a>
+        <!-- Media Footer Controls & Finish Switcher -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-neutral-800/80 text-xs">
+          <span class="text-neutral-400 font-medium">Click and drag to orbit 3D model</span>
+          <div class="flex items-center gap-2">
+            <button class="can-finish-btn px-3 py-1 bg-[#FFE500] text-black font-semibold rounded-full cursor-pointer text-xs" data-finish="yellow">
+              Electric Yellow
+            </button>
+            <button class="can-finish-btn px-3 py-1 bg-white/10 text-white hover:bg-white/20 font-medium rounded-full cursor-pointer text-xs" data-finish="metallic">
+              Raw Aluminum
+            </button>
+            <button class="can-finish-btn px-3 py-1 bg-white/10 text-white hover:bg-white/20 font-medium rounded-full cursor-pointer text-xs" data-finish="lime">
+              Lime UV
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- 02: DIGITAL FLAGSHIPS LIME CARD (HEX VIBE) -->
-      <div class="hex-card bg-[#C6FF3D] text-black shadow-2xl">
-        <!-- Inner Media Window -->
-        <div class="hex-media bg-black border border-black/20 p-6 sm:p-8 flex flex-col justify-between min-h-[340px] sm:min-h-[400px]">
-          <div class="flex items-center justify-between text-xs font-semibold text-neutral-400">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#C6FF3D]"></span>
-              <span class="text-white">WebGL & Three.js Flagships</span>
-            </div>
-            <span class="text-[#C6FF3D]">60 FPS Experience</span>
-          </div>
-
-          <!-- Visual Shader Demonstration -->
-          <div class="flex-grow flex items-center justify-center relative">
-            <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-transform">
-              <svg class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between text-xs text-neutral-400 pt-3 border-t border-neutral-800">
-            <span>Spatial Audio & Kinetic Typography</span>
-            <span class="text-white">Zero Templates</span>
-          </div>
+      <!-- Typography & CTAs Below Media -->
+      <div class="pt-8">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="text-xs font-bold uppercase tracking-wider px-3.5 py-1 bg-black text-white rounded-full">
+            Physical Product Pipeline
+          </span>
+          <span class="text-xs font-semibold text-black/75">
+            Exact Dimensions • Bleed & Die-Lines • Print Ready
+          </span>
         </div>
 
-        <div class="pt-6 sm:pt-8">
-          <div class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-black text-white rounded-full inline-block mb-3">
-            Creative Web Engineering
-          </div>
-          <h3 class="font-display font-black text-3xl sm:text-5xl text-black tracking-tight leading-tight mb-3">
-            Digital Flagships: Unreasonably Polished Web
-          </h3>
-          <p class="font-body text-black/90 text-base sm:text-xl max-w-3xl leading-relaxed mb-6 font-medium">
-            We build memorable digital flagships for visionary brands. Creative code, WebGL shaders, kinetic interactions, and spatial design engineered for brutal performance underneath.
-          </p>
-          <div class="flex flex-wrap items-center gap-3">
-            <a
-              href="/services"
-              class="bg-black hover:bg-neutral-900 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95 shadow-lg"
-            >
-              Explore Services
-            </a>
-            <a
-              href="/contact"
-              class="border-2 border-black/40 hover:border-black text-black font-semibold text-sm px-6 py-3.5 rounded-full transition-all active:scale-95"
-            >
-              Start a Project
-            </a>
-          </div>
+        <h3 class="font-display font-black text-3xl sm:text-5xl text-black tracking-tight leading-tight mb-3">
+          MockGen: AI Generated 3D Mockups Ready for Print
+        </h3>
+
+        <p class="font-body text-black/90 text-base sm:text-xl max-w-3xl leading-relaxed mb-8 font-medium">
+          Unlike normal AI image generators that produce flat, unusable graphics with distorted text, MockGen generates print-ready packaging files with exact dimensions, bleed margins, and isolated layers. Export in PSD, OBJ, GLB, and UV Maps.
+        </p>
+
+        <!-- Action CTAs -->
+        <div class="flex flex-wrap items-center gap-4">
+          <a
+            href="https://trymockgen.vercel.app/?auth=signup"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-black hover:bg-neutral-900 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95 flex items-center gap-2 shadow-lg"
+          >
+            <span>Draft Your Design Free</span>
+            <Icon name="ArrowUpRight" size={16} />
+          </a>
+          <a
+            href="https://trymockgen.vercel.app/#demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border-2 border-black/40 hover:border-black text-black font-semibold text-sm px-6 py-3.5 rounded-full transition-all active:scale-95"
+          >
+            Watch 30s Demo
+          </a>
+          <a
+            href="/products"
+            class="font-bold text-sm text-black underline underline-offset-4 hover:opacity-75 transition-opacity sm:ml-auto py-2"
+          >
+            Explore Full Specs & Pricing →
+          </a>
         </div>
       </div>
-
-      <!-- 03: WORKFLOW AUTOMATION CYAN CARD (HEX VIBE) -->
-      <div class="hex-card bg-[#00E5FF] text-black shadow-2xl">
-        <!-- Inner Media Window -->
-        <div class="hex-media bg-black border border-black/20 p-6 sm:p-8 flex flex-col justify-between min-h-[340px] sm:min-h-[400px]">
-          <div class="flex items-center justify-between text-xs font-semibold text-neutral-400">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-[#00E5FF]"></span>
-              <span class="text-white">Automation Engine</span>
-            </div>
-            <span class="text-[#00E5FF]">Deterministic Queues</span>
-          </div>
-
-          <!-- Waveform / Data Flow Graphic -->
-          <div class="flex-grow flex items-center justify-center relative">
-            <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-transform">
-              <svg class="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between text-xs text-neutral-400 pt-3 border-t border-neutral-800">
-            <span>Spreadsheet Toil → Production Software</span>
-            <span class="text-white">Reliable Execution</span>
-          </div>
-        </div>
-
-        <div class="pt-6 sm:pt-8">
-          <div class="text-xs font-bold uppercase tracking-wider px-3 py-1 bg-black text-white rounded-full inline-block mb-3">
-            Workflow & Systems Automation
-          </div>
-          <h3 class="font-display font-black text-3xl sm:text-5xl text-black tracking-tight leading-tight mb-3">
-            Workflow Engines: Killing Manual Spreadsheet Chaos
-          </h3>
-          <p class="font-body text-black/90 text-base sm:text-xl max-w-3xl leading-relaxed mb-6 font-medium">
-            Turn fragile copy-paste spreadsheet routines into robust, deterministic software pipelines with relational databases, automated reconciliation, and automated dispatch.
-          </p>
-          <div class="flex flex-wrap items-center gap-3">
-            <a
-              href="/services"
-              class="bg-black hover:bg-neutral-900 text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95 shadow-lg"
-            >
-              Inspect Services
-            </a>
-            <a
-              href="/contact"
-              class="border-2 border-black/40 hover:border-black text-black font-semibold text-sm px-6 py-3.5 rounded-full transition-all active:scale-95"
-            >
-              Discuss a Workflow Fix
-            </a>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
 <script>
-  function initCanInteractions() {
-    const can = document.getElementById('can-3d-model');
+  function initCanInteraction() {
+    const model = document.getElementById('can-3d-model');
     const stage = document.getElementById('can-preview-stage');
-    const finishBtns = document.querySelectorAll('.can-finish-btn');
+    if (!model || !stage) return;
 
-    if (can && stage) {
-      let isDragging = false;
-      let startX = 0;
-      let startY = 0;
-      let rotX = -10;
-      let rotY = 25;
+    let isMouseDown = false;
+    let startX = 0;
+    let startY = 0;
+    let rotX = -10;
+    let rotY = 25;
 
-      stage.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-      });
+    stage.addEventListener('mousedown', (e) => {
+      isMouseDown = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      model.style.transition = 'none';
+    });
 
-      window.addEventListener('mouseup', () => {
-        isDragging = false;
-      });
+    window.addEventListener('mouseup', () => {
+      if (!isMouseDown) return;
+      isMouseDown = false;
+      model.style.transition = 'transform 0.6s ease-out';
+    });
 
-      window.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        rotY += dx * 0.5;
-        rotX -= dy * 0.5;
-        can.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-        startX = e.clientX;
-        startY = e.clientY;
-      });
+    window.addEventListener('mousemove', (e) => {
+      if (!isMouseDown) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
 
-      stage.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 1) {
-          isDragging = true;
-          startX = e.touches[0].clientX;
-          startY = e.touches[0].clientY;
-        }
-      }, { passive: true });
+      rotY += dx * 0.4;
+      rotX -= dy * 0.2;
+      rotX = Math.max(-40, Math.min(30, rotX));
 
-      window.addEventListener('touchend', () => {
-        isDragging = false;
-      });
+      model.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      startX = e.clientX;
+      startY = e.clientY;
+    });
 
-      window.addEventListener('touchmove', (e) => {
-        if (!isDragging || e.touches.length !== 1) return;
-        const dx = e.touches[0].clientX - startX;
-        const dy = e.touches[0].clientY - startY;
-        rotY += dx * 0.5;
-        rotX -= dy * 0.5;
-        can.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    // Touch support
+    stage.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isMouseDown = true;
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
-      }, { passive: true });
-    }
+        model.style.transition = 'none';
+      }
+    });
+
+    window.addEventListener('touchend', () => {
+      isMouseDown = false;
+      model.style.transition = 'transform 0.6s ease-out';
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isMouseDown || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+
+      rotY += dx * 0.4;
+      rotX -= dy * 0.2;
+      rotX = Math.max(-40, Math.min(30, rotX));
+
+      model.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    });
+
+    // Finish Switcher
+    const finishBtns = document.querySelectorAll('.can-finish-btn');
+    const frontFace = model.querySelector('.can-face:first-child') as HTMLElement;
 
     finishBtns.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         finishBtns.forEach((b) => {
-          b.classList.remove('bg-[#FF5500]', 'text-black', 'font-semibold');
-          b.classList.add('bg-white/10', 'text-white', 'font-medium');
+          b.classList.remove('bg-[#FFE500]', 'text-black', 'bg-white', 'bg-[#C6FF3D]');
+          b.classList.add('bg-white/10', 'text-white');
         });
-        (e.currentTarget as HTMLElement).classList.add('bg-[#FF5500]', 'text-black', 'font-semibold');
-        (e.currentTarget as HTMLElement).classList.remove('bg-white/10', 'text-white', 'font-medium');
+
+        const finish = btn.getAttribute('data-finish');
+        if (finish === 'yellow') {
+          btn.classList.remove('bg-white/10', 'text-white');
+          btn.classList.add('bg-[#FFE500]', 'text-black');
+          if (frontFace) {
+            frontFace.style.borderColor = '#FFE500';
+            frontFace.style.boxShadow = '0 0 30px rgba(255,229,0,0.4)';
+          }
+        } else if (finish === 'metallic') {
+          btn.classList.remove('bg-white/10', 'text-white');
+          btn.classList.add('bg-white', 'text-black');
+          if (frontFace) {
+            frontFace.style.borderColor = '#e4e4e7';
+            frontFace.style.boxShadow = '0 0 30px rgba(255,255,255,0.25)';
+          }
+        } else if (finish === 'lime') {
+          btn.classList.remove('bg-white/10', 'text-white');
+          btn.classList.add('bg-[#C6FF3D]', 'text-black');
+          if (frontFace) {
+            frontFace.style.borderColor = '#C6FF3D';
+            frontFace.style.boxShadow = '0 0 30px rgba(198,255,61,0.4)';
+          }
+        }
       });
     });
   }
 
-  initCanInteractions();
-  document.addEventListener('astro:page-load', initCanInteractions);
+  initCanInteraction();
+  document.addEventListener('astro:page-load', initCanInteraction);
 </script>
