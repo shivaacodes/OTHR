@@ -3,30 +3,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/hero/Hero.astro';
 import MockGenSection from '../components/products/MockGenSection.astro';
 import CapabilitiesSection from '../components/studio/CapabilitiesSection.astro';
-import LabSection from '../components/lab/LabSection.astro';
-import JournalPreviewSection from '../components/journal/JournalPreviewSection.astro';
+import PhilosophySection from '../components/studio/PhilosophySection.astro';
 import ContactSection from '../components/contact/ContactSection.astro';
 ---
 
 <BaseLayout
-  title="OTHR // We don't do ordinary. Independent Creative Engineering Studio"
-  description="OTHR is an independent creative engineering studio building digital flagships, resilient distributed software, and proprietary SaaS products like MockGen."
+  title="OTHR — Independent Creative Engineering Studio"
+  description="We design and engineer bespoke web flagships, workflow automation engines, and original software products like MockGen."
 >
-  <!-- Hero Section with Signature 3D Centerpiece -->
+  <!-- Hero Section -->
   <Hero />
 
-  <!-- Section 01: Flagship Product Spotlight (MockGen in Neon Orange Theme Card) -->
+  <!-- Products: Flagship Spotlight (MockGen in Neon Orange Theme Card) -->
   <MockGenSection />
 
-  <!-- Section 02: What We Do (Capabilities & Services) -->
+  <!-- Services: What We Build -->
   <CapabilitiesSection />
 
-  <!-- Section 03: The Lab (Experimental Technology) -->
-  <LabSection />
+  <!-- Studio: Who We Are & How We Work -->
+  <PhilosophySection />
 
-  <!-- Section 04: The Journal (Engineering Field Notes) -->
-  <JournalPreviewSection />
-
-  <!-- Section 05: Contact Inquiries -->
+  <!-- Contact: Get in Touch -->
   <ContactSection />
 </BaseLayout>

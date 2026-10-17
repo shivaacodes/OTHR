@@ -1,88 +1,68 @@
 ---
-import Button from '../ui/Button.astro';
-import Badge from '../ui/Badge.astro';
 import Icon from '../ui/Icon.astro';
 ---
 
-<section class="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-black border-b border-neutral-900">
-  <!-- Background Ambient Glow behind 3D Object -->
-  <div class="absolute right-[5%] top-[15%] w-[450px] h-[450px] bg-[#C6FF3D]/5 rounded-full blur-[140px] pointer-events-none"></div>
+<section class="relative min-h-[85vh] flex items-center overflow-hidden bg-black border-b border-neutral-900 pt-20 pb-16">
+  <!-- Subtle Ambient Glow -->
+  <div class="absolute right-[10%] top-[20%] w-[400px] h-[400px] bg-[#C6FF3D]/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-  <!-- 3D Interactive Centerpiece Container -->
+  <!-- 3D Interactive Centerpiece: Positioned to the right on desktop, non-intrusive on mobile -->
   <div
     id="hero-3d-container"
-    class="absolute right-0 md:right-[2%] top-1/2 -translate-y-1/2 w-full md:w-[60vw] lg:w-[50vw] h-[60vh] md:h-[80vh] z-0 pointer-events-auto opacity-0 transition-opacity duration-1000"
-    aria-label="Interactive 3D topological sculpture"
+    class="absolute right-0 top-1/2 -translate-y-1/2 w-full md:w-[50vw] lg:w-[45vw] h-[45vh] md:h-[75vh] z-0 pointer-events-none md:pointer-events-auto opacity-0 transition-opacity duration-1000"
+    aria-label="Interactive 3D sculpture"
   >
-    <!-- Three.js WebGL canvas will be injected here dynamically -->
+    <!-- Three.js canvas rendered dynamically -->
   </div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-28 relative z-10 pointer-events-none">
-    <div class="max-w-4xl">
-      <!-- Top Subheading & Studio Status -->
-      <div class="flex flex-wrap items-center gap-3 mb-8 pointer-events-auto" data-reveal data-delay="0.1">
-        <div class="inline-flex items-center gap-2">
-          <img
-            src="/logo-mark.png"
-            alt="OTHR Signature Mark"
-            class="h-6 sm:h-7 w-auto object-contain"
-            width="44"
-            height="26"
-          />
-        </div>
-        <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 bg-white/10 text-white rounded-full border border-white/10">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#C6FF3D]"></span>
-          Studio Active
-        </span>
-        <span class="text-xs text-neutral-400 font-medium tracking-wide">
-          Independent Creative Engineering
-        </span>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+    <div class="max-w-2xl lg:max-w-3xl">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 mb-6 px-3.5 py-1.5 bg-neutral-900 border border-neutral-800 rounded-full">
+        <span class="w-2 h-2 rounded-full bg-[#C6FF3D] animate-pulse"></span>
+        <span class="text-xs font-semibold text-neutral-300">Independent Creative Engineering</span>
       </div>
 
-      <!-- Main Editorial Headline (HEX Style) -->
-      <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.94] text-white mb-6 pointer-events-auto select-none" data-reveal data-delay="0.2">
-        We don't do<br />
-        <span class="text-[#C6FF3D]">ordinary.</span>
+      <!-- Main Headline (No full stops, punchy & direct) -->
+      <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.04] text-white mb-6 select-none">
+        High-performance software and <span class="text-[#C6FF3D]">digital flagships</span>
       </h1>
 
-      <!-- Supporting Statement -->
-      <p class="font-body text-lg sm:text-xl md:text-2xl text-neutral-300 max-w-2xl leading-relaxed mb-4 pointer-events-auto" data-reveal data-delay="0.3">
-        We design and engineer websites, software, and automations that make businesses work better.
-      </p>
-      <p class="font-body text-base text-neutral-400 max-w-2xl mb-10 pointer-events-auto" data-reveal data-delay="0.35">
-        Independent by design. Experimental by nature.
+      <!-- Supporting Statement (Direct, no fluff) -->
+      <p class="font-body text-base sm:text-lg lg:text-xl text-neutral-400 max-w-xl leading-relaxed mb-8">
+        We design and engineer bespoke web flagships, internal automation systems, and original software products. Built with engineering precision.
       </p>
 
       <!-- Action Buttons (Clean rounded pill style) -->
-      <div class="flex flex-wrap items-center gap-4 pointer-events-auto" data-reveal data-delay="0.4">
+      <div class="flex flex-wrap items-center gap-4">
         <a
           href="/products"
-          class="bg-[#C6FF3D] hover:bg-[#d4ff66] text-black font-semibold text-sm px-7 py-3.5 rounded-full transition-all flex items-center gap-2 active:scale-95 shadow-[0_0_24px_-4px_rgba(198,255,61,0.35)]"
+          class="bg-[#FF5500] hover:bg-[#ff6e26] text-black font-bold text-sm px-7 py-3.5 rounded-full transition-all flex items-center gap-2 shadow-lg active:scale-95"
         >
           <span>Explore MockGen</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
         </a>
         <a
           href="/contact"
-          class="bg-white/10 hover:bg-white/15 text-white border border-white/20 font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95"
+          class="bg-neutral-900 hover:bg-neutral-800 text-white border border-neutral-800 font-semibold text-sm px-7 py-3.5 rounded-full transition-all active:scale-95"
         >
-          Let's Talk
+          Get in touch
         </a>
       </div>
 
-      <!-- Clean Capabilities Line -->
-      <div class="mt-16 pt-8 border-t border-neutral-900 flex flex-wrap items-center gap-8 text-xs text-neutral-400 pointer-events-auto" data-reveal data-delay="0.5">
+      <!-- Capability Highlights -->
+      <div class="mt-14 pt-8 border-t border-neutral-900 flex flex-wrap items-center gap-8 text-xs text-neutral-400">
         <div>
-          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Focus</span>
-          <span class="text-white font-medium">Digital Flagships & Systems</span>
+          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Flagship Web</span>
+          <span class="text-white font-medium">WebGL & High-Speed Edge</span>
+        </div>
+        <div>
+          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Automation</span>
+          <span class="text-white font-medium">Bespoke Internal Systems</span>
         </div>
         <div>
           <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Products</span>
-          <span class="text-[#C6FF3D] font-medium">MockGen 3D Pipeline</span>
-        </div>
-        <div>
-          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Model</span>
-          <span class="text-white font-medium">Direct Senior Engineers</span>
+          <span class="text-[#FF5500] font-medium">MockGen 3D Pipeline</span>
         </div>
       </div>
     </div>
@@ -102,7 +82,6 @@ import Icon from '../ui/Icon.astro';
     }
 
     try {
-      // Dynamic import ensures Three.js doesn't block initial page parse
       const { HeroObject } = await import('./HeroObject');
       heroInstance = new HeroObject({ container });
       container.classList.remove('opacity-0');
@@ -112,7 +91,6 @@ import Icon from '../ui/Icon.astro';
     }
   }
 
-  // Progressive hydration: run after initial paint
   if (typeof window !== 'undefined') {
     requestAnimationFrame(() => {
       initHero3D();

@@ -1,176 +1,89 @@
 ---
 import Icon from '../ui/Icon.astro';
-import StudioClock from '../ui/StudioClock.astro';
-import { siteConfig } from '../../config/site';
 
 const year = new Date().getFullYear();
 
-// Filter social links to only show configured profiles with non-null URLs
-const activeSocials = siteConfig.socials.filter((s) => Boolean(s.url));
+const navLinks = [
+  { href: '/products', label: 'Products' },
+  { href: '/services', label: 'Services' },
+  { href: '/studio', label: 'Studio' },
+  { href: '/contact', label: 'Get in touch' }
+];
 ---
 
-<footer class="bg-black border-t border-neutral-900 text-neutral-400 py-16 relative overflow-hidden">
+<footer class="bg-black border-t border-neutral-900 text-neutral-400 py-16 relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Top Row: Studio Overview & Directory Columns -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-neutral-900">
-      <div class="lg:col-span-2 space-y-5">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-neutral-900">
+      
+      <!-- Brand & Direct Email -->
+      <div class="space-y-3">
         <a href="/" class="flex items-center gap-3 group focus:outline-none" aria-label="OTHR Homepage">
           <img
             src="/logo-mark.png"
-            alt="OTHR Official Logo"
+            alt="OTHR Logo"
             class="h-7 w-auto object-contain transition-transform group-hover:scale-105"
             width="46"
             height="26"
           />
-          <span class="font-display font-extrabold text-2xl tracking-tight text-white group-hover:text-[#C6FF3D] transition-colors">
-            OTHR<span class="text-[#C6FF3D]">.</span>
+          <span class="font-display font-black text-2xl tracking-tight text-white group-hover:text-[#C6FF3D] transition-colors">
+            OTHR
           </span>
         </a>
-
-        <p class="font-body text-sm text-neutral-400 max-w-sm leading-relaxed">
-          Independent creative engineering studio building digital flagships, resilient software backends, and proprietary SaaS products.
+        <p class="text-sm text-neutral-400 font-medium">
+          Independent creative engineering studio
         </p>
-
-        <!-- Social Presence Links -->
-        {activeSocials.length > 0 && (
-          <div class="pt-2">
-            <div class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2.5">Connected Networks</div>
-            <div class="flex flex-wrap items-center gap-2">
-              {activeSocials.map((s) => (
-                <a
-                  href={s.url!}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="px-3 py-1 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 text-neutral-300 hover:text-white text-xs rounded-full transition-colors flex items-center gap-1.5 font-medium"
-                  aria-label={`Visit OTHR on ${s.label}`}
-                >
-                  <span>{s.label}</span>
-                  <Icon name="ArrowUpRight" size={11} />
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div>
-        <div class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">Active Nodes</div>
-        <div class="flex flex-col gap-2">
-          <StudioClock timezone="IST" label="BLR / IST" />
-          <StudioClock timezone="EST" label="NYC / EST" />
-          <StudioClock timezone="UTC" label="SYS / UTC" />
+        <div>
+          <a
+            href="mailto:shivasajay23@gmail.com"
+            class="text-sm text-neutral-300 hover:text-[#C6FF3D] transition-colors font-semibold"
+          >
+            shivasajay23@gmail.com
+          </a>
         </div>
       </div>
 
-      <div>
-        <div class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">Directory</div>
-        <ul class="space-y-2 text-sm text-neutral-400 font-medium">
-          <li><a href="/products" class="hover:text-[#FF5500] transition-colors">Products (MockGen)</a></li>
-          <li><a href="/services" class="hover:text-[#C6FF3D] transition-colors">Services</a></li>
-          <li><a href="/lab" class="hover:text-[#C6FF3D] transition-colors">The Lab</a></li>
-          <li><a href="/journal" class="hover:text-[#C6FF3D] transition-colors">Journal</a></li>
-          <li><a href="/studio" class="hover:text-[#C6FF3D] transition-colors">Studio</a></li>
-          <li><a href="/contact" class="hover:text-[#C6FF3D] transition-colors">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">System Telemetry</div>
-        <div class="space-y-2 text-xs text-neutral-400">
-          <div class="flex items-center justify-between">
-            <span class="text-neutral-500">Core:</span>
-            <span class="text-white font-medium">Astro 5 + TypeScript</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-neutral-500">Trackers:</span>
-            <span class="text-[#C6FF3D] font-medium">0 (Zero)</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <span class="text-neutral-500">Edge Deploy:</span>
-            <span class="text-white font-medium">Cloudflare Workers</span>
-          </div>
-          <div class="pt-2">
-            <button
-              id="ping-studio-btn"
-              class="w-full py-2 px-3.5 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 rounded-full text-xs text-[#C6FF3D] hover:bg-neutral-800 transition-colors flex items-center justify-between cursor-pointer font-semibold"
-            >
-              <span>EXEC PING()</span>
-              <span id="ping-response" class="text-neutral-400 font-normal">IDLE</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Middle: Giant Architectural OTHR Brand Monolith -->
-    <div class="py-12 flex flex-col md:flex-row items-baseline justify-between gap-6 border-b border-neutral-900">
-      <div class="select-none">
-        <h2 class="font-display font-extrabold text-7xl sm:text-9xl lg:text-[14rem] tracking-tighter leading-none text-neutral-950 hover:text-neutral-900 transition-colors cursor-default">
-          OTHR<span class="text-[#C6FF3D]">.</span>
-        </h2>
-      </div>
-
-      <div class="flex flex-col items-start md:items-end gap-3">
-        <div class="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
-          We don't do ordinary.
-        </div>
-        <button
-          id="scroll-to-top"
-          class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 hover:text-[#C6FF3D] transition-colors group cursor-pointer"
-          aria-label="Scroll back to top"
+      <!-- Navigation & Socials -->
+      <div class="flex flex-wrap items-center gap-6 sm:gap-8">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm font-semibold text-neutral-400 hover:text-white transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="https://x.com/othrbuilds"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-semibold text-[#C6FF3D] hover:underline flex items-center gap-1"
         >
-          <span>Return to Top</span>
-          <span class="w-8 h-8 border border-neutral-800 group-hover:border-[#C6FF3D] rounded-full flex items-center justify-center transition-colors">
-            <Icon name="ArrowUp" size={14} />
-          </span>
-        </button>
+          <span>@othrbuilds</span>
+          <Icon name="ArrowUpRight" size={13} />
+        </a>
+        <a
+          href="https://github.com/shivaacodes/OTHR"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-semibold text-neutral-400 hover:text-white flex items-center gap-1 transition-colors"
+        >
+          <span>GitHub</span>
+          <Icon name="ArrowUpRight" size={13} />
+        </a>
       </div>
+
     </div>
 
-    <!-- Bottom Row: Copyright, Legal & Privacy Links -->
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+    <!-- Bottom Row: Legal & Copyright -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-medium">
       <div>
-        © {year} OTHR Engineering Studio. All rights reserved.
+        © {year} OTHR Studio. All rights reserved.
       </div>
-
       <div class="flex items-center gap-6">
         <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
         <span class="text-neutral-800">•</span>
         <a href="/terms" class="hover:text-white transition-colors">Terms of Use</a>
-        <span class="text-neutral-800">•</span>
-        <span class="text-[#C6FF3D] font-medium">Brutally Fast</span>
       </div>
     </div>
   </div>
 </footer>
-
-<script>
-  import { studioAudio } from '../../utils/audio';
-
-  function initFooter() {
-    const pingBtn = document.getElementById('ping-studio-btn');
-    const pingResponse = document.getElementById('ping-response');
-    const scrollBtn = document.getElementById('scroll-to-top');
-
-    pingBtn?.addEventListener('click', () => {
-      studioAudio.playChirp(1200, 0.05);
-      if (pingResponse) {
-        pingResponse.textContent = 'MEASURING...';
-        const start = performance.now();
-        setTimeout(() => {
-          const latency = Math.round(performance.now() - start + (Math.random() * 8 + 4));
-          pingResponse.textContent = `${latency}ms (OK)`;
-          pingResponse.classList.add('text-[#C6FF3D]');
-        }, 120);
-      }
-    });
-
-    scrollBtn?.addEventListener('click', () => {
-      studioAudio.playClick();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  initFooter();
-  document.addEventListener('astro:page-load', initFooter);
-</script>

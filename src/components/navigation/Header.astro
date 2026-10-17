@@ -1,21 +1,18 @@
 ---
 import Icon from '../ui/Icon.astro';
-import Button from '../ui/Button.astro';
 
 const navLinks = [
-  { href: '/products', label: 'Products', code: '01' },
-  { href: '/services', label: 'Services', code: '02' },
-  { href: '/lab', label: 'Lab', code: '03' },
-  { href: '/journal', label: 'Journal', code: '04' },
-  { href: '/studio', label: 'Studio', code: '05' }
+  { href: '/products', label: 'Products' },
+  { href: '/services', label: 'Services' },
+  { href: '/studio', label: 'Studio' }
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-neutral-900 transition-all duration-300" id="site-header">
+<header class="fixed top-0 left-0 right-0 z-50 bg-black/85 backdrop-blur-md border-b border-neutral-900 transition-all duration-300" id="site-header">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <!-- Left: OTHR Wordmark with Official Logo -->
+    <!-- Left: OTHR Wordmark with Official Logo (No full stop) -->
     <a href="/" class="flex items-center gap-3 group focus:outline-none" aria-label="OTHR Homepage">
       <img
         src="/logo-mark.png"
@@ -24,19 +21,19 @@ const currentPath = Astro.url.pathname;
         width="46"
         height="26"
       />
-      <span class="font-display font-extrabold text-2xl tracking-tight text-white group-hover:text-[#C6FF3D] transition-colors">
-        OTHR<span class="text-[#C6FF3D]">.</span>
+      <span class="font-display font-black text-2xl tracking-tight text-white group-hover:text-[#C6FF3D] transition-colors">
+        OTHR
       </span>
     </a>
 
-    <!-- Desktop Navigation Links -->
+    <!-- Desktop Navigation Links (Products, Services, Studio) -->
     <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
       {navLinks.map((link) => {
         const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
         return (
           <a
             href={link.href}
-            class={`font-body text-sm font-medium transition-colors ${
+            class={`font-body text-sm font-semibold transition-colors ${
               isActive ? 'text-[#C6FF3D]' : 'text-neutral-400 hover:text-white'
             }`}
           >
@@ -46,17 +43,17 @@ const currentPath = Astro.url.pathname;
       })}
     </nav>
 
-    <!-- Right: Get in touch CTA (HEX Style) -->
+    <!-- Right: Get in touch CTA -->
     <div class="hidden md:flex items-center gap-4">
       <a
         href="/contact"
-        class="bg-white hover:bg-[#C6FF3D] text-black font-semibold text-xs px-5 py-2.5 rounded-full transition-all shadow-[0_2px_10px_rgba(255,255,255,0.1)] active:scale-95"
+        class="bg-white hover:bg-[#C6FF3D] text-black font-semibold text-xs px-5 py-2.5 rounded-full transition-all shadow-md active:scale-95"
       >
         Get in touch
       </a>
     </div>
 
-    <!-- Mobile Navigation Toggle Button (Clean 3-line hamburger like HEX) -->
+    <!-- Mobile Navigation Toggle Button -->
     <div class="flex items-center gap-3 md:hidden">
       <a
         href="/contact"
@@ -66,7 +63,7 @@ const currentPath = Astro.url.pathname;
       </a>
       <button
         id="mobile-menu-trigger"
-        class="w-10 h-10 flex flex-col items-center justify-center gap-1.5 p-2 focus:outline-none"
+        class="w-10 h-10 flex flex-col items-center justify-center gap-1.5 p-2 focus:outline-none cursor-pointer"
         aria-label="Open Mobile Menu"
         aria-expanded="false"
       >
@@ -93,8 +90,8 @@ const currentPath = Astro.url.pathname;
         width="46"
         height="26"
       />
-      <span class="font-display font-extrabold text-2xl tracking-tight text-white">
-        OTHR<span class="text-[#C6FF3D]">.</span>
+      <span class="font-display font-black text-2xl tracking-tight text-white">
+        OTHR
       </span>
     </div>
     <nav class="flex flex-col gap-2">
@@ -117,19 +114,15 @@ const currentPath = Astro.url.pathname;
 
   <div class="border-t border-neutral-900 pt-6">
     <div class="font-body text-xs text-neutral-500">
-      Independent Creative Engineering Studio
+      Creative Engineering Studio
     </div>
   </div>
 </div>
 
 <script>
-  import { studioAudio } from '../../utils/audio';
-
   function initHeaderControls() {
     const trigger = document.getElementById('mobile-menu-trigger');
     const drawer = document.getElementById('mobile-menu-drawer');
-    const openIcon = document.getElementById('menu-icon-open');
-    const closeIcon = document.getElementById('menu-icon-close');
     const links = document.querySelectorAll('.mobile-nav-link');
 
     let isOpen = false;
@@ -139,82 +132,19 @@ const currentPath = Astro.url.pathname;
       if (isOpen) {
         drawer?.classList.remove('-translate-y-full');
         drawer?.classList.add('translate-y-0');
-        openIcon?.classList.add('hidden');
-        closeIcon?.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       } else {
         drawer?.classList.add('-translate-y-full');
         drawer?.classList.remove('translate-y-0');
-        openIcon?.classList.remove('hidden');
-        closeIcon?.classList.add('hidden');
         document.body.style.overflow = '';
       }
       trigger?.setAttribute('aria-expanded', isOpen.toString());
-      studioAudio.playClick();
     }
 
     trigger?.addEventListener('click', toggleMenu);
     links.forEach((l) => l.addEventListener('click', () => {
       if (isOpen) toggleMenu();
     }));
-
-    // Theme Toggle Handler
-    const themeBtn = document.getElementById('theme-toggle-btn');
-    const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
-
-    function toggleTheme() {
-      const isBlue = document.documentElement.getAttribute('data-theme') === 'deep-blue';
-      if (isBlue) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('othr_theme', 'lime');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'deep-blue');
-        localStorage.setItem('othr_theme', 'deep-blue');
-      }
-      studioAudio.playClick();
-    }
-
-    themeBtn?.addEventListener('click', toggleTheme);
-    mobileThemeBtn?.addEventListener('click', toggleTheme);
-
-    // Audio Toggle Handler
-    const audioBtn = document.getElementById('audio-toggle-btn');
-    const audioOffIcon = document.getElementById('audio-icon-off');
-    const audioOnIcon = document.getElementById('audio-icon-on');
-
-    function updateAudioUI() {
-      const isEnabled = studioAudio.getStatus();
-      if (isEnabled) {
-        audioOffIcon?.classList.add('hidden');
-        audioOnIcon?.classList.remove('hidden');
-      } else {
-        audioOffIcon?.classList.remove('hidden');
-        audioOnIcon?.classList.add('hidden');
-      }
-    }
-
-    updateAudioUI();
-
-    audioBtn?.addEventListener('click', () => {
-      studioAudio.toggleMute();
-      updateAudioUI();
-    });
-
-    // Attach subtle click sounds to buttons and nav links
-    document.querySelectorAll('a, button').forEach((el) => {
-      el.addEventListener('mouseenter', () => {
-        // Optional subtle hover chirp
-      });
-      el.addEventListener('click', () => {
-        studioAudio.playClick();
-      });
-    });
-  }
-
-  // Restore saved theme
-  const savedTheme = localStorage.getItem('othr_theme');
-  if (savedTheme === 'deep-blue') {
-    document.documentElement.setAttribute('data-theme', 'deep-blue');
   }
 
   initHeaderControls();

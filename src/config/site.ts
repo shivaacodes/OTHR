@@ -1,14 +1,13 @@
 /**
  * OTHR Studio - Central Site Configuration
  * Controls site metadata, social links, analytics, and contact endpoints.
- * Only configured social links with non-empty URLs are displayed across the site.
  */
 
 export interface SocialLink {
-  platform: 'github' | 'x' | 'linkedin' | 'medium';
+  platform: 'github' | 'x' | 'linkedin';
   label: string;
-  url: string | null;
-  handle?: string;
+  url: string;
+  handle: string;
 }
 
 export interface IndicativePricing {
@@ -23,38 +22,26 @@ export interface IndicativePricing {
 export const siteConfig = {
   name: 'OTHR',
   legalName: 'OTHR Engineering Studio',
-  tagline: "We don't do ordinary.",
-  description: 'We design and engineer websites, software, and automations that make businesses work better. Independent by design. Experimental by nature.',
+  tagline: 'Engineering high-performance software, digital flagships, and original products',
+  description: 'Independent creative engineering studio building web flagships, internal automation systems, and original software products.',
   category: 'Creative Engineering Studio',
   url: import.meta.env.PUBLIC_SITE_URL || 'https://othr.shivasajay007.workers.dev',
-  contactEmail: import.meta.env.CONTACT_EMAIL_TO || 'shivasajay007@gmail.com',
+  contactEmail: import.meta.env.CONTACT_EMAIL_TO || 'shivasajay23@gmail.com',
   foundingYear: 2024,
 
-  // Social Presences - Only non-null / non-empty URLs will be displayed
+  // Social Presences
   socials: [
+    {
+      platform: 'x',
+      label: 'X (Twitter)',
+      url: 'https://x.com/othrbuilds',
+      handle: '@othrbuilds'
+    },
     {
       platform: 'github',
       label: 'GitHub',
       url: 'https://github.com/shivaacodes/OTHR',
       handle: 'shivaacodes/OTHR'
-    },
-    {
-      platform: 'x',
-      label: 'X (Twitter)',
-      url: null,
-      handle: undefined
-    },
-    {
-      platform: 'linkedin',
-      label: 'LinkedIn',
-      url: null,
-      handle: undefined
-    },
-    {
-      platform: 'medium',
-      label: 'Medium',
-      url: null,
-      handle: undefined
     }
   ] as SocialLink[],
 
@@ -66,31 +53,31 @@ export const siteConfig = {
     siteKey: import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || null
   },
 
-  // Indicative Commercial Pricing Guides (Transparent, non-binding estimates)
+  // Indicative Commercial Pricing Guides
   pricing: [
     {
       serviceId: 'digital-upgrade',
-      title: 'Digital Upgrade',
+      title: 'Digital Flagships & Web',
       startingRange: '$4,500 – $12,000',
       unit: 'per engagement',
       typicalTimeline: '3–6 weeks',
-      note: 'Scope-dependent. Based on technical complexity, 3D/WebGL requirements, and CMS depth.'
+      note: 'Scope-dependent. High-performance Astro/Next.js flagships with 3D WebGL and sub-second edge speeds.'
     },
     {
       serviceId: 'workflow-fix',
-      title: 'Workflow Fix',
+      title: 'Workflow Automation & Ops',
       startingRange: '$3,500 – $9,500',
-      unit: 'per automation system',
+      unit: 'per system',
       typicalTimeline: '2–4 weeks',
-      note: 'Based on integration surface area, data pipeline volume, and custom interface requirements.'
+      note: 'Custom operational portals replacing fragile spreadsheets and manual workflows.'
     },
     {
       serviceId: 'custom-software',
       title: 'Custom Software & SaaS MVP',
       startingRange: '$8,000 – $25,000',
-      unit: 'per milestone phase',
+      unit: 'per milestone',
       typicalTimeline: '6–12 weeks',
-      note: 'Full-stack architecture, database design, API engineering, and production deployment.'
+      note: 'Full-stack software architecture, PostgreSQL schemas, clean APIs, and production deployment.'
     }
   ] as IndicativePricing[]
 };

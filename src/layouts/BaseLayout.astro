@@ -13,8 +13,8 @@ export interface Props {
 }
 
 const {
-  title = "OTHR // Independent Creative Engineering Studio",
-  description = "We don't do ordinary. OTHR builds digital flagships, resilient distributed software, business automations, and proprietary SaaS products.",
+  title = "OTHR — Independent Creative Engineering Studio",
+  description = "We engineer high-performance software, digital flagships, and original products like MockGen.",
   ogImage = "/og-image.png",
   canonicalPath
 } = Astro.props;
@@ -56,6 +56,8 @@ const organizationSchema = {
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@othrbuilds" />
+    <meta property="twitter:creator" content="@othrbuilds" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
@@ -75,7 +77,7 @@ const organizationSchema = {
     <ClientRouter />
 
     <!-- Privacy-First Cloudflare Web Analytics (only injected when token is configured) -->
-    {siteConfig.analytics.cloudflareToken && (
+    {siteConfig.analytics?.cloudflareToken && (
       <script
         defer
         src="https://static.cloudflareinsights.com/beacon.min.js"

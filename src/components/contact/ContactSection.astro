@@ -1,364 +1,265 @@
 ---
-import Button from '../ui/Button.astro';
-import Badge from '../ui/Badge.astro';
 import Icon from '../ui/Icon.astro';
 import { siteConfig } from '../../config/site';
 
 const projectTypes = [
-  { id: 'digital-upgrade', label: 'Digital Upgrade (Flagship Web)' },
-  { id: 'workflow-fix', label: 'Workflow Fix (Internal Automation)' },
-  { id: 'custom-software', label: 'Custom Software & Systems' },
-  { id: 'saas-product', label: 'SaaS / Product Engineering' },
-  { id: 'experimental-3d', label: 'Experimental 3D / WebGL' },
-  { id: 'other', label: 'Something Unclassified' }
-];
-
-const budgetRanges = [
-  '$3,500 – $7,500',
-  '$7,500 – $15,000',
-  '$15,000 – $30,000',
-  '$30,000+',
-  'Discuss Scope First'
-];
-
-const timelineOptions = [
-  'Immediate (Under 4 weeks)',
-  '1 – 2 Months',
-  '3 – 6 Months',
-  'Flexible / Research Phase'
+  'Web Flagship & 3D',
+  'Workflow Automation',
+  'Custom Software & SaaS',
+  'Other / Unclassified'
 ];
 ---
 
-<section class="py-20 md:py-32 bg-black border-t border-neutral-900 relative overflow-hidden" id="contact">
+<section class="py-20 md:py-28 bg-black border-t border-neutral-900 relative" id="contact">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-      <!-- Left Editorial Column -->
-      <div class="lg:col-span-5 space-y-8" data-reveal>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      
+      <!-- Left Column: Direct Info -->
+      <div class="lg:col-span-5 space-y-6">
         <div>
-          <div class="text-xs font-bold text-[#C6FF3D] uppercase tracking-wider mb-3">
-            Start a Project
+          <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 bg-neutral-900 border border-neutral-800 rounded-full text-xs font-semibold text-[#C6FF3D]">
+            <span>Get in touch</span>
           </div>
-          <h2 class="font-display font-extrabold text-4xl sm:text-6xl tracking-tight leading-[0.98] text-white">
-            Have something ambitious in mind?
+          <h2 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.05]">
+            Let's build something exceptional
           </h2>
-          <div class="mt-3 font-display font-bold text-2xl sm:text-3xl text-[#C6FF3D]">
-            Let's build it.
-          </div>
         </div>
 
-        <p class="font-body text-base sm:text-lg text-neutral-300 leading-relaxed">
-          Whether you need an award-winning flagship website, a custom software system to eradicate manual spreadsheet toil, or proprietary SaaS engineering—tell us what you’re building.
+        <p class="font-body text-base sm:text-lg text-neutral-400 leading-relaxed">
+          Whether you need a flagship web experience, a custom software system to kill manual spreadsheet toil, or proprietary product engineering—let's talk.
         </p>
 
-        <!-- Direct Coordinates -->
-        <div class="p-6 bg-neutral-950 border border-neutral-800 rounded-2xl space-y-4 text-xs font-body">
-          <div>
-            <div class="text-[11px] text-neutral-500 uppercase tracking-wider mb-1 font-semibold">Direct Email</div>
-            <a href={`mailto:${siteConfig.contactEmail}`} class="text-white hover:text-[#C6FF3D] transition-colors font-bold text-sm">
-              {siteConfig.contactEmail}
-            </a>
+        <!-- Direct Cards -->
+        <div class="space-y-3 pt-2">
+          <!-- Email Card -->
+          <a
+            href="mailto:shivasajay23@gmail.com"
+            class="p-5 bg-neutral-950 border border-neutral-900 hover:border-[#C6FF3D]/40 rounded-2xl flex items-center justify-between transition-colors group"
+          >
+            <div>
+              <div class="text-xs text-neutral-500 font-medium">Direct Email</div>
+              <div class="text-white group-hover:text-[#C6FF3D] font-bold text-sm sm:text-base transition-colors mt-0.5">
+                shivasajay23@gmail.com
+              </div>
+            </div>
+            <span class="w-9 h-9 rounded-full bg-neutral-900 flex items-center justify-center text-neutral-400 group-hover:text-[#C6FF3D] transition-colors">
+              <Icon name="ArrowUpRight" size={16} />
+            </span>
+          </a>
+
+          <!-- Social X Card -->
+          <a
+            href="https://x.com/othrbuilds"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-5 bg-neutral-950 border border-neutral-900 hover:border-neutral-700 rounded-2xl flex items-center justify-between transition-colors group"
+          >
+            <div>
+              <div class="text-xs text-neutral-500 font-medium">Follow Updates on X</div>
+              <div class="text-white font-bold text-sm sm:text-base transition-colors mt-0.5">
+                @othrbuilds
+              </div>
+            </div>
+            <span class="w-9 h-9 rounded-full bg-neutral-900 flex items-center justify-center text-neutral-400 group-hover:text-white transition-colors">
+              <Icon name="ArrowUpRight" size={16} />
+            </span>
+          </a>
+
+          <div class="p-5 bg-neutral-950 border border-neutral-900 rounded-2xl text-xs text-neutral-400 space-y-1">
+            <div class="text-white font-semibold">Engineer-Led Studio</div>
+            <div>Direct communication with Shiva Sajay. No sales reps or account managers.</div>
           </div>
+        </div>
+      </div>
 
-          <div class="pt-3 border-t border-neutral-800">
-            <div class="text-[11px] text-neutral-500 uppercase tracking-wider mb-1 font-semibold">Response Window</div>
-            <div class="text-neutral-300 font-medium">1–2 business days directly from a lead engineer</div>
-          </div>
-
-          <div class="pt-3 border-t border-neutral-800 flex items-center justify-between text-neutral-400">
-            <span>Engineer-led studio • No sales layers</span>
-            <span class="text-[#C6FF3D] font-bold">Direct</span>
-      <!-- Right Interactive Inquiry Form -->
-      <div class="lg:col-span-7 bg-neutral-950 border border-neutral-800 rounded-2xl p-6 sm:p-10" data-reveal data-delay="0.2">
-        <form id="studio-inquiry-form" class="space-y-6">
-
-          <!-- Step 1: Project Type Selection -->
+      <!-- Right Column: Streamlined Inquiry Form -->
+      <div class="lg:col-span-7 bg-neutral-950 border border-neutral-900 rounded-3xl p-6 sm:p-10 shadow-2xl">
+        <form id="studio-contact-form" class="space-y-6">
+          
+          <!-- Quick Project Type Pills -->
           <div>
             <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-3">
-              01 // Project Type *
+              What are you looking to build?
             </label>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="project-type-selector">
-              {projectTypes.map((type) => (
-                <label class="project-type-label flex items-center gap-3 p-3.5 bg-neutral-900 border border-neutral-800 rounded-xl hover:border-[#C6FF3D]/50 cursor-pointer select-none transition-colors">
-                  <input
-                    type="radio"
-                    name="projectType"
-                    value={type.label}
-                    data-id={type.id}
-                    required
-                    class="form-radio text-[#C6FF3D] bg-black border-neutral-700 focus:ring-0 focus:ring-offset-0 w-4 h-4 cursor-pointer rounded-full"
-                  />
-                  <span class="text-xs text-neutral-200 font-medium">{type.label}</span>
-                </label>
+            <div class="flex flex-wrap gap-2" id="contact-type-selector">
+              {projectTypes.map((type, idx) => (
+                <button
+                  type="button"
+                  class={`contact-type-pill px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                    idx === 0
+                      ? 'bg-[#C6FF3D] text-black shadow-sm'
+                      : 'bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-800'
+                  }`}
+                  data-value={type}
+                >
+                  {type}
+                </button>
               ))}
             </div>
+            <input type="hidden" name="projectType" id="selected-project-type" value={projectTypes[0]} />
           </div>
 
-          <!-- Step 2: Budget & Timeline Selectors -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <!-- Name & Email (2 columns on tablet+, 1 column on mobile) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label for="inquiry-budget" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                02 // Estimated Budget *
-              </label>
-              <select
-                id="inquiry-budget"
-                name="budget"
-                required
-                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-xs text-white rounded-xl transition-colors cursor-pointer"
-              >
-                <option value="" disabled selected>Select budget range...</option>
-                {budgetRanges.map((b) => (
-                  <option value={b} class="bg-neutral-950 text-white">{b}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label for="inquiry-timeline" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                03 // Desired Timeline *
-              </label>
-              <select
-                id="inquiry-timeline"
-                name="timeline"
-                required
-                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-xs text-white rounded-xl transition-colors cursor-pointer"
-              >
-                <option value="" disabled selected>Select timeline target...</option>
-                {timelineOptions.map((t) => (
-                  <option value={t} class="bg-neutral-950 text-white">{t}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <!-- Step 3: Contact Details -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label for="contact-name" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                04 // Your Name *
+              <label for="contact-name" class="block text-xs font-semibold text-neutral-400 mb-2">
+                Your Name *
               </label>
               <input
                 type="text"
                 id="contact-name"
                 name="name"
                 required
-                maxlength="100"
-                placeholder="Alex Morgan"
-                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-sm text-white placeholder-neutral-500 rounded-xl transition-colors"
+                placeholder="Shiva Sajay"
+                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none px-5 py-3.5 text-sm text-white rounded-2xl transition-colors placeholder:text-neutral-600"
               />
             </div>
 
             <div>
-              <label for="contact-email" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                05 // Work Email *
+              <label for="contact-email" class="block text-xs font-semibold text-neutral-400 mb-2">
+                Your Email *
               </label>
               <input
                 type="email"
                 id="contact-email"
                 name="email"
                 required
-                maxlength="150"
-                placeholder="alex@company.com"
-                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-sm text-white placeholder-neutral-500 rounded-xl transition-colors"
+                placeholder="shiva@example.com"
+                class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none px-5 py-3.5 text-sm text-white rounded-2xl transition-colors placeholder:text-neutral-600"
               />
             </div>
           </div>
 
+          <!-- Message / Scope -->
           <div>
-            <label for="contact-company" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-              06 // Company or Organization (Optional)
-            </label>
-            <input
-              type="text"
-              id="contact-company"
-              name="company"
-              maxlength="100"
-              placeholder="Acme Studio Inc."
-              class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-sm text-white placeholder-neutral-500 rounded-xl transition-colors"
-            />
-          </div>
-
-          <!-- Step 4: Description -->
-          <div>
-            <label for="contact-details" class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-              07 // Project Description *
+            <label for="contact-message" class="block text-xs font-semibold text-neutral-400 mb-2">
+              Project Overview / Scope *
             </label>
             <textarea
-              id="contact-details"
-              name="description"
-              rows="4"
+              id="contact-message"
+              name="message"
               required
-              minlength="10"
-              maxlength="3000"
-              placeholder="What are you trying to build? What makes it difficult? What does a successful outcome look like?"
-              class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3.5 text-sm text-white placeholder-neutral-500 rounded-xl transition-colors resize-none"
+              rows={4}
+              placeholder="Tell us what you're looking to engineer, your rough timeline, and any key requirements..."
+              class="w-full bg-neutral-900 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-4 text-sm text-white rounded-2xl transition-colors placeholder:text-neutral-600 resize-none"
             ></textarea>
           </div>
 
-          <!-- Consent Checkbox -->
-          <div class="pt-1">
-            <label class="flex items-start gap-3 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                id="contact-consent"
-                name="consent"
-                required
-                class="form-checkbox text-[#C6FF3D] bg-black border-neutral-700 focus:ring-0 focus:ring-offset-0 w-4 h-4 mt-0.5 cursor-pointer rounded"
-              />
-              <span class="text-xs text-neutral-400 leading-relaxed font-body">
-                I agree to the processing of my contact information in accordance with OTHR’s <a href="/privacy" class="text-[#C6FF3D] underline" target="_blank">Privacy Policy</a>. No third-party data sharing or marketing cookies.
-              </span>
-            </label>
-          </div>
-
           <!-- Submit Button -->
-          <div class="pt-2">
+          <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
             <button
               type="submit"
-              id="submit-inquiry-btn"
-              class="w-full py-4 bg-white hover:bg-[#C6FF3D] text-black text-sm font-semibold tracking-wide rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-98 disabled:opacity-50"
+              id="contact-submit-btn"
+              class="w-full sm:w-auto px-8 py-4 bg-[#C6FF3D] hover:bg-[#d4ff66] text-black font-bold text-sm rounded-full transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95 cursor-pointer"
             >
-              <span id="btn-label">Transmit Project Inquiry</span>
+              <span>Send Project Inquiry</span>
               <Icon name="ArrowUpRight" size={16} />
             </button>
+            <span class="text-xs text-neutral-500 text-center sm:text-right">
+              Replies within 24–48 hours
+            </span>
           </div>
         </form>
 
-        <!-- Submission Feedback State -->
-        <div id="form-success-message" class="hidden p-6 sm:p-8 bg-neutral-900 border border-[#C6FF3D] rounded-2xl space-y-4 text-xs">
+        <!-- Feedback Success Alert -->
+        <div id="contact-success-alert" class="hidden p-6 bg-neutral-900 border border-[#C6FF3D] rounded-2xl space-y-3">
           <div class="flex items-center gap-2 text-[#C6FF3D] font-bold text-sm">
             <span>✓</span>
-            <span>INQUIRY PREPARED & COPIED</span>
+            <span>Inquiry Copied & Email Prepared</span>
           </div>
-
-          <div class="text-[#F5F6F0] text-xs font-bold" id="success-ref-text">
-            REFERENCE CODE: INQ-PENDING
-          </div>
-
-          <p class="text-[#A5A9A3] leading-relaxed font-body text-sm">
-            Your inquiry details have been copied to your clipboard, and your email client was prompted to send directly to <strong class="text-[#F5F6F0]">shivasajay007@gmail.com</strong>.
+          <p class="text-sm text-neutral-300 leading-relaxed font-body">
+            Your inquiry was copied to your clipboard and addressed to <strong class="text-white">shivasajay23@gmail.com</strong>.
           </p>
-
-          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <div class="flex flex-wrap gap-2 pt-2">
             <a
-              id="direct-mailto-link"
-              href={`mailto:${siteConfig.contactEmail}`}
-              class="px-5 py-2.5 bg-[#C6FF3D] hover:bg-[#d4ff66] text-black font-semibold text-center text-xs uppercase tracking-wider rounded-full transition-all"
+              id="mailto-trigger"
+              href="mailto:shivasajay23@gmail.com"
+              class="px-5 py-2.5 bg-[#C6FF3D] text-black font-semibold text-xs rounded-full inline-block"
             >
-              Open Email Client
+              Open Email App
             </a>
             <button
               type="button"
-              id="copy-brief-btn"
-              class="px-5 py-2.5 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 text-white text-center text-xs uppercase tracking-wider rounded-full transition-all cursor-pointer font-medium"
+              id="reset-form-btn"
+              class="px-5 py-2.5 bg-neutral-800 text-neutral-300 hover:text-white font-medium text-xs rounded-full cursor-pointer"
             >
-              Copy Brief Again
+              Send Another
             </button>
-          </div>
-
-          <div class="pt-3 border-t border-neutral-900 text-xs text-neutral-500">
-            Response promise: We review every brief and respond within 1–2 business days.
           </div>
         </div>
 
       </div>
+
     </div>
   </div>
 </section>
 
 <script>
-  import { studioAudio } from '../../utils/audio';
+  function initContactSection() {
+    const form = document.getElementById('studio-contact-form') as HTMLFormElement;
+    const successAlert = document.getElementById('contact-success-alert');
+    const resetBtn = document.getElementById('reset-form-btn');
+    const pills = document.querySelectorAll('.contact-type-pill');
+    const selectedInput = document.getElementById('selected-project-type') as HTMLInputElement;
+    const mailtoTrigger = document.getElementById('mailto-trigger') as HTMLAnchorElement;
 
-  function initContactForm() {
-    const form = document.getElementById('studio-inquiry-form') as HTMLFormElement;
-    const successMsg = document.getElementById('form-success-message');
-    const submitBtn = document.getElementById('submit-inquiry-btn') as HTMLButtonElement;
-    const refText = document.getElementById('success-ref-text');
-    const mailtoLink = document.getElementById('direct-mailto-link') as HTMLAnchorElement;
-    const copyBriefBtn = document.getElementById('copy-brief-btn');
+    // Pill selection logic
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        pills.forEach((p) => {
+          p.classList.remove('bg-[#C6FF3D]', 'text-black', 'shadow-sm');
+          p.classList.add('bg-neutral-900', 'text-neutral-300', 'border', 'border-neutral-800');
+        });
+        pill.classList.remove('bg-neutral-900', 'text-neutral-300', 'border', 'border-neutral-800');
+        pill.classList.add('bg-[#C6FF3D]', 'text-black', 'shadow-sm');
 
-    // Pre-fill from URL query param if present (?service=digital-upgrade, etc.)
-    const params = new URLSearchParams(window.location.search);
-    const serviceParam = params.get('service');
-    if (serviceParam) {
-      const radio = document.querySelector<HTMLInputElement>(`input[data-id="${serviceParam}"]`);
-      if (radio) {
-        radio.checked = true;
-        radio.closest('label')?.classList.add('border-[#C6FF3D]');
-      }
-    }
+        const val = pill.getAttribute('data-value') || '';
+        if (selectedInput) selectedInput.value = val;
+      });
+    });
 
-    let currentBriefText = '';
-
+    // Form Submission
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
-      studioAudio.playClick();
 
       const formData = new FormData(form);
-      const name = String(formData.get('name') || '').trim();
-      const email = String(formData.get('email') || '').trim();
-      const company = String(formData.get('company') || 'N/A').trim();
-      const projectType = String(formData.get('projectType') || 'Unspecified');
-      const budget = String(formData.get('budget') || 'Unspecified');
-      const timeline = String(formData.get('timeline') || 'Unspecified');
-      const description = String(formData.get('description') || '').trim();
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const type = formData.get('projectType') as string;
+      const message = formData.get('message') as string;
 
-      const refCode = `INQ-${Date.now().toString(36).toUpperCase()}`;
-
-      currentBriefText = `OTHR STUDIO // PROJECT INQUIRY [${refCode}]
---------------------------------------------------
-Name: ${name}
-Work Email: ${email}
-Company: ${company}
-Project Type: ${projectType}
-Budget Target: ${budget}
-Timeline: ${timeline}
-
-Project Details:
-${description}
---------------------------------------------------`;
+      const briefText = `OTHR INQUIRY\n---\nName: ${name}\nEmail: ${email}\nProject Type: ${type}\nMessage:\n${message}`;
 
       // Copy to clipboard
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(currentBriefText).catch(() => {});
+        navigator.clipboard.writeText(briefText);
       }
 
       // Prepare mailto link
-      const recipient = 'shivasajay007@gmail.com';
-      const subject = encodeURIComponent(`OTHR Inquiry: ${projectType} - ${name}`);
-      const body = encodeURIComponent(currentBriefText);
-      const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+      const subject = encodeURIComponent(`Project Inquiry: ${type} - ${name}`);
+      const body = encodeURIComponent(briefText);
+      const mailtoUrl = `mailto:shivasajay23@gmail.com?subject=${subject}&body=${body}`;
 
-      if (mailtoLink) {
-        mailtoLink.href = mailtoUrl;
+      if (mailtoTrigger) {
+        mailtoTrigger.href = mailtoUrl;
       }
 
-      studioAudio.playChirp(880, 0.1);
-
-      if (refText) {
-        refText.textContent = `REFERENCE CODE: ${refCode}`;
-      }
-
-      form.classList.add('hidden');
-      if (successMsg) {
-        successMsg.classList.remove('hidden');
-      }
-
-      // Trigger mail client popup
+      // Open mailto
       window.location.href = mailtoUrl;
+
+      // Show success alert
+      form.classList.add('hidden');
+      successAlert?.classList.remove('hidden');
     });
 
-    copyBriefBtn?.addEventListener('click', () => {
-      if (navigator.clipboard && currentBriefText) {
-        navigator.clipboard.writeText(currentBriefText);
-        copyBriefBtn.textContent = 'COPIED TO CLIPBOARD ✓';
-        studioAudio.playClick();
-        setTimeout(() => {
-          copyBriefBtn.textContent = 'COPY BRIEF AGAIN';
-        }, 2000);
-      }
+    // Reset button
+    resetBtn?.addEventListener('click', () => {
+      form.reset();
+      form.classList.remove('hidden');
+      successAlert?.classList.add('hidden');
     });
   }
 
-  initContactForm();
-  document.addEventListener('astro:page-load', initContactForm);
+  initContactSection();
+  document.addEventListener('astro:page-load', initContactSection);
 </script>
