@@ -97,8 +97,25 @@ const organizationSchema = {
     <script>
       import { initScrollAnimations } from '../utils/motion';
 
+      function initHaptics() {
+        if (typeof window === 'undefined' || !('vibrate' in navigator)) return;
+
+        // Subtle tactile feedback on tap/click for interactive elements
+        document.addEventListener('click', (e) => {
+          const target = (e.target as HTMLElement)?.closest(
+            'button, a, input, select, textarea, [data-haptic], .service-currency-btn, .mockgen-currency-btn, .service-tab-btn, .contact-type-pill'
+          );
+          if (target) {
+            try {
+              navigator.vibrate(10);
+            } catch (err) {}
+          }
+        }, { passive: true });
+      }
+
       function initApp() {
         initScrollAnimations();
+        initHaptics();
       }
 
       initApp();

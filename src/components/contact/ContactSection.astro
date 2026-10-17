@@ -84,7 +84,7 @@ const projectTypes = [
               {projectTypes.map((type, idx) => (
                 <button
                   type="button"
-                  class={`contact-type-pill px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                  class={`contact-type-pill px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     idx === 0
                       ? 'bg-[#C6FF3D] text-black shadow-sm'
                       : 'bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-800'
@@ -245,6 +245,9 @@ const projectTypes = [
     // Form Submission
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+        try { navigator.vibrate([15, 40, 20]); } catch (err) {}
+      }
 
       const formData = new FormData(form);
       const name = formData.get('name') as string;
