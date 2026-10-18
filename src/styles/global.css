@@ -1,5 +1,58 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   Panchang Font Family (Indian Type Foundry)
+   Technical, wide, geometric display typeface for OTHR
+   ========================================================================== */
+@font-face {
+  font-family: 'Panchang';
+  src: url('/fonts/Panchang-Variable.woff2') format('woff2-variations'),
+       url('/fonts/Panchang-Variable.woff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Panchang';
+  src: url('/fonts/Panchang-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Panchang';
+  src: url('/fonts/Panchang-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Panchang';
+  src: url('/fonts/Panchang-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Panchang';
+  src: url('/fonts/Panchang-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Panchang';
+  src: url('/fonts/Panchang-Extrabold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
 @layer base {
   :root {
     --bg-primary: #000000;
@@ -19,7 +72,7 @@
     --accent-glow: rgba(198, 255, 61, 0.35);
     --accent-contrast: #000000;
 
-    --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-display: 'Panchang', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: 'Inter', monospace;
   }
@@ -94,6 +147,10 @@
 /* Typography Utility Classes */
 .font-display {
   font-family: var(--font-display);
+}
+
+.font-panchang {
+  font-family: 'Panchang', var(--font-display);
 }
 
 .font-body {
