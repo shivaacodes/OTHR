@@ -58,8 +58,8 @@ export const products: Product[] = [
     url: 'https://trymockgen.vercel.app/',
     demoUrl: 'https://trymockgen.vercel.app/#demo',
     designerUrl: 'https://trymockgen.vercel.app/dashboard?model=%2Fmodels%2Fsoda_can.glb',
-    accentColor: '#FFE500',
-    accentGlow: 'rgba(255, 229, 0, 0.45)',
+    accentColor: '#FF5500',
+    accentGlow: 'rgba(255, 85, 0, 0.45)',
     proofBadge: 'FROM IDEA TO PRINTER FILE IN 45 SECONDS',
     description: 'Unlike normal AI images that produce flat, distorted approximations, MockGen generates print-ready packaging files with exact dimensions, bleed margins, and isolated layers. Perfect for freelance designers, agile agencies, and D2C brands who need to send files straight to manufacturing.',
     workflow: [
