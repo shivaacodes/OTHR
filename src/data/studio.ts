@@ -22,6 +22,7 @@ export interface StudioInfo {
     offset: string;
   }[];
   contactEmail: string;
+  contactPhone: string;
   systemStatus: string;
 }
 
@@ -92,5 +93,6 @@ export const studioData: StudioInfo = {
     }
   ],
   contactEmail: 'shivasajay23@gmail.com',
+  contactPhone: '+91 99952 28904',
   systemStatus: 'Studio Active'
 };

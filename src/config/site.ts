@@ -29,6 +29,12 @@ export const siteConfig = {
   category: 'Creative Engineering Studio',
   url: import.meta.env.PUBLIC_SITE_URL || 'https://othr.shivasajay007.workers.dev',
   contactEmail: import.meta.env.CONTACT_EMAIL_TO || 'shivasajay23@gmail.com',
+  contactPhone: '+91 9995228904',
+  contactPhoneDisplay: '+91 99952 28904',
+  contactPhoneTel: 'tel:+919995228904',
+  whatsappUrl: 'https://wa.me/919995228904',
+  author: 'Shiva Sajay',
+  location: 'Kochi, Kerala, India',
   foundingYear: 2024,
 
   // Social Presences
