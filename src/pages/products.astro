@@ -90,8 +90,8 @@ const faqs = [
   <div class="py-16 md:py-24 bg-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
 
-      <!-- Flagship Tactile Showcase Card (HEX Style in Neon Yellow) -->
-      <section class="bg-[#FF5500] text-black rounded-3xl p-6 sm:p-10 lg:p-12 shadow-[0_20px_60px_-15px_rgba(255,229,0,0.35)] transition-transform duration-300">
+      <!-- Flagship Tactile Showcase Card (HEX Style in Neon Orange) -->
+      <section class="bg-[#FF5500] text-black rounded-3xl p-6 sm:p-10 lg:p-12 shadow-[0_20px_60px_-15px_rgba(255,85,0,0.35)] transition-transform duration-300">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <!-- Inset Media Window: Production Asset Preview -->
           <div class="lg:col-span-7">
@@ -318,7 +318,7 @@ const faqs = [
           {mockgen.pricingPlans.map((plan) => (
             <div class={`rounded-3xl p-8 flex flex-col justify-between transition-all ${
               plan.badge
-                ? 'bg-neutral-900 border-2 border-[#FF5500] shadow-[0_10px_40px_-10px_rgba(255,229,0,0.25)]'
+                ? 'bg-neutral-900 border-2 border-[#FF5500] shadow-[0_10px_40px_-10px_rgba(255,85,0,0.25)]'
                 : 'bg-neutral-950 border border-neutral-900'
             }`}>
               <div>
@@ -363,7 +363,7 @@ const faqs = [
               <div>
                 <Button
                   href={plan.ctaUrl}
-                  variant={plan.badge ? 'yellow' : 'outline'}
+                  variant={plan.badge ? 'orange' : 'outline'}
                   size="md"
                   showArrow={true}
                   target="_blank"
