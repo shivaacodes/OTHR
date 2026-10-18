@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/hero/Hero.astro';
+import ProductSection from '../components/products/ProductSection.astro';
 import WhatWeBuildSection from '../components/services/WhatWeBuildSection.astro';
 import FounderSection from '../components/studio/FounderSection.astro';
-import ProductAndLabSection from '../components/products/ProductAndLabSection.astro';
+import LabPreviewSection from '../components/lab/LabPreviewSection.astro';
 import ContactSection from '../components/contact/ContactSection.astro';
 ---
 
@@ -14,15 +15,18 @@ import ContactSection from '../components/contact/ContactSection.astro';
   <!-- 1. Hero: Dominant typography + Secondary 3D sculpture + Unmistakable CTAs -->
   <Hero />
 
-  <!-- 2. What We Build: Three concise service categories with clear examples -->
+  <!-- 2. Original Software (MockGen Hex-Style Video Card) -->
+  <ProductSection />
+
+  <!-- 3. What We Build: Three concise service categories with clear examples & pricing -->
   <WhatWeBuildSection />
 
-  <!-- 3. The Person Behind OTHR: Genuine founder introduction & direct trust -->
+  <!-- 4. The Person Behind OTHR: Genuine founder introduction & direct trust -->
   <FounderSection />
 
-  <!-- 4. Product & Lab: Clickable video card + Creative experiments -->
-  <ProductAndLabSection />
+  <!-- 5. Creative Technology: The Lab Preview -->
+  <LabPreviewSection />
 
-  <!-- 5. Contact: One strong final CTA and simple inquiry flow -->
+  <!-- 6. Contact: One strong final CTA and simple inquiry flow -->
   <ContactSection />
 </BaseLayout>
