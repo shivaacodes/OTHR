@@ -1,28 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/hero/Hero.astro';
-import MockGenSection from '../components/products/MockGenSection.astro';
-import CapabilitiesSection from '../components/studio/CapabilitiesSection.astro';
-import PhilosophySection from '../components/studio/PhilosophySection.astro';
+import SelectedWorkSection from '../components/work/SelectedWorkSection.astro';
+import WhatWeBuildSection from '../components/services/WhatWeBuildSection.astro';
+import FounderSection from '../components/studio/FounderSection.astro';
+import ProductAndLabSection from '../components/products/ProductAndLabSection.astro';
 import ContactSection from '../components/contact/ContactSection.astro';
 ---
 
 <BaseLayout
   title="OTHR | Independent Creative Engineering Studio // Web Flagships & Software Systems"
-  description="Bespoke web flagships, internal workflow automation systems, and original software products. Built by Shiva Sajay with sub-second edge speeds."
+  description="Websites, custom software, and automation for businesses that want better. Founded by Shiva Sajay in Kochi, India."
 >
-  <!-- Hero Section -->
+  <!-- 1. Hero: Dominant typography + Secondary 3D sculpture + Unmistakable CTAs -->
   <Hero />
 
-  <!-- Products: Flagship Spotlight (MockGen in Yellow Theme Card) -->
-  <MockGenSection />
+  <!-- 2. Selected Work: Real project screenshots and outcomes -->
+  <SelectedWorkSection />
 
-  <!-- Services: What We Build -->
-  <CapabilitiesSection />
+  <!-- 3. What We Build: Three concise service categories with clear examples -->
+  <WhatWeBuildSection />
 
-  <!-- Studio: Who We Are & How We Work -->
-  <PhilosophySection />
+  <!-- 4. The Person Behind OTHR: Genuine founder introduction & direct trust -->
+  <FounderSection />
 
-  <!-- Contact: Get in Touch -->
+  <!-- 5. Product & Lab: Clickable video card + Creative experiments -->
+  <ProductAndLabSection />
+
+  <!-- 6. Contact: One strong final CTA and simple inquiry flow -->
   <ContactSection />
 </BaseLayout>

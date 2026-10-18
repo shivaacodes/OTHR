@@ -1,0 +1,171 @@
+---
+import Icon from '../ui/Icon.astro';
+
+const services = [
+  {
+    number: '01',
+    title: 'Flagship Websites',
+    tagline: 'Websites that represent your real caliber and convert high-value clients.',
+    whoItsFor: 'Businesses whose current website looks generic, outdated, or sluggish on mobile.',
+    examples: ['High-conversion brand flagships', 'Interactive landing pages', 'Founder & studio portfolios'],
+    standards: 'Sub-second edge delivery on Cloudflare, 95+ Mobile Lighthouse, bespoke typography, zero template bloat.',
+    priceUSD: '$450 – $950',
+    priceINR: '₹25,000 – ₹55,000',
+    timeline: '1–3 weeks'
+  },
+  {
+    number: '02',
+    title: 'Custom Software & Internal Tools',
+    tagline: 'Bespoke web applications built to eliminate spreadsheet chaos.',
+    whoItsFor: 'Teams spending hours copying data between spreadsheets or worrying about accidental formula corruption.',
+    examples: ['Role-secured team portals', 'Candidate & recruitment trackers', 'Order & dispatch dashboards'],
+    standards: 'Relational PostgreSQL schemas, role-based access control, structured logging, responsive UI.',
+    priceUSD: '$650 – $1,400',
+    priceINR: '₹35,000 – ₹85,000',
+    timeline: '2–4 weeks'
+  },
+  {
+    number: '03',
+    title: 'Workflow Automation & APIs',
+    tagline: 'Reliable background daemons that kill repetitive operational toil.',
+    whoItsFor: 'Operations desks manually exporting PDFs, sending repetitive messages, or wrestling with brittle zaps.',
+    examples: ['Automated payslip & invoice pipelines', 'WhatsApp & Email API dispatch workers', 'Third-party webhook sync daemons'],
+    standards: 'Queue pacing (token-bucket rate limits), deterministic retry logic, error alerting, containerized daemons.',
+    priceUSD: '$500 – $1,200',
+    priceINR: '₹25,000 – ₹75,000',
+    timeline: '1–3 weeks'
+  }
+];
+---
+
+<section class="py-20 sm:py-28 bg-black border-b border-neutral-900" id="services">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header with Centered Currency Toggle -->
+    <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+      <div class="font-mono text-xs font-bold text-[#C6FF3D] uppercase tracking-wider mb-2">
+        02 // What We Build
+      </div>
+      <h2 class="font-display font-black text-3xl sm:text-5xl text-white tracking-tight mb-4">
+        Three focused disciplines.
+      </h2>
+      <p class="font-body text-base text-neutral-400 max-w-xl mx-auto">
+        No 50-page agency menus. We deliver focused technical interventions designed for speed and real business utility.
+      </p>
+
+      <!-- Currency Switcher -->
+      <div class="inline-flex items-center p-1 bg-neutral-900 border border-neutral-800 rounded-lg text-xs font-semibold mt-6 shadow-sm">
+        <button
+          type="button"
+          class="what-currency-btn px-4 py-1.5 rounded-md transition-all bg-[#C6FF3D] text-black font-bold cursor-pointer"
+          data-currency="usd"
+        >
+          USD ($)
+        </button>
+        <button
+          type="button"
+          class="what-currency-btn px-4 py-1.5 rounded-md transition-all text-neutral-400 hover:text-white cursor-pointer"
+          data-currency="inr"
+        >
+          INR (₹)
+        </button>
+      </div>
+    </div>
+
+    <!-- 3-Column Service Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+      {services.map((svc) => (
+        <div class="bg-neutral-950 border border-neutral-900 hover:border-neutral-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all group">
+          <div>
+            <!-- Number & Badge -->
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-xs font-mono font-bold text-[#C6FF3D] bg-[#C6FF3D]/10 px-2.5 py-1 rounded-md">
+                {svc.number}
+              </span>
+              <span class="text-xs font-mono text-neutral-500">
+                {svc.timeline}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-display font-bold text-2xl text-white group-hover:text-[#C6FF3D] transition-colors mb-3">
+              {svc.title}
+            </h3>
+
+            <!-- Tagline -->
+            <p class="font-body text-sm text-neutral-300 font-medium leading-relaxed mb-6">
+              {svc.tagline}
+            </p>
+
+            <!-- Examples -->
+            <div class="space-y-2 mb-6 pt-4 border-t border-neutral-900">
+              <div class="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">Common Work:</div>
+              {svc.examples.map((ex) => (
+                <div class="flex items-center gap-2 text-xs text-neutral-400">
+                  <span class="text-[#C6FF3D] font-bold">→</span>
+                  <span>{ex}</span>
+                </div>
+              ))}
+            </div>
+
+            <!-- Standards -->
+            <div class="text-xs text-neutral-500 leading-relaxed mb-6">
+              <strong class="text-neutral-400">Standard:</strong> {svc.standards}
+            </div>
+          </div>
+
+          <!-- Pricing & Action -->
+          <div class="pt-6 border-t border-neutral-900 flex items-center justify-between">
+            <div>
+              <div class="text-[10px] text-neutral-500 uppercase tracking-wider font-mono">Indicative Guide</div>
+              <div class="font-display font-bold text-base sm:text-lg text-white">
+                <span class="currency-val-usd">{svc.priceUSD}</span>
+                <span class="currency-val-inr hidden">{svc.priceINR}</span>
+              </div>
+            </div>
+
+            <a
+              href="#contact"
+              class="px-4 py-2 bg-neutral-900 hover:bg-[#C6FF3D] text-neutral-300 hover:text-black font-semibold text-xs rounded-lg transition-colors flex items-center gap-1.5"
+            >
+              <span>Inquire</span>
+              <Icon name="ArrowUpRight" size={13} />
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initWhatCurrency() {
+    const buttons = document.querySelectorAll('.what-currency-btn');
+    const usdEls = document.querySelectorAll('.currency-val-usd');
+    const inrEls = document.querySelectorAll('.currency-val-inr');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const curr = btn.getAttribute('data-currency');
+        buttons.forEach((b) => {
+          b.classList.remove('bg-[#C6FF3D]', 'text-black', 'font-bold');
+          b.classList.add('text-neutral-400');
+        });
+        btn.classList.remove('text-neutral-400');
+        btn.classList.add('bg-[#C6FF3D]', 'text-black', 'font-bold');
+
+        if (curr === 'inr') {
+          usdEls.forEach((el) => el.classList.add('hidden'));
+          inrEls.forEach((el) => el.classList.remove('hidden'));
+        } else {
+          usdEls.forEach((el) => el.classList.remove('hidden'));
+          inrEls.forEach((el) => el.classList.add('hidden'));
+        }
+      });
+    });
+  }
+
+  initWhatCurrency();
+  document.addEventListener('astro:page-load', initWhatCurrency);
+</script>

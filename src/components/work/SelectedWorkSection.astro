@@ -1,0 +1,131 @@
+---
+import Icon from '../ui/Icon.astro';
+
+const selectedProjects = [
+  {
+    client: 'Nippon Toyota',
+    title: 'Payroll Automation & WhatsApp Dispatch',
+    category: 'Workflow Automation',
+    metric: '2,575 Payslips / 4 Min',
+    metricLabel: 'Batch Velocity',
+    summary: 'Automated monthly salary deduction calculations, encrypted PDF generation, and direct delivery over WhatsApp. Solved Meta Graph API burst limits with token-bucket queue pacing in Go.',
+    tech: ['Go', 'WhatsApp Cloud API', 'PostgreSQL', 'Docker'],
+    journalSlug: 'we-automated-2575-payslips'
+  },
+  {
+    client: 'Internal Operations',
+    title: 'Recruitment Management System',
+    category: 'Custom Software',
+    metric: '6 Spreadsheets',
+    metricLabel: 'Replaced Permanently',
+    summary: 'Built a role-secured candidate tracking system to replace fragile, shared spreadsheets. Automated candidate status transitions, interview alerts, and eliminated resume drop-offs.',
+    tech: ['FastAPI', 'TypeScript', 'PostgreSQL', 'Tailwind'],
+    journalSlug: 'your-business-doesnt-need-another-spreadsheet'
+  },
+  {
+    client: 'Proprietary Product',
+    title: 'WrapForge 3D Packaging Pipeline',
+    category: 'Creative Web & WebGL',
+    metric: '45 Seconds',
+    metricLabel: 'Asset Generation',
+    summary: 'An in-browser 3D packaging editor that generates print-ready dielines and 3D mockups. Outputs layered Photoshop PSDs, OBJ/GLB meshes, and exact 3mm manufacturing bleeds.',
+    tech: ['Three.js', 'WebGL', 'TypeScript', 'Canvas API'],
+    journalSlug: 'building-a-3d-packaging-editor-in-the-browser'
+  },
+  {
+    client: 'Event Technology',
+    title: 'TEDx Real-Time Interactive Platform',
+    category: 'Flagship Web',
+    metric: '<100ms Latency',
+    metricLabel: 'Edge Execution',
+    summary: 'Live event tracking platform managing real-time geo-checkpoint verification and an instant leaderboard for 400+ concurrent attendees with zero latency hiccups.',
+    tech: ['Astro', 'Cloudflare Workers', 'Redis', 'Tailwind'],
+    journalSlug: 'why-we-built-othr'
+  }
+];
+---
+
+<section class="py-20 sm:py-28 bg-black border-b border-neutral-900" id="work">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header (Clean, Editorial, Restrained) -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14 sm:mb-16 pb-6 border-b border-neutral-900">
+      <div>
+        <div class="font-mono text-xs font-bold text-[#C6FF3D] uppercase tracking-wider mb-2">
+          01 // Selected Work
+        </div>
+        <h2 class="font-display font-black text-3xl sm:text-5xl text-white tracking-tight">
+          Proven software. Real outcomes.
+        </h2>
+      </div>
+      <p class="font-body text-sm sm:text-base text-neutral-400 max-w-md">
+        Every system is engineered to solve a concrete business bottleneck under real operational load.
+      </p>
+    </div>
+
+    <!-- 2x2 Clean Editorial Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+      {selectedProjects.map((project) => (
+        <div class="bg-neutral-950 border border-neutral-900 hover:border-neutral-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all group">
+          <div>
+            <!-- Client & Category Badges -->
+            <div class="flex items-center justify-between gap-3 mb-6">
+              <span class="text-xs font-mono font-medium text-neutral-400 bg-neutral-900 px-3 py-1 rounded-md border border-neutral-800">
+                {project.client}
+              </span>
+              <span class="text-xs font-semibold text-neutral-500">
+                {project.category}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white group-hover:text-[#C6FF3D] transition-colors mb-3 leading-snug">
+              {project.title}
+            </h3>
+
+            <!-- Summary -->
+            <p class="font-body text-sm sm:text-base text-neutral-400 leading-relaxed mb-6">
+              {project.summary}
+            </p>
+
+            <!-- Real Outcome Metric Card -->
+            <div class="p-4 bg-neutral-900/70 border border-neutral-800/80 rounded-xl mb-6 flex items-center justify-between">
+              <div>
+                <div class="font-display font-black text-xl sm:text-2xl text-white">
+                  {project.metric}
+                </div>
+                <div class="text-xs text-neutral-500 font-medium">
+                  {project.metricLabel}
+                </div>
+              </div>
+              <span class="text-xs font-mono text-[#C6FF3D] bg-[#C6FF3D]/10 px-2.5 py-1 rounded border border-[#C6FF3D]/20">
+                Production Verified
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <!-- Tech Stack Pills -->
+            <div class="flex flex-wrap items-center gap-1.5 pt-4 border-t border-neutral-900 mb-5">
+              {project.tech.map((t) => (
+                <span class="text-[11px] font-mono text-neutral-400 bg-neutral-900 px-2.5 py-0.5 rounded border border-neutral-800">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <!-- Case Note Link -->
+            <a
+              href={`/journal/${project.journalSlug}`}
+              class="inline-flex items-center gap-2 text-xs font-semibold text-neutral-300 hover:text-[#C6FF3D] transition-colors"
+            >
+              <span>Read technical breakdown</span>
+              <Icon name="ArrowUpRight" size={14} />
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

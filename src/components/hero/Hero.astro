@@ -2,37 +2,127 @@
 import Icon from '../ui/Icon.astro';
 ---
 
-<section class="relative min-h-[80vh] flex items-center overflow-hidden bg-black border-b border-neutral-900 pt-24 pb-20">
+<section class="relative min-h-[85vh] flex items-center overflow-hidden bg-black border-b border-neutral-900 pt-24 sm:pt-28 pb-16 sm:pb-24">
   <!-- Subtle Ambient Glow -->
-  <div class="absolute right-[15%] top-[25%] w-[500px] h-[500px] bg-[#C6FF3D]/5 rounded-full blur-[160px] pointer-events-none"></div>
+  <div class="absolute right-[10%] top-[20%] w-[450px] h-[450px] bg-[#C6FF3D]/5 rounded-full blur-[140px] pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-    <div class="max-w-3xl">
-      <!-- Main Headline (Punchy, confident) -->
-      <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.04] text-white mb-6 select-none">
-        High-performance software and <span class="text-[#C6FF3D]">digital flagships</span>
-      </h1>
-
-      <!-- Supporting Statement -->
-      <p class="font-body text-base sm:text-lg lg:text-xl text-neutral-400 max-w-2xl leading-relaxed mb-10">
-        We design and engineer bespoke web flagships, internal automation systems, and original software products. Built with engineering precision.
-      </p>
-
-      <!-- Capability Highlights -->
-      <div class="pt-8 border-t border-neutral-900 flex flex-wrap items-center gap-8 text-xs text-neutral-400">
-        <div>
-          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Flagship Web</span>
-          <span class="text-white font-medium">High-Speed Edge Architecture</span>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      
+      <!-- Dominant Typography & CTAs (Left on desktop, First on mobile) -->
+      <div class="lg:col-span-7 flex flex-col justify-center order-1">
+        
+        <!-- Editorial Kicker -->
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="font-mono text-xs font-bold tracking-widest text-neutral-400 uppercase">
+            OTHR. INDEPENDENT DIGITAL STUDIO
+          </span>
         </div>
-        <div>
-          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Automation</span>
-          <span class="text-white font-medium">Bespoke Internal Systems</span>
+
+        <!-- Main Headline -->
+        <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.04] text-white mb-6 select-none">
+          Good design.<br />
+          <span class="text-white">Serious engineering.</span>
+        </h1>
+
+        <!-- Subhead -->
+        <p class="font-body text-base sm:text-lg lg:text-xl text-neutral-400 max-w-xl leading-relaxed mb-8 sm:mb-10">
+          Websites, custom software, and automation for businesses that want better.
+        </p>
+
+        <!-- Unmistakable CTAs -->
+        <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-10">
+          <a
+            href="#contact"
+            class="px-6 sm:px-7 py-3.5 sm:py-4 bg-[#C6FF3D] hover:bg-[#d4ff66] text-black font-bold text-sm rounded-lg transition-all flex items-center gap-2 shadow-sm active:scale-95 cursor-pointer"
+          >
+            <span>Start a project</span>
+            <Icon name="ArrowUpRight" size={16} />
+          </a>
+
+          <a
+            href="#work"
+            class="px-6 sm:px-7 py-3.5 sm:py-4 bg-neutral-950 hover:bg-neutral-900 text-neutral-200 hover:text-white border border-neutral-800 hover:border-neutral-700 font-semibold text-sm rounded-lg transition-all cursor-pointer"
+          >
+            View work
+          </a>
         </div>
-        <div>
-          <span class="text-neutral-500 block text-[11px] uppercase tracking-wider mb-0.5">Products</span>
-          <a href="/products" class="text-[#FFE500] hover:underline font-medium">MockGen 3D Pipeline →</a>
+
+        <!-- Founder & Credibility Markers -->
+        <div class="pt-6 border-t border-neutral-900 flex flex-wrap items-center gap-6 text-xs text-neutral-500 font-medium">
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#C6FF3D]"></span>
+            <span class="text-neutral-400">Led by Shiva Sajay</span>
+          </div>
+          <span class="text-neutral-800 hidden sm:inline">•</span>
+          <div>
+            <span class="text-neutral-400">Kochi, India • Worldwide Async</span>
+          </div>
+          <span class="text-neutral-800 hidden sm:inline">•</span>
+          <div>
+            <span class="text-neutral-400">Zero Middlemen</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3D Sculpture Secondary Element (Right on desktop, Below on mobile) -->
+      <div class="lg:col-span-5 order-2 flex items-center justify-center">
+        <div class="w-full max-w-[420px] lg:max-w-none h-[280px] sm:h-[360px] lg:h-[440px] relative flex items-center justify-center rounded-2xl bg-gradient-to-b from-neutral-950/60 to-black/80 border border-neutral-900/80 overflow-hidden group">
+          <!-- Canvas Container -->
+          <div
+            id="hero-sculpture-container"
+            class="w-full h-full cursor-grab active:cursor-grabbing relative z-10"
+            aria-label="Interactive 3D Digital Sculpture"
+          ></div>
+
+          <!-- Micro Label -->
+          <div class="absolute bottom-3 right-3 z-20 pointer-events-none text-[10px] font-mono text-neutral-600 bg-black/60 px-2 py-0.5 rounded border border-neutral-800/60">
+            Interactive 3D
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
+<script>
+  import { HeroObject } from './HeroObject';
+
+  let heroInstance: HeroObject | null = null;
+
+  function initHeroSculpture() {
+    const container = document.getElementById('hero-sculpture-container');
+    if (!container) return;
+
+    if (heroInstance) {
+      try {
+        heroInstance.destroy();
+      } catch (e) {}
+      heroInstance = null;
+    }
+
+    try {
+      heroInstance = new HeroObject({
+        container,
+        accentColor: '#C6FF3D'
+      });
+    } catch (err) {
+      console.warn('Hero 3D sculpture init skipped', err);
+    }
+  }
+
+  // Lifecycle bindings
+  initHeroSculpture();
+  document.addEventListener('astro:page-load', initHeroSculpture);
+
+  document.addEventListener('astro:before-swap', () => {
+    if (heroInstance) {
+      try {
+        heroInstance.destroy();
+      } catch (e) {}
+      heroInstance = null;
+    }
+  });
+</script>
