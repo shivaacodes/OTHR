@@ -162,6 +162,33 @@ import Icon from '../ui/Icon.astro';
 
     resize();
 
+    // Haptic Tactile Feedback for Mobile Devices
+    let lastHapticX = -9999;
+    let lastHapticY = -9999;
+    let lastHapticTime = 0;
+
+    function triggerDotHaptic(x: number, y: number) {
+      if (typeof navigator === 'undefined' || !('vibrate' in navigator)) return;
+      const now = performance.now();
+      // Guard against vibration motor thrashing (min 45ms between ticks)
+      if (now - lastHapticTime < 45) return;
+
+      const dx = x - lastHapticX;
+      const dy = y - lastHapticY;
+      const dist = Math.hypot(dx, dy);
+
+      // Trigger whenever finger moves past a dot threshold (~28px)
+      if (dist >= 28) {
+        try {
+          // Sharp 8ms micro-tick
+          navigator.vibrate(8);
+          lastHapticX = x;
+          lastHapticY = y;
+          lastHapticTime = now;
+        } catch (err) {}
+      }
+    }
+
     // Mouse & Touch interaction tracking on hero section
     const onMouseMove = (e: MouseEvent) => {
       const rect = heroSection.getBoundingClientRect();
@@ -169,11 +196,34 @@ import Icon from '../ui/Icon.astro';
       targetMouseY = e.clientY - rect.top;
     };
 
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const rect = heroSection.getBoundingClientRect();
+        const curX = e.touches[0].clientX - rect.left;
+        const curY = e.touches[0].clientY - rect.top;
+        targetMouseX = curX;
+        targetMouseY = curY;
+        lastHapticX = curX;
+        lastHapticY = curY;
+        lastHapticTime = performance.now();
+
+        if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+          try {
+            // Tactile touch down impulse
+            navigator.vibrate(10);
+          } catch (err) {}
+        }
+      }
+    };
+
     const onTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const rect = heroSection.getBoundingClientRect();
-        targetMouseX = e.touches[0].clientX - rect.left;
-        targetMouseY = e.touches[0].clientY - rect.top;
+        const curX = e.touches[0].clientX - rect.left;
+        const curY = e.touches[0].clientY - rect.top;
+        targetMouseX = curX;
+        targetMouseY = curY;
+        triggerDotHaptic(curX, curY);
       }
     };
 
@@ -183,15 +233,15 @@ import Icon from '../ui/Icon.astro';
     };
 
     heroSection.addEventListener('mousemove', onMouseMove, { passive: true });
+    heroSection.addEventListener('touchstart', onTouchStart, { passive: true });
     heroSection.addEventListener('touchmove', onTouchMove, { passive: true });
-    heroSection.addEventListener('touchstart', onTouchMove, { passive: true });
     heroSection.addEventListener('mouseleave', onLeave, { passive: true });
     window.addEventListener('resize', resize, { passive: true });
 
     cleanupListeners = () => {
       heroSection.removeEventListener('mousemove', onMouseMove);
+      heroSection.removeEventListener('touchstart', onTouchStart);
       heroSection.removeEventListener('touchmove', onTouchMove);
-      heroSection.removeEventListener('touchstart', onTouchMove);
       heroSection.removeEventListener('mouseleave', onLeave);
       window.removeEventListener('resize', resize);
     };
