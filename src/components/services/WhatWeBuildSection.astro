@@ -66,15 +66,17 @@ const services = [
 
         <button
           type="button"
-          class="what-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-black font-bold cursor-pointer"
           data-currency="usd"
+          data-active="true"
+          class="what-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 !text-black font-bold cursor-pointer"
         >
           USD ($)
         </button>
         <button
           type="button"
-          class="what-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-neutral-400 hover:text-white cursor-pointer"
           data-currency="inr"
+          data-active="false"
+          class="what-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-neutral-400 hover:text-neutral-200 cursor-pointer"
         >
           INR (₹)
         </button>
@@ -126,7 +128,6 @@ const services = [
           <!-- Pricing & Action -->
           <div class="pt-6 border-t border-neutral-900 flex items-center justify-between">
             <div>
-              <div class="text-[10px] text-neutral-500 uppercase tracking-wider font-mono">Indicative Guide</div>
               <div class="font-display font-semibold text-base sm:text-lg text-white price-wrapper transition-opacity duration-200">
                 <span class="currency-val-usd transition-all duration-200">{svc.priceUSD}</span>
                 <span class="currency-val-inr transition-all duration-200 hidden">{svc.priceINR}</span>
@@ -166,9 +167,8 @@ const services = [
     }
 
     // Set initial position
-    const activeBtn = container.querySelector('.what-currency-btn.text-black') as HTMLElement || buttons[0];
+    const activeBtn = container.querySelector('.what-currency-btn[data-active="true"]') as HTMLElement || buttons[0];
     if (activeBtn) {
-      // Small timeout to allow layout to settle
       requestAnimationFrame(() => positionIndicator(activeBtn));
     }
 
@@ -181,11 +181,13 @@ const services = [
 
         // Update button text classes
         buttons.forEach((b) => {
-          b.classList.remove('text-black', 'font-bold');
-          b.classList.add('text-neutral-400');
+          b.setAttribute('data-active', 'false');
+          b.classList.remove('!text-black', 'text-black', 'font-bold');
+          b.classList.add('text-neutral-400', 'hover:text-neutral-200');
         });
-        btn.classList.remove('text-neutral-400');
-        btn.classList.add('text-black', 'font-bold');
+        btn.setAttribute('data-active', 'true');
+        btn.classList.remove('text-neutral-400', 'hover:text-neutral-200', 'hover:text-white');
+        btn.classList.add('!text-black', 'font-bold');
 
         // Smooth price crossfade
         priceWrappers.forEach((pw) => pw.classList.add('opacity-40'));
@@ -204,7 +206,7 @@ const services = [
     });
 
     window.addEventListener('resize', () => {
-      const curActive = container.querySelector('.what-currency-btn.text-black') as HTMLElement;
+      const curActive = container.querySelector('.what-currency-btn[data-active="true"]') as HTMLElement;
       if (curActive) positionIndicator(curActive);
     }, { passive: true });
   }

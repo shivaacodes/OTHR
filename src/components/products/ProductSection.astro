@@ -34,10 +34,11 @@ const projectTypes = [
               {projectTypes.map((type, idx) => (
                 <button
                   type="button"
+                  data-active={idx === 0 ? "true" : "false"}
                   class={`hero-inquiry-pill px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 cursor-pointer ${
                     idx === 0
-                      ? 'bg-[#C6FF3D] text-black shadow-sm'
-                      : 'bg-neutral-950 text-neutral-400 hover:text-white border border-neutral-800'
+                      ? 'bg-[#C6FF3D] !text-black shadow-sm font-bold'
+                      : 'bg-neutral-950 text-neutral-400 hover:text-neutral-200 border border-neutral-800'
                   }`}
                   data-value={type}
                 >
@@ -220,11 +221,13 @@ const projectTypes = [
     pills.forEach((pill) => {
       pill.addEventListener('click', () => {
         pills.forEach((p) => {
-          p.classList.remove('bg-[#C6FF3D]', 'text-black', 'shadow-sm');
-          p.classList.add('bg-neutral-950', 'text-neutral-400', 'border', 'border-neutral-800');
+          p.setAttribute('data-active', 'false');
+          p.classList.remove('bg-[#C6FF3D]', '!text-black', 'text-black', 'shadow-sm', 'font-bold');
+          p.classList.add('bg-neutral-950', 'text-neutral-400', 'hover:text-neutral-200', 'border', 'border-neutral-800');
         });
-        pill.classList.remove('bg-neutral-950', 'text-neutral-400', 'border', 'border-neutral-800');
-        pill.classList.add('bg-[#C6FF3D]', 'text-black', 'shadow-sm');
+        pill.setAttribute('data-active', 'true');
+        pill.classList.remove('bg-neutral-950', 'text-neutral-400', 'hover:text-white', 'hover:text-neutral-200', 'border', 'border-neutral-800');
+        pill.classList.add('bg-[#C6FF3D]', '!text-black', 'shadow-sm', 'font-bold');
 
         const val = pill.getAttribute('data-value') || '';
         if (selectedInput) selectedInput.value = val;

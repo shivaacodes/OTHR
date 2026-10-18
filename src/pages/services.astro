@@ -112,10 +112,10 @@ const commercialOfferings = [
               class="absolute top-1 bottom-1 rounded-md bg-[#C6FF3D] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-sm pointer-events-none"
             ></span>
 
-            <button class="service-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-black font-bold cursor-pointer" data-currency="usd">
+            <button data-active="true" class="service-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 !text-black font-bold cursor-pointer" data-currency="usd">
               USD ($)
             </button>
-            <button class="service-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-neutral-400 hover:text-white cursor-pointer" data-currency="inr">
+            <button data-active="false" class="service-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-neutral-400 hover:text-neutral-200 cursor-pointer" data-currency="inr">
               INR (₹)
             </button>
           </div>
@@ -319,12 +319,14 @@ const commercialOfferings = [
     function updateCurrency(curr: 'usd' | 'inr', isUserAction = false) {
       buttons.forEach((btn) => {
         if (btn.getAttribute('data-currency') === curr) {
-          btn.classList.remove('text-neutral-400');
-          btn.classList.add('text-black', 'font-bold');
+          btn.setAttribute('data-active', 'true');
+          btn.classList.remove('text-neutral-400', 'hover:text-white', 'hover:text-neutral-200');
+          btn.classList.add('!text-black', 'font-bold');
           positionIndicator(btn);
         } else {
-          btn.classList.remove('text-black', 'font-bold');
-          btn.classList.add('text-neutral-400');
+          btn.setAttribute('data-active', 'false');
+          btn.classList.remove('!text-black', 'text-black', 'font-bold');
+          btn.classList.add('text-neutral-400', 'hover:text-neutral-200');
         }
       });
 

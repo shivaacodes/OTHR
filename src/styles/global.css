@@ -161,6 +161,25 @@
   font-family: var(--font-mono);
 }
 
+/* Framer-style active toggle state: guaranteed pure black on lime/orange backgrounds */
+[data-active="true"],
+.hero-inquiry-pill[data-active="true"],
+.what-currency-btn[data-active="true"],
+.service-currency-btn[data-active="true"],
+.mockgen-currency-btn[data-active="true"],
+.contact-type-pill[data-active="true"] {
+  color: #000000 !important;
+}
+
+[data-active="true"]:hover,
+.hero-inquiry-pill[data-active="true"]:hover,
+.what-currency-btn[data-active="true"]:hover,
+.service-currency-btn[data-active="true"]:hover,
+.mockgen-currency-btn[data-active="true"]:hover,
+.contact-type-pill[data-active="true"]:hover {
+  color: #000000 !important;
+}
+
 /* Custom interactive accents and borders */
 .border-subtle {
   border-color: var(--border-subtle);
