@@ -1,67 +1,292 @@
 ---
 import Icon from '../ui/Icon.astro';
+
+const projectTypes = [
+  'Flagship Web',
+  'Software & Automation',
+  'Other Inquiries'
+];
 ---
 
-<section class="py-16 sm:py-24 bg-black border-b border-neutral-900" id="product">
+<section class="py-16 sm:py-24 bg-black border-b border-neutral-900" id="product-and-inquiry">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Section Header (Clean: No '04 // Proprietary Product' title) -->
-    <div class="flex items-end justify-between mb-8 pb-4 border-b border-neutral-900">
-      <div>
-        <h2 class="font-display font-black text-2xl sm:text-4xl text-white">
-          Original Software
-        </h2>
-      </div>
-
-      <a
-        href="/products"
-        class="text-xs font-semibold text-neutral-400 hover:text-[#FF5500] flex items-center gap-1.5 transition-colors"
-      >
-        <span>View all specs & pricing</span>
-        <Icon name="ArrowUpRight" size={14} />
-      </a>
-    </div>
-
-    <!-- HEX-STYLE PRODUCT CARD (Neon Orange Theme) -->
-    <a
-      href="/products"
-      class="block group rounded-3xl bg-[#FF5500] p-3 sm:p-5 transition-transform duration-300 hover:scale-[1.008] active:scale-[0.99] shadow-[0_20px_50px_-15px_rgba(255,85,0,0.35)] focus:outline-none focus:ring-2 focus:ring-[#FF5500]"
-      aria-label="View MockGen: AI Generated 3D Mockups Ready for Print"
-    >
-      <!-- Inner Media / Video Container -->
-      <div class="relative w-full aspect-video rounded-2xl bg-black overflow-hidden flex items-center justify-center">
-        <!-- Video Element (User can replace or add their mp4/webm video src) -->
-        <video
-          class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity"
-          poster="/og-image.png"
-          autoplay
-          muted
-          loop
-          playsinline
-        >
-          <!-- User can drop their video file here: e.g. <source src="/mockgen.mp4" type="video/mp4" /> -->
-        </video>
-
-        <!-- Subtle Play Indicator Overlay -->
-        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors pointer-events-none">
-          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black/70 text-[#FF5500] border border-[#FF5500]/40 flex items-center justify-center backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+      
+      <!-- LEFT COLUMN: Clean Project Inquiry Card (Hex Style Reference) -->
+      <div class="lg:col-span-5 order-2 lg:order-1" id="contact">
+        <div class="bg-neutral-950 border border-neutral-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+          
+          <!-- Card Header -->
+          <div class="flex items-center justify-between pb-4 border-b border-neutral-900">
+            <div>
+              <span class="text-[11px] font-mono text-[#C6FF3D] font-bold uppercase tracking-wider block mb-1">
+                Direct Dispatch
+              </span>
+              <h3 class="font-display font-black text-2xl text-white">
+                Start a Project
+              </h3>
+            </div>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-neutral-900 border border-neutral-800 rounded-full text-[11px] font-medium text-neutral-300">
+              <span class="w-2 h-2 rounded-full bg-[#C6FF3D] animate-pulse"></span>
+              <span>Available</span>
+            </span>
           </div>
+
+          <form id="hero-inquiry-form" class="space-y-5">
+            <!-- Project Type Selection -->
+            <div>
+              <label class="block text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2.5">
+                What are you looking to build?
+              </label>
+              <div class="flex flex-wrap gap-1.5" id="hero-inquiry-type-selector">
+                {projectTypes.map((type, idx) => (
+                  <button
+                    type="button"
+                    class={`hero-inquiry-pill px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      idx === 0
+                        ? 'bg-[#C6FF3D] text-black shadow-sm'
+                        : 'bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800'
+                    }`}
+                    data-value={type}
+                  >
+                    {type}
+                  </button>
+                ))}
+              </div>
+              <input type="hidden" name="projectType" id="hero-selected-type" value={projectTypes[0]} />
+            </div>
+
+            <!-- Your Name -->
+            <div>
+              <label for="hero-inquiry-name" class="block text-xs font-semibold text-neutral-400 mb-1.5">
+                Your Name *
+              </label>
+              <input
+                type="text"
+                id="hero-inquiry-name"
+                name="name"
+                required
+                placeholder="Shiva Sajay"
+                class="w-full bg-neutral-900/90 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none px-4 py-2.5 text-sm text-white rounded-lg transition-colors placeholder:text-neutral-600"
+              />
+            </div>
+
+            <!-- Your Email -->
+            <div>
+              <label for="hero-inquiry-email" class="block text-xs font-semibold text-neutral-400 mb-1.5">
+                Your Email *
+              </label>
+              <input
+                type="email"
+                id="hero-inquiry-email"
+                name="email"
+                required
+                placeholder="shiva@example.com"
+                class="w-full bg-neutral-900/90 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none px-4 py-2.5 text-sm text-white rounded-lg transition-colors placeholder:text-neutral-600"
+              />
+            </div>
+
+            <!-- Scope / Overview -->
+            <div>
+              <label for="hero-inquiry-message" class="block text-xs font-semibold text-neutral-400 mb-1.5">
+                Project Overview / Scope *
+              </label>
+              <textarea
+                id="hero-inquiry-message"
+                name="message"
+                required
+                rows={3}
+                placeholder="Tell us what you're looking to engineer, your rough timeline, and any key requirements..."
+                class="w-full bg-neutral-900/90 border border-neutral-800 focus:border-[#C6FF3D] focus:outline-none p-3 text-sm text-white rounded-lg transition-colors placeholder:text-neutral-600 resize-none"
+              ></textarea>
+            </div>
+
+            <!-- Submit CTA -->
+            <button
+              type="submit"
+              id="hero-inquiry-submit-btn"
+              class="w-full py-3.5 bg-[#C6FF3D] hover:bg-[#d4ff66] text-black font-bold text-sm rounded-lg transition-all flex items-center justify-center gap-2 shadow-sm active:scale-95 cursor-pointer"
+            >
+              <span>Send Project Inquiry</span>
+              <Icon name="ArrowUpRight" size={15} />
+            </button>
+
+            <!-- Bottom Support Line -->
+            <div class="pt-2 border-t border-neutral-900 flex items-center justify-between text-[11px] text-neutral-500">
+              <span>Replies within 24–48 hours</span>
+              <a
+                href="https://wa.me/919995228904"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-neutral-400 hover:text-[#C6FF3D] font-mono flex items-center gap-1 transition-colors"
+              >
+                <span>+91 99952 28904</span>
+                <Icon name="ArrowUpRight" size={12} />
+              </a>
+            </div>
+          </form>
+
+          <!-- Feedback Success Alert -->
+          <div id="hero-inquiry-success" class="hidden p-5 bg-neutral-900 border border-[#C6FF3D] rounded-xl space-y-3">
+            <div class="flex items-center gap-2 text-[#C6FF3D] font-bold text-xs">
+              <span>✓</span>
+              <span>Inquiry Prepared & Copied</span>
+            </div>
+            <p class="text-xs text-neutral-300 leading-relaxed font-body">
+              Your inquiry has been copied to your clipboard and addressed to <strong class="text-white">shivasajay23@gmail.com</strong>.
+            </p>
+            <div class="flex gap-2 pt-1">
+              <a
+                id="hero-mailto-link"
+                href="mailto:shivasajay23@gmail.com"
+                class="px-4 py-2 bg-[#C6FF3D] text-black font-semibold text-xs rounded-lg inline-block"
+              >
+                Open Email App
+              </a>
+              <button
+                type="button"
+                id="hero-inquiry-reset-btn"
+                class="px-4 py-2 bg-neutral-800 text-neutral-300 hover:text-white font-medium text-xs rounded-lg cursor-pointer"
+              >
+                Send Another
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- Title & Subtitle Below Media (Directly on the Yellow Surface, Hex Style) -->
-      <div class="pt-4 sm:pt-5 pb-2 px-2 sm:px-3">
-        <h3 class="font-display font-black text-xl sm:text-2xl lg:text-3xl text-black tracking-tight leading-tight">
-          MockGen: AI Generated 3D Mockups Ready for Print
-        </h3>
-        <div class="font-body text-xs sm:text-sm text-black/75 font-semibold mt-1">
-          3D Packaging & Print Asset Pipeline
+      <!-- RIGHT COLUMN: Compact Hex-Style Product Card (Reduced Width, Neon Orange) -->
+      <div class="lg:col-span-7 order-1 lg:order-2 space-y-4">
+        
+        <!-- Header Strip Above Card -->
+        <div class="flex items-center justify-between pb-2">
+          <h2 class="font-display font-black text-2xl text-white">
+            Original Software
+          </h2>
+
+          <a
+            href="/products"
+            class="text-xs font-semibold text-neutral-400 hover:text-[#FF5500] flex items-center gap-1.5 transition-colors"
+          >
+            <span>View all specs & pricing</span>
+            <Icon name="ArrowUpRight" size={14} />
+          </a>
         </div>
+
+        <!-- HEX-STYLE COMPACT PRODUCT CARD (Proportionate, Not Bloated) -->
+        <a
+          href="/products"
+          class="block group rounded-3xl bg-[#FF5500] p-3 sm:p-4.5 transition-transform duration-300 hover:scale-[1.01] active:scale-[0.99] shadow-[0_20px_50px_-15px_rgba(255,85,0,0.35)] focus:outline-none focus:ring-2 focus:ring-[#FF5500]"
+          aria-label="View MockGen: AI Generated 3D Mockups Ready for Print"
+        >
+          <!-- Inner Media / Video Container (Crisp 16:9, Compact Proportion) -->
+          <div class="relative w-full aspect-[16/10] sm:aspect-video rounded-2xl bg-black overflow-hidden flex items-center justify-center">
+            <!-- Video Element (User can replace/add video file here) -->
+            <video
+              class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity"
+              poster="/mockgen.png"
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              <!-- Drop video file here -->
+            </video>
+
+            <!-- Subtle Play Indicator Overlay -->
+            <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors pointer-events-none">
+              <div class="w-13 h-13 sm:w-15 sm:h-15 rounded-full bg-black/70 text-[#FF5500] border border-[#FF5500]/40 flex items-center justify-center backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Title & Subtitle Below Media (Directly on Neon Orange Frame) -->
+          <div class="pt-3.5 sm:pt-4 pb-1.5 px-2">
+            <h3 class="font-display font-black text-xl sm:text-2xl text-black tracking-tight leading-tight">
+              MockGen: AI Generated 3D Mockups Ready for Print
+            </h3>
+            <div class="font-body text-xs sm:text-sm text-black/80 font-semibold mt-1">
+              3D Packaging & Print Asset Pipeline
+            </div>
+          </div>
+        </a>
+
       </div>
-    </a>
+
+    </div>
 
   </div>
 </section>
+
+<script>
+  function initHeroInquiryForm() {
+    const form = document.getElementById('hero-inquiry-form') as HTMLFormElement | null;
+    const successAlert = document.getElementById('hero-inquiry-success');
+    const resetBtn = document.getElementById('hero-inquiry-reset-btn');
+    const pills = document.querySelectorAll('.hero-inquiry-pill');
+    const selectedInput = document.getElementById('hero-selected-type') as HTMLInputElement | null;
+    const mailtoTrigger = document.getElementById('hero-mailto-link') as HTMLAnchorElement | null;
+
+    if (!form) return;
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        pills.forEach((p) => {
+          p.classList.remove('bg-[#C6FF3D]', 'text-black', 'shadow-sm');
+          p.classList.add('bg-neutral-900', 'text-neutral-400', 'border', 'border-neutral-800');
+        });
+        pill.classList.remove('bg-neutral-900', 'text-neutral-400', 'border', 'border-neutral-800');
+        pill.classList.add('bg-[#C6FF3D]', 'text-black', 'shadow-sm');
+
+        const val = pill.getAttribute('data-value') || '';
+        if (selectedInput) selectedInput.value = val;
+      });
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+        try { navigator.vibrate([15, 40, 20]); } catch (err) {}
+      }
+
+      const formData = new FormData(form);
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const type = formData.get('projectType') as string;
+      const message = formData.get('message') as string;
+
+      const briefText = `OTHR INQUIRY\n---\nName: ${name}\nEmail: ${email}\nProject Type: ${type}\nMessage:\n${message}`;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(briefText);
+      }
+
+      const subject = encodeURIComponent(`Project Inquiry: ${type} - ${name}`);
+      const body = encodeURIComponent(briefText);
+      const mailtoUrl = `mailto:shivasajay23@gmail.com?subject=${subject}&body=${body}`;
+
+      if (mailtoTrigger) {
+        mailtoTrigger.href = mailtoUrl;
+      }
+
+      window.location.href = mailtoUrl;
+
+      form.classList.add('hidden');
+      successAlert?.classList.remove('hidden');
+    });
+
+    resetBtn?.addEventListener('click', () => {
+      form.reset();
+      form.classList.remove('hidden');
+      successAlert?.classList.add('hidden');
+    });
+  }
+
+  initHeroInquiryForm();
+  document.addEventListener('astro:page-load', initHeroInquiryForm);
+</script>

@@ -5,17 +5,16 @@ import ProductSection from '../components/products/ProductSection.astro';
 import WhatWeBuildSection from '../components/services/WhatWeBuildSection.astro';
 import FounderSection from '../components/studio/FounderSection.astro';
 import LabPreviewSection from '../components/lab/LabPreviewSection.astro';
-import ContactSection from '../components/contact/ContactSection.astro';
 ---
 
 <BaseLayout
   title="OTHR | Independent Creative Engineering Studio // Web Flagships & Software Systems"
   description="Websites, custom software, and automation for businesses that want better. Founded by Shiva Sajay in Kochi, India."
 >
-  <!-- 1. Hero: Dominant typography + Secondary 3D sculpture + Unmistakable CTAs -->
+  <!-- 1. Hero: Dominant typography + Interactive dots + Clear CTAs -->
   <Hero />
 
-  <!-- 2. Original Software (MockGen Hex-Style Video Card) -->
+  <!-- 2. Left: Project Inquiry Card | Right: Compact Hex-Style MockGen Product Card -->
   <ProductSection />
 
   <!-- 3. What We Build: Three concise service categories with clear examples & pricing -->
@@ -26,7 +25,4 @@ import ContactSection from '../components/contact/ContactSection.astro';
 
   <!-- 5. Creative Technology: The Lab Preview -->
   <LabPreviewSection />
-
-  <!-- 6. Contact: One strong final CTA and simple inquiry flow -->
-  <ContactSection />
 </BaseLayout>
