@@ -2,84 +2,72 @@
 import Icon from '../ui/Icon.astro';
 ---
 
-<section class="relative min-h-[85vh] flex items-center overflow-hidden bg-black border-b border-neutral-900 pt-24 sm:pt-28 pb-16 sm:pb-24">
+<section
+  id="hero"
+  class="relative min-h-[85vh] sm:min-h-[88vh] flex items-center overflow-hidden bg-black border-b border-neutral-900 pt-28 sm:pt-32 pb-20 sm:pb-28"
+>
+  <!-- Full-Hero Interactive Reactive Dotted Structure -->
+  <canvas
+    id="hero-dots-canvas"
+    class="absolute inset-0 w-full h-full pointer-events-none z-0"
+    aria-hidden="true"
+  ></canvas>
+
   <!-- Subtle Ambient Glow -->
-  <div class="absolute right-[10%] top-[20%] w-[450px] h-[450px] bg-[#C6FF3D]/5 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="absolute left-1/4 top-1/3 w-[550px] h-[550px] bg-[#C6FF3D]/5 rounded-full blur-[160px] pointer-events-none z-0"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    <div class="max-w-3xl">
       
-      <!-- Dominant Typography & CTAs (Left on desktop, First on mobile) -->
-      <div class="lg:col-span-7 flex flex-col justify-center order-1">
-        
-        <!-- Editorial Kicker -->
-        <div class="inline-flex items-center gap-2 mb-6">
-          <span class="font-mono text-xs font-bold tracking-widest text-neutral-400 uppercase">
-            OTHR. INDEPENDENT DIGITAL STUDIO
-          </span>
-        </div>
-
-        <!-- Main Headline -->
-        <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.04] text-white mb-6 select-none">
-          Good design.<br />
-          <span class="text-white">Serious engineering.</span>
-        </h1>
-
-        <!-- Subhead -->
-        <p class="font-body text-base sm:text-lg lg:text-xl text-neutral-400 max-w-xl leading-relaxed mb-8 sm:mb-10">
-          Websites, custom software, and automation for businesses that want better.
-        </p>
-
-        <!-- Unmistakable CTAs -->
-        <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-10">
-          <a
-            href="#contact"
-            class="px-6 sm:px-7 py-3.5 sm:py-4 bg-[#C6FF3D] hover:bg-[#d4ff66] text-black font-bold text-sm rounded-lg transition-all flex items-center gap-2 shadow-sm active:scale-95 cursor-pointer"
-          >
-            <span>Start a project</span>
-            <Icon name="ArrowUpRight" size={16} />
-          </a>
-
-          <a
-            href="#services"
-            class="px-6 sm:px-7 py-3.5 sm:py-4 bg-neutral-950 hover:bg-neutral-900 text-neutral-200 hover:text-white border border-neutral-800 hover:border-neutral-700 font-semibold text-sm rounded-lg transition-all cursor-pointer"
-          >
-            Explore services
-          </a>
-        </div>
-
-        <!-- Founder & Credibility Markers -->
-        <div class="pt-6 border-t border-neutral-900 flex flex-wrap items-center gap-6 text-xs text-neutral-500 font-medium">
-          <div class="flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#C6FF3D]"></span>
-            <span class="text-neutral-400">Led by Shiva Sajay</span>
-          </div>
-          <span class="text-neutral-800 hidden sm:inline">•</span>
-          <div>
-            <span class="text-neutral-400">Kochi, India • Worldwide Async</span>
-          </div>
-          <span class="text-neutral-800 hidden sm:inline">•</span>
-          <div>
-            <span class="text-neutral-400">Zero Middlemen</span>
-          </div>
-        </div>
-
+      <!-- Editorial Kicker -->
+      <div class="inline-flex items-center gap-2 mb-6">
+        <span class="font-mono text-xs font-bold tracking-widest text-neutral-400 uppercase">
+          OTHR. INDEPENDENT DIGITAL STUDIO
+        </span>
       </div>
 
-      <!-- 3D Sculpture Secondary Element (Right on desktop, Below on mobile) -->
-      <div class="lg:col-span-5 order-2 flex items-center justify-center">
-        <div class="w-full max-w-[420px] lg:max-w-none h-[280px] sm:h-[360px] lg:h-[440px] relative flex items-center justify-center rounded-2xl bg-gradient-to-b from-neutral-950/60 to-black/80 border border-neutral-900/80 overflow-hidden group">
-          <!-- Canvas Container -->
-          <div
-            id="hero-sculpture-container"
-            class="w-full h-full cursor-grab active:cursor-grabbing relative z-10"
-            aria-label="Interactive 3D Digital Sculpture"
-          ></div>
+      <!-- Main Headline -->
+      <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.04] text-white mb-6 select-none">
+        Good design.<br />
+        <span class="text-white">Serious engineering.</span>
+      </h1>
 
-          <!-- Micro Label -->
-          <div class="absolute bottom-3 right-3 z-20 pointer-events-none text-[10px] font-mono text-neutral-600 bg-black/60 px-2 py-0.5 rounded border border-neutral-800/60">
-            Interactive 3D
-          </div>
+      <!-- Subhead -->
+      <p class="font-body text-base sm:text-lg lg:text-xl text-neutral-400 max-w-xl leading-relaxed mb-8 sm:mb-10">
+        Websites, custom software, and automation for businesses that want better.
+      </p>
+
+      <!-- Unmistakable CTAs -->
+      <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-10">
+        <a
+          href="#contact"
+          class="px-6 sm:px-7 py-3.5 sm:py-4 bg-[#C6FF3D] hover:bg-[#d4ff66] text-black font-bold text-sm rounded-lg transition-all flex items-center gap-2 shadow-sm active:scale-95 cursor-pointer"
+        >
+          <span>Start a project</span>
+          <Icon name="ArrowUpRight" size={16} />
+        </a>
+
+        <a
+          href="#services"
+          class="px-6 sm:px-7 py-3.5 sm:py-4 bg-neutral-950 hover:bg-neutral-900 text-neutral-200 hover:text-white border border-neutral-800 hover:border-neutral-700 font-semibold text-sm rounded-lg transition-all cursor-pointer"
+        >
+          Explore services
+        </a>
+      </div>
+
+      <!-- Founder & Credibility Markers -->
+      <div class="pt-6 border-t border-neutral-900/80 flex flex-wrap items-center gap-6 text-xs text-neutral-500 font-medium">
+        <div class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#C6FF3D]"></span>
+          <span class="text-neutral-400">Led by Shiva Sajay</span>
+        </div>
+        <span class="text-neutral-800 hidden sm:inline">•</span>
+        <div>
+          <span class="text-neutral-400">Kochi, India • Worldwide Async</span>
+        </div>
+        <span class="text-neutral-800 hidden sm:inline">•</span>
+        <div>
+          <span class="text-neutral-400">Zero Middlemen</span>
         </div>
       </div>
 
@@ -88,41 +76,219 @@ import Icon from '../ui/Icon.astro';
 </section>
 
 <script>
-  import { HeroObject } from './HeroObject';
-
-  let heroInstance: HeroObject | null = null;
-
-  function initHeroSculpture() {
-    const container = document.getElementById('hero-sculpture-container');
-    if (!container) return;
-
-    if (heroInstance) {
-      try {
-        heroInstance.destroy();
-      } catch (e) {}
-      heroInstance = null;
-    }
-
-    try {
-      heroInstance = new HeroObject({
-        container,
-        accentColor: '#C6FF3D'
-      });
-    } catch (err) {
-      console.warn('Hero 3D sculpture init skipped', err);
-    }
+  interface Dot {
+    originX: number;
+    originY: number;
+    x: number;
+    y: number;
+    baseRadius: number;
+    phase: number;
   }
 
-  // Lifecycle bindings
-  initHeroSculpture();
-  document.addEventListener('astro:page-load', initHeroSculpture);
+  let animFrameId: number | null = null;
+  let observer: IntersectionObserver | null = null;
+  let cleanupListeners: (() => void) | null = null;
+
+  function initInteractiveDots() {
+    const heroSection = document.getElementById('hero');
+    const canvas = document.getElementById('hero-dots-canvas') as HTMLCanvasElement | null;
+    if (!heroSection || !canvas) return;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    // Clean up any existing instances
+    if (animFrameId) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    }
+    if (cleanupListeners) {
+      cleanupListeners();
+      cleanupListeners = null;
+    }
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let dots: Dot[] = [];
+    const gap = 34; // Crisp equidistant spacing
+    const interactionRadius = 150; // Cursor interaction zone in px
+    const maxRepulsion = 18; // Max kinetic push
+
+    // Cursor coordinates (relative to canvas)
+    let mouseX = -9999;
+    let mouseY = -9999;
+    let targetMouseX = -9999;
+    let targetMouseY = -9999;
+    let isVisible = true;
+
+    function resize() {
+      if (!canvas || !heroSection) return;
+      const rect = heroSection.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Rebuild dots grid
+      dots = [];
+      const cols = Math.ceil(width / gap) + 1;
+      const rows = Math.ceil(height / gap) + 1;
+      const offsetX = (width - (cols - 1) * gap) / 2;
+      const offsetY = (height - (rows - 1) * gap) / 2;
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const originX = offsetX + c * gap;
+          const originY = offsetY + r * gap;
+          dots.push({
+            originX,
+            originY,
+            x: originX,
+            y: originY,
+            baseRadius: 1.2,
+            phase: (originX * 0.02) + (originY * 0.02)
+          });
+        }
+      }
+    }
+
+    resize();
+
+    // Mouse & Touch interaction tracking on hero section
+    const onMouseMove = (e: MouseEvent) => {
+      const rect = heroSection.getBoundingClientRect();
+      targetMouseX = e.clientX - rect.left;
+      targetMouseY = e.clientY - rect.top;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const rect = heroSection.getBoundingClientRect();
+        targetMouseX = e.touches[0].clientX - rect.left;
+        targetMouseY = e.touches[0].clientY - rect.top;
+      }
+    };
+
+    const onLeave = () => {
+      targetMouseX = -9999;
+      targetMouseY = -9999;
+    };
+
+    heroSection.addEventListener('mousemove', onMouseMove, { passive: true });
+    heroSection.addEventListener('touchmove', onTouchMove, { passive: true });
+    heroSection.addEventListener('touchstart', onTouchMove, { passive: true });
+    heroSection.addEventListener('mouseleave', onLeave, { passive: true });
+    window.addEventListener('resize', resize, { passive: true });
+
+    cleanupListeners = () => {
+      heroSection.removeEventListener('mousemove', onMouseMove);
+      heroSection.removeEventListener('touchmove', onTouchMove);
+      heroSection.removeEventListener('touchstart', onTouchMove);
+      heroSection.removeEventListener('mouseleave', onLeave);
+      window.removeEventListener('resize', resize);
+    };
+
+    // Performance: Pause render loop when scrolled offscreen
+    observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+      if (isVisible && !animFrameId) {
+        render();
+      }
+    }, { threshold: 0.05 });
+    observer.observe(heroSection);
+
+    let time = 0;
+
+    function render() {
+      if (!isVisible) {
+        animFrameId = null;
+        return;
+      }
+
+      // Smooth cursor lerp
+      mouseX += (targetMouseX - mouseX) * 0.18;
+      mouseY += (targetMouseY - mouseY) * 0.18;
+      time += 0.02;
+
+      ctx.clearRect(0, 0, width, height);
+
+      const len = dots.length;
+      for (let i = 0; i < len; i++) {
+        const dot = dots[i];
+
+        // Distance from cursor
+        const dx = mouseX - dot.originX;
+        const dy = mouseY - dot.originY;
+        const dist = Math.hypot(dx, dy);
+
+        let targetX = dot.originX;
+        let targetY = dot.originY;
+        let intensity = 0;
+
+        if (dist < interactionRadius) {
+          // Non-linear proximity falloff for snappy tactile response
+          intensity = Math.pow(1 - dist / interactionRadius, 1.6);
+          const angle = Math.atan2(dy, dx);
+          // Push dot away from cursor
+          targetX = dot.originX - Math.cos(angle) * intensity * maxRepulsion;
+          targetY = dot.originY - Math.sin(angle) * intensity * maxRepulsion;
+        } else {
+          // Ambient organic breathing wave when idle
+          const ambientWave = Math.sin(time + dot.phase) * 1.5;
+          targetY = dot.originY + ambientWave;
+        }
+
+        // Spring physics easing
+        dot.x += (targetX - dot.x) * 0.15;
+        dot.y += (targetY - dot.y) * 0.15;
+
+        // Render dot
+        ctx.beginPath();
+        const radius = dot.baseRadius + intensity * 1.5;
+        ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2);
+
+        if (intensity > 0.04) {
+          // Electric Lime reactive illumination
+          const alpha = 0.25 + intensity * 0.75;
+          ctx.fillStyle = `rgba(198, 255, 61, ${alpha.toFixed(3)})`;
+        } else {
+          // Subtle, ultra-crisp neutral dot
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+        }
+
+        ctx.fill();
+      }
+
+      animFrameId = requestAnimationFrame(render);
+    }
+
+    render();
+  }
+
+  // Lifecycle execution
+  initInteractiveDots();
+  document.addEventListener('astro:page-load', initInteractiveDots);
 
   document.addEventListener('astro:before-swap', () => {
-    if (heroInstance) {
-      try {
-        heroInstance.destroy();
-      } catch (e) {}
-      heroInstance = null;
+    if (animFrameId) {
+      cancelAnimationFrame(animFrameId);
+      animFrameId = null;
+    }
+    if (cleanupListeners) {
+      cleanupListeners();
+      cleanupListeners = null;
+    }
+    if (observer) {
+      observer.disconnect();
+      observer = null;
     }
   });
 </script>
