@@ -80,7 +80,7 @@ export const studioData: StudioInfo = {
   coordinates: [
     {
       label: 'Studio Base',
-      location: 'Bengaluru, India',
+      location: 'Kochi, India',
       timezone: 'IST',
       offset: 'UTC+5:30'
     },

@@ -1,8 +1,6 @@
 ---
 import Icon from '../ui/Icon.astro';
 
-const year = new Date().getFullYear();
-
 const navLinks = [
   { href: '/products', label: 'Products' },
   { href: '/services', label: 'Services' },
@@ -11,12 +9,12 @@ const navLinks = [
 ];
 ---
 
-<footer class="bg-black border-t border-neutral-900 text-neutral-400 py-16 relative">
+<footer class="bg-black border-t border-neutral-900 text-neutral-400 py-12 relative">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-neutral-900">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
       
       <!-- Brand & Direct Email -->
-      <div class="space-y-3">
+      <div class="space-y-2">
         <a href="/" class="flex items-center gap-3 group focus:outline-none" aria-label="OTHR Homepage">
           <img
             src="/logo-mark.png"
@@ -29,13 +27,10 @@ const navLinks = [
             OTHR
           </span>
         </a>
-        <p class="text-sm text-neutral-400 font-medium">
-          Independent creative engineering studio
-        </p>
         <div>
           <a
             href="mailto:shivasajay23@gmail.com"
-            class="text-sm text-neutral-300 hover:text-[#C6FF3D] transition-colors font-semibold"
+            class="text-sm text-neutral-400 hover:text-[#C6FF3D] transition-colors font-semibold"
           >
             shivasajay23@gmail.com
           </a>
@@ -61,29 +56,8 @@ const navLinks = [
           <span>@othrbuilds</span>
           <Icon name="ArrowUpRight" size={13} />
         </a>
-        <a
-          href="https://github.com/shivaacodes/OTHR"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm font-semibold text-neutral-400 hover:text-white flex items-center gap-1 transition-colors"
-        >
-          <span>GitHub</span>
-          <Icon name="ArrowUpRight" size={13} />
-        </a>
       </div>
 
-    </div>
-
-    <!-- Bottom Row: Legal & Copyright -->
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-medium">
-      <div>
-        © {year} OTHR Studio. All rights reserved.
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
-        <span class="text-neutral-800">•</span>
-        <a href="/terms" class="hover:text-white transition-colors">Terms of Use</a>
-      </div>
     </div>
   </div>
 </footer>
