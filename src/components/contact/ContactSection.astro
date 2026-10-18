@@ -19,7 +19,7 @@ const projectTypes = [
           <div class="font-mono text-xs font-bold text-[#C6FF3D] uppercase tracking-wider mb-3">
             Get in touch
           </div>
-          <h2 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.05]">
+          <h2 class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
             Let's build something exceptional
           </h2>
         </div>
@@ -97,7 +97,7 @@ const projectTypes = [
               {projectTypes.map((type, idx) => (
                 <button
                   type="button"
-                  class={`contact-type-pill px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  class={`contact-type-pill px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 cursor-pointer ${
                     idx === 0
                       ? 'bg-[#C6FF3D] text-black shadow-sm'
                       : 'bg-neutral-950 text-neutral-400 hover:text-white border border-neutral-800'

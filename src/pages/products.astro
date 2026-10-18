@@ -157,7 +157,7 @@ const faqs = [
                 <span>No AI Blackbox</span>
               </div>
 
-              <h2 class="font-display font-black text-3xl sm:text-5xl text-black tracking-tight leading-[1.05] mb-4">
+              <h2 class="font-display font-bold text-2xl sm:text-4xl text-black tracking-tight leading-tight mb-4">
                 Visualize Production-Ready Packaging Instantly
               </h2>
 
@@ -287,19 +287,28 @@ const faqs = [
       <section>
         <div class="text-center max-w-3xl mx-auto mb-10">
           <div class="text-xs font-semibold text-[#FF5500] uppercase tracking-wider mb-2">Transparent Pricing</div>
-          <h2 class="font-display font-black text-3xl sm:text-5xl text-white tracking-tight mb-3">
+          <h2 class="font-display font-bold text-2xl sm:text-4xl text-white tracking-tight mb-3">
             Choose Your Plan
           </h2>
           <p class="font-body text-sm sm:text-base text-neutral-400 max-w-xl mx-auto">
             1 design generation = 20 credits • 4K export = 10 credits. No hidden fees.
           </p>
 
-          <!-- Centered Currency Switcher (lesser curved radius: rounded-lg container, rounded-md buttons) -->
-          <div class="inline-flex items-center p-1 bg-neutral-900 border border-neutral-800 rounded-lg text-xs font-semibold mt-6 shadow-sm">
-            <button class="mockgen-currency-btn px-4 py-1.5 rounded-md transition-all bg-[#FF5500] text-black font-bold cursor-pointer" data-currency="usd">
+          <!-- Framer-Style Sliding Currency Switcher (Neon Orange) -->
+          <div
+            id="mockgen-currency-container"
+            class="relative inline-flex items-center p-1 bg-neutral-950 border border-neutral-800 rounded-lg text-xs font-semibold mt-6 shadow-sm select-none"
+          >
+            <!-- Sliding active pill with Framer-style spring curve -->
+            <span
+              id="mockgen-currency-indicator"
+              class="absolute top-1 bottom-1 rounded-md bg-[#FF5500] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-sm pointer-events-none"
+            ></span>
+
+            <button class="mockgen-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-black font-bold cursor-pointer" data-currency="usd">
               USD ($)
             </button>
-            <button class="mockgen-currency-btn px-4 py-1.5 rounded-md transition-all text-neutral-400 hover:text-white cursor-pointer" data-currency="inr">
+            <button class="mockgen-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-neutral-400 hover:text-white cursor-pointer" data-currency="inr">
               INR (₹)
             </button>
           </div>
@@ -314,7 +323,7 @@ const faqs = [
             }`}>
               <div>
                 <div class="flex items-center justify-between mb-4">
-                  <span class="font-display font-black text-2xl text-white">{plan.name}</span>
+                  <span class="font-display font-bold text-xl text-white">{plan.name}</span>
                   {plan.badge && (
                     <Badge variant="orange">{plan.badge}</Badge>
                   )}
@@ -322,7 +331,7 @@ const faqs = [
 
                 <div class="mb-4">
                   <span
-                    class="font-display font-black text-4xl sm:text-5xl text-[#FF5500] mockgen-plan-price transition-opacity duration-200"
+                    class="font-display font-bold text-3xl sm:text-4xl text-[#FF5500] mockgen-plan-price transition-opacity duration-200"
                     data-usd={plan.priceUsd}
                     data-inr={plan.priceInr}
                   >
@@ -395,7 +404,7 @@ const faqs = [
       <section class="bg-gradient-to-br from-neutral-950 via-neutral-900 to-black border border-neutral-800 rounded-3xl p-8 sm:p-14 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
         <div>
           <div class="text-xs font-semibold text-[#FF5500] uppercase tracking-wider mb-2">See Your Packaging Before You Print</div>
-          <h2 class="font-display font-black text-3xl sm:text-5xl text-white mb-3">
+          <h2 class="font-display font-bold text-2xl sm:text-4xl text-white mb-3">
             Draft Your Design on MockGen
           </h2>
           <p class="font-body text-base text-neutral-400 max-w-xl">
@@ -430,28 +439,46 @@ const faqs = [
   }
 
   function initMockgenCurrency() {
-    const buttons = document.querySelectorAll('.mockgen-currency-btn');
+    const container = document.getElementById('mockgen-currency-container');
+    const indicator = document.getElementById('mockgen-currency-indicator');
+    const buttons = document.querySelectorAll('.mockgen-currency-btn') as NodeListOf<HTMLButtonElement>;
     const prices = document.querySelectorAll<HTMLElement>('.mockgen-plan-price');
     const billings = document.querySelectorAll<HTMLElement>('.mockgen-plan-billing');
+
+    function positionIndicator(targetBtn: HTMLElement) {
+      if (!indicator || !targetBtn) return;
+      indicator.style.left = `${targetBtn.offsetLeft}px`;
+      indicator.style.width = `${targetBtn.offsetWidth}px`;
+    }
 
     function updateCurrency(curr: 'usd' | 'inr', isUserAction = false) {
       buttons.forEach((btn) => {
         if (btn.getAttribute('data-currency') === curr) {
-          btn.className = 'mockgen-currency-btn px-4 py-1.5 rounded-md transition-all bg-[#FF5500] text-black font-bold cursor-pointer shadow-sm';
+          btn.classList.remove('text-neutral-400');
+          btn.classList.add('text-black', 'font-bold');
+          positionIndicator(btn);
         } else {
-          btn.className = 'mockgen-currency-btn px-4 py-1.5 rounded-md transition-all text-neutral-400 hover:text-white cursor-pointer';
+          btn.classList.remove('text-black', 'font-bold');
+          btn.classList.add('text-neutral-400');
         }
       });
 
       prices.forEach((el) => {
-        const val = curr === 'inr' ? el.getAttribute('data-inr') : el.getAttribute('data-usd');
-        if (val) el.textContent = val;
+        el.style.opacity = '0.3';
       });
 
-      billings.forEach((el) => {
-        const val = curr === 'inr' ? el.getAttribute('data-inr') : el.getAttribute('data-usd');
-        if (val) el.textContent = val;
-      });
+      setTimeout(() => {
+        prices.forEach((el) => {
+          const val = curr === 'inr' ? el.getAttribute('data-inr') : el.getAttribute('data-usd');
+          if (val) el.textContent = val;
+          el.style.opacity = '1';
+        });
+
+        billings.forEach((el) => {
+          const val = curr === 'inr' ? el.getAttribute('data-inr') : el.getAttribute('data-usd');
+          if (val) el.textContent = val;
+        });
+      }, 100);
 
       try {
         localStorage.setItem('othr_currency', curr);
@@ -469,12 +496,17 @@ const faqs = [
       });
     });
 
+    window.addEventListener('resize', () => {
+      const curActive = container?.querySelector('.mockgen-currency-btn.text-black') as HTMLElement;
+      if (curActive) positionIndicator(curActive);
+    }, { passive: true });
+
     try {
       const saved = localStorage.getItem('othr_currency');
       const active = saved === 'inr' ? 'inr' : 'usd';
-      updateCurrency(active, false);
+      requestAnimationFrame(() => updateCurrency(active, false));
     } catch (e) {
-      updateCurrency('usd', false);
+      requestAnimationFrame(() => updateCurrency('usd', false));
     }
   }
 

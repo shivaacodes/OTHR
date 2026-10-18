@@ -20,7 +20,7 @@ const projectTypes = [
           
           <!-- Heading -->
           <div class="pb-1">
-            <h3 class="font-display font-black text-2xl text-white tracking-tight">
+            <h3 class="font-display font-semibold text-xl text-white tracking-tight">
               Start a Project
             </h3>
           </div>
@@ -34,7 +34,7 @@ const projectTypes = [
               {projectTypes.map((type, idx) => (
                 <button
                   type="button"
-                  class={`hero-inquiry-pill px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  class={`hero-inquiry-pill px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 cursor-pointer ${
                     idx === 0
                       ? 'bg-[#C6FF3D] text-black shadow-sm'
                       : 'bg-neutral-950 text-neutral-400 hover:text-white border border-neutral-800'
@@ -153,7 +153,7 @@ const projectTypes = [
         
         <!-- Header Strip Above Card -->
         <div class="flex items-center justify-between pb-1">
-          <h2 class="font-display font-black text-2xl text-white">
+          <h2 class="font-display font-semibold text-xl text-white">
             Original Software
           </h2>
 
@@ -190,7 +190,7 @@ const projectTypes = [
 
           <!-- Title & Subtitle Below Media (Directly on Neon Orange Surface) -->
           <div class="pt-3 pb-1 px-1">
-            <h3 class="font-display font-black text-lg sm:text-xl lg:text-2xl text-black tracking-tight leading-snug">
+            <h3 class="font-display font-bold text-base sm:text-lg lg:text-xl text-black tracking-tight leading-snug">
               MockGen: AI Generated 3D Mockups Ready for Print
             </h3>
             <div class="font-body text-xs sm:text-sm text-black/80 font-semibold mt-0.5">

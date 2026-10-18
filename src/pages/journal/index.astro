@@ -84,7 +84,7 @@ const allTags = Array.from(new Set(allArticles.flatMap((a) => a.data.tags)));
               <span class="text-xs text-neutral-500 font-medium">• {featuredArticle.data.readingTime}</span>
             </div>
 
-            <h2 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight hover:text-[#C6FF3D] transition-colors leading-[1.05]">
+            <h2 class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight hover:text-[#C6FF3D] transition-colors leading-tight">
               <a href={`/journal/${featuredArticle.id}`}>
                 {featuredArticle.data.title}
               </a>

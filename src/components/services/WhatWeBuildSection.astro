@@ -46,25 +46,34 @@ const services = [
       <div class="font-mono text-xs font-bold text-[#C6FF3D] uppercase tracking-wider mb-2">
         What We Build
       </div>
-      <h2 class="font-display font-black text-3xl sm:text-5xl text-white tracking-tight mb-4">
+      <h2 class="font-display font-bold text-2xl sm:text-4xl text-white tracking-tight mb-3">
         Three focused disciplines.
       </h2>
       <p class="font-body text-base text-neutral-400 max-w-xl mx-auto">
         No 50-page agency menus. We deliver focused technical interventions designed for speed and real business utility.
       </p>
 
-      <!-- Currency Switcher -->
-      <div class="inline-flex items-center p-1 bg-neutral-900 border border-neutral-800 rounded-lg text-xs font-semibold mt-6 shadow-sm">
+      <!-- Framer-Style Sliding Currency Switcher -->
+      <div
+        id="what-currency-container"
+        class="relative inline-flex items-center p-1 bg-neutral-950 border border-neutral-800 rounded-lg text-xs font-semibold mt-6 shadow-sm select-none"
+      >
+        <!-- Sliding active pill with Framer-style spring curve -->
+        <span
+          id="what-currency-indicator"
+          class="absolute top-1 bottom-1 rounded-md bg-[#C6FF3D] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-sm pointer-events-none"
+        ></span>
+
         <button
           type="button"
-          class="what-currency-btn px-4 py-1.5 rounded-md transition-all bg-[#C6FF3D] text-black font-bold cursor-pointer"
+          class="what-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-black font-bold cursor-pointer"
           data-currency="usd"
         >
           USD ($)
         </button>
         <button
           type="button"
-          class="what-currency-btn px-4 py-1.5 rounded-md transition-all text-neutral-400 hover:text-white cursor-pointer"
+          class="what-currency-btn relative z-10 px-4 py-1.5 rounded-md transition-colors duration-200 text-neutral-400 hover:text-white cursor-pointer"
           data-currency="inr"
         >
           INR (₹)
@@ -88,7 +97,7 @@ const services = [
             </div>
 
             <!-- Title -->
-            <h3 class="font-display font-bold text-2xl text-white group-hover:text-[#C6FF3D] transition-colors mb-3">
+            <h3 class="font-display font-bold text-xl text-white group-hover:text-[#C6FF3D] transition-colors mb-2.5">
               {svc.title}
             </h3>
 
@@ -118,9 +127,9 @@ const services = [
           <div class="pt-6 border-t border-neutral-900 flex items-center justify-between">
             <div>
               <div class="text-[10px] text-neutral-500 uppercase tracking-wider font-mono">Indicative Guide</div>
-              <div class="font-display font-bold text-base sm:text-lg text-white">
-                <span class="currency-val-usd">{svc.priceUSD}</span>
-                <span class="currency-val-inr hidden">{svc.priceINR}</span>
+              <div class="font-display font-semibold text-base sm:text-lg text-white price-wrapper transition-opacity duration-200">
+                <span class="currency-val-usd transition-all duration-200">{svc.priceUSD}</span>
+                <span class="currency-val-inr transition-all duration-200 hidden">{svc.priceINR}</span>
               </div>
             </div>
 
@@ -141,29 +150,63 @@ const services = [
 
 <script>
   function initWhatCurrency() {
-    const buttons = document.querySelectorAll('.what-currency-btn');
+    const container = document.getElementById('what-currency-container');
+    const indicator = document.getElementById('what-currency-indicator');
+    const buttons = document.querySelectorAll('.what-currency-btn') as NodeListOf<HTMLButtonElement>;
     const usdEls = document.querySelectorAll('.currency-val-usd');
     const inrEls = document.querySelectorAll('.currency-val-inr');
+    const priceWrappers = document.querySelectorAll('.price-wrapper');
+
+    if (!container || !indicator || buttons.length === 0) return;
+
+    function positionIndicator(targetBtn: HTMLElement) {
+      if (!indicator) return;
+      indicator.style.left = `${targetBtn.offsetLeft}px`;
+      indicator.style.width = `${targetBtn.offsetWidth}px`;
+    }
+
+    // Set initial position
+    const activeBtn = container.querySelector('.what-currency-btn.text-black') as HTMLElement || buttons[0];
+    if (activeBtn) {
+      // Small timeout to allow layout to settle
+      requestAnimationFrame(() => positionIndicator(activeBtn));
+    }
 
     buttons.forEach((btn) => {
       btn.addEventListener('click', () => {
         const curr = btn.getAttribute('data-currency');
+        
+        // Move sliding indicator
+        positionIndicator(btn);
+
+        // Update button text classes
         buttons.forEach((b) => {
-          b.classList.remove('bg-[#C6FF3D]', 'text-black', 'font-bold');
+          b.classList.remove('text-black', 'font-bold');
           b.classList.add('text-neutral-400');
         });
         btn.classList.remove('text-neutral-400');
-        btn.classList.add('bg-[#C6FF3D]', 'text-black', 'font-bold');
+        btn.classList.add('text-black', 'font-bold');
 
-        if (curr === 'inr') {
-          usdEls.forEach((el) => el.classList.add('hidden'));
-          inrEls.forEach((el) => el.classList.remove('hidden'));
-        } else {
-          usdEls.forEach((el) => el.classList.remove('hidden'));
-          inrEls.forEach((el) => el.classList.add('hidden'));
-        }
+        // Smooth price crossfade
+        priceWrappers.forEach((pw) => pw.classList.add('opacity-40'));
+
+        setTimeout(() => {
+          if (curr === 'inr') {
+            usdEls.forEach((el) => el.classList.add('hidden'));
+            inrEls.forEach((el) => el.classList.remove('hidden'));
+          } else {
+            usdEls.forEach((el) => el.classList.remove('hidden'));
+            inrEls.forEach((el) => el.classList.add('hidden'));
+          }
+          priceWrappers.forEach((pw) => pw.classList.remove('opacity-40'));
+        }, 120);
       });
     });
+
+    window.addEventListener('resize', () => {
+      const curActive = container.querySelector('.what-currency-btn.text-black') as HTMLElement;
+      if (curActive) positionIndicator(curActive);
+    }, { passive: true });
   }
 
   initWhatCurrency();
