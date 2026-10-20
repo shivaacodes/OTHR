@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  variant?: 'lime' | 'muted' | 'outline' | 'alert' | 'orange' | 'yellow';
+  variant?: 'lime' | 'blue' | 'primary' | 'muted' | 'outline' | 'alert' | 'orange' | 'yellow';
   size?: 'sm' | 'md';
   class?: string;
   dot?: boolean;
@@ -9,12 +9,14 @@ export interface Props {
 const { variant = 'muted', size = 'sm', class: className = '', dot = false } = Astro.props;
 
 const variantStyles = {
-  lime: 'bg-[#C6FF3D]/15 text-[#C6FF3D] border-[#C6FF3D]/30',
-  muted: 'bg-neutral-900 text-neutral-300 border-neutral-800',
-  outline: 'bg-transparent text-neutral-400 border-neutral-800',
-  alert: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+  primary: 'bg-[#0B3C85]/10 text-[#0B3C85] border-[#0B3C85]/25',
+  lime: 'bg-[#0B3C85]/10 text-[#0B3C85] border-[#0B3C85]/25',
+  blue: 'bg-[#0B3C85]/10 text-[#0B3C85] border-[#0B3C85]/25',
+  muted: 'bg-[#EDE9DF] text-neutral-700 border-[#D1CABE]',
+  outline: 'bg-transparent text-neutral-600 border-[#D1CABE]',
+  alert: 'bg-amber-500/15 text-amber-700 border-amber-500/30',
   orange: 'bg-[#FF5500]/15 text-[#FF5500] border-[#FF5500]/40',
-  yellow: 'bg-[#FFE500]/15 text-[#FFE500] border-[#FFE500]/40'
+  yellow: 'bg-[#FFE500]/25 text-amber-900 border-amber-400/40'
 };
 
 const sizeStyles = {
@@ -25,7 +27,7 @@ const sizeStyles = {
 
 <span class={`inline-flex items-center gap-1.5 font-body font-semibold rounded-full border ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}>
   {dot && (
-    <span class={`w-1.5 h-1.5 rounded-full ${variant === 'lime' ? 'bg-[#C6FF3D] shadow-[0_0_8px_#C6FF3D]' : variant === 'yellow' ? 'bg-[#FFE500] shadow-[0_0_8px_#FFE500]' : variant === 'orange' ? 'bg-[#FF5500] shadow-[0_0_8px_#FF5500]' : 'bg-current'}`} />
+    <span class={`w-1.5 h-1.5 rounded-full ${variant === 'primary' || variant === 'lime' || variant === 'blue' ? 'bg-[#0B3C85]' : variant === 'yellow' ? 'bg-[#FFE500]' : variant === 'orange' ? 'bg-[#FF5500]' : 'bg-current'}`} />
   )}
   <slot />
 </span>

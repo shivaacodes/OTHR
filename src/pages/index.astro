@@ -1,28 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/hero/Hero.astro';
-import ProductSection from '../components/products/ProductSection.astro';
-import WhatWeBuildSection from '../components/services/WhatWeBuildSection.astro';
-import FounderSection from '../components/studio/FounderSection.astro';
-import LabPreviewSection from '../components/lab/LabPreviewSection.astro';
+import TrustSection from '../components/home/TrustSection.astro';
+import ServicesSection from '../components/home/ServicesSection.astro';
+import PricingSection from '../components/home/PricingSection.astro';
+import FaqSection from '../components/home/FaqSection.astro';
 ---
 
 <BaseLayout
-  title="OTHR | Independent Creative Engineering Studio // Web Flagships & Software Systems"
-  description="Websites, custom software, and automation for businesses that want better. Founded by Shiva Sajay in Kochi, India."
+  title="Nira Studio | Thoughtful Websites. Smarter Business Software."
+  description="Websites, custom software, and automation for small businesses and growing teams that want better."
 >
-  <!-- 1. Hero: Dominant typography + Interactive dots + Clear CTAs -->
+  <!-- 1. Hero: What we build and who we help -->
   <Hero />
 
-  <!-- 2. Left: Project Inquiry Card | Right: Compact Hex-Style MockGen Product Card -->
-  <ProductSection />
+  <!-- 2. Trust: Deep Blue (#0B3C85), Cream Text (#F5F2EB) -->
+  <TrustSection />
 
-  <!-- 3. What We Build: Three concise service categories with clear examples & pricing -->
-  <WhatWeBuildSection />
+  <!-- 3. Services: 3 Core launch offerings in everyday language -->
+  <ServicesSection />
 
-  <!-- 4. The Person Behind OTHR: Genuine founder introduction & direct trust -->
-  <FounderSection />
+  <!-- 4. Pricing: Simple, transparent starting packages -->
+  <PricingSection />
 
-  <!-- 5. Creative Technology: The Lab Preview -->
-  <LabPreviewSection />
+  <!-- 5. FAQs: Crisp underlined accordion with top-right inclined arrows -->
+  <FaqSection />
 </BaseLayout>

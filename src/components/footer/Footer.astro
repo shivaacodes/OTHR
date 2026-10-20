@@ -2,69 +2,83 @@
 import Icon from '../ui/Icon.astro';
 
 const navLinks = [
-  { href: '/products', label: 'Products' },
-  { href: '/services', label: 'Services' },
-  { href: '/studio', label: 'Studio' },
-  { href: '/contact', label: 'Get in touch' }
+  { href: '/#services', targetId: 'services', label: 'Services' },
+  { href: '/#pricing', targetId: 'pricing', label: 'Pricing' },
+  { href: '/#faq', targetId: 'faq', label: 'FAQs' },
+  { href: '/start', label: 'Enquire' }
 ];
 ---
 
-<footer class="bg-black border-t border-neutral-900 text-neutral-400 py-12 relative">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+<footer class="bg-[#0B3C85] text-[#F5F2EB] border-t border-white/10 py-10 sm:py-12 relative" id="footer">
+  <!-- Bottom Overscroll Floor (Guarantees solid blue background below the footer on rubber-band bounce) -->
+  <div class="absolute top-full left-0 right-0 h-[100vh] bg-[#0B3C85] pointer-events-none -z-10" aria-hidden="true"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8 pb-8 border-b border-white/10">
       
-      <!-- Brand & Direct Email -->
+      <!-- Brand & Coordinates -->
       <div class="space-y-2">
-        <a href="/" class="flex items-center gap-3 group focus:outline-none" aria-label="OTHR Homepage">
+        <a href="/" class="flex items-center gap-2.5 group focus:outline-none" aria-label="Nira Studio">
           <img
-            src="/logo-mark.png"
-            alt="OTHR Logo"
-            class="h-7 w-auto object-contain transition-transform group-hover:scale-105"
-            width="46"
-            height="26"
+            src="/nira-studio.png"
+            alt="Nira Studio Logo"
+            class="h-7 w-auto object-contain brightness-0 invert transition-transform group-hover:scale-105"
+            width="134"
+            height="117"
           />
-          <span class="font-display font-bold text-xl tracking-tight text-white group-hover:text-[#C6FF3D] transition-colors">
-            OTHR
+          <span class="font-display font-bold text-xl sm:text-2xl tracking-tight text-[#F5F2EB]">
+            Nira Studio
           </span>
         </a>
-        <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-sm">
+        <p class="text-xs text-[#F5F2EB]/70 font-body max-w-sm leading-relaxed">
+          Thoughtful websites. Smarter business software. Built for businesses that want better.
+        </p>
+        <div class="flex items-center gap-2.5 text-xs pt-0.5">
           <a
             href="mailto:shivasajay23@gmail.com"
-            class="text-neutral-400 hover:text-[#C6FF3D] transition-colors font-semibold"
+            class="text-[#F5F2EB]/90 hover:text-white transition-colors font-medium"
           >
             shivasajay23@gmail.com
           </a>
-          <span class="hidden sm:inline text-neutral-700">•</span>
+          <span class="text-[#F5F2EB]/30">•</span>
           <a
             href="tel:+919995228904"
-            class="text-neutral-500 hover:text-[#C6FF3D] transition-colors font-mono text-xs sm:text-sm"
+            class="text-[#F5F2EB]/80 hover:text-white transition-colors font-mono"
           >
             +91 99952 28904
           </a>
         </div>
       </div>
 
-      <!-- Navigation & Socials -->
-      <div class="flex flex-wrap items-center gap-6 sm:gap-8">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="text-sm font-semibold text-neutral-400 hover:text-white transition-colors"
-          >
-            {link.label}
-          </a>
-        ))}
+      <!-- Navigation & X Handle -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-7">
+        <div class="flex flex-wrap items-center gap-4 sm:gap-5">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              data-scroll-to={link.targetId}
+              class="text-xs sm:text-sm font-semibold text-[#F5F2EB]/80 hover:text-white transition-colors cursor-pointer"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
         <a
-          href="https://x.com/othrbuilds"
+          href="https://x.com/NiraaStudio"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-sm font-semibold text-[#C6FF3D] hover:underline flex items-center gap-1"
+          class="text-xs font-bold text-[#F5F2EB] bg-white/10 hover:bg-white/20 border border-white/15 px-3 py-1 rounded-full flex items-center gap-1 transition-colors"
         >
-          <span>@othrbuilds</span>
-          <Icon name="ArrowUpRight" size={13} />
+          <span>@NiraaStudio</span>
+          <Icon name="ArrowUpRight" size={12} />
         </a>
       </div>
 
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-[#F5F2EB]/50">
+      <div>© {new Date().getFullYear()} Nira Studio. All rights reserved.</div>
+      <div>Kochi, India</div>
     </div>
   </div>
 </footer>

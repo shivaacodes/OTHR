@@ -1,0 +1,105 @@
+---
+const services = [
+  {
+    number: '01',
+    category: 'Digital Presence',
+    title: 'Website Design & Development',
+    tagline: 'Professional business websites, hospitality portals, and landing pages.',
+    description: 'Fast, credible websites engineered for business owners who want real customer inquiries rather than digital vanity. Optimized to load in under a second on mobile and convert visitors directly to WhatsApp.',
+    deliverables: [
+      'Responsive, tactile mobile-first architecture',
+      'Instant 1-tap WhatsApp lead conversion integration',
+      'Technical SEO schemas, OpenGraph & privacy analytics',
+      'Sub-second Cloudflare global edge deployment',
+      'Two rounds of revisions included'
+    ]
+  },
+  {
+    number: '02',
+    category: 'Custom Software',
+    title: 'Custom Web Applications',
+    tagline: 'Internal dashboards, staff portals, lightweight CRMs, and admin tools.',
+    description: 'Bespoke operational software built to replace spreadsheet chaos. Tailored to your specific team workflows and business rules without recurring per-seat SaaS license fees.',
+    deliverables: [
+      'Role-based access control & secure staff authentication',
+      'Relational PostgreSQL database architecture',
+      'Custom operational dashboards & daily workflow tools',
+      'Automated daily backups & data integrity checks',
+      'Fast, intuitive interface designed for daily staff speed'
+    ]
+  },
+  {
+    number: '03',
+    category: 'Workflow Automation',
+    title: 'Business Automation & Integrations',
+    tagline: 'Automated reports, spreadsheet sync, PDF generation, and notifications.',
+    description: 'Targeted engineering solutions that eliminate repetitive manual data entry, connect existing business tools, and prevent costly human operational errors.',
+    deliverables: [
+      'Automated batch payslip, invoice, & report pipelines',
+      'WhatsApp & Email API automated notification dispatches',
+      'Real-time spreadsheet & accounting synchronization',
+      'Deterministic retry queues with zero dropped tasks',
+      'Background daemon workers running 24/7 reliably'
+    ]
+  }
+];
+---
+
+<section class="py-12 sm:py-20 lg:py-32 bg-[#F5F2EB]" id="services">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Clean Minimal Heading Centered -->
+    <div class="mb-8 sm:mb-14 lg:mb-20 text-center max-w-2xl mx-auto" data-reveal data-y="16">
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-[#0D111C] tracking-tight leading-tight">
+        Services
+      </h2>
+    </div>
+
+    <!-- Editorial Architectural Manifest (Spacious, Crisp Grid) -->
+    <div class="border-y border-[#D1CABE]">
+      <div class="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-[#D1CABE]" data-reveal-group>
+        {services.map((svc) => (
+          <div class="py-8 sm:py-12 lg:py-16 px-0 sm:px-6 lg:px-8 xl:px-10 first:lg:pl-0 last:lg:pr-0 flex flex-col justify-between" data-reveal-item>
+            <div>
+              <!-- Category & Number Header -->
+              <div class="flex items-center justify-between mb-5 pb-3 sm:mb-8 sm:pb-4 border-b border-[#D1CABE]/60">
+                <span class="font-mono text-xs font-bold text-[#0B3C85] uppercase tracking-widest">
+                  {svc.number} / {svc.category}
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-[#0D111C] mb-2 sm:mb-3 leading-snug">
+                {svc.title}
+              </h3>
+
+              <!-- Tagline -->
+              <p class="font-body text-sm sm:text-base font-semibold text-[#0B3C85] leading-snug mb-3 sm:mb-4">
+                {svc.tagline}
+              </p>
+
+              <!-- Description -->
+              <p class="font-body text-sm text-neutral-600 leading-relaxed mb-5 sm:mb-8">
+                {svc.description}
+              </p>
+
+              <!-- Deliverables (Clean Typographic Manifest) -->
+              <div class="space-y-2.5 sm:space-y-3 pt-4 sm:pt-6 border-t border-[#D1CABE]/60">
+                <div class="text-xs font-mono font-bold text-neutral-500 uppercase tracking-wider mb-2.5 sm:mb-3">
+                  Scope & Deliverables:
+                </div>
+                {svc.deliverables.map((del) => (
+                  <div class="flex items-start gap-2.5 sm:gap-3 text-sm text-neutral-700 leading-snug">
+                    <span class="text-[#0B3C85] font-bold mt-0.5 select-none text-xs">✓</span>
+                    <span>{del}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

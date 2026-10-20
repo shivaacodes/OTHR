@@ -7,6 +7,7 @@ export const GET: APIRoute = async () => {
 
   const staticPages = [
     '',
+    '/start',
     '/products',
     '/services',
     '/lab',
@@ -29,7 +30,7 @@ ${allUrls
     <loc>${siteConfig.url}${url}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${url === '' ? 'daily' : 'weekly'}</changefreq>
-    <priority>${url === '' ? '1.0' : (url.startsWith('/services') || url.startsWith('/products') || url.startsWith('/contact')) ? '0.9' : '0.7'}</priority>
+    <priority>${url === '' ? '1.0' : (url.startsWith('/start') || url.startsWith('/services') || url.startsWith('/products') || url.startsWith('/contact')) ? '0.9' : '0.7'}</priority>
   </url>`
   )
   .join('\n')}

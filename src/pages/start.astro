@@ -1,0 +1,522 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/ui/Icon.astro';
+
+const serviceOptions = [
+  {
+    id: 'starter-website',
+    title: 'Starter Website',
+    price: '₹6,999+',
+    scope: '1–3 pages, mobile-first, WhatsApp lead integration'
+  },
+  {
+    id: 'business-website',
+    title: 'Business Website',
+    price: '₹14,999+',
+    scope: '4–7 pages, bespoke brand design, SEO & analytics'
+  },
+  {
+    id: 'automation',
+    title: 'Business Automation',
+    price: '₹7,999+',
+    scope: 'Excel/CSV reporting, PDF generation, API webhooks'
+  },
+  {
+    id: 'custom-software',
+    title: 'Custom Web Application',
+    price: '₹24,999+',
+    scope: 'Internal dashboards, staff portals, PostgreSQL'
+  },
+  {
+    id: 'other',
+    title: 'Consulting / Discovery',
+    price: 'Custom Scope',
+    scope: 'Architecture audit, technical advisory, or complex scoping'
+  }
+];
+
+const timelineOptions = [
+  'Urgent (1–2 wks)',
+  'Standard (2–4 wks)',
+  'Flexible / Planning'
+];
+
+const budgetOptions = [
+  '₹6,999 – ₹15,000',
+  '₹15,000 – ₹30,000',
+  '₹30,000 – ₹60,000+',
+  'Consultation'
+];
+---
+
+<BaseLayout
+  title="Project Enquiry — Nira Studio"
+  description="Direct collaboration with Shiva Sajay. Replies within 24 hours. Crisp scoping, fixed pricing, and fast engineering."
+  minimalNav={true}
+>
+  <div class="min-h-screen bg-[#F5F2EB] py-8 sm:py-16 lg:py-20">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      
+      <!-- Minimal Editorial Header -->
+      <div class="mb-8 sm:mb-14" data-reveal data-y="16">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-mono font-bold text-[#0B3C85] bg-[#EDE9DF] px-2.5 py-1 rounded-md uppercase tracking-wider">
+            Project Enquiry
+          </span>
+          <span class="text-xs font-mono text-neutral-500">
+            • 24h direct reply
+          </span>
+        </div>
+
+        <h1 class="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#0D111C] tracking-tight leading-tight mb-3 sm:mb-4">
+          Tell us about what you want to build.
+        </h1>
+
+        <p class="font-body text-sm sm:text-base text-neutral-600 leading-relaxed">
+          Direct collaboration with the engineer writing your code. No account managers or agency overhead. Fill out the brief below or chat directly on <a href="https://wa.me/919995228904" target="_blank" rel="noopener noreferrer" class="font-semibold text-[#0B3C85] underline underline-offset-4 hover:text-[#0D111C]">WhatsApp (+91 99952 28904)</a>.
+        </p>
+      </div>
+
+      <!-- Form Container (Direct canvas layout, zero cards-in-cards) -->
+      <div class="relative" id="form-container" data-reveal data-y="16" data-delay="0.1">
+        <form id="start-project-form" class="space-y-8 sm:space-y-12">
+          
+          <!-- Section 01: Contact Information -->
+          <div class="pt-2">
+            <div class="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-[#D1CABE] mb-4 sm:mb-6">
+              <span class="text-xs font-mono font-bold text-[#0B3C85] uppercase tracking-widest">
+                01 / Your Information
+              </span>
+              <span class="text-[11px] font-mono text-neutral-500">
+                * Required
+              </span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="client-name" class="block text-xs font-bold text-[#0D111C] mb-1.5">
+                  Full Name <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="client-name"
+                  name="name"
+                  required
+                  placeholder="e.g. Rahul Sharma"
+                  class="w-full px-4 py-3 bg-[#EDE9DF]/60 focus:bg-white border border-[#D1CABE] focus:border-[#0B3C85] rounded-xl text-sm text-[#0D111C] focus:outline-none transition-colors"
+                />
+              </div>
+
+              <div>
+                <label for="client-phone" class="block text-xs font-bold text-[#0D111C] mb-1.5">
+                  WhatsApp / Phone <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="client-phone"
+                  name="phone"
+                  required
+                  placeholder="+91 98765 43210"
+                  class="w-full px-4 py-3 bg-[#EDE9DF]/60 focus:bg-white border border-[#D1CABE] focus:border-[#0B3C85] rounded-xl text-sm text-[#0D111C] focus:outline-none transition-colors font-mono"
+                />
+              </div>
+
+              <div>
+                <label for="client-email" class="block text-xs font-bold text-[#0D111C] mb-1.5">
+                  Email Address <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="client-email"
+                  name="email"
+                  required
+                  placeholder="name@company.com"
+                  class="w-full px-4 py-3 bg-[#EDE9DF]/60 focus:bg-white border border-[#D1CABE] focus:border-[#0B3C85] rounded-xl text-sm text-[#0D111C] focus:outline-none transition-colors"
+                />
+              </div>
+
+              <div>
+                <label for="client-company" class="block text-xs font-bold text-[#0D111C] mb-1.5">
+                  Business / Brand Name <span class="text-neutral-400 font-normal">(Optional)</span>
+                </label>
+                <input
+                  type="text"
+                  id="client-company"
+                  name="company"
+                  placeholder="e.g. Palm Grove Resort"
+                  class="w-full px-4 py-3 bg-[#EDE9DF]/60 focus:bg-white border border-[#D1CABE] focus:border-[#0B3C85] rounded-xl text-sm text-[#0D111C] focus:outline-none transition-colors"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 02: Select Service -->
+          <div>
+            <div class="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-[#D1CABE] mb-4 sm:mb-6">
+              <span class="text-xs font-mono font-bold text-[#0B3C85] uppercase tracking-widest">
+                02 / Selected Service
+              </span>
+              <span class="text-[11px] font-mono text-neutral-500">
+                Tap to pick
+              </span>
+            </div>
+
+            <div class="space-y-2.5" id="service-options-group">
+              {serviceOptions.map((opt, idx) => (
+                <div
+                  data-service-id={opt.id}
+                  class={`service-card p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer select-none flex flex-col sm:flex-row sm:items-center justify-between gap-2 ${
+                    idx === 1
+                      ? 'border-[#0B3C85] bg-[#EDE9DF] ring-1 ring-[#0B3C85]'
+                      : 'border-[#D1CABE] bg-[#EDE9DF]/40 hover:bg-[#EDE9DF] hover:border-[#0B3C85]/50'
+                  }`}
+                >
+                  <div class="space-y-0.5">
+                    <div class="font-display font-bold text-sm text-[#0D111C]">
+                      {opt.title}
+                    </div>
+                    <p class="font-body text-xs text-neutral-600 leading-snug">
+                      {opt.scope}
+                    </p>
+                  </div>
+                  <span class="font-mono font-bold text-xs text-[#0B3C85] bg-white px-2.5 py-1 rounded-lg border border-[#D1CABE] self-start sm:self-auto flex-shrink-0">
+                    {opt.price}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <input type="hidden" name="selectedService" id="selected-service-input" value="business-website" />
+          </div>
+
+          <!-- Section 03: Timeline & Budget Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+            
+            <!-- Timeline -->
+            <div>
+              <label class="block text-xs font-bold text-[#0D111C] uppercase tracking-wider font-mono mb-3">
+                Target Timeline
+              </label>
+              <div class="space-y-2" id="timeline-group">
+                {timelineOptions.map((t, idx) => (
+                  <button
+                    type="button"
+                    data-timeline={t}
+                    class={`timeline-btn w-full px-3.5 py-2.5 text-left text-xs font-semibold rounded-xl border transition-all cursor-pointer ${
+                      idx === 1
+                        ? 'bg-[#0B3C85] text-[#F5F2EB] border-[#0B3C85]'
+                        : 'bg-[#EDE9DF]/50 text-[#0D111C] border-[#D1CABE] hover:border-[#0B3C85]'
+                    }`}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+              <input type="hidden" name="selectedTimeline" id="selected-timeline-input" value={timelineOptions[1]} />
+            </div>
+
+            <!-- Budget -->
+            <div>
+              <label class="block text-xs font-bold text-[#0D111C] uppercase tracking-wider font-mono mb-3">
+                Budget Range
+              </label>
+              <div class="space-y-2" id="budget-group">
+                {budgetOptions.map((b, idx) => (
+                  <button
+                    type="button"
+                    data-budget={b}
+                    class={`budget-btn w-full px-3.5 py-2.5 text-left text-xs font-semibold rounded-xl border transition-all cursor-pointer ${
+                      idx === 1
+                        ? 'bg-[#0B3C85] text-[#F5F2EB] border-[#0B3C85]'
+                        : 'bg-[#EDE9DF]/50 text-[#0D111C] border-[#D1CABE] hover:border-[#0B3C85]'
+                    }`}
+                  >
+                    {b}
+                  </button>
+                ))}
+              </div>
+              <input type="hidden" name="selectedBudget" id="selected-budget-input" value={budgetOptions[1]} />
+            </div>
+
+          </div>
+
+          <!-- Section 04: Project Details -->
+          <div>
+            <div class="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-[#D1CABE] mb-4 sm:mb-6">
+              <span class="text-xs font-mono font-bold text-[#0B3C85] uppercase tracking-widest">
+                03 / Project Details
+              </span>
+              <span class="text-[11px] font-mono text-neutral-500">
+                Tell us your goals
+              </span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label for="project-description" class="block text-xs font-bold text-[#0D111C] mb-1.5">
+                  Describe what you want to build <span class="text-red-500">*</span>
+                </label>
+                <textarea
+                  id="project-description"
+                  name="description"
+                  rows={4}
+                  required
+                  placeholder="Tell us about your business, the goals of this website or software, key pages/features, or manual spreadsheet tasks you'd like to automate..."
+                  class="w-full px-4 py-3 bg-[#EDE9DF]/60 focus:bg-white border border-[#D1CABE] focus:border-[#0B3C85] rounded-xl text-sm text-[#0D111C] focus:outline-none transition-colors resize-y leading-relaxed"
+                ></textarea>
+              </div>
+
+              <div>
+                <label for="reference-links" class="block text-xs font-bold text-[#0D111C] mb-1.5">
+                  Reference Websites or Current Links <span class="text-neutral-400 font-normal">(Optional)</span>
+                </label>
+                <input
+                  type="text"
+                  id="reference-links"
+                  name="referenceLinks"
+                  placeholder="e.g. yoursite.com or sites you admire"
+                  class="w-full px-4 py-3 bg-[#EDE9DF]/60 focus:bg-white border border-[#D1CABE] focus:border-[#0B3C85] rounded-xl text-sm text-[#0D111C] focus:outline-none transition-colors font-mono"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Action -->
+          <div class="pt-6 border-t border-[#D1CABE] space-y-4">
+            <button
+              type="submit"
+              id="submit-brief-btn"
+              class="w-full py-4 bg-[#0B3C85] hover:bg-[#082D64] text-[#F5F2EB] font-bold text-sm sm:text-base rounded-full transition-all shadow-sm active:scale-98 cursor-pointer flex items-center justify-center gap-2"
+            >
+              <span>Submit Project Brief</span>
+              <Icon name="ArrowUpRight" size={16} />
+            </button>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-neutral-500 font-body">
+              <div>Founder review within 24 hours. Your details remain 100% private.</div>
+              <a
+                href="https://wa.me/919995228904"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-semibold text-[#0B3C85] hover:underline"
+              >
+                Or chat on WhatsApp (+91 99952 28904) ↗
+              </a>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- Clean Success State (Replaces form in-place) -->
+        <div
+          id="success-overlay"
+          class="hidden bg-[#EDE9DF] border border-[#D1CABE] rounded-3xl p-8 sm:p-12 transition-all"
+        >
+          <div class="w-12 h-12 rounded-2xl bg-[#0B3C85] text-[#F5F2EB] flex items-center justify-center text-xl font-bold mb-6 shadow-sm">
+            ✓
+          </div>
+
+          <h3 class="font-display font-bold text-2xl sm:text-3xl text-[#0D111C] tracking-tight mb-2">
+            Project Brief Prepared!
+          </h3>
+
+          <p class="font-body text-sm text-neutral-600 leading-relaxed mb-6">
+            Your details are ready. You can fast-track this directly to Shiva via WhatsApp or Email for immediate review.
+          </p>
+
+          <div class="p-5 bg-[#F5F2EB] rounded-2xl border border-[#D1CABE] text-xs font-mono space-y-2 mb-8 text-[#0D111C]">
+            <div><strong>Service:</strong> <span id="summary-service">Business Website</span></div>
+            <div><strong>Name:</strong> <span id="summary-name">Client Name</span></div>
+            <div><strong>Phone:</strong> <span id="summary-phone">+91 00000 00000</span></div>
+            <div><strong>Budget:</strong> <span id="summary-budget">₹15,000 – ₹30,000</span></div>
+          </div>
+
+          <div class="space-y-3">
+            <a
+              id="success-whatsapp-btn"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-4 bg-[#25D366] hover:bg-[#1ebc57] text-white font-bold text-sm rounded-full transition-all shadow-sm active:scale-95 flex items-center justify-center gap-2 text-center cursor-pointer"
+            >
+              <span>Send via WhatsApp (+91 99952 28904)</span>
+              <Icon name="ArrowUpRight" size={16} />
+            </a>
+
+            <a
+              id="success-email-btn"
+              href="#"
+              class="w-full py-3.5 bg-[#0B3C85] hover:bg-[#082D64] text-[#F5F2EB] font-bold text-xs rounded-full transition-all shadow-sm active:scale-95 flex items-center justify-center gap-2 text-center cursor-pointer"
+            >
+              <span>Send via Email to Shiva</span>
+              <Icon name="ArrowUpRight" size={14} />
+            </a>
+
+            <button
+              type="button"
+              id="success-copy-btn"
+              class="w-full py-3 bg-[#F5F2EB] hover:bg-white border border-[#D1CABE] text-[#0D111C] font-semibold text-xs rounded-full transition-all cursor-pointer text-center"
+            >
+              <span id="success-copy-text">Copy Brief to Clipboard</span>
+            </button>
+
+            <a
+              href="/"
+              class="block text-center text-xs font-mono font-bold text-neutral-500 hover:text-[#0B3C85] transition-colors pt-4"
+            >
+              ← Return to homepage
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function initStartProjectForm() {
+    const form = document.getElementById('start-project-form') as HTMLFormElement | null;
+    const serviceCards = document.querySelectorAll('.service-card');
+    const selectedServiceInput = document.getElementById('selected-service-input') as HTMLInputElement | null;
+    const timelineButtons = document.querySelectorAll('.timeline-btn');
+    const selectedTimelineInput = document.getElementById('selected-timeline-input') as HTMLInputElement | null;
+    const budgetButtons = document.querySelectorAll('.budget-btn');
+    const selectedBudgetInput = document.getElementById('selected-budget-input') as HTMLInputElement | null;
+
+    const successOverlay = document.getElementById('success-overlay');
+    const summaryService = document.getElementById('summary-service');
+    const summaryName = document.getElementById('summary-name');
+    const summaryPhone = document.getElementById('summary-phone');
+    const summaryBudget = document.getElementById('summary-budget');
+    const successWhatsappBtn = document.getElementById('success-whatsapp-btn') as HTMLAnchorElement | null;
+    const successEmailBtn = document.getElementById('success-email-btn') as HTMLAnchorElement | null;
+    const successCopyBtn = document.getElementById('success-copy-btn');
+    const successCopyText = document.getElementById('success-copy-text');
+
+    // Auto-select from URL query params (e.g., ?service=starter-website or ?service=automation)
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = urlParams.get('service');
+    if (serviceParam) {
+      serviceCards.forEach((card) => {
+        const id = card.getAttribute('data-service-id');
+        if (id === serviceParam) {
+          serviceCards.forEach(c => {
+            c.classList.remove('border-[#0B3C85]', 'bg-[#EDE9DF]', 'ring-1', 'ring-[#0B3C85]');
+            c.classList.add('border-[#D1CABE]', 'bg-[#EDE9DF]/40');
+          });
+          card.classList.add('border-[#0B3C85]', 'bg-[#EDE9DF]', 'ring-1', 'ring-[#0B3C85]');
+          card.classList.remove('border-[#D1CABE]', 'bg-[#EDE9DF]/40');
+          if (selectedServiceInput) selectedServiceInput.value = id;
+        }
+      });
+    }
+
+    // Service selector clicks
+    serviceCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        serviceCards.forEach(c => {
+          c.classList.remove('border-[#0B3C85]', 'bg-[#EDE9DF]', 'ring-1', 'ring-[#0B3C85]');
+          c.classList.add('border-[#D1CABE]', 'bg-[#EDE9DF]/40');
+        });
+        card.classList.add('border-[#0B3C85]', 'bg-[#EDE9DF]', 'ring-1', 'ring-[#0B3C85]');
+        card.classList.remove('border-[#D1CABE]', 'bg-[#EDE9DF]/40');
+        const id = card.getAttribute('data-service-id') || 'business-website';
+        if (selectedServiceInput) selectedServiceInput.value = id;
+      });
+    });
+
+    // Timeline selector clicks
+    timelineButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        timelineButtons.forEach(b => {
+          b.classList.remove('bg-[#0B3C85]', 'text-[#F5F2EB]', 'border-[#0B3C85]');
+          b.classList.add('bg-[#EDE9DF]/50', 'text-[#0D111C]', 'border-[#D1CABE]');
+        });
+        btn.classList.add('bg-[#0B3C85]', 'text-[#F5F2EB]', 'border-[#0B3C85]');
+        btn.classList.remove('bg-[#EDE9DF]/50', 'text-[#0D111C]', 'border-[#D1CABE]');
+        const val = btn.getAttribute('data-timeline') || '';
+        if (selectedTimelineInput) selectedTimelineInput.value = val;
+      });
+    });
+
+    // Budget selector clicks
+    budgetButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        budgetButtons.forEach(b => {
+          b.classList.remove('bg-[#0B3C85]', 'text-[#F5F2EB]', 'border-[#0B3C85]');
+          b.classList.add('bg-[#EDE9DF]/50', 'text-[#0D111C]', 'border-[#D1CABE]');
+        });
+        btn.classList.add('bg-[#0B3C85]', 'text-[#F5F2EB]', 'border-[#0B3C85]');
+        btn.classList.remove('bg-[#EDE9DF]/50', 'text-[#0D111C]', 'border-[#D1CABE]');
+        const val = btn.getAttribute('data-budget') || '';
+        if (selectedBudgetInput) selectedBudgetInput.value = val;
+      });
+    });
+
+    // Form submission
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const name = (formData.get('name') as string) || '';
+        const phone = (formData.get('phone') as string) || '';
+        const email = (formData.get('email') as string) || '';
+        const company = (formData.get('company') as string) || 'N/A';
+        const service = (formData.get('selectedService') as string) || 'Website';
+        const timeline = (formData.get('selectedTimeline') as string) || 'Standard';
+        const budget = (formData.get('selectedBudget') as string) || 'Flexible';
+        const description = (formData.get('description') as string) || '';
+        const references = (formData.get('referenceLinks') as string) || 'None provided';
+
+        // Update summary view
+        if (summaryService) summaryService.textContent = service.replace(/-/g, ' ').toUpperCase();
+        if (summaryName) summaryName.textContent = name;
+        if (summaryPhone) summaryPhone.textContent = phone;
+        if (summaryBudget) summaryBudget.textContent = budget;
+
+        // Compose payload
+        const briefPayload = `*New Project Intake — Nira Studio*\n\n• *Name:* ${name}\n• *Phone / WhatsApp:* ${phone}\n• *Email:* ${email}\n• *Company:* ${company}\n• *Service:* ${service}\n• *Timeline:* ${timeline}\n• *Budget:* ${budget}\n\n*Project Details:*\n${description}\n\n*Reference Links:*\n${references}`;
+
+        // Hook up WhatsApp link
+        if (successWhatsappBtn) {
+          const encoded = encodeURIComponent(briefPayload);
+          successWhatsappBtn.href = `https://wa.me/919995228904?text=${encoded}`;
+        }
+
+        // Hook up Email link
+        if (successEmailBtn) {
+          const subject = encodeURIComponent(`Project Brief: ${service} — ${name}`);
+          const body = encodeURIComponent(briefPayload);
+          successEmailBtn.href = `mailto:shivasajay23@gmail.com?subject=${subject}&body=${body}`;
+        }
+
+        // Hook up copy brief button
+        if (successCopyBtn && successCopyText) {
+          successCopyBtn.onclick = async () => {
+            try {
+              await navigator.clipboard.writeText(briefPayload);
+              successCopyText.textContent = '✓ Brief Copied to Clipboard!';
+              setTimeout(() => {
+                successCopyText.textContent = 'Copy Brief to Clipboard';
+              }, 3000);
+            } catch (err) {
+              successCopyText.textContent = 'Copied!';
+            }
+          };
+        }
+
+        // Display success view
+        if (form && successOverlay) {
+          form.classList.add('hidden');
+          successOverlay.classList.remove('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    }
+  }
+
+  initStartProjectForm();
+  document.addEventListener('astro:page-load', initStartProjectForm);
+</script>

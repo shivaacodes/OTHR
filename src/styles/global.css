@@ -1,5 +1,99 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-manrope: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --color-canvas: #F5F2EB;
+  --color-cream: #F5F2EB;
+  --color-cream-deep: #EDE9DF;
+  --color-electric-blue: #0B3C85;
+  --color-mystic-blue: #0B3C85;
+  --color-ink: #0D111C;
+  --color-ink-muted: #555D6E;
+  --color-border-warm: #E2DDD1;
+}
+
+/* ==========================================================================
+   Manrope Font Family (Indian Type Foundry / Mikhail Sharanda)
+   Primary modern geometric typeface for OTHR
+   ========================================================================== */
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Variable.woff2') format('woff2-variations'),
+       url('/fonts/Manrope-Variable.woff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/fonts/Manrope-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope-Variable';
+  src: url('/fonts/Manrope-Variable.woff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+  font-style: normal;
+}
+
 /* ==========================================================================
    Panchang Font Family (Indian Type Foundry)
    Technical, wide, geometric display typeface for OTHR
@@ -55,45 +149,46 @@
 
 @layer base {
   :root {
-    --bg-primary: #000000;
-    --bg-surface: #0A0A0A;
-    --bg-surface-elevated: #121212;
-    --bg-card: #0E0E0E;
-    --border-subtle: #1A1A1A;
-    --border-medium: #262626;
-    --border-accent: rgba(198, 255, 61, 0.3);
+    --bg-primary: #F5F2EB;
+    --bg-surface: #EDE9DF;
+    --bg-surface-elevated: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --border-subtle: #E2DDD1;
+    --border-medium: #D1CABE;
+    --border-accent: rgba(7, 23, 76, 0.25);
 
-    --text-primary: #FFFFFF;
-    --text-secondary: #9E9E9E;
-    --text-muted: #555555;
+    --text-primary: #0D111C;
+    --text-secondary: #555D6E;
+    --text-muted: #828B9E;
 
-    --accent: #C6FF3D;
-    --accent-muted: rgba(198, 255, 61, 0.12);
-    --accent-glow: rgba(198, 255, 61, 0.35);
-    --accent-contrast: #000000;
+    --accent: #0B3C85;
+    --accent-muted: rgba(11, 60, 133, 0.08);
+    --accent-glow: rgba(11, 60, 133, 0.25);
+    --accent-contrast: #F5F2EB;
 
-    --font-display: 'Panchang', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: 'Inter', monospace;
   }
 
   [data-theme="deep-blue"] {
-    --bg-primary: #02040A;
-    --bg-surface: #070B14;
-    --bg-surface-elevated: #0E1524;
-    --bg-card: #090E1A;
-    --border-subtle: #151F33;
-    --border-medium: #1F2D4A;
-    --border-accent: rgba(56, 189, 248, 0.3);
+    --bg-primary: #0B3C85;
+    --bg-surface: #082D64;
+    --bg-surface-elevated: #0E4399;
+    --bg-card: #082D64;
+    --border-subtle: rgba(245, 242, 235, 0.15);
+    --border-medium: rgba(245, 242, 235, 0.25);
+    --border-accent: rgba(245, 242, 235, 0.4);
 
-    --text-primary: #FFFFFF;
-    --text-secondary: #94A3B8;
-    --text-muted: #475569;
+    --text-primary: #F5F2EB;
+    --text-secondary: #D8D4C8;
+    --text-muted: #ABA698;
 
-    --accent: #38BDF8;
-    --accent-muted: rgba(56, 189, 248, 0.14);
-    --accent-glow: rgba(56, 189, 248, 0.4);
-    --accent-contrast: #02040A;
+    --accent: #F5F2EB;
+    --accent-muted: rgba(245, 242, 235, 0.15);
+    --accent-glow: rgba(245, 242, 235, 0.35);
+    --accent-contrast: #0B3C85;
   }
 
   * {
@@ -101,17 +196,18 @@
   }
 
   html {
-    background-color: var(--bg-primary);
+    background-color: #0B3C85;
     color: var(--text-primary);
-    font-family: var(--font-body);
+    font-family: var(--font-primary);
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background-color: var(--bg-primary);
+    background-color: #0B3C85;
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
@@ -131,11 +227,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #000000;
+    background: #F5F2EB;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #222222;
+    background: #D1CABE;
     border-radius: 3px;
   }
 
@@ -145,6 +241,14 @@
 }
 
 /* Typography Utility Classes */
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-manrope {
+  font-family: 'Manrope', var(--font-primary);
+}
+
 .font-display {
   font-family: var(--font-display);
 }
@@ -161,14 +265,14 @@
   font-family: var(--font-mono);
 }
 
-/* Framer-style active toggle state: guaranteed pure black on lime/orange backgrounds */
+/* Framer-style active toggle state: guaranteed cream on electric blue backgrounds */
 [data-active="true"],
 .hero-inquiry-pill[data-active="true"],
 .what-currency-btn[data-active="true"],
 .service-currency-btn[data-active="true"],
 .mockgen-currency-btn[data-active="true"],
 .contact-type-pill[data-active="true"] {
-  color: #000000 !important;
+  color: #F5F2EB !important;
 }
 
 [data-active="true"]:hover,
@@ -177,7 +281,7 @@
 .service-currency-btn[data-active="true"]:hover,
 .mockgen-currency-btn[data-active="true"]:hover,
 .contact-type-pill[data-active="true"]:hover {
-  color: #000000 !important;
+  color: #F5F2EB !important;
 }
 
 /* Custom interactive accents and borders */
@@ -223,7 +327,7 @@
 
 /* Micro-interactions & Visual Effects */
 .glass-panel {
-  background: rgba(20, 26, 22, 0.7);
+  background: rgba(245, 242, 235, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);

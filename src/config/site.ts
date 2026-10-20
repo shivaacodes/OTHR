@@ -22,12 +22,12 @@ export interface IndicativePricing {
 }
 
 export const siteConfig = {
-  name: 'OTHR',
-  legalName: 'OTHR Engineering Studio',
-  tagline: 'Engineering high-performance software, digital flagships, and original products',
-  description: 'Independent creative engineering studio building web flagships, internal automation systems, and original software products.',
+  name: 'Nira Studio',
+  legalName: 'Nira Studio',
+  tagline: 'Thoughtful websites. Smarter business software.',
+  description: 'Independent digital studio by Shiva Sajay. Thoughtful websites, custom software, and automation for small businesses and growing teams.',
   category: 'Creative Engineering Studio',
-  url: import.meta.env.PUBLIC_SITE_URL || 'https://othr.shivasajay007.workers.dev',
+  url: import.meta.env.PUBLIC_SITE_URL || 'https://nirastudio.com',
   contactEmail: import.meta.env.CONTACT_EMAIL_TO || 'shivasajay23@gmail.com',
   contactPhone: '+91 9995228904',
   contactPhoneDisplay: '+91 99952 28904',
@@ -42,8 +42,8 @@ export const siteConfig = {
     {
       platform: 'x',
       label: 'X (Twitter)',
-      url: 'https://x.com/othrbuilds',
-      handle: '@othrbuilds'
+      url: 'https://x.com/NiraaStudio',
+      handle: '@NiraaStudio'
     },
     {
       platform: 'github',

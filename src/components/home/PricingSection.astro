@@ -1,0 +1,358 @@
+---
+import Icon from '../ui/Icon.astro';
+
+const anchorPlans = [
+  {
+    id: 'starter',
+    number: '01',
+    category: 'STARTER WEBSITE',
+    title: 'Starter Website',
+    badge: null,
+    priceINR: '₹6,999+',
+    priceUSD: '$85+',
+    tagline: 'For small businesses, resorts, and clinics establishing an immediate, high-credibility digital presence with 1-tap WhatsApp inquiry capture.',
+    timeline: '1–2 weeks sprint',
+    isPopular: false,
+    ctaText: 'Enquire for Starter',
+    ctaHref: '/start?service=starter-website',
+    included: [
+      'Up to 3 responsive, mobile-first pages',
+      'Tactile modern typography & brand layout',
+      'Instant 1-tap WhatsApp lead conversion integration',
+      'Global Cloudflare edge deployment (SSL included)',
+      'Two rounds of revisions included'
+    ],
+    excluded: [
+      'Domain billed directly at cost (₹800–₹1,200/yr)'
+    ]
+  },
+  {
+    id: 'business',
+    number: '02',
+    category: 'BUSINESS WEBSITE',
+    title: 'Business Website',
+    badge: 'Most Popular',
+    priceINR: '₹14,999+',
+    priceUSD: '$180+',
+    tagline: 'For growing businesses, boutique practices, and established brands needing bespoke conversion architecture and search indexing.',
+    timeline: '1–3 weeks sprint',
+    isPopular: true,
+    ctaText: 'Enquire for Business',
+    ctaHref: '/start?service=business-website',
+    included: [
+      'Up to 7 bespoke designed pages tailored to your brand',
+      'Custom conversion inquiry flow & instant WhatsApp routing',
+      'Technical SEO schemas, OpenGraph & social preview tags',
+      'Privacy-first analytics (zero cookie consent required)',
+      'Two rounds of revisions included'
+    ],
+    excluded: [
+      'Domain billed directly at cost (₹800–₹1,200/yr)'
+    ]
+  },
+  {
+    id: 'automation',
+    number: '03',
+    category: 'BUSINESS AUTOMATION',
+    title: 'Business Automation',
+    badge: null,
+    priceINR: '₹7,999+',
+    priceUSD: '$99+',
+    tagline: 'Eliminate repetitive manual data entry, spreadsheet chaos, and staff toil with deterministic background workers.',
+    timeline: '1–2 weeks sprint',
+    isPopular: false,
+    ctaText: 'Enquire for Automation',
+    ctaHref: '/start?service=automation',
+    included: [
+      'Automated Excel & CSV reporting pipelines',
+      'Automated batch PDF & invoice generation engines',
+      'WhatsApp Cloud API & Email notification workers',
+      'Deterministic retry queues with zero dropped tasks'
+    ],
+    excluded: [
+      'Third-party API usage (Meta WhatsApp) billed at cost'
+    ]
+  },
+  {
+    id: 'software',
+    number: '04',
+    category: 'CUSTOM WEB APPLICATION',
+    title: 'Custom Web Application',
+    badge: null,
+    priceINR: '₹24,999+',
+    priceUSD: '$300+',
+    tagline: 'Internal staff dashboards, inventory tools, lightweight CRMs, and admin portals built to replace fragile spreadsheet workflows.',
+    timeline: '2–4 weeks sprint',
+    isPopular: false,
+    ctaText: 'Enquire for Custom Software',
+    ctaHref: '/start?service=custom-software',
+    included: [
+      'Custom dashboards & role-based authentication',
+      'Relational PostgreSQL database architecture',
+      'Automated daily backups & data integrity checks',
+      'Zero recurring per-seat SaaS license fees'
+    ],
+    excluded: [
+      'Unlimited scope (fixed milestones & discovery applied)'
+    ]
+  }
+];
+
+const row1 = [anchorPlans[0], anchorPlans[1]];
+const row2 = [anchorPlans[2], anchorPlans[3]];
+---
+
+<section class="py-12 sm:py-20 lg:py-32 bg-[#F5F2EB]" id="pricing">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Clean Minimal Heading Centered with Currency Switcher -->
+    <div class="mb-8 sm:mb-14 lg:mb-20 text-center max-w-3xl mx-auto" data-reveal data-y="16">
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-[#0D111C] tracking-tight leading-tight mb-4 sm:mb-6">
+        Pricing
+      </h2>
+
+      <!-- Currency Switcher Toggle (Squircle Segmented Control) -->
+      <div
+        id="home-pricing-currency-container"
+        class="relative inline-flex items-center p-1 bg-[#EDE9DF] border border-[#D1CABE] rounded-xl text-xs font-semibold shadow-sm select-none"
+      >
+        <span
+          id="home-pricing-currency-indicator"
+          class="absolute top-1 bottom-1 rounded-lg bg-[#0B3C85] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-sm pointer-events-none"
+        ></span>
+
+        <button
+          type="button"
+          data-currency="inr"
+          data-active="true"
+          class="home-pricing-currency-btn relative z-10 px-4 py-1.5 rounded-lg transition-colors duration-200 !text-[#F5F2EB] font-bold cursor-pointer"
+        >
+          INR (₹)
+        </button>
+        <button
+          type="button"
+          data-currency="usd"
+          data-active="false"
+          class="home-pricing-currency-btn relative z-10 px-4 py-1.5 rounded-lg transition-colors duration-200 text-neutral-600 hover:text-[#0D111C] cursor-pointer"
+        >
+          USD ($)
+        </button>
+      </div>
+    </div>
+
+    <!-- Editorial Architectural Manifest (Spacious, Crisp 2-Column Grid) -->
+    <div class="border-y border-[#D1CABE]">
+      
+      <!-- Row 1: Websites (Starter & Business) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#D1CABE] border-b border-[#D1CABE]" data-reveal-group>
+        {row1.map((plan) => (
+          <div class="py-8 sm:py-12 lg:py-16 px-0 sm:px-8 lg:px-12 first:lg:pl-0 last:lg:pr-0 flex flex-col justify-between" data-reveal-item>
+            <div>
+              <!-- Category & Number Header -->
+              <div class="flex items-center justify-between gap-4 mb-5 pb-3 sm:mb-8 sm:pb-4 border-b border-[#D1CABE]/60">
+                <div class="flex items-center gap-2.5">
+                  <span class="font-mono text-xs font-bold text-[#0B3C85] uppercase tracking-widest">
+                    {plan.number} / {plan.category}
+                  </span>
+                  {plan.badge && (
+                    <span class="text-[10px] font-mono font-bold text-[#0B3C85] bg-[#EDE9DF] px-2 py-0.5 rounded-md uppercase tracking-wider">
+                      {plan.badge}
+                    </span>
+                  )}
+                </div>
+                <span class="font-mono text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+                  {plan.timeline}
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-[#0D111C] mb-1.5 sm:mb-2 leading-snug">
+                {plan.title}
+              </h3>
+
+              <!-- Price Typography (Direct in hierarchy, zero nested box) -->
+              <div class="mb-3.5 sm:mb-5">
+                <div class="font-display font-extrabold text-2xl sm:text-3xl lg:text-5xl text-[#0B3C85] home-plan-price tracking-tight">
+                  <span class="currency-inr">{plan.priceINR}</span>
+                  <span class="currency-usd hidden">{plan.priceUSD}</span>
+                </div>
+              </div>
+
+              <!-- Tagline -->
+              <p class="font-body text-sm sm:text-base text-neutral-600 leading-relaxed mb-5 sm:mb-8 max-w-xl">
+                {plan.tagline}
+              </p>
+
+              <!-- Deliverables & Boundaries (Clean Typographic Manifest) -->
+              <div class="space-y-2.5 sm:space-y-3 pt-4 sm:pt-6 border-t border-[#D1CABE]/60 mb-6 sm:mb-10">
+                <div class="text-xs font-mono font-bold text-neutral-500 uppercase tracking-wider mb-2.5 sm:mb-3">
+                  Scope & Boundaries:
+                </div>
+                {plan.included.map((feat) => (
+                  <div class="flex items-start gap-2.5 sm:gap-3 text-sm sm:text-base text-neutral-700 leading-snug">
+                    <span class="text-[#0B3C85] font-bold mt-0.5 select-none text-xs">✓</span>
+                    <span>{feat}</span>
+                  </div>
+                ))}
+                {plan.excluded?.map((feat) => (
+                  <div class="flex items-start gap-2.5 sm:gap-3 text-sm sm:text-base text-neutral-500 leading-snug">
+                    <span class="text-neutral-400 font-bold mt-0.5 select-none">—</span>
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Action Link -->
+            <div class="pt-4 sm:pt-6 border-t border-[#D1CABE]/60">
+              <a
+                href={plan.ctaHref}
+                class="inline-flex items-center gap-2 text-sm font-bold text-[#0D111C] hover:text-[#0B3C85] transition-colors group cursor-pointer"
+              >
+                <span>{plan.ctaText}</span>
+                <span class="w-7 h-7 rounded-full bg-[#EDE9DF] group-hover:bg-[#0B3C85] text-[#0B3C85] group-hover:text-[#F5F2EB] flex items-center justify-center transition-colors">
+                  <Icon name="ArrowUpRight" size={13} />
+                </span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Row 2: Software & Automation (Automation & Custom App) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#D1CABE]" data-reveal-group>
+        {row2.map((plan) => (
+          <div class="py-8 sm:py-12 lg:py-16 px-0 sm:px-8 lg:px-12 first:lg:pl-0 last:lg:pr-0 flex flex-col justify-between" data-reveal-item>
+            <div>
+              <!-- Category & Number Header -->
+              <div class="flex items-center justify-between gap-4 mb-5 pb-3 sm:mb-8 sm:pb-4 border-b border-[#D1CABE]/60">
+                <div class="flex items-center gap-2.5">
+                  <span class="font-mono text-xs font-bold text-[#0B3C85] uppercase tracking-widest">
+                    {plan.number} / {plan.category}
+                  </span>
+                  {plan.badge && (
+                    <span class="text-[10px] font-mono font-bold text-[#0B3C85] bg-[#EDE9DF] px-2 py-0.5 rounded-md uppercase tracking-wider">
+                      {plan.badge}
+                    </span>
+                  )}
+                </div>
+                <span class="font-mono text-xs font-semibold text-neutral-500 uppercase tracking-wider">
+                  {plan.timeline}
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-[#0D111C] mb-1.5 sm:mb-2 leading-snug">
+                {plan.title}
+              </h3>
+
+              <!-- Price Typography (Direct in hierarchy, zero nested box) -->
+              <div class="mb-3.5 sm:mb-5">
+                <div class="font-display font-extrabold text-2xl sm:text-3xl lg:text-5xl text-[#0B3C85] home-plan-price tracking-tight">
+                  <span class="currency-inr">{plan.priceINR}</span>
+                  <span class="currency-usd hidden">{plan.priceUSD}</span>
+                </div>
+              </div>
+
+              <!-- Tagline -->
+              <p class="font-body text-sm sm:text-base text-neutral-600 leading-relaxed mb-5 sm:mb-8 max-w-xl">
+                {plan.tagline}
+              </p>
+
+              <!-- Deliverables & Boundaries (Clean Typographic Manifest) -->
+              <div class="space-y-2.5 sm:space-y-3 pt-4 sm:pt-6 border-t border-[#D1CABE]/60 mb-6 sm:mb-10">
+                <div class="text-xs font-mono font-bold text-neutral-500 uppercase tracking-wider mb-2.5 sm:mb-3">
+                  Scope & Boundaries:
+                </div>
+                {plan.included.map((feat) => (
+                  <div class="flex items-start gap-2.5 sm:gap-3 text-sm sm:text-base text-neutral-700 leading-snug">
+                    <span class="text-[#0B3C85] font-bold mt-0.5 select-none text-xs">✓</span>
+                    <span>{feat}</span>
+                  </div>
+                ))}
+                {plan.excluded?.map((feat) => (
+                  <div class="flex items-start gap-2.5 sm:gap-3 text-sm sm:text-base text-neutral-500 leading-snug">
+                    <span class="text-neutral-400 font-bold mt-0.5 select-none">—</span>
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Action Link -->
+            <div class="pt-4 sm:pt-6 border-t border-[#D1CABE]/60">
+              <a
+                href={plan.ctaHref}
+                class="inline-flex items-center gap-2 text-sm font-bold text-[#0D111C] hover:text-[#0B3C85] transition-colors group cursor-pointer"
+              >
+                <span>{plan.ctaText}</span>
+                <span class="w-7 h-7 rounded-full bg-[#EDE9DF] group-hover:bg-[#0B3C85] text-[#0B3C85] group-hover:text-[#F5F2EB] flex items-center justify-center transition-colors">
+                  <Icon name="ArrowUpRight" size={13} />
+                </span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initCurrencySwitcher() {
+    const container = document.getElementById('home-pricing-currency-container');
+    const indicator = document.getElementById('home-pricing-currency-indicator');
+    const buttons = document.querySelectorAll('.home-pricing-currency-btn');
+    const inrElements = document.querySelectorAll('.currency-inr');
+    const usdElements = document.querySelectorAll('.currency-usd');
+
+    if (!container || !indicator || !buttons.length) return;
+
+    function updateIndicator(activeBtn: HTMLElement) {
+      const left = activeBtn.offsetLeft;
+      const width = activeBtn.offsetWidth;
+      indicator.style.left = `${left}px`;
+      indicator.style.width = `${width}px`;
+    }
+
+    const initialActive = (Array.from(buttons).find(b => b.getAttribute('data-active') === 'true') || buttons[0]) as HTMLElement;
+    updateIndicator(initialActive);
+
+    if (container.dataset.initialized === 'true') return;
+    container.dataset.initialized = 'true';
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const currency = btn.getAttribute('data-currency');
+        buttons.forEach(b => {
+          b.setAttribute('data-active', 'false');
+          b.classList.remove('!text-[#F5F2EB]', 'font-bold');
+          b.classList.add('text-neutral-600');
+        });
+
+        btn.setAttribute('data-active', 'true');
+        btn.classList.add('!text-[#F5F2EB]', 'font-bold');
+        btn.classList.remove('text-neutral-600');
+        updateIndicator(btn as HTMLElement);
+
+        if (currency === 'usd') {
+          inrElements.forEach(el => el.classList.add('hidden'));
+          usdElements.forEach(el => el.classList.remove('hidden'));
+        } else {
+          inrElements.forEach(el => el.classList.remove('hidden'));
+          usdElements.forEach(el => el.classList.add('hidden'));
+        }
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      const current = Array.from(buttons).find(b => b.getAttribute('data-active') === 'true') as HTMLElement;
+      if (current) updateIndicator(current);
+    });
+  }
+
+  initCurrencySwitcher();
+  document.addEventListener('astro:page-load', initCurrencySwitcher);
+</script>

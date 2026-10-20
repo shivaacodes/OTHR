@@ -2,11 +2,11 @@
 import Icon from '../ui/Icon.astro';
 ---
 
-<section class="py-16 sm:py-24 bg-black border-b border-neutral-900 relative" id="lab-preview">
+<section class="py-16 sm:py-24 bg-[#F5F2EB] border-b border-[#E2DDD1] relative" id="lab-preview">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div
       id="lab-preview-card"
-      class="relative overflow-hidden p-8 sm:p-12 bg-neutral-950 border border-neutral-800 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group"
+      class="relative overflow-hidden p-8 sm:p-12 bg-white border border-[#E2DDD1] rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8 group shadow-sm"
     >
       <!-- Interactive Reactive Dotted Canvas -->
       <canvas
@@ -16,24 +16,24 @@ import Icon from '../ui/Icon.astro';
       ></canvas>
 
       <!-- Ambient Glow in Bottom Right -->
-      <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-[#C6FF3D]/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+      <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-[#0232d4]/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
       <!-- Foreground Card Content -->
       <div class="space-y-2.5 max-w-xl relative z-10">
-        <div class="font-mono text-xs font-bold text-[#C6FF3D] uppercase tracking-wider">
+        <div class="font-mono text-xs font-bold text-[#0232d4] uppercase tracking-wider">
           Creative Technology
         </div>
-        <h3 class="font-display font-bold text-2xl sm:text-3xl text-white tracking-tight leading-snug">
+        <h3 class="font-display font-bold text-2xl sm:text-3xl text-[#0D111C] tracking-tight leading-snug">
           The Lab: Experimental Code & Shaders
         </h3>
-        <p class="font-body text-sm text-neutral-400 leading-relaxed">
+        <p class="font-body text-sm text-neutral-600 leading-relaxed">
           Where we test unconventional ideas. Algorithmic physics simulations, WebGL shaders, and browser audio DSP that keep our production engineering miles ahead.
         </p>
       </div>
 
       <a
         href="/lab"
-        class="relative z-10 px-6 py-3.5 bg-neutral-900 hover:bg-[#C6FF3D] border border-neutral-800 hover:border-[#C6FF3D] text-neutral-200 hover:text-black font-semibold text-xs sm:text-sm rounded-lg transition-all duration-200 active:scale-95 flex items-center gap-2 whitespace-nowrap cursor-pointer flex-shrink-0 shadow-sm"
+        class="relative z-10 px-6 py-3.5 bg-[#0232d4] hover:bg-[#0028b0] text-[#F5F2EB] font-semibold text-xs sm:text-sm rounded-lg transition-all duration-200 active:scale-95 flex items-center gap-2 whitespace-nowrap cursor-pointer flex-shrink-0 shadow-sm"
       >
         <span>Explore The Lab</span>
         <Icon name="ArrowUpRight" size={15} />
@@ -252,9 +252,9 @@ import Icon from '../ui/Icon.astro';
         ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2);
 
         if (intensity > 0.25) {
-          ctx.fillStyle = `rgba(198, 255, 61, ${0.25 + intensity * 0.4})`;
+          ctx.fillStyle = `rgba(2, 50, 212, ${0.25 + intensity * 0.4})`;
         } else {
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.14)';
+          ctx.fillStyle = 'rgba(2, 50, 212, 0.12)';
         }
         ctx.fill();
       }

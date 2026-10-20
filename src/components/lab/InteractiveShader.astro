@@ -2,11 +2,11 @@
 // Interactive generative canvas sandbox for The Lab
 ---
 
-<div class="relative w-full h-80 sm:h-96 bg-black border border-neutral-900 rounded-2xl overflow-hidden group select-none shadow-2xl" id="lab-canvas-container">
+<div class="relative w-full h-80 sm:h-96 bg-[#080D1A] border border-[#E2DDD1] rounded-2xl overflow-hidden group select-none shadow-md" id="lab-canvas-container">
   <!-- HUD overlay header -->
-  <div class="absolute top-0 left-0 right-0 p-4 bg-black/85 backdrop-blur-md border-b border-neutral-900 flex items-center justify-between z-10 text-xs">
+  <div class="absolute top-0 left-0 right-0 p-4 bg-[#080D1A]/85 backdrop-blur-md border-b border-[#080D1A]/40 flex items-center justify-between z-10 text-xs">
     <div class="flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-[#C6FF3D] animate-ping" style="animation-duration: 2s;"></span>
+      <span class="w-2 h-2 rounded-full bg-[#0232d4] animate-ping" style="animation-duration: 2s;"></span>
       <span class="text-white font-bold">Lab-084 • Chroma-Vector Fluid</span>
     </div>
     <div class="flex items-center gap-4 text-neutral-400">
@@ -19,21 +19,21 @@
   <canvas id="interactive-fluid-canvas" class="w-full h-full block cursor-crosshair"></canvas>
 
   <!-- Bottom Interactive HUD Controls -->
-  <div class="absolute bottom-0 left-0 right-0 p-4 bg-black/85 backdrop-blur-md border-t border-neutral-900 flex flex-wrap items-center justify-between gap-4 z-10 text-xs">
-    <div class="text-neutral-400 flex items-center gap-2">
-      <span class="text-[#C6FF3D] font-semibold">Input:</span>
+  <div class="absolute bottom-0 left-0 right-0 p-4 bg-[#080D1A]/85 backdrop-blur-md border-t border-[#080D1A]/40 flex flex-wrap items-center justify-between gap-4 z-10 text-xs">
+    <div class="text-neutral-300 flex items-center gap-2">
+      <span class="text-[#4D7CFF] font-semibold">Input:</span>
       <span class="text-xs">Drag or hover cursor to inject fluid turbulence</span>
     </div>
     <div class="flex items-center gap-2">
       <button
         id="clear-particles-btn"
-        class="px-3.5 py-1.5 bg-neutral-900 border border-neutral-800 hover:border-neutral-700 rounded-full text-xs text-neutral-300 hover:text-white transition-colors cursor-pointer"
+        class="px-3.5 py-1.5 bg-white/10 border border-white/10 hover:border-white/20 rounded-full text-xs text-neutral-200 hover:text-white transition-colors cursor-pointer"
       >
         Clear Field
       </button>
       <button
         id="burst-particles-btn"
-        class="px-3.5 py-1.5 bg-[#C6FF3D]/15 border border-[#C6FF3D]/40 rounded-full text-xs text-[#C6FF3D] hover:bg-[#C6FF3D]/25 transition-colors cursor-pointer font-semibold"
+        class="px-3.5 py-1.5 bg-[#0232d4] border border-[#0232d4] rounded-full text-xs text-[#F5F2EB] hover:bg-[#0228aa] transition-colors cursor-pointer font-semibold shadow-sm"
       >
         Trigger Burst
       </button>
@@ -88,7 +88,7 @@
     }
 
     let particles: VectorParticle[] = [];
-    const colors = ['#C6FF3D', '#9AE600', '#F5F6F0', '#00E5FF'];
+    const colors = ['#0232d4', '#3B82F6', '#60A5FA', '#F5F2EB'];
 
     function spawnParticle(x: number, y: number, vx: number, vy: number) {
       if (particles.length > 250) return;

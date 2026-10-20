@@ -10,8 +10,7 @@ export function initScrollAnimations(): () => void {
 
   // Check prefers-reduced-motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Show all elements directly
-    document.querySelectorAll('[data-reveal]').forEach((el) => {
+    document.querySelectorAll('[data-reveal], [data-reveal-item]').forEach((el) => {
       (el as HTMLElement).style.opacity = '1';
       (el as HTMLElement).style.transform = 'none';
     });
@@ -20,11 +19,11 @@ export function initScrollAnimations(): () => void {
 
   const triggers: ScrollTrigger[] = [];
 
-  // 1. Reveal items with [data-reveal]
+  // 1. Individual text & block reveals: [data-reveal]
   const revealElements = document.querySelectorAll<HTMLElement>('[data-reveal]');
   revealElements.forEach((el) => {
     const delay = parseFloat(el.getAttribute('data-delay') || '0');
-    const yOffset = parseInt(el.getAttribute('data-y') || '30', 10);
+    const yOffset = parseInt(el.getAttribute('data-y') || '16', 10);
 
     const tween = gsap.fromTo(
       el,
@@ -35,13 +34,14 @@ export function initScrollAnimations(): () => void {
       {
         opacity: 1,
         y: 0,
-        duration: 0.9,
+        duration: 0.65,
         delay,
         ease: 'power3.out',
+        clearProps: 'transform,opacity',
         scrollTrigger: {
           trigger: el,
-          start: 'top 88%',
-          toggleActions: 'play none none none'
+          start: 'top 92%',
+          once: true
         }
       }
     );
@@ -51,7 +51,7 @@ export function initScrollAnimations(): () => void {
     }
   });
 
-  // 2. Staggered groups with [data-reveal-group]
+  // 2. Staggered groups: [data-reveal-group] > [data-reveal-item]
   const groupContainers = document.querySelectorAll<HTMLElement>('[data-reveal-group]');
   groupContainers.forEach((container) => {
     const items = container.querySelectorAll<HTMLElement>('[data-reveal-item]');
@@ -61,18 +61,19 @@ export function initScrollAnimations(): () => void {
       items,
       {
         opacity: 0,
-        y: 24
+        y: 16
       },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        stagger: 0.12,
+        duration: 0.6,
+        stagger: 0.08,
         ease: 'power3.out',
+        clearProps: 'transform,opacity',
         scrollTrigger: {
           trigger: container,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
+          start: 'top 88%',
+          once: true
         }
       }
     );

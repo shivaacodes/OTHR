@@ -1,191 +1,49 @@
 ---
 import Icon from '../ui/Icon.astro';
 
-const navLinks = [
-  { href: '/products', label: 'Products' },
-  { href: '/services', label: 'Services' },
-  { href: '/studio', label: 'Studio' }
-];
+export interface Props {
+  minimal?: boolean;
+}
 
-const currentPath = Astro.url.pathname;
+const { minimal = false } = Astro.props;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-black/85 backdrop-blur-md border-b border-neutral-900 transition-all duration-300" id="site-header">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <!-- Left: OTHR Wordmark with Official Logo (No full stop) -->
-    <a href="/" class="flex items-center gap-3 group focus:outline-none" aria-label="OTHR Homepage">
+<header class="relative w-full bg-[#F5F2EB]" id="site-header">
+  <!-- Top Overscroll Floor (Guarantees seamless cream background when rubber-banding down at top) -->
+  <div class="absolute bottom-full left-0 right-0 h-[100vh] bg-[#F5F2EB] pointer-events-none -z-10" aria-hidden="true"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+    <!-- Left: Nira Studio Wordmark with Official nira-studio.png Logo -->
+    <a href="/" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none" aria-label="Nira Studio Homepage">
       <img
-        src="/logo-mark.png"
-        alt="OTHR Logo"
-        class="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-        width="46"
-        height="26"
+        src="/nira-studio.png"
+        alt="Nira Studio Logo"
+        class="h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+        width="134"
+        height="117"
       />
-      <span class="font-display font-bold text-xl tracking-tight text-white group-hover:text-[#C6FF3D] transition-colors">
-        OTHR
+      <span class="font-display font-bold text-lg sm:text-xl tracking-tight text-[#0D111C] group-hover:text-[#0B3C85] transition-colors">
+        Nira Studio
       </span>
     </a>
 
-    <!-- Desktop Navigation Links (Products, Services, Studio) -->
-    <nav class="hidden md:flex items-center gap-8" aria-label="Main Navigation">
-      {navLinks.map((link) => {
-        const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
-        return (
-          <a
-            href={link.href}
-            class={`font-body text-sm font-semibold transition-colors ${
-              isActive ? 'text-[#C6FF3D]' : 'text-neutral-400 hover:text-white'
-            }`}
-          >
-            {link.label}
-          </a>
-        );
-      })}
-    </nav>
-
-    <!-- Right: Get in touch CTA (Text with inclined arrow in lime circle) -->
-    <div class="hidden md:flex items-center gap-4">
+    <!-- Right: Enquire CTA or Back to home -->
+    {minimal ? (
       <a
-        href="/contact"
-        class="group flex items-center gap-2.5 text-xs font-semibold text-neutral-200 hover:text-white transition-colors"
-        aria-label="Get in touch"
+        href="/"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-[#EDE9DF] hover:bg-white text-[#0D111C] hover:text-[#0B3C85] border border-[#D1CABE] text-xs font-bold rounded-xl transition-all active:scale-95 shadow-sm"
       >
-        <span class="tracking-tight">Get in touch</span>
-        <span class="w-7 h-7 rounded-full bg-[#C6FF3D] text-black flex items-center justify-center circle-shiver group-hover:scale-110 transition-transform duration-300 shadow-[0_0_12px_rgba(198,255,61,0.35)]">
-          <Icon name="ArrowUpRight" size={14} class="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </span>
+        <span>← Back to home</span>
       </a>
-    </div>
-
-    <!-- Mobile Navigation Toggle Button & Get in touch -->
-    <div class="flex items-center gap-3 md:hidden">
+    ) : (
+      <!-- One single unified button with text and arrow -->
       <a
-        href="/contact"
-        class="group flex items-center gap-2 text-xs font-semibold text-neutral-200 hover:text-white transition-colors"
-        aria-label="Get in touch"
+        href="/start"
+        class="inline-flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 bg-[#0B3C85] hover:bg-[#082D64] text-[#F5F2EB] text-xs sm:text-sm font-bold rounded-full transition-all shadow-sm active:scale-95 cursor-pointer group"
+        aria-label="Enquire"
       >
-        <span class="tracking-tight">Get in touch</span>
-        <span class="w-6 h-6 rounded-full bg-[#C6FF3D] text-black flex items-center justify-center circle-shiver group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(198,255,61,0.35)]">
-          <Icon name="ArrowUpRight" size={12} class="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </span>
+        <span>Enquire</span>
+        <Icon name="ArrowUpRight" size={14} class="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </a>
-      <button
-        id="mobile-menu-trigger"
-        class="w-10 h-10 flex flex-col items-center justify-center gap-1.5 p-2 focus:outline-none cursor-pointer group"
-        aria-label="Open Mobile Menu"
-        aria-expanded="false"
-      >
-        <span class="hamburger-line w-6 h-0.5 bg-[#C6FF3D] rounded-full transition-all duration-300"></span>
-        <span class="hamburger-line w-6 h-0.5 bg-[#C6FF3D] rounded-full transition-all duration-300"></span>
-        <span class="hamburger-line w-6 h-0.5 bg-[#C6FF3D] rounded-full transition-all duration-300"></span>
-      </button>
-    </div>
+    )}
   </div>
 </header>
-
-<!-- Mobile Navigation Drawer -->
-<div
-  id="mobile-menu-drawer"
-  class="fixed inset-0 z-40 bg-black/98 backdrop-blur-2xl transform -translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden pt-24 px-6 pb-12 flex flex-col justify-between"
-  aria-hidden="true"
->
-  <div class="flex flex-col gap-2 mt-4">
-    <nav class="flex flex-col">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="mobile-nav-link flex items-center justify-between py-4 border-b border-neutral-900 font-display text-2xl font-bold tracking-tight text-neutral-300 hover:text-[#C6FF3D] transition-colors"
-        >
-          <span>{link.label}</span>
-        </a>
-      ))}
-      <a
-        href="/contact"
-        class="mobile-nav-link flex items-center justify-between py-4 border-b border-neutral-900 font-display text-2xl font-bold tracking-tight text-white group"
-      >
-        <span>Get in touch</span>
-        <span class="w-8 h-8 rounded-full bg-[#C6FF3D] text-black flex items-center justify-center circle-shiver">
-          <Icon name="ArrowUpRight" size={16} />
-        </span>
-      </a>
-    </nav>
-  </div>
-
-  <div class="border-t border-neutral-900 pt-6">
-    <div class="font-body text-xs text-neutral-500">
-      Creative Engineering Studio
-    </div>
-  </div>
-</div>
-
-<style>
-  @keyframes circle-shiver {
-    0%, 86%, 100% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-    88% {
-      transform: translate(-1.5px, 1px) rotate(-4deg);
-    }
-    90% {
-      transform: translate(1.5px, -1px) rotate(4deg);
-    }
-    92% {
-      transform: translate(-1px, -1px) rotate(-3deg);
-    }
-    94% {
-      transform: translate(1px, 1px) rotate(2deg);
-    }
-    96% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-  }
-
-  .circle-shiver {
-    animation: circle-shiver 5.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
-    transform-origin: center;
-    will-change: transform;
-  }
-</style>
-
-<script>
-  function initHeaderControls() {
-    const trigger = document.getElementById('mobile-menu-trigger');
-    const drawer = document.getElementById('mobile-menu-drawer');
-    const links = document.querySelectorAll('.mobile-nav-link');
-    const lines = trigger?.querySelectorAll<HTMLElement>('.hamburger-line');
-
-    let isOpen = false;
-
-    function toggleMenu() {
-      isOpen = !isOpen;
-      if (isOpen) {
-        drawer?.classList.remove('-translate-y-full');
-        drawer?.classList.add('translate-y-0');
-        document.body.style.overflow = 'hidden';
-        if (lines && lines.length === 3) {
-          lines[0].style.transform = 'translateY(8px) rotate(45deg)';
-          lines[1].style.opacity = '0';
-          lines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
-        }
-      } else {
-        drawer?.classList.add('-translate-y-full');
-        drawer?.classList.remove('translate-y-0');
-        document.body.style.overflow = '';
-        if (lines && lines.length === 3) {
-          lines[0].style.transform = 'none';
-          lines[1].style.opacity = '1';
-          lines[2].style.transform = 'none';
-        }
-      }
-      trigger?.setAttribute('aria-expanded', isOpen.toString());
-    }
-
-    trigger?.addEventListener('click', toggleMenu);
-    links.forEach((l) => l.addEventListener('click', () => {
-      if (isOpen) toggleMenu();
-    }));
-  }
-
-  initHeaderControls();
-  document.addEventListener('astro:page-load', initHeaderControls);
-</script>

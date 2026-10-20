@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://othr.shivasajay007.workers.dev/sitemap.xml
-Sitemap: https://othr.engineering/sitemap.xml
+Sitemap: https://nirastudio.com/sitemap.xml
